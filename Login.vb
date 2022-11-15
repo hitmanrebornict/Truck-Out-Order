@@ -20,6 +20,7 @@ Public Class Login
     Dim adminCheck As Boolean = False
     Dim fullName As String
     Dim companyNameHeader As String
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand

@@ -23,6 +23,15 @@ Partial Class ShippingEdit
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
+        Me.dtpLCD = New System.Windows.Forms.DateTimePicker()
+        Me.dtpRTD = New System.Windows.Forms.DateTimePicker()
+        Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
+        Me.lblRTD = New System.Windows.Forms.Label()
+        Me.lblLCT = New System.Windows.Forms.Label()
+        Me.lblLCD = New System.Windows.Forms.Label()
+        Me.lblRTT = New System.Windows.Forms.Label()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.cbSecurityPost = New System.Windows.Forms.CheckBox()
         Me.cbShippingPost = New System.Windows.Forms.CheckBox()
@@ -85,16 +94,8 @@ Partial Class ShippingEdit
         Me.lblTooNumber = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
-        Me.dtpLCD = New System.Windows.Forms.DateTimePicker()
-        Me.dtpRTD = New System.Windows.Forms.DateTimePicker()
-        Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
-        Me.lblRTD = New System.Windows.Forms.Label()
-        Me.lblLCT = New System.Windows.Forms.Label()
-        Me.lblLCD = New System.Windows.Forms.Label()
-        Me.lblRTT = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
+        Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
@@ -102,7 +103,6 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.TableLayoutPanel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -120,6 +120,120 @@ Partial Class ShippingEdit
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1245, 703)
         Me.Panel3.TabIndex = 3
+        '
+        'TableLayoutPanel6
+        '
+        Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
+        Me.TableLayoutPanel6.ColumnCount = 1
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTD, 0, 5)
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
+        Me.TableLayoutPanel6.Controls.Add(Me.lblRTD, 0, 4)
+        Me.TableLayoutPanel6.Controls.Add(Me.lblLCT, 0, 2)
+        Me.TableLayoutPanel6.Controls.Add(Me.lblLCD, 0, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.lblRTT, 0, 6)
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(944, 79)
+        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
+        Me.TableLayoutPanel6.RowCount = 8
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(296, 327)
+        Me.TableLayoutPanel6.TabIndex = 150
+        '
+        'dtpRTT
+        '
+        Me.dtpRTT.CustomFormat = """ """
+        Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.dtpRTT.Location = New System.Drawing.Point(4, 284)
+        Me.dtpRTT.Name = "dtpRTT"
+        Me.dtpRTT.ShowUpDown = True
+        Me.dtpRTT.Size = New System.Drawing.Size(176, 26)
+        Me.dtpRTT.TabIndex = 74
+        '
+        'dtpLCD
+        '
+        Me.dtpLCD.CustomFormat = """ """
+        Me.dtpLCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpLCD.Location = New System.Drawing.Point(4, 44)
+        Me.dtpLCD.Name = "dtpLCD"
+        Me.dtpLCD.Size = New System.Drawing.Size(176, 26)
+        Me.dtpLCD.TabIndex = 69
+        '
+        'dtpRTD
+        '
+        Me.dtpRTD.CustomFormat = """ """
+        Me.dtpRTD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpRTD.Location = New System.Drawing.Point(4, 204)
+        Me.dtpRTD.Name = "dtpRTD"
+        Me.dtpRTD.Size = New System.Drawing.Size(176, 26)
+        Me.dtpRTD.TabIndex = 69
+        '
+        'dtpLCT
+        '
+        Me.dtpLCT.CustomFormat = """ """
+        Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.dtpLCT.Location = New System.Drawing.Point(4, 124)
+        Me.dtpLCT.Name = "dtpLCT"
+        Me.dtpLCT.ShowUpDown = True
+        Me.dtpLCT.Size = New System.Drawing.Size(176, 26)
+        Me.dtpLCT.TabIndex = 74
+        '
+        'lblRTD
+        '
+        Me.lblRTD.AutoSize = True
+        Me.lblRTD.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRTD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.lblRTD.Location = New System.Drawing.Point(4, 161)
+        Me.lblRTD.Name = "lblRTD"
+        Me.lblRTD.Size = New System.Drawing.Size(209, 24)
+        Me.lblRTD.TabIndex = 32
+        Me.lblRTD.Text = "Ready Truck Out Date"
+        Me.lblRTD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'lblLCT
+        '
+        Me.lblLCT.AutoSize = True
+        Me.lblLCT.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLCT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.lblLCT.Location = New System.Drawing.Point(4, 81)
+        Me.lblLCT.Name = "lblLCT"
+        Me.lblLCT.Size = New System.Drawing.Size(231, 24)
+        Me.lblLCT.TabIndex = 32
+        Me.lblLCT.Text = "Loading Completed Time"
+        Me.lblLCT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'lblLCD
+        '
+        Me.lblLCD.AutoSize = True
+        Me.lblLCD.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLCD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.lblLCD.Location = New System.Drawing.Point(4, 1)
+        Me.lblLCD.Name = "lblLCD"
+        Me.lblLCD.Size = New System.Drawing.Size(230, 24)
+        Me.lblLCD.TabIndex = 32
+        Me.lblLCD.Text = "Loading Completed Date"
+        Me.lblLCD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'lblRTT
+        '
+        Me.lblRTT.AutoSize = True
+        Me.lblRTT.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRTT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.lblRTT.Location = New System.Drawing.Point(4, 241)
+        Me.lblRTT.Name = "lblRTT"
+        Me.lblRTT.Size = New System.Drawing.Size(210, 24)
+        Me.lblRTT.TabIndex = 32
+        Me.lblRTT.Text = "Ready Truck Out Time"
+        Me.lblRTT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         '
         'TableLayoutPanel5
         '
@@ -827,120 +941,6 @@ Partial Class ShippingEdit
         Me.Panel2.Size = New System.Drawing.Size(138, 48)
         Me.Panel2.TabIndex = 136
         '
-        'TableLayoutPanel6
-        '
-        Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
-        Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 307.0!))
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTD, 0, 5)
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
-        Me.TableLayoutPanel6.Controls.Add(Me.lblRTD, 0, 4)
-        Me.TableLayoutPanel6.Controls.Add(Me.lblLCT, 0, 2)
-        Me.TableLayoutPanel6.Controls.Add(Me.lblLCD, 0, 0)
-        Me.TableLayoutPanel6.Controls.Add(Me.lblRTT, 0, 6)
-        Me.TableLayoutPanel6.Location = New System.Drawing.Point(944, 79)
-        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
-        Me.TableLayoutPanel6.RowCount = 8
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(296, 327)
-        Me.TableLayoutPanel6.TabIndex = 150
-        '
-        'dtpRTT
-        '
-        Me.dtpRTT.CustomFormat = """ """
-        Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpRTT.Location = New System.Drawing.Point(4, 284)
-        Me.dtpRTT.Name = "dtpRTT"
-        Me.dtpRTT.ShowUpDown = True
-        Me.dtpRTT.Size = New System.Drawing.Size(176, 26)
-        Me.dtpRTT.TabIndex = 74
-        '
-        'dtpLCD
-        '
-        Me.dtpLCD.CustomFormat = """ """
-        Me.dtpLCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpLCD.Location = New System.Drawing.Point(4, 44)
-        Me.dtpLCD.Name = "dtpLCD"
-        Me.dtpLCD.Size = New System.Drawing.Size(176, 26)
-        Me.dtpLCD.TabIndex = 69
-        '
-        'dtpRTD
-        '
-        Me.dtpRTD.CustomFormat = """ """
-        Me.dtpRTD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpRTD.Location = New System.Drawing.Point(4, 204)
-        Me.dtpRTD.Name = "dtpRTD"
-        Me.dtpRTD.Size = New System.Drawing.Size(176, 26)
-        Me.dtpRTD.TabIndex = 69
-        '
-        'dtpLCT
-        '
-        Me.dtpLCT.CustomFormat = """ """
-        Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpLCT.Location = New System.Drawing.Point(4, 124)
-        Me.dtpLCT.Name = "dtpLCT"
-        Me.dtpLCT.ShowUpDown = True
-        Me.dtpLCT.Size = New System.Drawing.Size(176, 26)
-        Me.dtpLCT.TabIndex = 74
-        '
-        'lblRTD
-        '
-        Me.lblRTD.AutoSize = True
-        Me.lblRTD.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRTD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTD.Location = New System.Drawing.Point(4, 161)
-        Me.lblRTD.Name = "lblRTD"
-        Me.lblRTD.Size = New System.Drawing.Size(209, 24)
-        Me.lblRTD.TabIndex = 32
-        Me.lblRTD.Text = "Ready Truck Out Date"
-        Me.lblRTD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
-        'lblLCT
-        '
-        Me.lblLCT.AutoSize = True
-        Me.lblLCT.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLCT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCT.Location = New System.Drawing.Point(4, 81)
-        Me.lblLCT.Name = "lblLCT"
-        Me.lblLCT.Size = New System.Drawing.Size(231, 24)
-        Me.lblLCT.TabIndex = 32
-        Me.lblLCT.Text = "Loading Completed Time"
-        Me.lblLCT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
-        'lblLCD
-        '
-        Me.lblLCD.AutoSize = True
-        Me.lblLCD.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLCD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCD.Location = New System.Drawing.Point(4, 1)
-        Me.lblLCD.Name = "lblLCD"
-        Me.lblLCD.Size = New System.Drawing.Size(230, 24)
-        Me.lblLCD.TabIndex = 32
-        Me.lblLCD.Text = "Loading Completed Date"
-        Me.lblLCD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
-        'lblRTT
-        '
-        Me.lblRTT.AutoSize = True
-        Me.lblRTT.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRTT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTT.Location = New System.Drawing.Point(4, 241)
-        Me.lblRTT.Name = "lblRTT"
-        Me.lblRTT.Size = New System.Drawing.Size(210, 24)
-        Me.lblRTT.TabIndex = 32
-        Me.lblRTT.Text = "Ready Truck Out Time"
-        Me.lblRTT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
         'ShippingEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -958,6 +958,8 @@ Partial Class ShippingEdit
         Me.Text = "TOO System"
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.TableLayoutPanel6.ResumeLayout(False)
+        Me.TableLayoutPanel6.PerformLayout()
         Me.TableLayoutPanel5.ResumeLayout(False)
         Me.TableLayoutPanel5.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -972,8 +974,6 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel4.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.TableLayoutPanel6.ResumeLayout(False)
-        Me.TableLayoutPanel6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
