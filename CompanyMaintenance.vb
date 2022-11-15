@@ -66,7 +66,7 @@ Public Class CompanyMaintenance
         cmd.Connection = con
         con.Open()
 
-        If tbAddressLine1.Text = "" Or tbState.Text = "" Or tbAddressLine2.Text = "" Or tbCity.Text = "" Or cmbCompanyName.Text = "" Or tbFax.Text = "" Or tbPostalCode.Text = "" Or tbRegistrationNo.Text = "" Or tbTelephone.Text = "" Or tbCountry.Text = "" Then
+        If tbAddressLine1.Text = "" Or tbState.Text = "" Or tbCity.Text = "" Or cmbCompanyName.Text = "" Or tbFax.Text = "" Or tbPostalCode.Text = "" Or tbRegistrationNo.Text = "" Or tbTelephone.Text = "" Or tbCountry.Text = "" Then
             MessageBox.Show("Please FIll The Required Field", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If newCheck = True Then
@@ -75,7 +75,7 @@ Public Class CompanyMaintenance
                 cmd.CommandText = "INSERT INTO Company (CompanyName,AddressLine1,AddressLine2,City,State,Country,PostalCode,Phone,Fax,RegistrationNum) values (@CompanyName,@AddressLine1,@AddressLine2,@City,@State,@Country,@PostalCode,@Phone,@Fax,@RegistrationNum)"
             End If
             cmd.Parameters.AddWithValue("@CompanyName", cmbCompanyName.Text)
-            cmd.Parameters.AddWithValue("@AddressLine1", tbAddressLine2.Text)
+            cmd.Parameters.AddWithValue("@AddressLine1", tbAddressLine1.Text)
             cmd.Parameters.AddWithValue("@AddressLine2", tbAddressLine2.Text)
             cmd.Parameters.AddWithValue("@City", tbCity.Text)
             cmd.Parameters.AddWithValue("@State", tbState.Text)
