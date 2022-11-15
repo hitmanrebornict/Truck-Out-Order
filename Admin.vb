@@ -10,11 +10,12 @@ Public Class Admin
     Public TruckOutNumber As Integer
     Public departmentName As String
     Public adminCheck As Boolean
+    Public companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
         lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
         ''Me.TruckOutNumber = 70535
-
+        lblCompanyHeader.Text = companyNameHeader
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim loginPage As New Login

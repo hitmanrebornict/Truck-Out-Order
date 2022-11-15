@@ -19,7 +19,7 @@ Public Class Login
     Dim departmentName As String
     Dim adminCheck As Boolean = False
     Dim fullName As String
-
+    Dim companyNameHeader As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -116,6 +116,13 @@ Public Class Login
         cmd.Connection = con
         con.Open()
 
+        cmd.CommandText = "SELECT CompanyName from Company where companyID = 1"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        companyNameHeader = rd.Item("CompanyName")
+        con.Close()
+        con.Open()
+
         If tbUsername.Text = "" Or tbPassword.Text = "" Then
             MessageBox.Show("Please complete the required fields..", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -150,7 +157,7 @@ Public Class Login
                             Admin.departmentName = Me.departmentName
                             Admin.adminCheck = Me.adminCheck
                             Admin.fullName = Me.fullName
-
+                            Admin.companyNameHeader = Me.companyNameHeader
                             Admin.Show()
                         Case False
                             User.username = Me.tbUsername.Text
@@ -158,7 +165,7 @@ Public Class Login
                             User.departmentName = Me.departmentName
                             User.adminCheck = Me.adminCheck
                             User.fullName = Me.fullName
-
+                            User.companyNameHeader = Me.companyNameHeader
                             User.Show()
 
                     End Select

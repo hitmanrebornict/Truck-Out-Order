@@ -8,9 +8,12 @@ Public Class NormalUserPage
     Public departmentName As String
     Public adminCheck As Boolean
     Public fullName As String
+    Public companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyHeader.Text = companyNameHeader
+
         If role_id = 20 Then
             pnlNew.Visible = True
         Else

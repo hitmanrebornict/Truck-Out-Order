@@ -36,6 +36,7 @@ Partial Class NormalUserPage
         Me.pnlNew = New System.Windows.Forms.Panel()
         Me.pbNew = New System.Windows.Forms.PictureBox()
         Me.lblNew = New System.Windows.Forms.Label()
+        Me.lblCompanyHeader = New System.Windows.Forms.Label()
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlReport.SuspendLayout()
         CType(Me.pbReport, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +85,7 @@ Partial Class NormalUserPage
         Me.lblUserDetails.AutoSize = True
         Me.lblUserDetails.BackColor = System.Drawing.Color.Transparent
         Me.lblUserDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserDetails.Location = New System.Drawing.Point(12, 9)
+        Me.lblUserDetails.Location = New System.Drawing.Point(12, 55)
         Me.lblUserDetails.Name = "lblUserDetails"
         Me.lblUserDetails.Size = New System.Drawing.Size(92, 29)
         Me.lblUserDetails.TabIndex = 29
@@ -197,6 +198,17 @@ Partial Class NormalUserPage
         Me.lblNew.TabIndex = 20
         Me.lblNew.Text = "NEW" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
+        'lblCompanyHeader
+        '
+        Me.lblCompanyHeader.AutoSize = True
+        Me.lblCompanyHeader.BackColor = System.Drawing.Color.Transparent
+        Me.lblCompanyHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyHeader.Location = New System.Drawing.Point(12, 9)
+        Me.lblCompanyHeader.Name = "lblCompanyHeader"
+        Me.lblCompanyHeader.Size = New System.Drawing.Size(237, 29)
+        Me.lblCompanyHeader.TabIndex = 34
+        Me.lblCompanyHeader.Text = "lblCompanyHeader"
+        '
         'NormalUserPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -204,6 +216,7 @@ Partial Class NormalUserPage
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.Controls.Add(Me.lblCompanyHeader)
         Me.Controls.Add(Me.pnlReport)
         Me.Controls.Add(Me.pnlEdit)
         Me.Controls.Add(Me.pnlNew)
@@ -247,4 +260,5 @@ Partial Class NormalUserPage
     Friend WithEvents pnlNew As Panel
     Friend WithEvents pbNew As PictureBox
     Friend WithEvents lblNew As Label
+    Friend WithEvents lblCompanyHeader As Label
 End Class
