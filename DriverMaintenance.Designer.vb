@@ -76,7 +76,7 @@ Partial Class DriverMaintenance
         Me.cmbFullName.Location = New System.Drawing.Point(115, 99)
         Me.cmbFullName.Name = "cmbFullName"
         Me.cmbFullName.Size = New System.Drawing.Size(616, 27)
-        Me.cmbFullName.TabIndex = 23
+        Me.cmbFullName.TabIndex = 0
         '
         'TableLayoutPanel1
         '
@@ -110,7 +110,7 @@ Partial Class DriverMaintenance
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1033, 208)
-        Me.TableLayoutPanel1.TabIndex = 22
+        Me.TableLayoutPanel1.TabIndex = 1
         '
         'lblIcNumber
         '
@@ -138,7 +138,7 @@ Partial Class DriverMaintenance
         Me.tbIcNumber.Location = New System.Drawing.Point(262, 4)
         Me.tbIcNumber.Name = "tbIcNumber"
         Me.tbIcNumber.Size = New System.Drawing.Size(251, 26)
-        Me.tbIcNumber.TabIndex = 6
+        Me.tbIcNumber.TabIndex = 2
         '
         'tbPmCode
         '
@@ -146,7 +146,7 @@ Partial Class DriverMaintenance
         Me.tbPmCode.Location = New System.Drawing.Point(262, 55)
         Me.tbPmCode.Name = "tbPmCode"
         Me.tbPmCode.Size = New System.Drawing.Size(251, 26)
-        Me.tbPmCode.TabIndex = 7
+        Me.tbPmCode.TabIndex = 3
         '
         'lblPmRegistrationPlate
         '
@@ -174,7 +174,7 @@ Partial Class DriverMaintenance
         Me.tbDriverID.Location = New System.Drawing.Point(262, 157)
         Me.tbDriverID.Name = "tbDriverID"
         Me.tbDriverID.Size = New System.Drawing.Size(251, 26)
-        Me.tbDriverID.TabIndex = 13
+        Me.tbDriverID.TabIndex = 5
         '
         'lblDrivingLicense
         '
@@ -192,7 +192,7 @@ Partial Class DriverMaintenance
         Me.tbDrivingLicense.Location = New System.Drawing.Point(778, 4)
         Me.tbDrivingLicense.Name = "tbDrivingLicense"
         Me.tbDrivingLicense.Size = New System.Drawing.Size(251, 26)
-        Me.tbDrivingLicense.TabIndex = 14
+        Me.tbDrivingLicense.TabIndex = 6
         '
         'lblDrivingLicenceValid
         '
@@ -211,7 +211,7 @@ Partial Class DriverMaintenance
         Me.dtpLicenseValidDate.Location = New System.Drawing.Point(778, 55)
         Me.dtpLicenseValidDate.Name = "dtpLicenseValidDate"
         Me.dtpLicenseValidDate.Size = New System.Drawing.Size(251, 26)
-        Me.dtpLicenseValidDate.TabIndex = 17
+        Me.dtpLicenseValidDate.TabIndex = 7
         '
         'Label12
         '
@@ -229,7 +229,7 @@ Partial Class DriverMaintenance
         Me.tbLegalWorker.Location = New System.Drawing.Point(778, 106)
         Me.tbLegalWorker.Name = "tbLegalWorker"
         Me.tbLegalWorker.Size = New System.Drawing.Size(251, 26)
-        Me.tbLegalWorker.TabIndex = 16
+        Me.tbLegalWorker.TabIndex = 8
         '
         'cbActive
         '
@@ -238,7 +238,7 @@ Partial Class DriverMaintenance
         Me.cbActive.Location = New System.Drawing.Point(778, 157)
         Me.cbActive.Name = "cbActive"
         Me.cbActive.Size = New System.Drawing.Size(15, 14)
-        Me.cbActive.TabIndex = 18
+        Me.cbActive.TabIndex = 9
         Me.cbActive.UseVisualStyleBackColor = True
         '
         'Label2
@@ -257,7 +257,7 @@ Partial Class DriverMaintenance
         Me.tbRegistrationPlate.Location = New System.Drawing.Point(262, 106)
         Me.tbRegistrationPlate.Name = "tbRegistrationPlate"
         Me.tbRegistrationPlate.Size = New System.Drawing.Size(251, 26)
-        Me.tbRegistrationPlate.TabIndex = 8
+        Me.tbRegistrationPlate.TabIndex = 4
         '
         'btnCancel
         '
@@ -265,7 +265,7 @@ Partial Class DriverMaintenance
         Me.btnCancel.Location = New System.Drawing.Point(746, 379)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 30)
-        Me.btnCancel.TabIndex = 18
+        Me.btnCancel.TabIndex = 12
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -275,7 +275,7 @@ Partial Class DriverMaintenance
         Me.btnUpdate.Location = New System.Drawing.Point(478, 379)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(82, 29)
-        Me.btnUpdate.TabIndex = 10
+        Me.btnUpdate.TabIndex = 11
         Me.btnUpdate.Text = "Save"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
@@ -285,7 +285,7 @@ Partial Class DriverMaintenance
         Me.btnAddUser.Location = New System.Drawing.Point(215, 379)
         Me.btnAddUser.Name = "btnAddUser"
         Me.btnAddUser.Size = New System.Drawing.Size(90, 30)
-        Me.btnAddUser.TabIndex = 9
+        Me.btnAddUser.TabIndex = 10
         Me.btnAddUser.Text = "New"
         Me.btnAddUser.UseVisualStyleBackColor = True
         '

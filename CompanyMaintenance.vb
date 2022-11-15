@@ -130,4 +130,6 @@ Public Class CompanyMaintenance
         MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         btnCancel.PerformClick()
     End Sub
+
+
 End Class

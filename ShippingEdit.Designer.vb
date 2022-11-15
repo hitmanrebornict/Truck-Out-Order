@@ -40,7 +40,6 @@ Partial Class ShippingEdit
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
@@ -94,6 +93,7 @@ Partial Class ShippingEdit
         Me.lblTooNumber = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnPrint = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
@@ -125,7 +125,7 @@ Partial Class ShippingEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 309.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -328,19 +328,9 @@ Partial Class ShippingEdit
         Me.btnSave.Location = New System.Drawing.Point(1068, 663)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(78, 28)
-        Me.btnSave.TabIndex = 137
+        Me.btnSave.TabIndex = 18
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(971, 663)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(78, 28)
-        Me.btnPrint.TabIndex = 132
-        Me.btnPrint.Text = "Print"
-        Me.btnPrint.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
@@ -348,7 +338,7 @@ Partial Class ShippingEdit
         Me.btnCancel.Location = New System.Drawing.Point(1162, 663)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(78, 28)
-        Me.btnCancel.TabIndex = 130
+        Me.btnCancel.TabIndex = 19
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -385,7 +375,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(550, 240)
-        Me.TableLayoutPanel1.TabIndex = 127
+        Me.TableLayoutPanel1.TabIndex = 11
         '
         'tbInternalSealNo
         '
@@ -394,7 +384,7 @@ Partial Class ShippingEdit
         Me.tbInternalSealNo.Location = New System.Drawing.Point(233, 145)
         Me.tbInternalSealNo.Name = "tbInternalSealNo"
         Me.tbInternalSealNo.Size = New System.Drawing.Size(303, 26)
-        Me.tbInternalSealNo.TabIndex = 44
+        Me.tbInternalSealNo.TabIndex = 14
         '
         'TableLayoutPanel7
         '
@@ -421,7 +411,7 @@ Partial Class ShippingEdit
         Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbCheckTempSealNo.Name = "cmbCheckTempSealNo"
         Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(77, 27)
-        Me.cmbCheckTempSealNo.TabIndex = 35
+        Me.cmbCheckTempSealNo.TabIndex = 15
         '
         'tbTempSeal
         '
@@ -430,7 +420,7 @@ Partial Class ShippingEdit
         Me.tbTempSeal.Location = New System.Drawing.Point(88, 4)
         Me.tbTempSeal.Name = "tbTempSeal"
         Me.tbTempSeal.Size = New System.Drawing.Size(215, 26)
-        Me.tbTempSeal.TabIndex = 33
+        Me.tbTempSeal.TabIndex = 16
         '
         'tbLinerSealNo
         '
@@ -439,7 +429,7 @@ Partial Class ShippingEdit
         Me.tbLinerSealNo.Location = New System.Drawing.Point(233, 99)
         Me.tbLinerSealNo.Name = "tbLinerSealNo"
         Me.tbLinerSealNo.Size = New System.Drawing.Size(303, 26)
-        Me.tbLinerSealNo.TabIndex = 40
+        Me.tbLinerSealNo.TabIndex = 13
         '
         'tbContainerNo
         '
@@ -448,7 +438,7 @@ Partial Class ShippingEdit
         Me.tbContainerNo.Location = New System.Drawing.Point(233, 4)
         Me.tbContainerNo.Name = "tbContainerNo"
         Me.tbContainerNo.Size = New System.Drawing.Size(303, 26)
-        Me.tbContainerNo.TabIndex = 32
+        Me.tbContainerNo.TabIndex = 12
         '
         'lblEsSealNo
         '
@@ -581,7 +571,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.26367!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(936, 328)
-        Me.TableLayoutPanel3.TabIndex = 133
+        Me.TableLayoutPanel3.TabIndex = 0
         '
         'Label1
         '
@@ -631,7 +621,7 @@ Partial Class ShippingEdit
         Me.cmbCompany.Location = New System.Drawing.Point(237, 4)
         Me.cmbCompany.Name = "cmbCompany"
         Me.cmbCompany.Size = New System.Drawing.Size(194, 27)
-        Me.cmbCompany.TabIndex = 116
+        Me.cmbCompany.TabIndex = 1
         '
         'cmbContainerSize
         '
@@ -641,7 +631,7 @@ Partial Class ShippingEdit
         Me.cmbContainerSize.Location = New System.Drawing.Point(703, 122)
         Me.cmbContainerSize.Name = "cmbContainerSize"
         Me.cmbContainerSize.Size = New System.Drawing.Size(224, 27)
-        Me.cmbContainerSize.TabIndex = 125
+        Me.cmbContainerSize.TabIndex = 9
         '
         'lblInvoice
         '
@@ -659,7 +649,7 @@ Partial Class ShippingEdit
         Me.tbInvoice.Location = New System.Drawing.Point(237, 122)
         Me.tbInvoice.Name = "tbInvoice"
         Me.tbInvoice.Size = New System.Drawing.Size(194, 26)
-        Me.tbInvoice.TabIndex = 108
+        Me.tbInvoice.TabIndex = 3
         '
         'lblProduct
         '
@@ -677,7 +667,7 @@ Partial Class ShippingEdit
         Me.tbProduct.Location = New System.Drawing.Point(237, 168)
         Me.tbProduct.Name = "tbProduct"
         Me.tbProduct.Size = New System.Drawing.Size(194, 26)
-        Me.tbProduct.TabIndex = 109
+        Me.tbProduct.TabIndex = 4
         '
         'lblContainerSize
         '
@@ -705,7 +695,7 @@ Partial Class ShippingEdit
         Me.tbShippingLine.Location = New System.Drawing.Point(237, 215)
         Me.tbShippingLine.Name = "tbShippingLine"
         Me.tbShippingLine.Size = New System.Drawing.Size(194, 26)
-        Me.tbShippingLine.TabIndex = 110
+        Me.tbShippingLine.TabIndex = 5
         '
         'lblLoadingPort
         '
@@ -725,7 +715,7 @@ Partial Class ShippingEdit
         Me.cmbLoadingPort.Location = New System.Drawing.Point(703, 4)
         Me.cmbLoadingPort.Name = "cmbLoadingPort"
         Me.cmbLoadingPort.Size = New System.Drawing.Size(224, 27)
-        Me.cmbLoadingPort.TabIndex = 126
+        Me.cmbLoadingPort.TabIndex = 7
         '
         'lblSCT
         '
@@ -773,7 +763,7 @@ Partial Class ShippingEdit
         Me.dtpSCD.Location = New System.Drawing.Point(237, 82)
         Me.dtpSCD.Name = "dtpSCD"
         Me.dtpSCD.Size = New System.Drawing.Size(194, 26)
-        Me.dtpSCD.TabIndex = 111
+        Me.dtpSCD.TabIndex = 2
         '
         'Label4
         '
@@ -791,9 +781,9 @@ Partial Class ShippingEdit
         Me.lblDDB.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDDB.Location = New System.Drawing.Point(4, 254)
         Me.lblDDB.Name = "lblDDB"
-        Me.lblDDB.Size = New System.Drawing.Size(63, 24)
+        Me.lblDDB.Size = New System.Drawing.Size(64, 24)
         Me.lblDDB.TabIndex = 113
-        Me.lblDDB.Text = "DDB :"
+        Me.lblDDB.Text = "DDC :"
         '
         'cmbDDB
         '
@@ -804,7 +794,7 @@ Partial Class ShippingEdit
         Me.cmbDDB.Location = New System.Drawing.Point(237, 257)
         Me.cmbDDB.Name = "cmbDDB"
         Me.cmbDDB.Size = New System.Drawing.Size(194, 27)
-        Me.cmbDDB.TabIndex = 114
+        Me.cmbDDB.TabIndex = 6
         '
         'dtpSCT
         '
@@ -815,7 +805,7 @@ Partial Class ShippingEdit
         Me.dtpSCT.Name = "dtpSCT"
         Me.dtpSCT.ShowUpDown = True
         Me.dtpSCT.Size = New System.Drawing.Size(224, 26)
-        Me.dtpSCT.TabIndex = 112
+        Me.dtpSCT.TabIndex = 8
         '
         'lblHaulier
         '
@@ -833,7 +823,7 @@ Partial Class ShippingEdit
         Me.tbHaulier.Location = New System.Drawing.Point(703, 168)
         Me.tbHaulier.Name = "tbHaulier"
         Me.tbHaulier.Size = New System.Drawing.Size(224, 26)
-        Me.tbHaulier.TabIndex = 122
+        Me.tbHaulier.TabIndex = 10
         '
         'lblLoadingBay
         '
@@ -941,6 +931,16 @@ Partial Class ShippingEdit
         Me.Panel2.Size = New System.Drawing.Size(138, 48)
         Me.Panel2.TabIndex = 136
         '
+        'btnPrint
+        '
+        Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrint.Location = New System.Drawing.Point(971, 663)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(78, 28)
+        Me.btnPrint.TabIndex = 17
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.UseVisualStyleBackColor = True
+        '
         'ShippingEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -979,7 +979,6 @@ Partial Class ShippingEdit
     End Sub
 
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents btnPrint As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents tbInternalSealNo As TextBox
@@ -1050,4 +1049,5 @@ Partial Class ShippingEdit
     Friend WithEvents lblLCT As Label
     Friend WithEvents lblLCD As Label
     Friend WithEvents lblRTT As Label
+    Friend WithEvents btnPrint As Button
 End Class

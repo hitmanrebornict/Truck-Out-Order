@@ -78,7 +78,7 @@ Partial Class FieldMaintenance
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(768, 283)
-        Me.TableLayoutPanel1.TabIndex = 29
+        Me.TableLayoutPanel1.TabIndex = 0
         '
         'lblSelectField
         '
@@ -98,7 +98,7 @@ Partial Class FieldMaintenance
         Me.cmbField.Location = New System.Drawing.Point(387, 4)
         Me.cmbField.Name = "cmbField"
         Me.cmbField.Size = New System.Drawing.Size(354, 27)
-        Me.cmbField.TabIndex = 28
+        Me.cmbField.TabIndex = 1
         '
         'Label1
         '
@@ -116,7 +116,7 @@ Partial Class FieldMaintenance
         Me.cbActive.Location = New System.Drawing.Point(387, 214)
         Me.cbActive.Name = "cbActive"
         Me.cbActive.Size = New System.Drawing.Size(15, 14)
-        Me.cbActive.TabIndex = 25
+        Me.cbActive.TabIndex = 4
         Me.cbActive.UseVisualStyleBackColor = True
         '
         'tbLongName
@@ -125,7 +125,7 @@ Partial Class FieldMaintenance
         Me.tbLongName.Location = New System.Drawing.Point(387, 144)
         Me.tbLongName.Name = "tbLongName"
         Me.tbLongName.Size = New System.Drawing.Size(354, 26)
-        Me.tbLongName.TabIndex = 23
+        Me.tbLongName.TabIndex = 3
         '
         'cmbShortname
         '
@@ -134,7 +134,7 @@ Partial Class FieldMaintenance
         Me.cmbShortname.Location = New System.Drawing.Point(387, 74)
         Me.cmbShortname.Name = "cmbShortname"
         Me.cmbShortname.Size = New System.Drawing.Size(354, 27)
-        Me.cmbShortname.TabIndex = 17
+        Me.cmbShortname.TabIndex = 2
         '
         'Label2
         '
@@ -162,7 +162,7 @@ Partial Class FieldMaintenance
         Me.btnSave.Location = New System.Drawing.Point(420, 418)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(92, 30)
-        Me.btnSave.TabIndex = 27
+        Me.btnSave.TabIndex = 6
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -172,7 +172,7 @@ Partial Class FieldMaintenance
         Me.btnNew.Location = New System.Drawing.Point(145, 418)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(92, 30)
-        Me.btnNew.TabIndex = 26
+        Me.btnNew.TabIndex = 5
         Me.btnNew.Text = "New"
         Me.btnNew.UseVisualStyleBackColor = True
         '
@@ -182,7 +182,7 @@ Partial Class FieldMaintenance
         Me.btnCancel.Location = New System.Drawing.Point(730, 418)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(88, 30)
-        Me.btnCancel.TabIndex = 18
+        Me.btnCancel.TabIndex = 7
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '

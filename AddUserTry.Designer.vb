@@ -93,7 +93,7 @@ Partial Class AddUserTry
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(664, 330)
-        Me.TableLayoutPanel1.TabIndex = 31
+        Me.TableLayoutPanel1.TabIndex = 0
         '
         'Label2
         '
@@ -132,7 +132,7 @@ Partial Class AddUserTry
         Me.cmbSelectUserID.Location = New System.Drawing.Point(335, 4)
         Me.cmbSelectUserID.Name = "cmbSelectUserID"
         Me.cmbSelectUserID.Size = New System.Drawing.Size(325, 27)
-        Me.cmbSelectUserID.TabIndex = 24
+        Me.cmbSelectUserID.TabIndex = 1
         '
         'cmbSelectDepartmentID
         '
@@ -141,7 +141,7 @@ Partial Class AddUserTry
         Me.cmbSelectDepartmentID.Location = New System.Drawing.Point(335, 112)
         Me.cmbSelectDepartmentID.Name = "cmbSelectDepartmentID"
         Me.cmbSelectDepartmentID.Size = New System.Drawing.Size(325, 27)
-        Me.cmbSelectDepartmentID.TabIndex = 13
+        Me.cmbSelectDepartmentID.TabIndex = 3
         '
         'tbSelectUsername
         '
@@ -149,7 +149,7 @@ Partial Class AddUserTry
         Me.tbSelectUsername.Location = New System.Drawing.Point(335, 58)
         Me.tbSelectUsername.Name = "tbSelectUsername"
         Me.tbSelectUsername.Size = New System.Drawing.Size(325, 26)
-        Me.tbSelectUsername.TabIndex = 6
+        Me.tbSelectUsername.TabIndex = 2
         '
         'Label9
         '
@@ -167,7 +167,7 @@ Partial Class AddUserTry
         Me.tbPassword.Location = New System.Drawing.Point(335, 166)
         Me.tbPassword.Name = "tbPassword"
         Me.tbPassword.Size = New System.Drawing.Size(325, 26)
-        Me.tbPassword.TabIndex = 16
+        Me.tbPassword.TabIndex = 4
         '
         'Label10
         '
@@ -185,7 +185,7 @@ Partial Class AddUserTry
         Me.cbAdmin.Location = New System.Drawing.Point(335, 220)
         Me.cbAdmin.Name = "cbAdmin"
         Me.cbAdmin.Size = New System.Drawing.Size(15, 14)
-        Me.cbAdmin.TabIndex = 19
+        Me.cbAdmin.TabIndex = 5
         Me.cbAdmin.UseVisualStyleBackColor = True
         '
         'Label11
@@ -204,7 +204,7 @@ Partial Class AddUserTry
         Me.cbActive.Location = New System.Drawing.Point(335, 274)
         Me.cbActive.Name = "cbActive"
         Me.cbActive.Size = New System.Drawing.Size(15, 14)
-        Me.cbActive.TabIndex = 20
+        Me.cbActive.TabIndex = 6
         Me.cbActive.UseVisualStyleBackColor = True
         '
         'Label1
@@ -224,7 +224,7 @@ Partial Class AddUserTry
         Me.btnCancel.Location = New System.Drawing.Point(663, 436)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(85, 34)
-        Me.btnCancel.TabIndex = 29
+        Me.btnCancel.TabIndex = 9
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -234,7 +234,7 @@ Partial Class AddUserTry
         Me.btnSave.Location = New System.Drawing.Point(409, 436)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(89, 34)
-        Me.btnSave.TabIndex = 28
+        Me.btnSave.TabIndex = 8
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -244,7 +244,7 @@ Partial Class AddUserTry
         Me.btnNew.Location = New System.Drawing.Point(148, 436)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(78, 34)
-        Me.btnNew.TabIndex = 27
+        Me.btnNew.TabIndex = 7
         Me.btnNew.Text = "New"
         Me.btnNew.UseVisualStyleBackColor = True
         '
@@ -255,7 +255,7 @@ Partial Class AddUserTry
         Me.cmbRoleID.Location = New System.Drawing.Point(194, 545)
         Me.cmbRoleID.Name = "cmbRoleID"
         Me.cmbRoleID.Size = New System.Drawing.Size(325, 37)
-        Me.cmbRoleID.TabIndex = 4
+        Me.cmbRoleID.TabIndex = 100
         Me.cmbRoleID.Visible = False
         '
         'lblUserMaintenance
