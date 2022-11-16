@@ -110,7 +110,7 @@ Partial Class DriverMaintenance
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1033, 230)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1022, 230)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'lblIcNumber
@@ -136,17 +136,17 @@ Partial Class DriverMaintenance
         'tbIcNumber
         '
         Me.tbIcNumber.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbIcNumber.Location = New System.Drawing.Point(262, 4)
+        Me.tbIcNumber.Location = New System.Drawing.Point(259, 4)
         Me.tbIcNumber.Name = "tbIcNumber"
-        Me.tbIcNumber.Size = New System.Drawing.Size(251, 26)
+        Me.tbIcNumber.Size = New System.Drawing.Size(248, 26)
         Me.tbIcNumber.TabIndex = 2
         '
         'tbPmCode
         '
         Me.tbPmCode.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPmCode.Location = New System.Drawing.Point(262, 61)
+        Me.tbPmCode.Location = New System.Drawing.Point(259, 61)
         Me.tbPmCode.Name = "tbPmCode"
-        Me.tbPmCode.Size = New System.Drawing.Size(251, 26)
+        Me.tbPmCode.Size = New System.Drawing.Size(248, 26)
         Me.tbPmCode.TabIndex = 3
         '
         'lblPmRegistrationPlate
@@ -172,16 +172,16 @@ Partial Class DriverMaintenance
         'tbDriverID
         '
         Me.tbDriverID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDriverID.Location = New System.Drawing.Point(262, 175)
+        Me.tbDriverID.Location = New System.Drawing.Point(259, 175)
         Me.tbDriverID.Name = "tbDriverID"
-        Me.tbDriverID.Size = New System.Drawing.Size(251, 26)
+        Me.tbDriverID.Size = New System.Drawing.Size(248, 26)
         Me.tbDriverID.TabIndex = 5
         '
         'lblDrivingLicense
         '
         Me.lblDrivingLicense.AutoSize = True
         Me.lblDrivingLicense.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDrivingLicense.Location = New System.Drawing.Point(520, 1)
+        Me.lblDrivingLicense.Location = New System.Drawing.Point(514, 1)
         Me.lblDrivingLicense.Name = "lblDrivingLicense"
         Me.lblDrivingLicense.Size = New System.Drawing.Size(151, 24)
         Me.lblDrivingLicense.TabIndex = 10
@@ -190,16 +190,16 @@ Partial Class DriverMaintenance
         'tbDrivingLicense
         '
         Me.tbDrivingLicense.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDrivingLicense.Location = New System.Drawing.Point(778, 4)
+        Me.tbDrivingLicense.Location = New System.Drawing.Point(769, 4)
         Me.tbDrivingLicense.Name = "tbDrivingLicense"
-        Me.tbDrivingLicense.Size = New System.Drawing.Size(251, 26)
+        Me.tbDrivingLicense.Size = New System.Drawing.Size(249, 26)
         Me.tbDrivingLicense.TabIndex = 6
         '
         'lblDrivingLicenceValid
         '
         Me.lblDrivingLicenceValid.AutoSize = True
         Me.lblDrivingLicenceValid.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDrivingLicenceValid.Location = New System.Drawing.Point(520, 58)
+        Me.lblDrivingLicenceValid.Location = New System.Drawing.Point(514, 58)
         Me.lblDrivingLicenceValid.Name = "lblDrivingLicenceValid"
         Me.lblDrivingLicenceValid.Size = New System.Drawing.Size(219, 24)
         Me.lblDrivingLicenceValid.TabIndex = 11
@@ -209,16 +209,16 @@ Partial Class DriverMaintenance
         '
         Me.dtpLicenseValidDate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpLicenseValidDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpLicenseValidDate.Location = New System.Drawing.Point(778, 61)
+        Me.dtpLicenseValidDate.Location = New System.Drawing.Point(769, 61)
         Me.dtpLicenseValidDate.Name = "dtpLicenseValidDate"
-        Me.dtpLicenseValidDate.Size = New System.Drawing.Size(251, 26)
+        Me.dtpLicenseValidDate.Size = New System.Drawing.Size(249, 26)
         Me.dtpLicenseValidDate.TabIndex = 7
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(520, 115)
+        Me.Label12.Location = New System.Drawing.Point(514, 115)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(193, 24)
         Me.Label12.TabIndex = 12
@@ -227,16 +227,16 @@ Partial Class DriverMaintenance
         'tbLegalWorker
         '
         Me.tbLegalWorker.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbLegalWorker.Location = New System.Drawing.Point(778, 118)
+        Me.tbLegalWorker.Location = New System.Drawing.Point(769, 118)
         Me.tbLegalWorker.Name = "tbLegalWorker"
-        Me.tbLegalWorker.Size = New System.Drawing.Size(251, 26)
+        Me.tbLegalWorker.Size = New System.Drawing.Size(249, 26)
         Me.tbLegalWorker.TabIndex = 8
         '
         'cbActive
         '
         Me.cbActive.AutoSize = True
         Me.cbActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbActive.Location = New System.Drawing.Point(778, 175)
+        Me.cbActive.Location = New System.Drawing.Point(769, 175)
         Me.cbActive.Name = "cbActive"
         Me.cbActive.Size = New System.Drawing.Size(15, 14)
         Me.cbActive.TabIndex = 9
@@ -246,7 +246,7 @@ Partial Class DriverMaintenance
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(520, 172)
+        Me.Label2.Location = New System.Drawing.Point(514, 172)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 24)
         Me.Label2.TabIndex = 20
@@ -255,9 +255,9 @@ Partial Class DriverMaintenance
         'tbRegistrationPlate
         '
         Me.tbRegistrationPlate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbRegistrationPlate.Location = New System.Drawing.Point(262, 118)
+        Me.tbRegistrationPlate.Location = New System.Drawing.Point(259, 118)
         Me.tbRegistrationPlate.Name = "tbRegistrationPlate"
-        Me.tbRegistrationPlate.Size = New System.Drawing.Size(251, 26)
+        Me.tbRegistrationPlate.Size = New System.Drawing.Size(248, 26)
         Me.tbRegistrationPlate.TabIndex = 4
         '
         'btnCancel
@@ -360,7 +360,6 @@ Partial Class DriverMaintenance
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 704)
-        Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True

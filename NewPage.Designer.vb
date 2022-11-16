@@ -92,9 +92,9 @@ Partial Class NewPage
         Me.lblLCD = New System.Windows.Forms.Label()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -938,17 +938,6 @@ Partial Class NewPage
         Me.Panel1.Size = New System.Drawing.Size(1075, 98)
         Me.Panel1.TabIndex = 137
         '
-        'lblCompanyNameHeader
-        '
-        Me.lblCompanyNameHeader.AutoSize = True
-        Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
-        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
-        Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
-        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(191, 24)
-        Me.lblCompanyNameHeader.TabIndex = 138
-        Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -959,6 +948,17 @@ Partial Class NewPage
         Me.Label2.Size = New System.Drawing.Size(139, 24)
         Me.Label2.TabIndex = 139
         Me.Label2.Text = "New Shipping"
+        '
+        'lblCompanyNameHeader
+        '
+        Me.lblCompanyNameHeader.AutoSize = True
+        Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
+        Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(191, 24)
+        Me.lblCompanyNameHeader.TabIndex = 138
+        Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
         'NewPage
         '

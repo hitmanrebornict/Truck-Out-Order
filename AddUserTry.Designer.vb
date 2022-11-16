@@ -23,6 +23,9 @@ Partial Class AddUserTry
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnAddUser = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -43,9 +46,6 @@ Partial Class AddUserTry
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblUserDetails = New System.Windows.Forms.Label()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.btnAddUser = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -63,6 +63,36 @@ Partial Class AddUserTry
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(907, 691)
         Me.Panel3.TabIndex = 3
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(808, 650)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
+        Me.btnCancel.TabIndex = 15
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Location = New System.Drawing.Point(712, 650)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
+        Me.btnUpdate.TabIndex = 14
+        Me.btnUpdate.Text = "Save"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'btnAddUser
+        '
+        Me.btnAddUser.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddUser.Location = New System.Drawing.Point(616, 650)
+        Me.btnAddUser.Name = "btnAddUser"
+        Me.btnAddUser.Size = New System.Drawing.Size(90, 30)
+        Me.btnAddUser.TabIndex = 13
+        Me.btnAddUser.Text = "New"
+        Me.btnAddUser.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
         '
@@ -280,36 +310,6 @@ Partial Class AddUserTry
         Me.lblUserDetails.TabIndex = 129
         Me.lblUserDetails.Text = "lblUserDetails"
         '
-        'btnCancel
-        '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(808, 650)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
-        Me.btnCancel.TabIndex = 15
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Location = New System.Drawing.Point(712, 650)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
-        Me.btnUpdate.TabIndex = 14
-        Me.btnUpdate.Text = "Save"
-        Me.btnUpdate.UseVisualStyleBackColor = True
-        '
-        'btnAddUser
-        '
-        Me.btnAddUser.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddUser.Location = New System.Drawing.Point(616, 650)
-        Me.btnAddUser.Name = "btnAddUser"
-        Me.btnAddUser.Size = New System.Drawing.Size(90, 30)
-        Me.btnAddUser.TabIndex = 13
-        Me.btnAddUser.Text = "New"
-        Me.btnAddUser.UseVisualStyleBackColor = True
-        '
         'AddUserTry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -317,7 +317,6 @@ Partial Class AddUserTry
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 704)
-        Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Label1)
