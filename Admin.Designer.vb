@@ -256,7 +256,7 @@ Partial Class Admin
         Me.pnlDriverSetting.BackColor = System.Drawing.Color.White
         Me.pnlDriverSetting.Controls.Add(Me.lblDriverSetting)
         Me.pnlDriverSetting.Controls.Add(Me.pbDriverSetting)
-        Me.pnlDriverSetting.Location = New System.Drawing.Point(788, 509)
+        Me.pnlDriverSetting.Location = New System.Drawing.Point(788, 474)
         Me.pnlDriverSetting.Name = "pnlDriverSetting"
         Me.pnlDriverSetting.Size = New System.Drawing.Size(162, 174)
         Me.pnlDriverSetting.TabIndex = 24
@@ -277,7 +277,7 @@ Partial Class Admin
         Me.pnlFrieldSetting.BackColor = System.Drawing.Color.White
         Me.pnlFrieldSetting.Controls.Add(Me.lblFieldSetting)
         Me.pnlFrieldSetting.Controls.Add(Me.pbFieldSetting)
-        Me.pnlFrieldSetting.Location = New System.Drawing.Point(1027, 294)
+        Me.pnlFrieldSetting.Location = New System.Drawing.Point(1027, 275)
         Me.pnlFrieldSetting.Name = "pnlFrieldSetting"
         Me.pnlFrieldSetting.Size = New System.Drawing.Size(162, 174)
         Me.pnlFrieldSetting.TabIndex = 24
@@ -298,7 +298,7 @@ Partial Class Admin
         Me.pnlUser.BackColor = System.Drawing.Color.White
         Me.pnlUser.Controls.Add(Me.lblUserSetting)
         Me.pnlUser.Controls.Add(Me.pbUserSetting)
-        Me.pnlUser.Location = New System.Drawing.Point(788, 294)
+        Me.pnlUser.Location = New System.Drawing.Point(788, 275)
         Me.pnlUser.Name = "pnlUser"
         Me.pnlUser.Size = New System.Drawing.Size(162, 174)
         Me.pnlUser.TabIndex = 24
@@ -330,7 +330,7 @@ Partial Class Admin
         Me.pnlCompany.BackColor = System.Drawing.Color.White
         Me.pnlCompany.Controls.Add(Me.lblCompany)
         Me.pnlCompany.Controls.Add(Me.pbCompany)
-        Me.pnlCompany.Location = New System.Drawing.Point(1027, 509)
+        Me.pnlCompany.Location = New System.Drawing.Point(1027, 474)
         Me.pnlCompany.Name = "pnlCompany"
         Me.pnlCompany.Size = New System.Drawing.Size(162, 174)
         Me.pnlCompany.TabIndex = 25
@@ -377,7 +377,7 @@ Partial Class Admin
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.lblCompanyHeader)
         Me.Controls.Add(Me.pnlCompany)
         Me.Controls.Add(Me.pbGCB)
@@ -393,6 +393,7 @@ Partial Class Admin
         Me.Controls.Add(Me.pnlNew)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Admin"

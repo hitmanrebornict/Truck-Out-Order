@@ -19,6 +19,7 @@ Public Class CompanyMaintenance
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
+        Dim age As Integer
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
@@ -27,6 +28,21 @@ Public Class CompanyMaintenance
         While rd.Read()
             cmbCompanyName.Items.Add(rd.Item("CompanyName"))
         End While
+        con.Close()
+
+        con.Open()
+
+        cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            age = rd.Item("maxID")
+        End While
+        con.Close()
+        con.Open()
+        cmd.CommandText = "SELECT DISTINCT(maxTooNum) from details where maxTooNum is not null"
+
+        'Find Current Max TOO Number
+        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & age & "."
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click
@@ -131,6 +147,5 @@ Public Class CompanyMaintenance
         Admin.Show()
         Me.Close()
     End Sub
-
 
 End Class

@@ -184,7 +184,7 @@ Partial Class Login
         Me.Controls.Add(Me.lblTooSystem)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1920, 1080)
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Login"

@@ -28,7 +28,9 @@ Public Class ViewPage
         'Dim rd2 As SqlDataReader
         Dim sda As New SqlDataAdapter(cmd)
         Dim dt As New DataTable()
-        Dim postOpion As String
+        Dim postOption As String
+        Dim selectOptionNonAdmin As String
+        Dim selectOptionAdmin As String
         Dim numOfReport As String
         Dim startDate, endDate As String
         startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
@@ -43,17 +45,23 @@ Public Class ViewPage
         Else
             Select Case cmbPostSelect.Text
                 Case "Shipping Post Completed"
-                    postOpion = "Shipping_POST_Time"
+                    postOption = "Shipping_POST_Time"
+                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User  from Shipping"
+                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User from Shipping"
                 Case "Warehouse Post Completed"
-                    postOpion = "Warehouse_Post_Time"
+                    postOption = "Warehouse_Post_Time"
+                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post_Time,Warehouse_Post_User from Shipping"
+                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User  from Shipping"
                 Case "Security Post Completed"
-                    postOpion = "Security_Post_Time"
+                    postOption = "Security_Post_Time"
+                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
+                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
             End Select
 
             If adminCheck = False Then
-                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User  from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
+                cmd.CommandText = (selectOptionNonAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
             Else
-                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User  from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
+                cmd.CommandText = (selectOptionAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
             End If
             rd = cmd.ExecuteReader
 
@@ -63,7 +71,7 @@ Public Class ViewPage
             dgvView.DataSource = dt
 
             con.Open()
-            cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
+            cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
             rd = cmd.ExecuteReader
             rd.Read()
             numOfReport = rd.Item("numOfReport")
