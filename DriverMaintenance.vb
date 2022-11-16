@@ -6,6 +6,7 @@ Public Class DriverMaintenance
     Public role_id As Integer
     Public departmentName As String
     Public adminCheck As Boolean = True
+    Public companyNameHeader As String
     Dim selection As String
     Dim validationCheck As String
     Dim newCheck As Boolean = True
@@ -13,6 +14,7 @@ Public Class DriverMaintenance
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyNameHeader.Text = companyNameHeader
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
         cbActive.Size = New Size(100, 40)
@@ -38,11 +40,12 @@ Public Class DriverMaintenance
         Admin.departmentName = Me.departmentName
         Admin.adminCheck = Me.adminCheck
         Admin.fullName = Me.fullName
+        Admin.companyNameHeader = Me.companyNameHeader
         Admin.Show()
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         'New button 
         newCheck = False
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDown

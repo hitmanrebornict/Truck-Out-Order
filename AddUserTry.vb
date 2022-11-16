@@ -6,6 +6,7 @@ Public Class AddUserTry
     Public role_id As Integer
     Public departmentName As String
     Public adminCheck1 As Boolean
+    Public companyNameHeader As String
     Dim adminCheck As Boolean
     Dim validationCheck As String
     Dim selection As String
@@ -14,6 +15,7 @@ Public Class AddUserTry
     Public fullName As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyNameHeader.Text = companyNameHeader
         cbAdmin.Appearance = Appearance.Button
         cbAdmin.AutoSize = False
         cbAdmin.Size = New Size(100, 40)
@@ -95,7 +97,7 @@ Public Class AddUserTry
         End While
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         'save button
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -181,7 +183,7 @@ Public Class AddUserTry
         End If
     End Sub
 
-    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
         cmbSelectUserID.DropDownStyle = ComboBoxStyle.DropDown
         cmbSelectUserID.Text = ""
         newCheck = False
@@ -202,6 +204,7 @@ Public Class AddUserTry
         Admin.departmentName = Me.departmentName
         Admin.adminCheck = Me.adminCheck1
         Admin.fullName = Me.fullName
+        Admin.companyNameHeader = Me.companyNameHeader
         Admin.Show()
         Me.Close()
     End Sub

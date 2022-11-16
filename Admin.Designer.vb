@@ -170,11 +170,11 @@ Partial Class Admin
         Me.lblUserDetails.AutoSize = True
         Me.lblUserDetails.BackColor = System.Drawing.Color.Transparent
         Me.lblUserDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserDetails.Location = New System.Drawing.Point(12, 44)
+        Me.lblUserDetails.Location = New System.Drawing.Point(13, 34)
         Me.lblUserDetails.Name = "lblUserDetails"
-        Me.lblUserDetails.Size = New System.Drawing.Size(92, 29)
+        Me.lblUserDetails.Size = New System.Drawing.Size(178, 29)
         Me.lblUserDetails.TabIndex = 21
-        Me.lblUserDetails.Text = "Label1"
+        Me.lblUserDetails.Text = "lblUserDetails"
         '
         'pnlNew
         '
@@ -366,9 +366,9 @@ Partial Class Admin
         Me.lblCompanyHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyHeader.Location = New System.Drawing.Point(12, 5)
         Me.lblCompanyHeader.Name = "lblCompanyHeader"
-        Me.lblCompanyHeader.Size = New System.Drawing.Size(92, 29)
+        Me.lblCompanyHeader.Size = New System.Drawing.Size(237, 29)
         Me.lblCompanyHeader.TabIndex = 27
-        Me.lblCompanyHeader.Text = "Label1"
+        Me.lblCompanyHeader.Text = "lblCompanyHeader"
         '
         'Admin
         '

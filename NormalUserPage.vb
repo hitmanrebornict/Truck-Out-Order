@@ -78,6 +78,7 @@ Public Class NormalUserPage
         Obj.departmentName = Me.departmentName
         Obj.adminCheck = Me.adminCheck
         Obj.fullName = Me.fullName
+        Obj.companyNameHeader = Me.companyNameHeader
         Obj.Show()
         Me.Close()
     End Sub
@@ -100,7 +101,8 @@ Public Class NormalUserPage
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         Obj.Show()
         Me.Close()
@@ -124,11 +126,14 @@ Public Class NormalUserPage
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         View.Show()
         Me.Close()
     End Sub
+
+
 End Class
 
 

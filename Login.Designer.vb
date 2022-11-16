@@ -40,6 +40,7 @@ Partial Class Login
         '
         'lblTooSystem
         '
+        Me.lblTooSystem.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblTooSystem.AutoSize = True
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
         Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -52,9 +53,7 @@ Partial Class Login
         '
         'lblUsername
         '
-        Me.lblUsername.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblUsername.AutoSize = True
         Me.lblUsername.BackColor = System.Drawing.Color.Transparent
         Me.lblUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -67,6 +66,7 @@ Partial Class Login
         '
         'lblLogin
         '
+        Me.lblLogin.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblLogin.AutoSize = True
         Me.lblLogin.Font = New System.Drawing.Font("Helvetica", 17.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLogin.ForeColor = System.Drawing.SystemColors.GrayText
@@ -78,6 +78,7 @@ Partial Class Login
         '
         'btnCancel
         '
+        Me.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Location = New System.Drawing.Point(155, 324)
@@ -89,6 +90,7 @@ Partial Class Login
         '
         'btnLogin
         '
+        Me.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnLogin.BackColor = System.Drawing.Color.LightSkyBlue
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogin.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -102,6 +104,7 @@ Partial Class Login
         '
         'tbPassword
         '
+        Me.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.tbPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPassword.ForeColor = System.Drawing.SystemColors.GrayText
         Me.tbPassword.Location = New System.Drawing.Point(57, 197)
@@ -112,6 +115,7 @@ Partial Class Login
         '
         'tbUsername
         '
+        Me.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.tbUsername.BackColor = System.Drawing.Color.White
         Me.tbUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbUsername.ForeColor = System.Drawing.SystemColors.GrayText
@@ -122,9 +126,7 @@ Partial Class Login
         '
         'lblPassword
         '
-        Me.lblPassword.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblPassword.AutoSize = True
         Me.lblPassword.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.lblPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -142,6 +144,9 @@ Partial Class Login
         '
         'pnlLogin
         '
+        Me.pnlLogin.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlLogin.BackColor = System.Drawing.Color.White
         Me.pnlLogin.Controls.Add(Me.lblUsername)
         Me.pnlLogin.Controls.Add(Me.btnCancel)
@@ -157,6 +162,9 @@ Partial Class Login
         '
         'pbGCB
         '
+        Me.pbGCB.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbGCB.BackColor = System.Drawing.Color.Transparent
         Me.pbGCB.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.pbGCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch

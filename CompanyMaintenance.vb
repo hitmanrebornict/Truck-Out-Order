@@ -6,6 +6,7 @@ Public Class CompanyMaintenance
     Public role_id As Integer
     Public departmentName As String
     Public adminCheck As Boolean = True
+    Public companyNameHeader As String
     Dim selection As String
     Dim validationCheck As String
     Dim newCheck As Boolean = True
@@ -13,7 +14,7 @@ Public Class CompanyMaintenance
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
-
+        lblCompanyNameHeader.Text = companyNameHeader
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDownList
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -28,19 +29,7 @@ Public Class CompanyMaintenance
         End While
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'Cancel Button
-        Dim Admin As New Admin
-        Admin.username = Me.username
-        Admin.role_id = Me.role_id
-        Admin.departmentName = Me.departmentName
-        Admin.adminCheck = Me.adminCheck
-        Admin.fullName = Me.fullName
-        Admin.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         'New button 
         newCheck = False
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDown
@@ -56,7 +45,7 @@ Public Class CompanyMaintenance
         tbTelephone.Text = ""
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         'Save Button
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -116,7 +105,7 @@ Public Class CompanyMaintenance
         End While
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnDel.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -129,6 +118,18 @@ Public Class CompanyMaintenance
         rd = cmd.ExecuteReader
         MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         btnCancel.PerformClick()
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Dim Admin As New Admin
+        Admin.username = Me.username
+        Admin.role_id = Me.role_id
+        Admin.departmentName = Me.departmentName
+        Admin.adminCheck = Me.adminCheck
+        Admin.fullName = Me.fullName
+        Admin.companyNameHeader = Me.companyNameHeader
+        Admin.Show()
+        Me.Close()
     End Sub
 
 

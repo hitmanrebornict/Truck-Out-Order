@@ -2,6 +2,8 @@
 
 
 Public Class NewPage
+    Dim surface As Graphics = CreateGraphics()
+    Dim pen1 As Pen = New Pen(Color.Black, 2)
 
     Public Username As String
     Public role_id As Integer
@@ -11,8 +13,10 @@ Public Class NewPage
     Public adminCheck As Boolean
     Public fullName As String
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+    Public companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyNameHeader.Text = companyNameHeader
         lblTooNumber.Text = Me.TruckOutNumber
         tbTemporarySealNo.Enabled = False
         cmbCheckTempSealNo.DropDownStyle = ComboBoxStyle.DropDownList
@@ -23,8 +27,8 @@ Public Class NewPage
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-
         cmbDDB.SelectedItem = "No"
+        surface.DrawLine(pen1, 10, 10, 100, 10)
 
         If Me.role_id = "2" Or Me.role_id = "20" Then
             tbEsSealNo.Enabled = False
@@ -87,16 +91,16 @@ Public Class NewPage
                 Admin.departmentName = Me.departmentName
                 Admin.adminCheck = Me.adminCheck
                 Admin.fullName = Me.fullName
+                Admin.companyNameHeader = Me.companyNameHeader
                 Admin.Show()
                 Me.Close()
-
-
             Case False
                 User.username = Me.Username
                 User.role_id = Me.role_id
                 User.departmentName = Me.departmentName
                 User.adminCheck = Me.adminCheck
                 User.fullName = Me.fullName
+                Admin.companyNameHeader = Me.companyNameHeader
                 User.Show()
                 Me.Close()
 
@@ -237,4 +241,8 @@ Public Class NewPage
         End If
     End Sub
 
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+
+
+    End Sub
 End Class

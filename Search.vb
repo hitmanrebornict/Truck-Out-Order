@@ -8,17 +8,17 @@ Public Class Search
     Public departmentName As String
     Public adminCheck As Boolean
     Public fullName As String
-
-
+    Public companyNameHeader As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyNameHeader.Text = Me.companyNameHeader
+        dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
         Dim sda As New SqlDataAdapter(cmd)
         Dim dt As New DataTable()
-
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
@@ -135,36 +135,40 @@ Public Class Search
                             obj.departmentName = Me.departmentName
                             obj.adminCheck = Me.adminCheck
                             obj.fullName = Me.fullName
+                            obj.companyNameHeader = Me.companyNameHeader
                             obj.Show()
                             Me.Close()
                         Case 2, 20
-                            Dim obj As New ShippingEdit
+                            Dim obj As New Edit
                             obj.Username = Me.username
                             obj.role_id = Me.role_id
                             obj.TruckOutNumber = selected
                             obj.departmentName = Me.departmentName
                             obj.adminCheck = Me.adminCheck
                             obj.fullName = Me.fullName
+                            obj.companyNameHeader = Me.companyNameHeader
                             obj.Show()
                             Me.Close()
                         Case 3, 30, 4
-                            Dim obj As New WarehouseEdit
+                            Dim obj As New Edit
                             obj.Username = Me.username
                             obj.role_id = Me.role_id
                             obj.TruckOutNumber = selected
                             obj.departmentName = Me.departmentName
                             obj.adminCheck = Me.adminCheck
                             obj.fullName = Me.fullName
+                            obj.companyNameHeader = Me.companyNameHeader
                             obj.Show()
                             Me.Close()
                         Case 5
-                            Dim obj As New SecurityEdit
+                            Dim obj As New Edit
                             obj.Username = Me.username
                             obj.role_id = Me.role_id
                             obj.TruckOutNumber = selected
                             obj.departmentName = Me.departmentName
                             obj.adminCheck = Me.adminCheck
                             obj.fullName = Me.fullName
+                            obj.companyNameHeader = Me.companyNameHeader
                             obj.Show()
                             Me.Close()
                     End Select
@@ -331,8 +335,8 @@ Public Class Search
                 Admin.departmentName = Me.departmentName
                 Admin.adminCheck = Me.adminCheck
                 Admin.fullName = Me.fullName
+                Admin.companyNameHeader = Me.companyNameHeader
                 Admin.Show()
-
                 Me.Close()
 
 
@@ -342,6 +346,7 @@ Public Class Search
                 User.departmentName = Me.departmentName
                 User.adminCheck = Me.adminCheck
                 User.fullName = Me.fullName
+                User.companyNameHeader = Me.companyNameHeader
                 User.Show()
                 Me.Close()
 
@@ -426,6 +431,7 @@ Public Class Search
                     obj.departmentName = Me.departmentName
                     obj.adminCheck = Me.adminCheck
                     obj.fullName = Me.fullName
+                    obj.companyNameHeader = Me.companyNameHeader
                     obj.Show()
                     Me.Close()
                 Case 2, 20
@@ -436,6 +442,7 @@ Public Class Search
                     obj.departmentName = Me.departmentName
                     obj.adminCheck = Me.adminCheck
                     obj.fullName = Me.fullName
+                    obj.companyNameHeader = Me.companyNameHeader
                     obj.Show()
                     Me.Close()
                 Case 3, 30, 4
@@ -446,6 +453,7 @@ Public Class Search
                     obj.departmentName = Me.departmentName
                     obj.adminCheck = Me.adminCheck
                     obj.fullName = Me.fullName
+                    obj.companyNameHeader = Me.companyNameHeader
                     obj.Show()
                     Me.Close()
                 Case 5
@@ -456,6 +464,7 @@ Public Class Search
                     obj.departmentName = Me.departmentName
                     obj.adminCheck = Me.adminCheck
                     obj.fullName = Me.fullName
+                    obj.companyNameHeader = Me.companyNameHeader
                     obj.Show()
                     Me.Close()
             End Select
@@ -465,4 +474,19 @@ Public Class Search
         End If
 
     End Sub
+
+
+    Private Sub Buttona_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim Obj As New Edit
+        Obj.Username = Me.username
+        Obj.role_id = Me.role_id
+        Obj.TruckOutNumber = 70568
+        Obj.departmentName = Me.departmentName
+        Obj.adminCheck = Me.adminCheck
+        Obj.fullName = Me.fullName
+        Obj.companyNameHeader = Me.companyNameHeader
+        Obj.Show()
+        Me.Close()
+    End Sub
+
 End Class

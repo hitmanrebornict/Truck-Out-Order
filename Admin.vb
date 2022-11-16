@@ -49,6 +49,7 @@ Public Class Admin
         Add.departmentName = Me.departmentName
         Add.adminCheck1 = Me.adminCheck
         Add.fullName = Me.fullName
+        Add.companyNameHeader = Me.companyNameHeader
         Add.Show()
         Me.Close()
     End Sub
@@ -72,6 +73,7 @@ Public Class Admin
         Add.departmentName = Me.departmentName
         Add.adminCheck = Me.adminCheck
         Add.fullName = Me.fullName
+        Add.companyNameHeader = Me.companyNameHeader
         Add.Show()
         Me.Close()
     End Sub
@@ -94,6 +96,7 @@ Public Class Admin
         driver.departmentName = Me.departmentName
         driver.adminCheck = Me.adminCheck
         driver.fullName = Me.fullName
+        driver.companyNameHeader = Me.companyNameHeader
         driver.Show()
         Me.Close()
     End Sub
@@ -138,6 +141,7 @@ Public Class Admin
         Obj.departmentName = Me.departmentName
         Obj.adminCheck = Me.adminCheck
         Obj.fullName = Me.fullName
+        Obj.companyNameHeader = Me.companyNameHeader
         Obj.Show()
         Me.Close()
     End Sub
@@ -160,7 +164,8 @@ Public Class Admin
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         Obj.Show()
         Me.Close()
@@ -184,7 +189,8 @@ Public Class Admin
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         View.Show()
         Me.Close()
@@ -196,7 +202,8 @@ Public Class Admin
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         Company.Show()
         Me.Close()

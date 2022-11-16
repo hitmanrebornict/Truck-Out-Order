@@ -7,6 +7,7 @@ Public Class ShippingEdit
     Public TruckOutNumber As Integer
     Public departmentName As String
     Public adminCheck As String
+    Public companyNameHeader As String
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
@@ -28,7 +29,7 @@ Public Class ShippingEdit
 
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
         lblTooNumber.Text = Me.TruckOutNumber
-
+        lblCompanyNameHeader.Text = companyNameHeader
         'Read data from database
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -242,7 +243,8 @@ Public Class ShippingEdit
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         obj.Show()
         Me.Close()

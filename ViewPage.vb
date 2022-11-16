@@ -6,11 +6,13 @@ Public Class ViewPage
     Public role_id As String
     Public departmentName As String
     Public adminCheck As Boolean
+    Public companyNameHeader As String
     Dim ReportString As String = "report"
     Public fullName As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblCompanyNameHeader.Text = companyNameHeader
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -151,6 +153,7 @@ Public Class ViewPage
                 Admin.departmentName = Me.departmentName
                 Admin.adminCheck = Me.adminCheck
                 Admin.fullName = Me.fullName
+                Admin.companyNameHeader = Me.companyNameHeader
                 Admin.Show()
                 Me.Close()
 
@@ -161,6 +164,7 @@ Public Class ViewPage
                 User.departmentName = Me.departmentName
                 User.adminCheck = Me.adminCheck
                 User.fullName = Me.fullName
+                User.companyNameHeader = Me.companyNameHeader
                 User.Show()
                 Me.Close()
 
@@ -200,6 +204,7 @@ Public Class ViewPage
             obj.departmentName = Me.departmentName
             obj.adminCheck = Me.adminCheck
             obj.fullName = Me.fullName
+            obj.companyNameHeader = Me.companyNameHeader
             obj.Show()
             Me.Close()
 

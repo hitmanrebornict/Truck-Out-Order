@@ -6,6 +6,7 @@ Public Class SecurityEdit
     Public TruckOutNumber As Integer
     Public departmentName As String
     Public adminCheck As String
+    Public companyNameHeader As String
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkWarehouse As String
@@ -20,7 +21,7 @@ Public Class SecurityEdit
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
         lblTooNumber.Text = Me.TruckOutNumber
-
+        lblCompanyNameHeader.Text = companyNameHeader
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmRegistrationPlate.DropDownStyle = ComboBoxStyle.DropDownList
@@ -388,7 +389,8 @@ Public Class SecurityEdit
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         obj.Show()
         Me.Close()

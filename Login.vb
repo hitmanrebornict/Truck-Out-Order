@@ -27,11 +27,16 @@ Public Class Login
         Dim rd As SqlDataReader
         Dim sql As String = "select role_id where username = '" + tbUsername.Text + "'"
         Dim validationCheck As String
+        Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
-
+        cmd.CommandText = "SELECT CompanyName From Company WHERE CompanyID = 1"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        companyNameHeader = rd.Item("CompanyName")
+        con.Close()
+        con.Open()
         If tbUsername.Text = "" Or tbPassword.Text = "" Then
             MessageBox.Show("Please complete the required fields..", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -66,6 +71,7 @@ Public Class Login
                             Admin.departmentName = Me.departmentName
                             Admin.adminCheck = Me.adminCheck
                             Admin.fullName = Me.fullName
+                            Admin.companyNameHeader = Me.companyNameHeader
                             Admin.Show()
                         Case False
                             User.username = Me.tbUsername.Text
@@ -73,8 +79,8 @@ Public Class Login
                             User.departmentName = Me.departmentName
                             User.adminCheck = Me.adminCheck
                             User.fullName = Me.fullName
+                            User.companyNameHeader = Me.companyNameHeader
                             User.Show()
-
                     End Select
                 End If
                 Me.Close()
@@ -100,6 +106,8 @@ Public Class Login
         pbGCB.Location = New Point(Me.Width \ 2 - pbGCB.Width \ 2, pbGCB.Location.Y)
         pnlLogin.Left = (pnlLogin.Parent.Width \ 2) - (pnlLogin.Width \ 2)
         pbGCB.Left = (pbGCB.Parent.Width \ 2) - (pbGCB.Width \ 2)
+
+
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -112,5 +120,6 @@ Public Class Login
             tbPassword.Focus()
         End If
     End Sub
+
 
 End Class

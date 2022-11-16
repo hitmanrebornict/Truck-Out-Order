@@ -37,14 +37,15 @@ Partial Class AddUserTry
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cbActive = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.cmbRoleID = New System.Windows.Forms.ComboBox()
         Me.lblUserMaintenance = New System.Windows.Forms.Label()
-        Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblUserDetails = New System.Windows.Forms.Label()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnAddUser = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -53,16 +54,14 @@ Partial Class AddUserTry
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.btnCancel)
-        Me.Panel3.Controls.Add(Me.btnSave)
-        Me.Panel3.Controls.Add(Me.btnNew)
-        Me.Panel3.Controls.Add(Me.cmbRoleID)
+        Me.Panel3.Controls.Add(Me.btnUpdate)
+        Me.Panel3.Controls.Add(Me.btnAddUser)
+        Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(192, 9)
+        Me.Panel3.Location = New System.Drawing.Point(192, 12)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(907, 694)
+        Me.Panel3.Size = New System.Drawing.Size(907, 691)
         Me.Panel3.TabIndex = 3
         '
         'TableLayoutPanel1
@@ -83,7 +82,7 @@ Partial Class AddUserTry
         Me.TableLayoutPanel1.Controls.Add(Me.cbAdmin, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Label11, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.cbActive, 1, 5)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(114, 82)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 126)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 6
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
@@ -92,7 +91,7 @@ Partial Class AddUserTry
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(664, 330)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(904, 330)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'Label2
@@ -129,7 +128,7 @@ Partial Class AddUserTry
         '
         Me.cmbSelectUserID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSelectUserID.FormattingEnabled = True
-        Me.cmbSelectUserID.Location = New System.Drawing.Point(335, 4)
+        Me.cmbSelectUserID.Location = New System.Drawing.Point(455, 4)
         Me.cmbSelectUserID.Name = "cmbSelectUserID"
         Me.cmbSelectUserID.Size = New System.Drawing.Size(325, 27)
         Me.cmbSelectUserID.TabIndex = 1
@@ -138,7 +137,7 @@ Partial Class AddUserTry
         '
         Me.cmbSelectDepartmentID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSelectDepartmentID.FormattingEnabled = True
-        Me.cmbSelectDepartmentID.Location = New System.Drawing.Point(335, 112)
+        Me.cmbSelectDepartmentID.Location = New System.Drawing.Point(455, 112)
         Me.cmbSelectDepartmentID.Name = "cmbSelectDepartmentID"
         Me.cmbSelectDepartmentID.Size = New System.Drawing.Size(325, 27)
         Me.cmbSelectDepartmentID.TabIndex = 3
@@ -146,7 +145,7 @@ Partial Class AddUserTry
         'tbSelectUsername
         '
         Me.tbSelectUsername.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSelectUsername.Location = New System.Drawing.Point(335, 58)
+        Me.tbSelectUsername.Location = New System.Drawing.Point(455, 58)
         Me.tbSelectUsername.Name = "tbSelectUsername"
         Me.tbSelectUsername.Size = New System.Drawing.Size(325, 26)
         Me.tbSelectUsername.TabIndex = 2
@@ -164,7 +163,7 @@ Partial Class AddUserTry
         'tbPassword
         '
         Me.tbPassword.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPassword.Location = New System.Drawing.Point(335, 166)
+        Me.tbPassword.Location = New System.Drawing.Point(455, 166)
         Me.tbPassword.Name = "tbPassword"
         Me.tbPassword.Size = New System.Drawing.Size(325, 26)
         Me.tbPassword.TabIndex = 4
@@ -182,7 +181,7 @@ Partial Class AddUserTry
         'cbAdmin
         '
         Me.cbAdmin.AutoSize = True
-        Me.cbAdmin.Location = New System.Drawing.Point(335, 220)
+        Me.cbAdmin.Location = New System.Drawing.Point(455, 220)
         Me.cbAdmin.Name = "cbAdmin"
         Me.cbAdmin.Size = New System.Drawing.Size(15, 14)
         Me.cbAdmin.TabIndex = 5
@@ -201,7 +200,7 @@ Partial Class AddUserTry
         'cbActive
         '
         Me.cbActive.AutoSize = True
-        Me.cbActive.Location = New System.Drawing.Point(335, 274)
+        Me.cbActive.Location = New System.Drawing.Point(455, 274)
         Me.cbActive.Name = "cbActive"
         Me.cbActive.Size = New System.Drawing.Size(15, 14)
         Me.cbActive.TabIndex = 6
@@ -211,48 +210,18 @@ Partial Class AddUserTry
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(48, 549)
+        Me.Label1.Location = New System.Drawing.Point(1132, 349)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(120, 33)
         Me.Label1.TabIndex = 30
         Me.Label1.Text = "Role_ID"
         Me.Label1.Visible = False
         '
-        'btnCancel
-        '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(663, 436)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(85, 34)
-        Me.btnCancel.TabIndex = 9
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(409, 436)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(89, 34)
-        Me.btnSave.TabIndex = 8
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnNew
-        '
-        Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(148, 436)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(78, 34)
-        Me.btnNew.TabIndex = 7
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
         'cmbRoleID
         '
         Me.cmbRoleID.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRoleID.FormattingEnabled = True
-        Me.cmbRoleID.Location = New System.Drawing.Point(194, 545)
+        Me.cmbRoleID.Location = New System.Drawing.Point(927, 508)
         Me.cmbRoleID.Name = "cmbRoleID"
         Me.cmbRoleID.Size = New System.Drawing.Size(325, 37)
         Me.cmbRoleID.TabIndex = 100
@@ -262,42 +231,84 @@ Partial Class AddUserTry
         '
         Me.lblUserMaintenance.AutoSize = True
         Me.lblUserMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserMaintenance.Location = New System.Drawing.Point(689, 9)
+        Me.lblUserMaintenance.Location = New System.Drawing.Point(718, 51)
         Me.lblUserMaintenance.Name = "lblUserMaintenance"
         Me.lblUserMaintenance.Size = New System.Drawing.Size(186, 24)
         Me.lblUserMaintenance.TabIndex = 0
         Me.lblUserMaintenance.Text = "User Maintenance"
         '
-        'lblUserDetails
-        '
-        Me.lblUserDetails.AutoSize = True
-        Me.lblUserDetails.BackColor = System.Drawing.Color.Transparent
-        Me.lblUserDetails.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserDetails.Location = New System.Drawing.Point(147, 9)
-        Me.lblUserDetails.Name = "lblUserDetails"
-        Me.lblUserDetails.Size = New System.Drawing.Size(74, 24)
-        Me.lblUserDetails.TabIndex = 32
-        Me.lblUserDetails.Text = "Label1"
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
+        Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
+        Me.Panel1.Controls.Add(Me.lblUserMaintenance)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Controls.Add(Me.lblUserMaintenance)
-        Me.Panel1.Location = New System.Drawing.Point(192, 0)
+        Me.Panel1.Location = New System.Drawing.Point(192, -5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(907, 64)
+        Me.Panel1.Size = New System.Drawing.Size(907, 97)
         Me.Panel1.TabIndex = 139
+        '
+        'lblCompanyNameHeader
+        '
+        Me.lblCompanyNameHeader.AutoSize = True
+        Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
+        Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(191, 24)
+        Me.lblCompanyNameHeader.TabIndex = 138
+        Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
         'Panel2
         '
         Me.Panel2.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel2.Location = New System.Drawing.Point(3, 3)
+        Me.Panel2.Location = New System.Drawing.Point(3, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(138, 48)
         Me.Panel2.TabIndex = 136
+        '
+        'lblUserDetails
+        '
+        Me.lblUserDetails.AutoSize = True
+        Me.lblUserDetails.BackColor = System.Drawing.Color.Transparent
+        Me.lblUserDetails.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserDetails.Location = New System.Drawing.Point(3, 51)
+        Me.lblUserDetails.Name = "lblUserDetails"
+        Me.lblUserDetails.Size = New System.Drawing.Size(140, 24)
+        Me.lblUserDetails.TabIndex = 129
+        Me.lblUserDetails.Text = "lblUserDetails"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(808, 650)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
+        Me.btnCancel.TabIndex = 15
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Location = New System.Drawing.Point(712, 650)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
+        Me.btnUpdate.TabIndex = 14
+        Me.btnUpdate.Text = "Save"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'btnAddUser
+        '
+        Me.btnAddUser.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddUser.Location = New System.Drawing.Point(616, 650)
+        Me.btnAddUser.Name = "btnAddUser"
+        Me.btnAddUser.Size = New System.Drawing.Size(90, 30)
+        Me.btnAddUser.TabIndex = 13
+        Me.btnAddUser.Text = "New"
+        Me.btnAddUser.UseVisualStyleBackColor = True
         '
         'AddUserTry
         '
@@ -309,6 +320,8 @@ Partial Class AddUserTry
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.cmbRoleID)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -316,23 +329,19 @@ Partial Class AddUserTry
         Me.Name = "AddUserTry"
         Me.Text = "TOO System"
         Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Panel3 As Panel
     Friend WithEvents cmbRoleID As ComboBox
     Friend WithEvents lblUserMaintenance As Label
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents btnSave As Button
-    Friend WithEvents btnNew As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents lblUserDetails As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -347,5 +356,10 @@ Partial Class AddUserTry
     Friend WithEvents tbSelectUsername As TextBox
     Friend WithEvents cbAdmin As CheckBox
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents lblUserDetails As Label
+    Friend WithEvents btnCancel As Button
+    Friend WithEvents btnUpdate As Button
+    Friend WithEvents btnAddUser As Button
 End Class

@@ -5,6 +5,7 @@ Public Class FieldMaintenance
     Public role_id As Integer
     Public departmentName As String
     Public adminCheck As Boolean = True
+    Public companyNameHeader As String
     Dim operation As String
     Dim FieldSelection As String
     Dim newCheck As Boolean = True
@@ -21,6 +22,7 @@ Public Class FieldMaintenance
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
         cbActive.Size = New Size(100, 40)
+        lblCompanyNameHeader.Text = companyNameHeader
     End Sub
 
 
@@ -65,18 +67,47 @@ Public Class FieldMaintenance
         End While
         con.Close()
     End Sub
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        Dim Admin As New Admin
-        Admin.username = Me.username
-        Admin.role_id = Me.role_id
-        Admin.departmentName = Me.departmentName
-        Admin.adminCheck = Me.adminCheck
-        Admin.fullName = Me.fullName
-        Admin.Show()
-        Me.Close()
+
+
+    Private Sub cmbField_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbField.SelectedIndexChanged
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmbShortname.Items.Clear()
+
+        Select Case cmbField.Text
+            Case "Company"
+                lblTitle.Text = "Company Maintenance"
+                cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null order by company_name"
+            Case "Loading Port"
+                lblTitle.Text = "Loading Port Maintenance"
+                cmd.CommandText = "SELECT distinct(loading_port) as r from details where loading_port is not null order by loading_port"
+            Case "Container Size"
+                lblTitle.Text = "Container Size Maintenance"
+                cmd.CommandText = "SELECT distinct(container_size) as r from details where container_size is not null order by container_size"
+            Case "Warehouse Location"
+                lblTitle.Text = "Warehouse Location Maintenance"
+                cmd.CommandText = "SELECT distinct(warehouse_location) as r from details where warehouse_location is not null order by warehouse_location"
+        End Select
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbShortname.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
+        If cbActive.Checked = True Then
+            cbActive.Text = "Active"
+            validationCheck = "YES"
+        Else
+            cbActive.Text = "Inactive"
+            validationCheck = "NO"
+        End If
+    End Sub
+
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         ' save button 
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -143,43 +174,6 @@ Public Class FieldMaintenance
         End If
     End Sub
 
-    Private Sub cmbField_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbField.SelectedIndexChanged
-        con.ConnectionString = My.Settings.connstr
-        cmd.Connection = con
-        con.Open()
-        cmbShortname.Items.Clear()
-
-        Select Case cmbField.Text
-            Case "Company"
-                lblTitle.Text = "Company Maintenance"
-                cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null order by company_name"
-            Case "Loading Port"
-                lblTitle.Text = "Loading Port Maintenance"
-                cmd.CommandText = "SELECT distinct(loading_port) as r from details where loading_port is not null order by loading_port"
-            Case "Container Size"
-                lblTitle.Text = "Container Size Maintenance"
-                cmd.CommandText = "SELECT distinct(container_size) as r from details where container_size is not null order by container_size"
-            Case "Warehouse Location"
-                lblTitle.Text = "Warehouse Location Maintenance"
-                cmd.CommandText = "SELECT distinct(warehouse_location) as r from details where warehouse_location is not null order by warehouse_location"
-        End Select
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbShortname.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-    End Sub
-
-    Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
-        If cbActive.Checked = True Then
-            cbActive.Text = "Active"
-            validationCheck = "YES"
-        Else
-            cbActive.Text = "Inactive"
-            validationCheck = "NO"
-        End If
-    End Sub
-
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDown
         cmbShortname.Text = ""
@@ -190,5 +184,15 @@ Public Class FieldMaintenance
         newCheck = False
     End Sub
 
-
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Dim Admin As New Admin
+        Admin.username = Me.username
+        Admin.role_id = Me.role_id
+        Admin.departmentName = Me.departmentName
+        Admin.adminCheck = Me.adminCheck
+        Admin.fullName = Me.fullName
+        Admin.companyNameHeader = Me.companyNameHeader
+        Admin.Show()
+        Me.Close()
+    End Sub
 End Class

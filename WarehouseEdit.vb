@@ -8,6 +8,7 @@ Public Class WarehouseEdit
     Public TruckOutNumber As Integer
     Public departmentName As String
     Public adminCheck As String
+    Public companyNameHeader As String
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
@@ -18,6 +19,8 @@ Public Class WarehouseEdit
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lblCompanyNameHeader.Text = companyNameHeader
+
         'Disable for Warehouse
         cmbCompany.Enabled = False
         dtpSCD.Enabled = False
@@ -41,7 +44,6 @@ Public Class WarehouseEdit
             tbWarehouseCheckInternalSealNo.Enabled = False
             tbWarehouseCheckLinerSealNo.Enabled = False
             tbLinerSealNo.Enabled = False
-            btnWarehouseCheckPoint.Visible = False
         ElseIf Me.role_id = 4 Then
             cbContainerNo.Enabled = True
             cbEsSealNo.Enabled = True
@@ -49,7 +51,6 @@ Public Class WarehouseEdit
             tbWarehouseCheckInternalSealNo.Enabled = True
             tbWarehouseCheckLinerSealNo.Enabled = True
             tbLinerSealNo.Enabled = True
-            btnWarehouseCheckPoint.Visible = True
             tbSendToCompany.Enabled = False
             tbLoadingBay.Enabled = False
             cmbWarehouseLocation.Enabled = False
@@ -331,7 +332,6 @@ Public Class WarehouseEdit
             cbTemporarySealNo.Enabled = False
             tbWarehouseCheckInternalSealNo.Enabled = False
             tbWarehouseCheckLinerSealNo.Enabled = False
-            btnWarehouseCheckpoint.Visible = False
         End If
     End Sub
 
@@ -343,14 +343,12 @@ Public Class WarehouseEdit
             .role_id = Me.role_id,
             .departmentName = Me.departmentName,
             .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName
+            .fullName = Me.fullName,
+            .companyNameHeader = Me.companyNameHeader
         }
         obj.Show()
         Me.Close()
     End Sub
-
-
-
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
 
     End Sub
@@ -374,44 +372,82 @@ Public Class WarehouseEdit
         cmd.Connection = con
         con.Open()
 
-        If cmbEsSealNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbEsSealNo.Text = "yes" And tbEsSealNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The ES_SEAL Number ..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            If checkWarehousePost = "YES" Then
-                MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                btnCancel.PerformClick()
-                con.Close()
+        If role_id = 3 Then
+            If cmbEsSealNo.Text = "" Then
+                MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf cmbEsSealNo.Text = "yes" And tbEsSealNo.Text = "" Then
+                MessageBox.Show("Please Fill Out The ES_SEAL Number ..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-
-                If checkWarehouse <> "" Then
-                    cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + Me.Username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' where  Shipping_ID= @TruckOutNumber"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "',ES_SEAL_NO = '" + cmbEsSealNo.Text + "'where ID= @TruckOutNumber2"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
+                If checkWarehousePost = "YES" Then
+                    MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnCancel.PerformClick()
-                    MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    con.Close()
                 Else
-                    cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Me.Username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "')", con)
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    btnCancel.PerformClick()
-                    MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    If checkWarehouse <> "" Then
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + Me.Username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' where  Shipping_ID= @TruckOutNumber"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "',ES_SEAL_NO = '" + cmbEsSealNo.Text + "'where ID= @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        btnCancel.PerformClick()
+                        MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Me.Username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "')", con)
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        btnCancel.PerformClick()
+                        MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
             End If
+        ElseIf role_id = 4 Then
+            'warehousecheck for warehouse checking
+            If cbContainerNo.Checked = True Then
+                cbContainerNo.Text = "Yes"
+            Else
+                cbContainerNo.Text = "NO"
+            End If
+
+            If cbEsSealNo.Checked = True Then
+                cbEsSealNo.Text = "Yes"
+            Else
+                cbEsSealNo.Text = "NO"
+            End If
+            If cbTemporarySealNo.Checked = True Then
+                cbTemporarySealNo.Text = "Yes"
+            Else
+                cbTemporarySealNo.Text = "NO"
+            End If
+            If tbWarehouseCheckLinerSealNo.Text <> Microsoft.VisualBasic.Right(tbLinerSealNo.Text, 4) Then
+                MessageBox.Show("Please Check LINER'S SEAL NO.." + Environment.NewLine + "The number should be last 4 digit only.", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbWarehouseCheckInternalSealNo.Text <> Microsoft.VisualBasic.Right(tbInternalSealNo.Text, 4) Then
+                MessageBox.Show("Please Check INTERNAL SEAL NO.." + Environment.NewLine + "The number should be last 4 digit only.", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf checkWarehouseCheckpoint = "" Then
+                cmd.CommandText = "Update warehouse set Warehouse_Checkpoint_Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Checkpoint_Update_User = '" + Me.Username + "',Container_No_Check = '" + cbContainerNo.Text + "', Es_Seal_No_Check = '" + cbEsSealNo.Text + "',Liner_Seal_No_Check = '" + tbWarehouseCheckLinerSealNo.Text + "', Internal_Seal_No_Check = '" + tbWarehouseCheckInternalSealNo.Text + "',Temporary_Seal_No_Check= '" + cbTemporarySealNo.Text + "',warehouse_Checkpoint_Check = 'YES' Where Shipping_ID = @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                rd = cmd.ExecuteReader
+                btnCancel.PerformClick()
+                MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                cmd.CommandText = "Update warehouse set Warehouse_Checkpoint_Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Checkpoint_Update_User = '" + Me.Username + "',Container_No_Check = '" + cbContainerNo.Text + "', Es_Seal_No_Check = '" + cbEsSealNo.Text + "',Liner_Seal_No_Check = '" + tbWarehouseCheckLinerSealNo.Text + "', Internal_Seal_No_Check = '" + tbWarehouseCheckInternalSealNo.Text + "',Temporary_Seal_No_Check= '" + cbTemporarySealNo.Text + "' Where Shipping_ID = @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                rd = cmd.ExecuteReader
+                btnCancel.PerformClick()
+                MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         End If
+
     End Sub
 
     Private Sub btnPost_Click(sender As Object, e As EventArgs) Handles btnPost.Click
@@ -482,7 +518,7 @@ Public Class WarehouseEdit
         End If
     End Sub
 
-    Private Sub btnWarehouseCheckpoint_Click(sender As Object, e As EventArgs) Handles btnWarehouseCheckpoint.Click
+    Private Sub btnWarehouseCheckpoint_Click(sender As Object, e As EventArgs)
         'Warehouse Checkpoint
         'checkwarehousecheckpoint is used to check the checkpoint
         Dim con As New SqlConnection
@@ -525,5 +561,6 @@ Public Class WarehouseEdit
             MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
 
 End Class
