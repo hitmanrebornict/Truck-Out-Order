@@ -51,7 +51,7 @@ Public Class ViewPage
             End Select
 
             If adminCheck = False Then
-                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User from Shipping where" & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and" & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by ID ")
+                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User  from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
             Else
                 cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User  from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
             End If
