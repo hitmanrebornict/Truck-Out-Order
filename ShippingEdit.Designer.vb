@@ -118,17 +118,18 @@ Partial Class ShippingEdit
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(12, 1)
+        Me.Panel3.Location = New System.Drawing.Point(13, 5)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1245, 703)
+        Me.Panel3.Size = New System.Drawing.Size(1238, 865)
         Me.Panel3.TabIndex = 3
         '
         'TableLayoutPanel6
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 311.0!))
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 418.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTD, 0, 5)
@@ -138,7 +139,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel6.Controls.Add(Me.lblLCD, 0, 0)
         Me.TableLayoutPanel6.Controls.Add(Me.lblRTT, 0, 6)
         Me.TableLayoutPanel6.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TableLayoutPanel6.Location = New System.Drawing.Point(944, 105)
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(932, 127)
+        Me.TableLayoutPanel6.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
         Me.TableLayoutPanel6.RowCount = 8
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
@@ -149,7 +151,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(296, 327)
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(250, 290)
         Me.TableLayoutPanel6.TabIndex = 150
         '
         'dtpRTT
@@ -157,10 +159,11 @@ Partial Class ShippingEdit
         Me.dtpRTT.CalendarFont = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpRTT.CustomFormat = """ """
         Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpRTT.Location = New System.Drawing.Point(4, 284)
+        Me.dtpRTT.Location = New System.Drawing.Point(5, 257)
+        Me.dtpRTT.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpRTT.Name = "dtpRTT"
         Me.dtpRTT.ShowUpDown = True
-        Me.dtpRTT.Size = New System.Drawing.Size(176, 30)
+        Me.dtpRTT.Size = New System.Drawing.Size(233, 30)
         Me.dtpRTT.TabIndex = 74
         '
         'dtpLCD
@@ -168,9 +171,10 @@ Partial Class ShippingEdit
         Me.dtpLCD.CalendarFont = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpLCD.CustomFormat = """ """
         Me.dtpLCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpLCD.Location = New System.Drawing.Point(4, 44)
+        Me.dtpLCD.Location = New System.Drawing.Point(5, 41)
+        Me.dtpLCD.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpLCD.Name = "dtpLCD"
-        Me.dtpLCD.Size = New System.Drawing.Size(176, 30)
+        Me.dtpLCD.Size = New System.Drawing.Size(233, 30)
         Me.dtpLCD.TabIndex = 69
         '
         'dtpRTD
@@ -178,9 +182,10 @@ Partial Class ShippingEdit
         Me.dtpRTD.CalendarFont = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpRTD.CustomFormat = """ """
         Me.dtpRTD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpRTD.Location = New System.Drawing.Point(4, 204)
+        Me.dtpRTD.Location = New System.Drawing.Point(5, 185)
+        Me.dtpRTD.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpRTD.Name = "dtpRTD"
-        Me.dtpRTD.Size = New System.Drawing.Size(176, 30)
+        Me.dtpRTD.Size = New System.Drawing.Size(233, 30)
         Me.dtpRTD.TabIndex = 69
         '
         'dtpLCT
@@ -188,10 +193,11 @@ Partial Class ShippingEdit
         Me.dtpLCT.CalendarFont = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpLCT.CustomFormat = """ """
         Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpLCT.Location = New System.Drawing.Point(4, 124)
+        Me.dtpLCT.Location = New System.Drawing.Point(5, 113)
+        Me.dtpLCT.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpLCT.Name = "dtpLCT"
         Me.dtpLCT.ShowUpDown = True
-        Me.dtpLCT.Size = New System.Drawing.Size(176, 30)
+        Me.dtpLCT.Size = New System.Drawing.Size(233, 30)
         Me.dtpLCT.TabIndex = 74
         '
         'lblRTD
@@ -199,7 +205,8 @@ Partial Class ShippingEdit
         Me.lblRTD.AutoSize = True
         Me.lblRTD.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRTD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTD.Location = New System.Drawing.Point(4, 161)
+        Me.lblRTD.Location = New System.Drawing.Point(5, 145)
+        Me.lblRTD.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRTD.Name = "lblRTD"
         Me.lblRTD.Size = New System.Drawing.Size(202, 22)
         Me.lblRTD.TabIndex = 32
@@ -211,7 +218,8 @@ Partial Class ShippingEdit
         Me.lblLCT.AutoSize = True
         Me.lblLCT.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLCT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCT.Location = New System.Drawing.Point(4, 81)
+        Me.lblLCT.Location = New System.Drawing.Point(5, 73)
+        Me.lblLCT.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLCT.Name = "lblLCT"
         Me.lblLCT.Size = New System.Drawing.Size(226, 22)
         Me.lblLCT.TabIndex = 32
@@ -223,7 +231,8 @@ Partial Class ShippingEdit
         Me.lblLCD.AutoSize = True
         Me.lblLCD.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLCD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCD.Location = New System.Drawing.Point(4, 1)
+        Me.lblLCD.Location = New System.Drawing.Point(5, 1)
+        Me.lblLCD.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLCD.Name = "lblLCD"
         Me.lblLCD.Size = New System.Drawing.Size(225, 22)
         Me.lblLCD.TabIndex = 32
@@ -235,7 +244,8 @@ Partial Class ShippingEdit
         Me.lblRTT.AutoSize = True
         Me.lblRTT.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRTT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTT.Location = New System.Drawing.Point(4, 241)
+        Me.lblRTT.Location = New System.Drawing.Point(5, 217)
+        Me.lblRTT.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRTT.Name = "lblRTT"
         Me.lblRTT.Size = New System.Drawing.Size(203, 22)
         Me.lblRTT.TabIndex = 32
@@ -253,7 +263,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel5.Controls.Add(Me.Label6, 0, 0)
         Me.TableLayoutPanel5.Controls.Add(Me.Label5, 0, 2)
         Me.TableLayoutPanel5.Controls.Add(Me.Label2, 0, 4)
-        Me.TableLayoutPanel5.Location = New System.Drawing.Point(1080, 438)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(1009, 446)
+        Me.TableLayoutPanel5.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
         Me.TableLayoutPanel5.RowCount = 6
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
@@ -262,15 +273,16 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(160, 176)
+        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(173, 217)
         Me.TableLayoutPanel5.TabIndex = 149
         '
         'cbSecurityPost
         '
         Me.cbSecurityPost.AutoSize = True
         Me.cbSecurityPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSecurityPost.Location = New System.Drawing.Point(4, 149)
+        Me.cbSecurityPost.Location = New System.Drawing.Point(5, 185)
+        Me.cbSecurityPost.Margin = New System.Windows.Forms.Padding(4)
         Me.cbSecurityPost.Name = "cbSecurityPost"
         Me.cbSecurityPost.Size = New System.Drawing.Size(111, 23)
         Me.cbSecurityPost.TabIndex = 122
@@ -281,9 +293,10 @@ Partial Class ShippingEdit
         '
         Me.cbShippingPost.AutoSize = True
         Me.cbShippingPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShippingPost.Location = New System.Drawing.Point(4, 33)
+        Me.cbShippingPost.Location = New System.Drawing.Point(5, 41)
+        Me.cbShippingPost.Margin = New System.Windows.Forms.Padding(4)
         Me.cbShippingPost.Name = "cbShippingPost"
-        Me.cbShippingPost.Size = New System.Drawing.Size(111, 22)
+        Me.cbShippingPost.Size = New System.Drawing.Size(111, 23)
         Me.cbShippingPost.TabIndex = 119
         Me.cbShippingPost.Text = "CheckBox1"
         Me.cbShippingPost.UseVisualStyleBackColor = True
@@ -292,9 +305,10 @@ Partial Class ShippingEdit
         '
         Me.cbWarehousePost.AutoSize = True
         Me.cbWarehousePost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbWarehousePost.Location = New System.Drawing.Point(4, 91)
+        Me.cbWarehousePost.Location = New System.Drawing.Point(5, 113)
+        Me.cbWarehousePost.Margin = New System.Windows.Forms.Padding(4)
         Me.cbWarehousePost.Name = "cbWarehousePost"
-        Me.cbWarehousePost.Size = New System.Drawing.Size(111, 22)
+        Me.cbWarehousePost.Size = New System.Drawing.Size(111, 23)
         Me.cbWarehousePost.TabIndex = 120
         Me.cbWarehousePost.Text = "CheckBox1"
         Me.cbWarehousePost.UseVisualStyleBackColor = True
@@ -303,7 +317,8 @@ Partial Class ShippingEdit
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(4, 1)
+        Me.Label6.Location = New System.Drawing.Point(5, 1)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(120, 19)
         Me.Label6.TabIndex = 116
@@ -313,7 +328,8 @@ Partial Class ShippingEdit
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(4, 59)
+        Me.Label5.Location = New System.Drawing.Point(5, 73)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(141, 19)
         Me.Label5.TabIndex = 115
@@ -323,7 +339,8 @@ Partial Class ShippingEdit
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 117)
+        Me.Label2.Location = New System.Drawing.Point(5, 145)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(116, 19)
         Me.Label2.TabIndex = 121
@@ -332,9 +349,10 @@ Partial Class ShippingEdit
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(1068, 663)
+        Me.btnSave.Location = New System.Drawing.Point(1424, 816)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(78, 28)
+        Me.btnSave.Size = New System.Drawing.Size(104, 34)
         Me.btnSave.TabIndex = 18
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -342,9 +360,10 @@ Partial Class ShippingEdit
         'btnPrint
         '
         Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(971, 663)
+        Me.btnPrint.Location = New System.Drawing.Point(1295, 816)
+        Me.btnPrint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(78, 28)
+        Me.btnPrint.Size = New System.Drawing.Size(104, 34)
         Me.btnPrint.TabIndex = 17
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = True
@@ -352,9 +371,10 @@ Partial Class ShippingEdit
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(1162, 663)
+        Me.btnCancel.Location = New System.Drawing.Point(1549, 816)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(78, 28)
+        Me.btnCancel.Size = New System.Drawing.Size(104, 34)
         Me.btnCancel.TabIndex = 19
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -370,8 +390,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.7122!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.2878!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel7, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
@@ -383,7 +403,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.Controls.Add(Me.lblTemporarySealNo, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.lblContainerNo, 0, 0)
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(234, 439)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(7, 425)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 5
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
@@ -391,16 +412,17 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.24686!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(550, 214)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(784, 207)
         Me.TableLayoutPanel1.TabIndex = 11
         '
         'tbInternalSealNo
         '
         Me.tbInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInternalSealNo.Location = New System.Drawing.Point(233, 130)
+        Me.tbInternalSealNo.Location = New System.Drawing.Point(331, 125)
+        Me.tbInternalSealNo.Margin = New System.Windows.Forms.Padding(4)
         Me.tbInternalSealNo.Name = "tbInternalSealNo"
-        Me.tbInternalSealNo.Size = New System.Drawing.Size(303, 26)
+        Me.tbInternalSealNo.Size = New System.Drawing.Size(342, 26)
         Me.tbInternalSealNo.TabIndex = 14
         '
         'TableLayoutPanel7
@@ -411,12 +433,13 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.54902!))
         Me.TableLayoutPanel7.Controls.Add(Me.cmbCheckTempSealNo, 0, 0)
         Me.TableLayoutPanel7.Controls.Add(Me.tbTempSeal, 1, 0)
-        Me.TableLayoutPanel7.Location = New System.Drawing.Point(233, 173)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(331, 166)
+        Me.TableLayoutPanel7.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel7.Size = New System.Drawing.Size(307, 36)
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43.0!))
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(342, 36)
         Me.TableLayoutPanel7.TabIndex = 54
         '
         'cmbCheckTempSealNo
@@ -425,53 +448,59 @@ Partial Class ShippingEdit
         Me.cmbCheckTempSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCheckTempSealNo.FormattingEnabled = True
         Me.cmbCheckTempSealNo.Items.AddRange(New Object() {"YES", "NO"})
-        Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(4, 4)
+        Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(5, 5)
+        Me.cmbCheckTempSealNo.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbCheckTempSealNo.Name = "cmbCheckTempSealNo"
-        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(77, 27)
+        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(85, 27)
         Me.cmbCheckTempSealNo.TabIndex = 15
         '
         'tbTempSeal
         '
         Me.tbTempSeal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbTempSeal.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTempSeal.Location = New System.Drawing.Point(88, 4)
+        Me.tbTempSeal.Location = New System.Drawing.Point(99, 5)
+        Me.tbTempSeal.Margin = New System.Windows.Forms.Padding(4)
         Me.tbTempSeal.Name = "tbTempSeal"
-        Me.tbTempSeal.Size = New System.Drawing.Size(215, 26)
+        Me.tbTempSeal.Size = New System.Drawing.Size(238, 26)
         Me.tbTempSeal.TabIndex = 16
         '
         'tbLinerSealNo
         '
         Me.tbLinerSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbLinerSealNo.Location = New System.Drawing.Point(233, 89)
+        Me.tbLinerSealNo.Location = New System.Drawing.Point(331, 86)
+        Me.tbLinerSealNo.Margin = New System.Windows.Forms.Padding(4)
         Me.tbLinerSealNo.Name = "tbLinerSealNo"
-        Me.tbLinerSealNo.Size = New System.Drawing.Size(303, 26)
+        Me.tbLinerSealNo.Size = New System.Drawing.Size(342, 26)
         Me.tbLinerSealNo.TabIndex = 13
         '
         'tbContainerNo
         '
         Me.tbContainerNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbContainerNo.Location = New System.Drawing.Point(233, 4)
+        Me.tbContainerNo.Location = New System.Drawing.Point(331, 5)
+        Me.tbContainerNo.Margin = New System.Windows.Forms.Padding(4)
         Me.tbContainerNo.Name = "tbContainerNo"
-        Me.tbContainerNo.Size = New System.Drawing.Size(303, 26)
+        Me.tbContainerNo.Size = New System.Drawing.Size(342, 26)
         Me.tbContainerNo.TabIndex = 12
         '
         'lblEsSealNo
         '
         Me.lblEsSealNo.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEsSealNo.Location = New System.Drawing.Point(4, 44)
+        Me.lblEsSealNo.Location = New System.Drawing.Point(5, 42)
+        Me.lblEsSealNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblEsSealNo.Name = "lblEsSealNo"
-        Me.lblEsSealNo.Size = New System.Drawing.Size(174, 36)
+        Me.lblEsSealNo.Size = New System.Drawing.Size(232, 39)
         Me.lblEsSealNo.TabIndex = 28
         Me.lblEsSealNo.Text = "Es Seal No."
         '
         'lblLinerSealNo
         '
         Me.lblLinerSealNo.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLinerSealNo.Location = New System.Drawing.Point(4, 86)
+        Me.lblLinerSealNo.Location = New System.Drawing.Point(5, 82)
+        Me.lblLinerSealNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLinerSealNo.Name = "lblLinerSealNo"
-        Me.lblLinerSealNo.Size = New System.Drawing.Size(157, 29)
+        Me.lblLinerSealNo.Size = New System.Drawing.Size(209, 36)
         Me.lblLinerSealNo.TabIndex = 29
         Me.lblLinerSealNo.Text = "Liner's Seal No."
         '
@@ -483,12 +512,13 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.89542!))
         Me.TableLayoutPanel2.Controls.Add(Me.cmbEsSealNo, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.tbEsSealNo, 1, 1)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(233, 47)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(331, 46)
+        Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 2
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(307, 33)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(342, 31)
         Me.TableLayoutPanel2.TabIndex = 53
         '
         'cmbEsSealNo
@@ -497,49 +527,55 @@ Partial Class ShippingEdit
         Me.cmbEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbEsSealNo.FormattingEnabled = True
         Me.cmbEsSealNo.Items.AddRange(New Object() {"YES", "NO"})
-        Me.cmbEsSealNo.Location = New System.Drawing.Point(4, 4)
+        Me.cmbEsSealNo.Location = New System.Drawing.Point(5, 5)
+        Me.cmbEsSealNo.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbEsSealNo.Name = "cmbEsSealNo"
-        Me.cmbEsSealNo.Size = New System.Drawing.Size(78, 27)
+        Me.cmbEsSealNo.Size = New System.Drawing.Size(87, 27)
         Me.cmbEsSealNo.TabIndex = 35
         '
         'tbEsSealNo
         '
         Me.tbEsSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbEsSealNo.Location = New System.Drawing.Point(90, 6)
+        Me.tbEsSealNo.Location = New System.Drawing.Point(101, -2)
+        Me.tbEsSealNo.Margin = New System.Windows.Forms.Padding(4)
         Me.tbEsSealNo.Name = "tbEsSealNo"
-        Me.tbEsSealNo.Size = New System.Drawing.Size(213, 26)
+        Me.tbEsSealNo.Size = New System.Drawing.Size(236, 26)
         Me.tbEsSealNo.TabIndex = 33
         '
         'lblInternalSealNo
         '
         Me.lblInternalSealNo.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInternalSealNo.Location = New System.Drawing.Point(4, 127)
+        Me.lblInternalSealNo.Location = New System.Drawing.Point(5, 121)
+        Me.lblInternalSealNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInternalSealNo.Name = "lblInternalSealNo"
-        Me.lblInternalSealNo.Size = New System.Drawing.Size(200, 37)
+        Me.lblInternalSealNo.Size = New System.Drawing.Size(241, 40)
         Me.lblInternalSealNo.TabIndex = 30
         Me.lblInternalSealNo.Text = "Internal Seal No."
         '
         'lblTemporarySealNo
         '
         Me.lblTemporarySealNo.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTemporarySealNo.Location = New System.Drawing.Point(4, 170)
+        Me.lblTemporarySealNo.Location = New System.Drawing.Point(5, 162)
+        Me.lblTemporarySealNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTemporarySealNo.Name = "lblTemporarySealNo"
-        Me.lblTemporarySealNo.Size = New System.Drawing.Size(222, 39)
+        Me.lblTemporarySealNo.Size = New System.Drawing.Size(241, 44)
         Me.lblTemporarySealNo.TabIndex = 31
         Me.lblTemporarySealNo.Text = "Temporary Seal No."
         '
         'lblContainerNo
         '
         Me.lblContainerNo.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblContainerNo.Location = New System.Drawing.Point(4, 1)
+        Me.lblContainerNo.Location = New System.Drawing.Point(5, 1)
+        Me.lblContainerNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblContainerNo.Name = "lblContainerNo"
-        Me.lblContainerNo.Size = New System.Drawing.Size(180, 29)
+        Me.lblContainerNo.Size = New System.Drawing.Size(240, 36)
         Me.lblContainerNo.TabIndex = 27
         Me.lblContainerNo.Text = "Container No."
         '
         'TableLayoutPanel3
         '
+        Me.TableLayoutPanel3.AutoSize = True
         Me.TableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel3.ColumnCount = 4
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
@@ -577,25 +613,27 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel3.Controls.Add(Me.tbLoadingBay, 3, 6)
         Me.TableLayoutPanel3.Controls.Add(Me.cmbWarehouseLocation, 3, 5)
         Me.TableLayoutPanel3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(6, 104)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(8, 128)
+        Me.TableLayoutPanel3.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 8
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28939!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.07547!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.58491!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.50388!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.89147!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28939!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.26367!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(936, 328)
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(909, 289)
         Me.TableLayoutPanel3.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(470, 43)
+        Me.Label1.Location = New System.Drawing.Point(459, 37)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(218, 22)
         Me.Label1.TabIndex = 134
@@ -605,7 +643,8 @@ Partial Class ShippingEdit
         '
         Me.lblLoadingPortFullName.AutoSize = True
         Me.lblLoadingPortFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadingPortFullName.Location = New System.Drawing.Point(703, 43)
+        Me.lblLoadingPortFullName.Location = New System.Drawing.Point(686, 37)
+        Me.lblLoadingPortFullName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLoadingPortFullName.Name = "lblLoadingPortFullName"
         Me.lblLoadingPortFullName.Size = New System.Drawing.Size(178, 19)
         Me.lblLoadingPortFullName.TabIndex = 132
@@ -615,7 +654,8 @@ Partial Class ShippingEdit
         '
         Me.lblCompanyFullName.AutoSize = True
         Me.lblCompanyFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompanyFullName.Location = New System.Drawing.Point(237, 43)
+        Me.lblCompanyFullName.Location = New System.Drawing.Point(232, 37)
+        Me.lblCompanyFullName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCompanyFullName.Name = "lblCompanyFullName"
         Me.lblCompanyFullName.Size = New System.Drawing.Size(156, 19)
         Me.lblCompanyFullName.TabIndex = 130
@@ -625,7 +665,8 @@ Partial Class ShippingEdit
         '
         Me.lblCompany.AutoSize = True
         Me.lblCompany.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompany.Location = New System.Drawing.Point(4, 1)
+        Me.lblCompany.Location = New System.Drawing.Point(5, 1)
+        Me.lblCompany.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCompany.Name = "lblCompany"
         Me.lblCompany.Size = New System.Drawing.Size(99, 22)
         Me.lblCompany.TabIndex = 115
@@ -636,9 +677,10 @@ Partial Class ShippingEdit
         Me.cmbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCompany.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCompany.FormattingEnabled = True
-        Me.cmbCompany.Location = New System.Drawing.Point(237, 4)
+        Me.cmbCompany.Location = New System.Drawing.Point(232, 5)
+        Me.cmbCompany.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbCompany.Name = "cmbCompany"
-        Me.cmbCompany.Size = New System.Drawing.Size(194, 27)
+        Me.cmbCompany.Size = New System.Drawing.Size(217, 27)
         Me.cmbCompany.TabIndex = 1
         '
         'cmbContainerSize
@@ -646,16 +688,18 @@ Partial Class ShippingEdit
         Me.cmbContainerSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbContainerSize.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbContainerSize.FormattingEnabled = True
-        Me.cmbContainerSize.Location = New System.Drawing.Point(703, 122)
+        Me.cmbContainerSize.Location = New System.Drawing.Point(686, 113)
+        Me.cmbContainerSize.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbContainerSize.Name = "cmbContainerSize"
-        Me.cmbContainerSize.Size = New System.Drawing.Size(224, 27)
+        Me.cmbContainerSize.Size = New System.Drawing.Size(218, 27)
         Me.cmbContainerSize.TabIndex = 9
         '
         'lblInvoice
         '
         Me.lblInvoice.AutoSize = True
         Me.lblInvoice.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInvoice.Location = New System.Drawing.Point(4, 119)
+        Me.lblInvoice.Location = New System.Drawing.Point(5, 109)
+        Me.lblInvoice.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInvoice.Name = "lblInvoice"
         Me.lblInvoice.Size = New System.Drawing.Size(77, 22)
         Me.lblInvoice.TabIndex = 105
@@ -664,16 +708,18 @@ Partial Class ShippingEdit
         'tbInvoice
         '
         Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInvoice.Location = New System.Drawing.Point(237, 122)
+        Me.tbInvoice.Location = New System.Drawing.Point(232, 113)
+        Me.tbInvoice.Margin = New System.Windows.Forms.Padding(4)
         Me.tbInvoice.Name = "tbInvoice"
-        Me.tbInvoice.Size = New System.Drawing.Size(194, 26)
+        Me.tbInvoice.Size = New System.Drawing.Size(217, 26)
         Me.tbInvoice.TabIndex = 3
         '
         'lblProduct
         '
         Me.lblProduct.AutoSize = True
         Me.lblProduct.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProduct.Location = New System.Drawing.Point(4, 165)
+        Me.lblProduct.Location = New System.Drawing.Point(5, 145)
+        Me.lblProduct.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblProduct.Name = "lblProduct"
         Me.lblProduct.Size = New System.Drawing.Size(82, 22)
         Me.lblProduct.TabIndex = 106
@@ -682,16 +728,18 @@ Partial Class ShippingEdit
         'tbProduct
         '
         Me.tbProduct.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbProduct.Location = New System.Drawing.Point(237, 168)
+        Me.tbProduct.Location = New System.Drawing.Point(232, 149)
+        Me.tbProduct.Margin = New System.Windows.Forms.Padding(4)
         Me.tbProduct.Name = "tbProduct"
-        Me.tbProduct.Size = New System.Drawing.Size(194, 26)
+        Me.tbProduct.Size = New System.Drawing.Size(217, 26)
         Me.tbProduct.TabIndex = 4
         '
         'lblContainerSize
         '
         Me.lblContainerSize.AutoSize = True
         Me.lblContainerSize.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblContainerSize.Location = New System.Drawing.Point(470, 119)
+        Me.lblContainerSize.Location = New System.Drawing.Point(459, 109)
+        Me.lblContainerSize.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblContainerSize.Name = "lblContainerSize"
         Me.lblContainerSize.Size = New System.Drawing.Size(142, 22)
         Me.lblContainerSize.TabIndex = 117
@@ -701,7 +749,8 @@ Partial Class ShippingEdit
         '
         Me.lblShippingLine.AutoSize = True
         Me.lblShippingLine.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblShippingLine.Location = New System.Drawing.Point(4, 212)
+        Me.lblShippingLine.Location = New System.Drawing.Point(5, 181)
+        Me.lblShippingLine.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblShippingLine.Name = "lblShippingLine"
         Me.lblShippingLine.Size = New System.Drawing.Size(133, 22)
         Me.lblShippingLine.TabIndex = 107
@@ -710,16 +759,18 @@ Partial Class ShippingEdit
         'tbShippingLine
         '
         Me.tbShippingLine.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbShippingLine.Location = New System.Drawing.Point(237, 215)
+        Me.tbShippingLine.Location = New System.Drawing.Point(232, 185)
+        Me.tbShippingLine.Margin = New System.Windows.Forms.Padding(4)
         Me.tbShippingLine.Name = "tbShippingLine"
-        Me.tbShippingLine.Size = New System.Drawing.Size(194, 26)
+        Me.tbShippingLine.Size = New System.Drawing.Size(217, 26)
         Me.tbShippingLine.TabIndex = 5
         '
         'lblLoadingPort
         '
         Me.lblLoadingPort.AutoSize = True
         Me.lblLoadingPort.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadingPort.Location = New System.Drawing.Point(470, 1)
+        Me.lblLoadingPort.Location = New System.Drawing.Point(459, 1)
+        Me.lblLoadingPort.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLoadingPort.Name = "lblLoadingPort"
         Me.lblLoadingPort.Size = New System.Drawing.Size(125, 22)
         Me.lblLoadingPort.TabIndex = 119
@@ -730,16 +781,18 @@ Partial Class ShippingEdit
         Me.cmbLoadingPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbLoadingPort.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbLoadingPort.FormattingEnabled = True
-        Me.cmbLoadingPort.Location = New System.Drawing.Point(703, 4)
+        Me.cmbLoadingPort.Location = New System.Drawing.Point(686, 5)
+        Me.cmbLoadingPort.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbLoadingPort.Name = "cmbLoadingPort"
-        Me.cmbLoadingPort.Size = New System.Drawing.Size(224, 27)
+        Me.cmbLoadingPort.Size = New System.Drawing.Size(218, 27)
         Me.cmbLoadingPort.TabIndex = 7
         '
         'lblSCT
         '
         Me.lblSCT.AutoSize = True
         Me.lblSCT.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSCT.Location = New System.Drawing.Point(470, 79)
+        Me.lblSCT.Location = New System.Drawing.Point(459, 73)
+        Me.lblSCT.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSCT.Name = "lblSCT"
         Me.lblSCT.Size = New System.Drawing.Size(214, 22)
         Me.lblSCT.TabIndex = 104
@@ -749,7 +802,8 @@ Partial Class ShippingEdit
         '
         Me.lblSCD.AutoSize = True
         Me.lblSCD.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSCD.Location = New System.Drawing.Point(4, 79)
+        Me.lblSCD.Location = New System.Drawing.Point(5, 73)
+        Me.lblSCD.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSCD.Name = "lblSCD"
         Me.lblSCD.Size = New System.Drawing.Size(213, 22)
         Me.lblSCD.TabIndex = 103
@@ -759,7 +813,8 @@ Partial Class ShippingEdit
         '
         Me.lblSendToCompany.AutoSize = True
         Me.lblSendToCompany.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSendToCompany.Location = New System.Drawing.Point(4, 296)
+        Me.lblSendToCompany.Location = New System.Drawing.Point(5, 253)
+        Me.lblSendToCompany.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSendToCompany.Name = "lblSendToCompany"
         Me.lblSendToCompany.Size = New System.Drawing.Size(176, 22)
         Me.lblSendToCompany.TabIndex = 128
@@ -768,9 +823,10 @@ Partial Class ShippingEdit
         'tbSendToCompany
         '
         Me.tbSendToCompany.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSendToCompany.Location = New System.Drawing.Point(237, 299)
+        Me.tbSendToCompany.Location = New System.Drawing.Point(232, 257)
+        Me.tbSendToCompany.Margin = New System.Windows.Forms.Padding(4)
         Me.tbSendToCompany.Name = "tbSendToCompany"
-        Me.tbSendToCompany.Size = New System.Drawing.Size(194, 26)
+        Me.tbSendToCompany.Size = New System.Drawing.Size(217, 26)
         Me.tbSendToCompany.TabIndex = 127
         '
         'dtpSCD
@@ -778,16 +834,18 @@ Partial Class ShippingEdit
         Me.dtpSCD.CustomFormat = """ """
         Me.dtpSCD.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpSCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpSCD.Location = New System.Drawing.Point(237, 82)
+        Me.dtpSCD.Location = New System.Drawing.Point(232, 77)
+        Me.dtpSCD.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpSCD.Name = "dtpSCD"
-        Me.dtpSCD.Size = New System.Drawing.Size(194, 26)
+        Me.dtpSCD.Size = New System.Drawing.Size(217, 26)
         Me.dtpSCD.TabIndex = 2
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(4, 43)
+        Me.Label4.Location = New System.Drawing.Point(5, 37)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(192, 22)
         Me.Label4.TabIndex = 133
@@ -797,7 +855,8 @@ Partial Class ShippingEdit
         '
         Me.lblDDB.AutoSize = True
         Me.lblDDB.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDDB.Location = New System.Drawing.Point(4, 254)
+        Me.lblDDB.Location = New System.Drawing.Point(5, 217)
+        Me.lblDDB.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDDB.Name = "lblDDB"
         Me.lblDDB.Size = New System.Drawing.Size(62, 22)
         Me.lblDDB.TabIndex = 113
@@ -809,9 +868,10 @@ Partial Class ShippingEdit
         Me.cmbDDB.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDDB.FormattingEnabled = True
         Me.cmbDDB.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cmbDDB.Location = New System.Drawing.Point(237, 257)
+        Me.cmbDDB.Location = New System.Drawing.Point(232, 221)
+        Me.cmbDDB.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbDDB.Name = "cmbDDB"
-        Me.cmbDDB.Size = New System.Drawing.Size(194, 27)
+        Me.cmbDDB.Size = New System.Drawing.Size(217, 27)
         Me.cmbDDB.TabIndex = 6
         '
         'dtpSCT
@@ -819,17 +879,19 @@ Partial Class ShippingEdit
         Me.dtpSCT.CustomFormat = "HH:mm:ss"
         Me.dtpSCT.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpSCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpSCT.Location = New System.Drawing.Point(703, 82)
+        Me.dtpSCT.Location = New System.Drawing.Point(686, 77)
+        Me.dtpSCT.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpSCT.Name = "dtpSCT"
         Me.dtpSCT.ShowUpDown = True
-        Me.dtpSCT.Size = New System.Drawing.Size(224, 26)
+        Me.dtpSCT.Size = New System.Drawing.Size(218, 26)
         Me.dtpSCT.TabIndex = 8
         '
         'lblHaulier
         '
         Me.lblHaulier.AutoSize = True
         Me.lblHaulier.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHaulier.Location = New System.Drawing.Point(470, 165)
+        Me.lblHaulier.Location = New System.Drawing.Point(459, 145)
+        Me.lblHaulier.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblHaulier.Name = "lblHaulier"
         Me.lblHaulier.Size = New System.Drawing.Size(76, 22)
         Me.lblHaulier.TabIndex = 118
@@ -838,16 +900,18 @@ Partial Class ShippingEdit
         'tbHaulier
         '
         Me.tbHaulier.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbHaulier.Location = New System.Drawing.Point(703, 168)
+        Me.tbHaulier.Location = New System.Drawing.Point(686, 149)
+        Me.tbHaulier.Margin = New System.Windows.Forms.Padding(4)
         Me.tbHaulier.Name = "tbHaulier"
-        Me.tbHaulier.Size = New System.Drawing.Size(224, 26)
+        Me.tbHaulier.Size = New System.Drawing.Size(218, 26)
         Me.tbHaulier.TabIndex = 10
         '
         'lblLoadingBay
         '
         Me.lblLoadingBay.AutoSize = True
         Me.lblLoadingBay.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadingBay.Location = New System.Drawing.Point(470, 254)
+        Me.lblLoadingBay.Location = New System.Drawing.Point(459, 217)
+        Me.lblLoadingBay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLoadingBay.Name = "lblLoadingBay"
         Me.lblLoadingBay.Size = New System.Drawing.Size(124, 22)
         Me.lblLoadingBay.TabIndex = 121
@@ -857,7 +921,8 @@ Partial Class ShippingEdit
         '
         Me.lblWarehouseLocation.AutoSize = True
         Me.lblWarehouseLocation.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWarehouseLocation.Location = New System.Drawing.Point(470, 212)
+        Me.lblWarehouseLocation.Location = New System.Drawing.Point(459, 181)
+        Me.lblWarehouseLocation.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblWarehouseLocation.Name = "lblWarehouseLocation"
         Me.lblWarehouseLocation.Size = New System.Drawing.Size(193, 22)
         Me.lblWarehouseLocation.TabIndex = 120
@@ -866,9 +931,10 @@ Partial Class ShippingEdit
         'tbLoadingBay
         '
         Me.tbLoadingBay.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbLoadingBay.Location = New System.Drawing.Point(703, 257)
+        Me.tbLoadingBay.Location = New System.Drawing.Point(686, 221)
+        Me.tbLoadingBay.Margin = New System.Windows.Forms.Padding(4)
         Me.tbLoadingBay.Name = "tbLoadingBay"
-        Me.tbLoadingBay.Size = New System.Drawing.Size(224, 26)
+        Me.tbLoadingBay.Size = New System.Drawing.Size(218, 26)
         Me.tbLoadingBay.TabIndex = 123
         '
         'cmbWarehouseLocation
@@ -876,22 +942,24 @@ Partial Class ShippingEdit
         Me.cmbWarehouseLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbWarehouseLocation.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbWarehouseLocation.FormattingEnabled = True
-        Me.cmbWarehouseLocation.Location = New System.Drawing.Point(703, 215)
+        Me.cmbWarehouseLocation.Location = New System.Drawing.Point(686, 185)
+        Me.cmbWarehouseLocation.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbWarehouseLocation.Name = "cmbWarehouseLocation"
-        Me.cmbWarehouseLocation.Size = New System.Drawing.Size(224, 27)
+        Me.cmbWarehouseLocation.Size = New System.Drawing.Size(218, 27)
         Me.cmbWarehouseLocation.TabIndex = 124
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
+        Me.Panel1.Controls.Add(Me.TableLayoutPanel4)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
         Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Controls.Add(Me.TableLayoutPanel4)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Location = New System.Drawing.Point(12, 1)
+        Me.Panel1.Location = New System.Drawing.Point(16, 1)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1245, 98)
+        Me.Panel1.Size = New System.Drawing.Size(1235, 121)
         Me.Panel1.TabIndex = 151
         '
         'Label9
@@ -899,7 +967,8 @@ Partial Class ShippingEdit
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(1104, 51)
+        Me.Label9.Location = New System.Drawing.Point(1472, 63)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(136, 24)
         Me.Label9.TabIndex = 140
@@ -910,7 +979,8 @@ Partial Class ShippingEdit
         Me.lblCompanyNameHeader.AutoSize = True
         Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
         Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
+        Me.lblCompanyNameHeader.Location = New System.Drawing.Point(196, 16)
+        Me.lblCompanyNameHeader.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
         Me.lblCompanyNameHeader.Size = New System.Drawing.Size(191, 24)
         Me.lblCompanyNameHeader.TabIndex = 138
@@ -920,9 +990,10 @@ Partial Class ShippingEdit
         '
         Me.Panel2.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel2.Location = New System.Drawing.Point(3, 0)
+        Me.Panel2.Location = New System.Drawing.Point(4, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(138, 48)
+        Me.Panel2.Size = New System.Drawing.Size(184, 59)
         Me.Panel2.TabIndex = 136
         '
         'TableLayoutPanel4
@@ -934,18 +1005,20 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.lblTooNumber, 1, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lblTruckOutNumber, 0, 0)
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(840, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(698, 4)
+        Me.TableLayoutPanel4.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(400, 37)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(533, 46)
         Me.TableLayoutPanel4.TabIndex = 135
         '
         'lblTooNumber
         '
         Me.lblTooNumber.AutoSize = True
         Me.lblTooNumber.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooNumber.Location = New System.Drawing.Point(251, 1)
+        Me.lblTooNumber.Location = New System.Drawing.Point(334, 1)
+        Me.lblTooNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTooNumber.Name = "lblTooNumber"
         Me.lblTooNumber.Size = New System.Drawing.Size(74, 24)
         Me.lblTooNumber.TabIndex = 135
@@ -956,7 +1029,8 @@ Partial Class ShippingEdit
         Me.lblTruckOutNumber.AutoSize = True
         Me.lblTruckOutNumber.BackColor = System.Drawing.Color.Transparent
         Me.lblTruckOutNumber.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTruckOutNumber.Location = New System.Drawing.Point(4, 1)
+        Me.lblTruckOutNumber.Location = New System.Drawing.Point(5, 1)
+        Me.lblTruckOutNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTruckOutNumber.Name = "lblTruckOutNumber"
         Me.lblTruckOutNumber.Size = New System.Drawing.Size(192, 24)
         Me.lblTruckOutNumber.TabIndex = 134
@@ -967,7 +1041,8 @@ Partial Class ShippingEdit
         Me.lblUserDetails.AutoSize = True
         Me.lblUserDetails.BackColor = System.Drawing.Color.Transparent
         Me.lblUserDetails.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserDetails.Location = New System.Drawing.Point(3, 51)
+        Me.lblUserDetails.Location = New System.Drawing.Point(4, 63)
+        Me.lblUserDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUserDetails.Name = "lblUserDetails"
         Me.lblUserDetails.Size = New System.Drawing.Size(140, 24)
         Me.lblUserDetails.TabIndex = 129
@@ -975,15 +1050,18 @@ Partial Class ShippingEdit
         '
         'ShippingEdit
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "ShippingEdit"

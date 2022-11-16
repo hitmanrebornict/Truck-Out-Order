@@ -22,6 +22,7 @@ Partial Class ViewPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -36,6 +37,8 @@ Partial Class ViewPage
         Me.dtpTo = New System.Windows.Forms.DateTimePicker()
         Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.lblTo = New System.Windows.Forms.Label()
+        Me.cmbPostSelect = New System.Windows.Forms.ComboBox()
+        Me.lblReport = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -44,6 +47,8 @@ Partial Class ViewPage
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel3.Controls.Add(Me.lblReport)
+        Me.Panel3.Controls.Add(Me.cmbPostSelect)
         Me.Panel3.Controls.Add(Me.Panel1)
         Me.Panel3.Controls.Add(Me.dgvView)
         Me.Panel3.Controls.Add(Me.btnCancel)
@@ -52,6 +57,7 @@ Partial Class ViewPage
         Me.Panel3.Controls.Add(Me.dtpTo)
         Me.Panel3.Controls.Add(Me.dtpFrom)
         Me.Panel3.Controls.Add(Me.lblTo)
+        Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(190, 1)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(891, 705)
@@ -125,9 +131,25 @@ Partial Class ViewPage
         '
         'dgvView
         '
+        Me.dgvView.AllowUserToAddRows = False
+        Me.dgvView.AllowUserToDeleteRows = False
+        Me.dgvView.AllowUserToResizeColumns = False
+        Me.dgvView.AllowUserToResizeRows = False
+        Me.dgvView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.dgvView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.NullValue = "NULL"
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvView.DefaultCellStyle = DataGridViewCellStyle1
         Me.dgvView.Location = New System.Drawing.Point(0, 185)
         Me.dgvView.Name = "dgvView"
+        Me.dgvView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvView.Size = New System.Drawing.Size(891, 517)
         Me.dgvView.TabIndex = 4
         '
@@ -154,7 +176,7 @@ Partial Class ViewPage
         'btnSearch
         '
         Me.btnSearch.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(275, 143)
+        Me.btnSearch.Location = New System.Drawing.Point(525, 110)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(95, 26)
         Me.btnSearch.TabIndex = 3
@@ -165,7 +187,7 @@ Partial Class ViewPage
         '
         Me.dtpTo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpTo.Location = New System.Drawing.Point(155, 143)
+        Me.dtpTo.Location = New System.Drawing.Point(155, 110)
         Me.dtpTo.Name = "dtpTo"
         Me.dtpTo.Size = New System.Drawing.Size(103, 26)
         Me.dtpTo.TabIndex = 2
@@ -174,7 +196,7 @@ Partial Class ViewPage
         '
         Me.dtpFrom.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFrom.Location = New System.Drawing.Point(3, 143)
+        Me.dtpFrom.Location = New System.Drawing.Point(3, 110)
         Me.dtpFrom.Name = "dtpFrom"
         Me.dtpFrom.Size = New System.Drawing.Size(114, 26)
         Me.dtpFrom.TabIndex = 1
@@ -183,11 +205,32 @@ Partial Class ViewPage
         '
         Me.lblTo.AutoSize = True
         Me.lblTo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTo.Location = New System.Drawing.Point(123, 147)
+        Me.lblTo.Location = New System.Drawing.Point(123, 110)
         Me.lblTo.Name = "lblTo"
         Me.lblTo.Size = New System.Drawing.Size(26, 19)
         Me.lblTo.TabIndex = 0
         Me.lblTo.Text = "To"
+        '
+        'cmbPostSelect
+        '
+        Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPostSelect.FormattingEnabled = True
+        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed"})
+        Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
+        Me.cmbPostSelect.Name = "cmbPostSelect"
+        Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
+        Me.cmbPostSelect.TabIndex = 155
+        '
+        'lblReport
+        '
+        Me.lblReport.AutoSize = True
+        Me.lblReport.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReport.Location = New System.Drawing.Point(4, 143)
+        Me.lblReport.Name = "lblReport"
+        Me.lblReport.Size = New System.Drawing.Size(74, 19)
+        Me.lblReport.TabIndex = 156
+        Me.lblReport.Text = "lblReport"
         '
         'ViewPage
         '
@@ -226,4 +269,6 @@ Partial Class ViewPage
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblUserDetails As Label
+    Friend WithEvents cmbPostSelect As ComboBox
+    Friend WithEvents lblReport As Label
 End Class

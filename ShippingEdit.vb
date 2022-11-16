@@ -374,4 +374,6 @@ Public Class ShippingEdit
         lblLoadingPortFullName.Visible = True
         con.Close()
     End Sub
+
+
 End Class

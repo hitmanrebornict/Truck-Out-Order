@@ -8,6 +8,7 @@ Public Class Edit
     Public departmentName As String
     Public adminCheck As String
     Public companyNameHeader As String
+    Public reportCheck As Boolean
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkWarehouse As String
@@ -465,6 +466,11 @@ Public Class Edit
         'Shipping can't use post
         If role_id = 20 Then
             btnPost.Enabled = False
+        End If
+
+        'Come from report page
+        If reportCheck = True Then
+
         End If
     End Sub
 

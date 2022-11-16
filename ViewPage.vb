@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class ViewPage
@@ -9,10 +10,13 @@ Public Class ViewPage
     Public companyNameHeader As String
     Dim ReportString As String = "report"
     Public fullName As String
-
+    Public reportCheck As Boolean = "False"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
         lblCompanyNameHeader.Text = companyNameHeader
+        lblReport.Visible = False
+        dgvView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        dgvView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -24,123 +28,94 @@ Public Class ViewPage
         'Dim rd2 As SqlDataReader
         Dim sda As New SqlDataAdapter(cmd)
         Dim dt As New DataTable()
+        Dim postOpion As String
+        Dim numOfReport As String
+        Dim startDate, endDate As String
+        startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
+        endDate = dtpTo.Value.ToString("yyyy-MM-dd")
 
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
 
-        'cmd.CommandText = ("select * from shipping")
-        If role_id = 5 Or role_id = 4 Or role_id = 3 Or role_id = 30 Then
-            cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,HAULIER,PRODUCT,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Update_User,Reversion,Update_Time,Shipping_POST,SHIPMENT_CLOSING_TIME,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post,Security_Post_Time,Security_Post_User,DDB  from Shipping where shipping_post_time > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and shipping_post_time < '" + dtpTo.Value.ToString("yyyy-MM-dd") + "' ")
+        If cmbPostSelect.Text = "" Then
+            MessageBox.Show("Please Select The Post Option", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            cmd.CommandText = ("SELECT * from Shipping where shipping_post_time > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and shipping_post_time < '" + dtpTo.Value.ToString("yyyy-MM-dd") + "' ")
+            Select Case cmbPostSelect.Text
+                Case "Shipping Post Completed"
+                    postOpion = "Shipping_POST_Time"
+                Case "Warehouse Post Completed"
+                    postOpion = "Warehouse_Post_Time"
+                Case "Security Post Completed"
+                    postOpion = "Security_Post_Time"
+            End Select
+
+            If adminCheck = False Then
+                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User from Shipping where" & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and" & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by ID ")
+            Else
+                cmd.CommandText = ("SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post_Time,Security_Post_User  from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
+            End If
+            rd = cmd.ExecuteReader
+
+            con.Close()
+            sda.Fill(dt)
+
+            dgvView.DataSource = dt
+
+            con.Open()
+            cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOpion & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOpion & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
+            rd = cmd.ExecuteReader
+            rd.Read()
+            numOfReport = rd.Item("numOfReport")
+
+            lblReport.Visible = True
+
+            lblReport.Text = "There are " & numOfReport & " Completed Post Between " & startDate & " To " & endDate & ""
         End If
 
 
-        rd = cmd.ExecuteReader
-
-        con.Close()
-        sda.Fill(dt)
-
-        dgvView.DataSource = dt
-        dgvView.Columns(4).Visible = False
-        dgvView.Columns(5).Visible = False
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnExport.Click
-        Dim xlApp As Excel.Application
+
+        Dim xlapp As Excel.Application
         Dim xlWorkBook As Excel.Workbook
         Dim xlWorkSheet As Excel.Worksheet
         Dim misValue As Object = System.Reflection.Missing.Value
         Dim i As Integer
         Dim j As Integer
 
-        xlApp = New Excel.ApplicationClass
-        xlWorkBook = xlApp.Workbooks.Add(misValue)
-        xlWorkSheet = xlWorkBook.Sheets("sheet1")
+        xlapp = New Excel.Application
+        xlWorkBook = xlapp.Workbooks.Add(misValue)
+        xlWorkSheet = CType(xlWorkBook.Sheets("Sheet1"), Excel.Worksheet)
 
-        For i = 0 To dgvView.RowCount - 2
+        For k = 0 To dgvView.ColumnCount - 1
+            xlWorkSheet.Cells(1, k + 1).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter
+            xlWorkSheet.Cells(1, k + 1) = dgvView.Columns(k).Name
+        Next
+        For i = 0 To dgvView.RowCount - 1
             For j = 0 To dgvView.ColumnCount - 1
-                xlWorkSheet.Cells(i + 1, j + 1) =
+                xlWorkSheet.Cells(i + 2, j + 1).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter
+                xlWorkSheet.Cells(i + 2, j + 1) =
                     dgvView(j, i).Value.ToString()
             Next
         Next
 
-        Try
-            xlWorkSheet.SaveAs("C:\Users\it_intern01\Desktop\" & ReportString & ".xlsx")
-
-        Catch ex As Runtime.InteropServices.COMException
-            xlApp.Quit()
-
-        Finally
-            MsgBox("You can find the file called Report.xlsx at Desktop")
-        End Try
-
-
-
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
-
-        Try
-            xlWorkBook.Close()
-        Catch ex As Runtime.InteropServices.InvalidComObjectException
-
-        End Try
-
-        Me.Show()
+        Dim SaveFileDialog1 As New SaveFileDialog()
+        SaveFileDialog1.Filter = "Execl files (*.xlsx)|*.xlsx"
+        SaveFileDialog1.FilterIndex = 2
+        SaveFileDialog1.RestoreDirectory = True
+        If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            xlWorkSheet.SaveAs(SaveFileDialog1.FileName)
+            MsgBox("Save file success")
+        Else
+            Return
+        End If
+        xlWorkBook.Close()
+        xlapp.Quit()
 
     End Sub
 
-    Private Sub releaseObject(ByVal obj As Object)
-        Try
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-            obj = Nothing
-        Catch ex As Exception
-            obj = Nothing
-        Finally
-            GC.Collect()
-        End Try
-    End Sub
-
-    Private Sub DATAGRIDVIEW_TO_EXCEL(ByVal DGV As DataGridView)
-        Try
-            Dim DTB = New DataTable, RWS As Integer, CLS As Integer
-
-            For CLS = 0 To DGV.ColumnCount - 1 ' COLUMNS OF DTB
-                DTB.Columns.Add(DGV.Columns(CLS).Name.ToString)
-            Next
-
-            Dim DRW As DataRow
-
-            For RWS = 0 To DGV.Rows.Count - 1 ' FILL DTB WITH DATAGRIDVIEW
-                DRW = DTB.NewRow
-
-                For CLS = 0 To DGV.ColumnCount - 1
-                    Try
-                        DRW(DTB.Columns(CLS).ColumnName.ToString) = DGV.Rows(RWS).Cells(CLS).Value.ToString
-                    Catch ex As Exception
-
-                    End Try
-                Next
-
-                DTB.Rows.Add(DRW)
-            Next
-
-            DTB.AcceptChanges()
-
-            Dim DST As New DataSet
-            DST.Tables.Add(DTB)
-            Dim FLE As String = "D:\TruckOutOrder.xml" ' PATH AND FILE NAME WHERE THE XML WIL BE CREATED (EXEMPLE: C:\REPS\XML.xml)
-            DTB.WriteXml(FLE)
-            Dim EXL As String = "C:\Program Files (x86)\Microsoft Office\Office14\EXCEL.EXE" ' PATH OF/ EXCEL.EXE IN YOUR MICROSOFT OFFICE
-            Shell(Chr(34) & EXL & Chr(34) & " " & Chr(34) & FLE & Chr(34), vbNormalFocus) ' OPEN XML WITH EXCEL
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-
-    End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Dim Admin As New Admin
@@ -177,6 +152,8 @@ Public Class ViewPage
         Dim cmd2 As New SqlCommand
         Dim rd2 As SqlDataReader
         Dim selected As String
+
+        reportCheck = True
         selected = dgvView.CurrentCell.Value
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2
@@ -205,6 +182,7 @@ Public Class ViewPage
             obj.adminCheck = Me.adminCheck
             obj.fullName = Me.fullName
             obj.companyNameHeader = Me.companyNameHeader
+            obj.reportCheck = Me.reportCheck
             obj.Show()
             Me.Close()
 
