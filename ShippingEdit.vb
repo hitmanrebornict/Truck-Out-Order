@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Diagnostics.Eventing.Reader
 Imports System.Drawing.Printing
-Imports System.Net.Security
+Imports System.Drawing.Text
 
 Public Class ShippingEdit
     Public Username As String
@@ -383,7 +382,7 @@ Public Class ShippingEdit
     'If (dialogResult = DialogResult.OK) Then
     '        PrintDocument1.Print()
     '    End If
-    Private bitmap As Bitmap
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         'Add a Panel control.
         'Show the Print Preview Dialog.
@@ -402,20 +401,22 @@ Public Class ShippingEdit
 
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        Dim printfont As Font
+        Dim printFont As Font
         Dim tooNumberFont As Font
+        printfont = New Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+        toonumberfont = New Font("Microsoft Sans Serif", 10)
         Dim bit As Bitmap
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 0, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 50, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 100, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 150, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 200, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 300, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 400, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 500, 0)
-        'e.Graphics.DrawString("1", printFont, Brushes.Black, 600, 0)
-        ''e.Graphics.DrawString("1", printFont, Brushes.Black, 800, 0)
-        ''e.Graphics.DrawString("1", printFont, Brushes.Black, 850, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 0, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 50, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 100, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 150, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 200, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 300, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 400, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 500, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 600, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 800, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 850, 0)
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -444,18 +445,18 @@ Public Class ShippingEdit
 
         con.Close()
         ' Logo Image
-        bit = New Bitmap(Panel2.BackgroundImage, New Size(128, 64))
+        bit = New Bitmap(Panel2.BackgroundImage, New Size(160, 64))
         e.Graphics.DrawImage(bit, 0, 0)
 
         'Font Style
         printfont = New Font("Microsoft Sans Serif", 10)
-        tooNumberFont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
+        toonumberfont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
 
         'Truck Out Number
-        e.Graphics.DrawString("Truck Out Number:" & Me.TruckOutNumber, tooNumberFont, Brushes.Black, 550, 0)
+        e.Graphics.DrawString("Truck Out Number:" & Me.TruckOutNumber, toonumberfont, Brushes.Black, 550, 0)
 
         'Company Details
-        e.Graphics.DrawString(companyName, tooNumberFont, Brushes.Black, 0, 70)
+        e.Graphics.DrawString(companyName, toonumberfont, Brushes.Black, 0, 70)
         e.Graphics.DrawString(addressLine1 & " " & addressline2, printfont, Brushes.Black, 0, 90)
         e.Graphics.DrawString(PostalCode & " " & city & ", " & state & ", " & country, printfont, Brushes.Black, 0, 105)
         e.Graphics.DrawString("Tel: " & phone & "  Fax: " & fax, printfont, Brushes.Black, 0, 120)
