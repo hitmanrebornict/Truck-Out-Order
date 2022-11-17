@@ -67,7 +67,7 @@ Partial Class DriverMaintenance
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(120, 1)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1039, 703)
+        Me.Panel3.Size = New System.Drawing.Size(1039, 678)
         Me.Panel3.TabIndex = 3
         '
         'cmbFullName
@@ -263,7 +263,7 @@ Partial Class DriverMaintenance
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(938, 661)
+        Me.btnCancel.Location = New System.Drawing.Point(938, 638)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(90, 30)
         Me.btnCancel.TabIndex = 12
@@ -273,7 +273,7 @@ Partial Class DriverMaintenance
         'btnUpdate
         '
         Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Location = New System.Drawing.Point(842, 661)
+        Me.btnUpdate.Location = New System.Drawing.Point(842, 638)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
         Me.btnUpdate.TabIndex = 11
@@ -283,7 +283,7 @@ Partial Class DriverMaintenance
         'btnNew
         '
         Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(746, 661)
+        Me.btnNew.Location = New System.Drawing.Point(746, 638)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(90, 30)
         Me.btnNew.TabIndex = 10

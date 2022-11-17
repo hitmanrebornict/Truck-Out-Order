@@ -54,13 +54,13 @@ Partial Class FieldMaintenance
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Location = New System.Drawing.Point(139, 1)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(928, 711)
+        Me.Panel3.Size = New System.Drawing.Size(928, 680)
         Me.Panel3.TabIndex = 3
         '
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(826, 661)
+        Me.btnCancel.Location = New System.Drawing.Point(827, 638)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(90, 30)
         Me.btnCancel.TabIndex = 15
@@ -70,7 +70,7 @@ Partial Class FieldMaintenance
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(730, 661)
+        Me.btnSave.Location = New System.Drawing.Point(731, 638)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(90, 30)
         Me.btnSave.TabIndex = 14
@@ -80,7 +80,7 @@ Partial Class FieldMaintenance
         'btnNew
         '
         Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(634, 661)
+        Me.btnNew.Location = New System.Drawing.Point(635, 638)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(90, 30)
         Me.btnNew.TabIndex = 13
@@ -245,12 +245,13 @@ Partial Class FieldMaintenance
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "FieldMaintenance"

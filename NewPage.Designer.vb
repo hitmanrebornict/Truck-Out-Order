@@ -92,7 +92,6 @@ Partial Class NewPage
         Me.lblLCD = New System.Windows.Forms.Label()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Panel3.SuspendLayout()
@@ -124,7 +123,7 @@ Partial Class NewPage
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(105, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1075, 700)
+        Me.Panel3.Size = New System.Drawing.Size(1075, 680)
         Me.Panel3.TabIndex = 3
         '
         'TableLayoutPanel3
@@ -459,7 +458,7 @@ Partial Class NewPage
         'btnPrint
         '
         Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(774, 659)
+        Me.btnPrint.Location = New System.Drawing.Point(772, 622)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(92, 31)
         Me.btnPrint.TabIndex = 42
@@ -469,7 +468,7 @@ Partial Class NewPage
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(970, 659)
+        Me.btnCancel.Location = New System.Drawing.Point(968, 622)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(92, 31)
         Me.btnCancel.TabIndex = 41
@@ -479,7 +478,7 @@ Partial Class NewPage
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(872, 659)
+        Me.btnSave.Location = New System.Drawing.Point(870, 622)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(92, 31)
         Me.btnSave.TabIndex = 40
@@ -928,7 +927,6 @@ Partial Class NewPage
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
-        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.TableLayoutPanel4)
@@ -937,17 +935,6 @@ Partial Class NewPage
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1075, 98)
         Me.Panel1.TabIndex = 137
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(933, 51)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(139, 24)
-        Me.Label2.TabIndex = 139
-        Me.Label2.Text = "New Shipping"
         '
         'lblCompanyNameHeader
         '
@@ -966,12 +953,13 @@ Partial Class NewPage
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TableLayoutPanel10)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NewPage"
@@ -1077,5 +1065,4 @@ Partial Class NewPage
     Friend WithEvents Panel2 As Panel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblCompanyNameHeader As Label
-    Friend WithEvents Label2 As Label
 End Class

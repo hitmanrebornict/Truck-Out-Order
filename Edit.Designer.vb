@@ -25,7 +25,6 @@ Partial Class Edit
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
@@ -124,6 +123,7 @@ Partial Class Edit
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Controls.Add(Me.Panel1)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel6)
@@ -135,11 +135,10 @@ Partial Class Edit
         Me.Panel3.Controls.Add(Me.btnPrint)
         Me.Panel3.Controls.Add(Me.btnCancel)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(12, 1)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1245, 703)
+        Me.Panel3.Size = New System.Drawing.Size(1245, 684)
         Me.Panel3.TabIndex = 3
         '
         'Label5
@@ -147,7 +146,7 @@ Partial Class Edit
         Me.Label5.AutoSize = True
         Me.Label5.Enabled = False
         Me.Label5.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(943, 390)
+        Me.Label5.Location = New System.Drawing.Point(944, 380)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(148, 22)
         Me.Label5.TabIndex = 153
@@ -156,26 +155,14 @@ Partial Class Edit
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
-        Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.TableLayoutPanel4)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1245, 101)
+        Me.Panel1.Size = New System.Drawing.Size(1245, 91)
         Me.Panel1.TabIndex = 152
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(1193, 51)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(47, 24)
-        Me.Label9.TabIndex = 140
-        Me.Label9.Text = "Edit"
         '
         'lblCompanyNameHeader
         '
@@ -249,7 +236,7 @@ Partial Class Edit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 307.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -259,7 +246,7 @@ Partial Class Edit
         Me.TableLayoutPanel6.Controls.Add(Me.lblLCT, 0, 2)
         Me.TableLayoutPanel6.Controls.Add(Me.lblLCD, 0, 0)
         Me.TableLayoutPanel6.Controls.Add(Me.lblRTT, 0, 6)
-        Me.TableLayoutPanel6.Location = New System.Drawing.Point(947, 107)
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(947, 96)
         Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
         Me.TableLayoutPanel6.RowCount = 8
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
@@ -362,7 +349,7 @@ Partial Class Edit
         'btnPost
         '
         Me.btnPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPost.Location = New System.Drawing.Point(1077, 672)
+        Me.btnPost.Location = New System.Drawing.Point(1076, 648)
         Me.btnPost.Name = "btnPost"
         Me.btnPost.Size = New System.Drawing.Size(78, 28)
         Me.btnPost.TabIndex = 101
@@ -374,7 +361,7 @@ Partial Class Edit
         Me.Label3.AutoSize = True
         Me.Label3.Enabled = False
         Me.Label3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(604, 390)
+        Me.Label3.Location = New System.Drawing.Point(605, 380)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(141, 22)
         Me.Label3.TabIndex = 146
@@ -383,7 +370,7 @@ Partial Class Edit
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(993, 672)
+        Me.btnSave.Location = New System.Drawing.Point(992, 648)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(78, 28)
         Me.btnSave.TabIndex = 100
@@ -395,7 +382,7 @@ Partial Class Edit
         Me.Label2.AutoSize = True
         Me.Label2.Enabled = False
         Me.Label2.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(369, 390)
+        Me.Label2.Location = New System.Drawing.Point(370, 380)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(212, 22)
         Me.Label2.TabIndex = 145
@@ -414,7 +401,7 @@ Partial Class Edit
         Me.TableLayoutPanel5.Controls.Add(Me.cmbPmRegistrationPlate, 0, 5)
         Me.TableLayoutPanel5.Controls.Add(Me.lblPmRegistrationPlate, 0, 4)
         Me.TableLayoutPanel5.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TableLayoutPanel5.Location = New System.Drawing.Point(756, 416)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(757, 406)
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
         Me.TableLayoutPanel5.RowCount = 6
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
@@ -486,7 +473,7 @@ Partial Class Edit
         'btnPrint
         '
         Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(17, 672)
+        Me.btnPrint.Location = New System.Drawing.Point(16, 648)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(78, 28)
         Me.btnPrint.TabIndex = 102
@@ -496,7 +483,7 @@ Partial Class Edit
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(1162, 672)
+        Me.btnCancel.Location = New System.Drawing.Point(1161, 648)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(78, 28)
         Me.btnCancel.TabIndex = 110
@@ -537,7 +524,7 @@ Partial Class Edit
         Me.TableLayoutPanel1.Controls.Add(Me.cbTemporarySealNo, 2, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.lblTemporarySealNo, 0, 4)
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 415)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(4, 405)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 5
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
@@ -749,9 +736,10 @@ Partial Class Edit
         'cbContainerNo
         '
         Me.cbContainerNo.AutoSize = True
+        Me.cbContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbContainerNo.Location = New System.Drawing.Point(444, 4)
         Me.cbContainerNo.Name = "cbContainerNo"
-        Me.cbContainerNo.Size = New System.Drawing.Size(108, 26)
+        Me.cbContainerNo.Size = New System.Drawing.Size(108, 23)
         Me.cbContainerNo.TabIndex = 60
         Me.cbContainerNo.Text = "CheckBox1"
         Me.cbContainerNo.UseVisualStyleBackColor = True
@@ -759,9 +747,10 @@ Partial Class Edit
         'cbEsSealNo
         '
         Me.cbEsSealNo.AutoSize = True
+        Me.cbEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbEsSealNo.Location = New System.Drawing.Point(444, 52)
         Me.cbEsSealNo.Name = "cbEsSealNo"
-        Me.cbEsSealNo.Size = New System.Drawing.Size(108, 26)
+        Me.cbEsSealNo.Size = New System.Drawing.Size(108, 23)
         Me.cbEsSealNo.TabIndex = 61
         Me.cbEsSealNo.Text = "CheckBox2"
         Me.cbEsSealNo.UseVisualStyleBackColor = True
@@ -769,9 +758,10 @@ Partial Class Edit
         'cbTemporarySealNo
         '
         Me.cbTemporarySealNo.AutoSize = True
+        Me.cbTemporarySealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbTemporarySealNo.Location = New System.Drawing.Point(444, 194)
         Me.cbTemporarySealNo.Name = "cbTemporarySealNo"
-        Me.cbTemporarySealNo.Size = New System.Drawing.Size(108, 26)
+        Me.cbTemporarySealNo.Size = New System.Drawing.Size(108, 23)
         Me.cbTemporarySealNo.TabIndex = 63
         Me.cbTemporarySealNo.Text = "CheckBox3"
         Me.cbTemporarySealNo.UseVisualStyleBackColor = True
@@ -823,7 +813,7 @@ Partial Class Edit
         Me.TableLayoutPanel3.Controls.Add(Me.lblWarehouseLocation, 2, 5)
         Me.TableLayoutPanel3.Controls.Add(Me.tbLoadingBay, 3, 6)
         Me.TableLayoutPanel3.Controls.Add(Me.cmbWarehouseLocation, 3, 5)
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(6, 107)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(5, 97)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 8
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28939!))
@@ -1133,10 +1123,11 @@ Partial Class Edit
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Edit"
@@ -1244,7 +1235,6 @@ Partial Class Edit
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
     Friend WithEvents Label5 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label9 As Label
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel

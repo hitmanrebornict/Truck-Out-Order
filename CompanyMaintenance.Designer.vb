@@ -75,12 +75,12 @@ Partial Class CompanyMaintenance
         Me.btnDelete.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDelete.Location = New System.Drawing.Point(120, 1)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(1039, 703)
+        Me.btnDelete.Size = New System.Drawing.Size(1039, 680)
         Me.btnDelete.TabIndex = 3
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(15, 646)
+        Me.Button1.Location = New System.Drawing.Point(15, 632)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 20
@@ -106,7 +106,7 @@ Partial Class CompanyMaintenance
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(934, 661)
+        Me.btnCancel.Location = New System.Drawing.Point(935, 638)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(90, 30)
         Me.btnCancel.TabIndex = 17
@@ -116,7 +116,7 @@ Partial Class CompanyMaintenance
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(742, 661)
+        Me.btnSave.Location = New System.Drawing.Point(743, 638)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(90, 30)
         Me.btnSave.TabIndex = 16
@@ -126,7 +126,7 @@ Partial Class CompanyMaintenance
         'btnNew
         '
         Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(646, 661)
+        Me.btnNew.Location = New System.Drawing.Point(647, 638)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(90, 30)
         Me.btnNew.TabIndex = 15
@@ -136,7 +136,7 @@ Partial Class CompanyMaintenance
         'btnDel
         '
         Me.btnDel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDel.Location = New System.Drawing.Point(838, 661)
+        Me.btnDel.Location = New System.Drawing.Point(839, 638)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(90, 30)
         Me.btnDel.TabIndex = 13
@@ -419,11 +419,12 @@ Partial Class CompanyMaintenance
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnDelete)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "CompanyMaintenance"
