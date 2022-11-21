@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class ViewPage
@@ -42,16 +41,16 @@ Public Class ViewPage
             Select Case cmbPostSelect.Text
                 Case "Shipping Post Completed"
                     postOption = "Shipping_POST_Time"
-                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User  from Shipping"
-                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User from Shipping"
+                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User  from Shipping"
+                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User from Shipping"
                 Case "Warehouse Post Completed"
                     postOption = "Warehouse_Post_Time"
-                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post_Time,Warehouse_Post_User from Shipping"
-                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User  from Shipping"
+                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post_Time,Warehouse_Post_User from Shipping"
+                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User  from Shipping"
                 Case "Security Post Completed"
                     postOption = "Security_Post_Time"
-                    selectOptionNonAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
-                    selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
+                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
+                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
             End Select
 
             If My.Settings.adminCheck = False Then
@@ -143,7 +142,7 @@ Public Class ViewPage
         Dim rd2 As SqlDataReader
         Dim selected As String
 
-        reportCheck = True
+        Me.reportCheck = True
         selected = dgvView.CurrentCell.Value
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2

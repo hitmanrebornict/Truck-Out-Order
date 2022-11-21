@@ -65,27 +65,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=10.10.4.8;Initial Catalog = TOOSystem; Integrated Security=False; Use"& _ 
-            "r ID = sa ; Password =Gccm12345")>  _
-        Public ReadOnly Property connstrDev() As String
-            Get
-                Return CType(Me("connstrDev"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=10.10.4.8;Initial Catalog=TOOSystem;User ID=sa;Password=Gccm12345")>  _
-        Public ReadOnly Property TruckOutOrderConnectionString() As String
-            Get
-                Return CType(Me("TruckOutOrderConnectionString"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _

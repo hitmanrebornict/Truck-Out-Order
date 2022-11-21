@@ -464,9 +464,13 @@ Public Class Edit
         End If
 
         'Come from report page
-        If ViewPage.reportCheck = True Then
-
-        End If
+        'If True Then
+        '    For Each ctl As Control In Me.Controls
+        '        If ctl Is TextBox Then
+        '            ctl.Enabled = False
+        '        End If
+        '    Next
+        'End If
     End Sub
 
 
