@@ -1,21 +1,13 @@
 ﻿Imports System.Data.SqlClient
-Imports Microsoft.Office.Interop.Excel
-Imports System.Reflection.Emit
 
 Public Class Admin
 
-    Public username As String ' username
-    Public fullName As String
-    Public role_id As Integer 'Role
     Public TruckOutNumber As Integer
-    Public departmentName As String
-    Public adminCheck As Boolean
-    Public companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
         lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
         ''Me.TruckOutNumber = 70535
-        lblCompanyHeader.Text = companyNameHeader
+        lblCompanyHeader.Text = My.Settings.companyNameHeader
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim loginPage As New Login
@@ -44,12 +36,6 @@ Public Class Admin
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles pbUserSetting.Click
         Dim Add As New AddUserTry
-        Add.username = Me.username
-        Add.role_id = Me.role_id
-        Add.departmentName = Me.departmentName
-        Add.adminCheck1 = Me.adminCheck
-        Add.fullName = Me.fullName
-        Add.companyNameHeader = Me.companyNameHeader
         Add.Show()
         Me.Close()
     End Sub
@@ -68,12 +54,6 @@ Public Class Admin
 
     Private Sub pbFieldSetting_click(sender As Object, e As EventArgs) Handles pbFieldSetting.MouseClick
         Dim Add As New FieldMaintenance
-        Add.username = Me.username
-        Add.role_id = Me.role_id
-        Add.departmentName = Me.departmentName
-        Add.adminCheck = Me.adminCheck
-        Add.fullName = Me.fullName
-        Add.companyNameHeader = Me.companyNameHeader
         Add.Show()
         Me.Close()
     End Sub
@@ -91,12 +71,6 @@ Public Class Admin
 
     Private Sub pbDriverSetting_Click(sender As Object, e As EventArgs) Handles pbDriverSetting.Click
         Dim driver As New DriverMaintenance
-        driver.username = Me.username
-        driver.role_id = Me.role_id
-        driver.departmentName = Me.departmentName
-        driver.adminCheck = Me.adminCheck
-        driver.fullName = Me.fullName
-        driver.companyNameHeader = Me.companyNameHeader
         driver.Show()
         Me.Close()
     End Sub
@@ -135,13 +109,6 @@ Public Class Admin
             Me.TruckOutNumber = age + 1
         End If
         Dim Obj As New NewPage
-        Obj.Username = Me.username
-        Obj.role_id = Me.role_id
-        Obj.TruckOutNumber = Me.TruckOutNumber
-        Obj.departmentName = Me.departmentName
-        Obj.adminCheck = Me.adminCheck
-        Obj.fullName = Me.fullName
-        Obj.companyNameHeader = Me.companyNameHeader
         Obj.Show()
         Me.Close()
     End Sub
@@ -159,14 +126,7 @@ Public Class Admin
     End Sub
 
     Private Sub pbEdit_Click(sender As Object, e As EventArgs) Handles pbEdit.Click
-        Dim Obj As New Search With {
-            .username = Me.username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim Obj As New Search
         Obj.Show()
         Me.Close()
     End Sub
@@ -184,27 +144,13 @@ Public Class Admin
     End Sub
 
     Private Sub pbReport_Click(sender As Object, e As EventArgs) Handles pbReport.Click
-        Dim View As New ViewPage With {
-            .username = Me.username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim View As New ViewPage
         View.Show()
         Me.Close()
     End Sub
 
     Private Sub pbCompany_Click(sender As Object, e As EventArgs) Handles pbCompany.Click
-        Dim Company As New CompanyMaintenance With {
-            .username = Me.username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim Company As New CompanyMaintenance
         Company.Show()
         Me.Close()
     End Sub

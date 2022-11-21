@@ -2,20 +2,15 @@
 
 Public Class AddUserTry
 
-    Public username As String
-    Public role_id As Integer
-    Public departmentName As String
-    Public adminCheck1 As Boolean
-    Public companyNameHeader As String
     Dim adminCheck As Boolean
     Dim validationCheck As String
     Dim selection As String
     Dim newCheck As Boolean = True
     Dim deptToRole As String
-    Public fullName As String
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
-        lblCompanyNameHeader.Text = companyNameHeader
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         cbAdmin.Appearance = Appearance.Button
         cbAdmin.AutoSize = False
         cbAdmin.Size = New Size(100, 40)
@@ -199,12 +194,6 @@ Public Class AddUserTry
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Dim Admin As New Admin
-        Admin.username = Me.username
-        Admin.role_id = Me.role_id
-        Admin.departmentName = Me.departmentName
-        Admin.adminCheck = Me.adminCheck1
-        Admin.fullName = Me.fullName
-        Admin.companyNameHeader = Me.companyNameHeader
         Admin.Show()
         Me.Close()
     End Sub

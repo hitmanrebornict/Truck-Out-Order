@@ -5,19 +5,14 @@ Public Class NewPage
     Dim surface As Graphics = CreateGraphics()
     Dim pen1 As Pen = New Pen(Color.Black, 2)
 
-    Public Username As String
-    Public role_id As Integer
-    Public TruckOutNumber As Integer
+
     Public checkTempSealNo As Boolean
-    Public departmentName As String
-    Public adminCheck As Boolean
-    Public fullName As String
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
-    Public companyNameHeader As String
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
-        lblCompanyNameHeader.Text = companyNameHeader
-        lblTooNumber.Text = Me.TruckOutNumber
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        lblTooNumber.Text = My.Settings.newTOONumber
         tbTemporarySealNo.Enabled = False
         cmbCheckTempSealNo.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCheckTempSealNo.SelectedItem = "NO"
@@ -30,7 +25,7 @@ Public Class NewPage
         cmbDDB.SelectedItem = "No"
         surface.DrawLine(pen1, 10, 10, 100, 10)
 
-        If Me.role_id = "2" Or Me.role_id = "20" Then
+        If My.Settings.role_id = "2" Or My.Settings.role_id = "20" Then
             tbEsSealNo.Enabled = False
             tbLoadingBay.Enabled = False
             cmbWarehouseLocation.Enabled = False
@@ -84,23 +79,11 @@ Public Class NewPage
         Dim Admin As New Admin
         Dim User As New NormalUserPage
 
-        Select Case adminCheck
+        Select Case My.Settings.adminCheck
             Case True
-                Admin.username = Me.Username
-                Admin.role_id = Me.role_id
-                Admin.departmentName = Me.departmentName
-                Admin.adminCheck = Me.adminCheck
-                Admin.fullName = Me.fullName
-                Admin.companyNameHeader = Me.companyNameHeader
                 Admin.Show()
                 Me.Close()
             Case False
-                User.username = Me.Username
-                User.role_id = Me.role_id
-                User.departmentName = Me.departmentName
-                User.adminCheck = Me.adminCheck
-                User.fullName = Me.fullName
-                Admin.companyNameHeader = Me.companyNameHeader
                 User.Show()
                 Me.Close()
 
@@ -160,12 +143,12 @@ Public Class NewPage
             '    MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'Else
 
-            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Update_User,Update_Time,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + Me.Username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + "YES" + "','" + Me.Username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo)", con)
-            cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Update_User,Update_Time,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + "YES" + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo)", con)
+            cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
             cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
             ra = cmd.ExecuteNonQuery
             btnCancel.PerformClick()
-            MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
         con.Close()

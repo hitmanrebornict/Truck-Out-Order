@@ -1,12 +1,8 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class SecurityEdit
-    Public Username As String
-    Public role_id As Integer
+
     Public TruckOutNumber As Integer
-    Public departmentName As String
-    Public adminCheck As String
-    Public companyNameHeader As String
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkWarehouse As String
@@ -15,13 +11,12 @@ Public Class SecurityEdit
     Dim checkSecurityPost As String
     Dim checkSecurityCheck As String
     Dim checkTempSealNo As Boolean = True
-    Public fullName As String
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         lblTooNumber.Text = Me.TruckOutNumber
-        lblCompanyNameHeader.Text = companyNameHeader
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmRegistrationPlate.DropDownStyle = ComboBoxStyle.DropDownList
@@ -33,25 +28,25 @@ Public Class SecurityEdit
         con.Open()
 
         dtpRTD.Enabled = False
-                dtpLCD.Enabled = False
-                dtpLCT.Enabled = False
-                dtpRTT.Enabled = False
-                cmbWarehouseLocation.Enabled = False
-                tbLoadingBay.Enabled = False
-                tbSendToCompany.Enabled = False
+        dtpLCD.Enabled = False
+        dtpLCT.Enabled = False
+        dtpRTT.Enabled = False
+        cmbWarehouseLocation.Enabled = False
+        tbLoadingBay.Enabled = False
+        tbSendToCompany.Enabled = False
 
         cmbCompany.Enabled = False
-                dtpSCD.Enabled = False
-                dtpSCT.Enabled = False
-                tbInvoice.Enabled = False
-                tbShippingLine.Enabled = False
-                tbProduct.Enabled = False
-                cmbDDB.Enabled = False
-                tbHaulier.Enabled = False
-                cmbLoadingPort.Enabled = False
-                cmbContainerSize.Enabled = False
-                tbContainerNo.Enabled = False
-                tbInternalSealNo.Enabled = False
+        dtpSCD.Enabled = False
+        dtpSCT.Enabled = False
+        tbInvoice.Enabled = False
+        tbShippingLine.Enabled = False
+        tbProduct.Enabled = False
+        cmbDDB.Enabled = False
+        tbHaulier.Enabled = False
+        cmbLoadingPort.Enabled = False
+        cmbContainerSize.Enabled = False
+        tbContainerNo.Enabled = False
+        tbInternalSealNo.Enabled = False
 
 
         tbLinerSealNo.Enabled = False
@@ -299,11 +294,11 @@ Public Class SecurityEdit
             cmbPmRegistrationPlate.Enabled = False
         End If
 
-        If Me.role_id = 2 Or Me.role_id = 20 Or Me.role_id = 3 Or Me.role_id = 4 Then
+        If My.Settings.role_id = 2 Or My.Settings.role_id = 20 Or My.Settings.role_id = 3 Or My.Settings.role_id = 4 Then
             btnDriverCheck.Visible = False
         End If
 
-        If Me.role_id = 2 Or Me.role_id = 20 Then
+        If My.Settings.role_id = 2 Or My.Settings.role_id = 20 Then
             btnSecurityPost.Visible = False
         End If
 
@@ -326,16 +321,16 @@ Public Class SecurityEdit
 
 
         tbContainerNo.PasswordChar = "*"
-            tbEsSealNo.PasswordChar = "*"
-            tbInternalSealNo.PasswordChar = "*"
-            tbLinerSealNo.PasswordChar = "*"
-            tbTempSeal.PasswordChar = "*"
+        tbEsSealNo.PasswordChar = "*"
+        tbInternalSealNo.PasswordChar = "*"
+        tbLinerSealNo.PasswordChar = "*"
+        tbTempSeal.PasswordChar = "*"
 
 
 
         If checkTempSealNo = True Then
             cmbCheckTempSealNo.SelectedItem = "YES"
-            If role_id = 5 Then
+            If My.Settings.role_id = 5 Then
                 tbSecurityCheckTemporarySealNo.Enabled = True
             End If
         Else
@@ -384,21 +379,10 @@ Public Class SecurityEdit
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         'Cancel Button
-        Dim obj As New Search With {
-            .username = Me.Username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim obj As New Search
         obj.Show()
         Me.Close()
     End Sub
-
-
-
-
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click
         'Driver Check
         Dim con As New SqlConnection
@@ -424,7 +408,7 @@ Public Class SecurityEdit
                 cmbPmCode.Enabled = False
                 cmbPmRegistrationPlate.Enabled = False
                 btnDriverCheck.Visible = False
-                cmd = New SqlCommand("Insert Into Security (Shipping_ID,Driver_Full_Name,PM_CODE,PM_REGISTRATION_PLATE,DRIVER_CHECK,Update_Time,Update_User) values(@TruckOutNumber,'" + cmbFullName.Text + "','" + cmbPmCode.Text + "','" + cmbPmRegistrationPlate.Text + "','YES','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Me.Username + "')", con)
+                cmd = New SqlCommand("Insert Into Security (Shipping_ID,Driver_Full_Name,PM_CODE,PM_REGISTRATION_PLATE,DRIVER_CHECK,Update_Time,Update_User) values(@TruckOutNumber,'" + cmbFullName.Text + "','" + cmbPmCode.Text + "','" + cmbPmRegistrationPlate.Text + "','YES','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "')", con)
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
             Else
                 MessageBox.Show("DRIVER VALIDATION FAIL", "VALIDATION FAIL", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -457,12 +441,12 @@ Public Class SecurityEdit
                 MessageBox.Show("Please Check TEMPORARY SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 If checkSecurityPost = "" Then
-                    cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + Me.Username + "' WHERE ID = @TruckOutNumber"
+                    cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
                     con.Close()
                     con.Open()
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + Me.Username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
                     btnCancel.PerformClick()
@@ -491,12 +475,12 @@ Public Class SecurityEdit
                 MessageBox.Show("Please Check TEMPORARY SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 If checkSecurityPost = "" Then
-                    cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + Me.Username + "' WHERE ID = @TruckOutNumber"
+                    cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
                     con.Close()
                     con.Open()
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + Me.Username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
                     btnCancel.PerformClick()
@@ -519,7 +503,7 @@ Public Class SecurityEdit
         If cmbEsSealNo.Text = "NO" Then
             tbEsSealNo.Enabled = False
         Else
-            If role_id = 2 And role_id = 20 Then
+            If My.Settings.role_id = 2 And My.Settings.role_id = 20 Then
                 tbEsSealNo.Enabled = True
             End If
         End If
@@ -527,7 +511,7 @@ Public Class SecurityEdit
 
     Private Sub cmbCheckTempSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCheckTempSealNo.SelectedIndexChanged
         If cmbCheckTempSealNo.SelectedItem = "YES" Then
-            If role_id <> 5 Then
+            If My.Settings.role_id <> 5 Then
                 tbTempSeal.Enabled = True
             Else
             End If

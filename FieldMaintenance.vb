@@ -1,28 +1,23 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class FieldMaintenance
-    Public username As String
-    Public role_id As Integer
-    Public departmentName As String
-    Public adminCheck As Boolean = True
-    Public companyNameHeader As String
+
     Dim operation As String
     Dim FieldSelection As String
     Dim newCheck As Boolean = True
     Dim validationCheck As String
-    Public fullName As String
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
     Dim rd As SqlDataReader
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDownList
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
         cbActive.Size = New Size(100, 40)
-        lblCompanyNameHeader.Text = companyNameHeader
     End Sub
 
 
@@ -186,12 +181,6 @@ Public Class FieldMaintenance
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Dim Admin As New Admin
-        Admin.username = Me.username
-        Admin.role_id = Me.role_id
-        Admin.departmentName = Me.departmentName
-        Admin.adminCheck = Me.adminCheck
-        Admin.fullName = Me.fullName
-        Admin.companyNameHeader = Me.companyNameHeader
         Admin.Show()
         Me.Close()
     End Sub

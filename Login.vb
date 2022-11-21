@@ -12,15 +12,6 @@ Public Class Login
     '    End If
     '    Return MyBase.ProcessCmdKey(msg, keyData)
     'End Function
-
-
-    Dim role As Integer
-    Dim roleid As String
-    Dim departmentName As String
-    Dim adminCheck As Boolean = False
-    Dim fullName As String
-    Dim companyNameHeader As String
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -34,7 +25,7 @@ Public Class Login
         cmd.CommandText = "SELECT CompanyName From Company WHERE CompanyID = 1"
         rd = cmd.ExecuteReader
         rd.Read()
-        companyNameHeader = rd.Item("CompanyName")
+        My.Settings.companyNameHeader = rd.Item("CompanyName")
         con.Close()
         con.Open()
         If tbUsername.Text = "" Or tbPassword.Text = "" Then
@@ -46,40 +37,28 @@ Public Class Login
             rd = cmd.ExecuteReader
             If rd.HasRows Then
                 rd.Read()
-                role = rd.Item("Role_ID")
+                My.Settings.role_id = rd.Item("Role_ID")
                 validationCheck = rd.Item("validationCheck")
-                departmentName = rd.Item("department")
-                adminCheck = rd.Item("adminCheck")
+                My.Settings.departmentName = rd.Item("department")
+                My.Settings.adminCheck = rd.Item("adminCheck")
 
                 If IsDBNull(rd.Item("fullUserName")) Then
-                    fullName = ""
+                    My.Settings.fullName = ""
                 Else
-                    fullName = rd.Item("fullUserName")
+                    My.Settings.fullName = rd.Item("fullUserName")
                 End If
 
-                Dim roleid = role.ToString
+
                 Dim Admin As New Admin
                 Dim User As New NormalUserPage
 
                 If validationCheck = "NO" Then
                     MessageBox.Show("User is disabled", "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    Select Case adminCheck
+                    Select Case My.Settings.adminCheck
                         Case True
-                            Admin.username = Me.tbUsername.Text
-                            Admin.role_id = Me.role ' Role_ID
-                            Admin.departmentName = Me.departmentName
-                            Admin.adminCheck = Me.adminCheck
-                            Admin.fullName = Me.fullName
-                            Admin.companyNameHeader = Me.companyNameHeader
                             Admin.Show()
                         Case False
-                            User.username = Me.tbUsername.Text
-                            User.role_id = Me.role
-                            User.departmentName = Me.departmentName
-                            User.adminCheck = Me.adminCheck
-                            User.fullName = Me.fullName
-                            User.companyNameHeader = Me.companyNameHeader
                             User.Show()
                     End Select
                 End If

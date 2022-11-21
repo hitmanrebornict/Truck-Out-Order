@@ -105,6 +105,8 @@ Partial Class WarehouseEdit
         Me.lblWarehouseLocation = New System.Windows.Forms.Label()
         Me.tbLoadingBay = New System.Windows.Forms.TextBox()
         Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
@@ -429,7 +431,7 @@ Partial Class WarehouseEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -1092,6 +1094,13 @@ Partial Class WarehouseEdit
         Me.cmbWarehouseLocation.Size = New System.Drawing.Size(224, 27)
         Me.cmbWarehouseLocation.TabIndex = 124
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
+        'PrintDocument1
+        '
+        '
         'WarehouseEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1214,4 +1223,6 @@ Partial Class WarehouseEdit
     Friend WithEvents lblUserDetails As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class

@@ -1,20 +1,12 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class NormalUserPage
-
-    Public username As String
-    Public role_id As Integer 'Role
-    Public TruckOutNumber As Integer
-    Public departmentName As String
-    Public adminCheck As Boolean
-    Public fullName As String
-    Public companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
-        lblCompanyHeader.Text = companyNameHeader
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyHeader.Text = My.Settings.companyNameHeader
 
-        If role_id = 20 Then
+        If My.Settings.role_id = 20 Then
             pnlNew.Visible = True
         Else
             pnlNew.Visible = False
@@ -67,18 +59,11 @@ Public Class NormalUserPage
         End While
 
         If age = 0 Then
-            Me.TruckOutNumber = 34800
+            My.Settings.newTOONumber = 34800
         Else
-            Me.TruckOutNumber = age + 1
+            My.Settings.newTOONumber = age + 1
         End If
         Dim Obj As New NewPage
-        Obj.Username = Me.username
-        Obj.role_id = Me.role_id
-        Obj.TruckOutNumber = Me.TruckOutNumber
-        Obj.departmentName = Me.departmentName
-        Obj.adminCheck = Me.adminCheck
-        Obj.fullName = Me.fullName
-        Obj.companyNameHeader = Me.companyNameHeader
         Obj.Show()
         Me.Close()
     End Sub
@@ -96,14 +81,7 @@ Public Class NormalUserPage
     End Sub
 
     Private Sub pbEdit_Click(sender As Object, e As EventArgs) Handles pbEdit.Click
-        Dim Obj As New Search With {
-            .username = Me.username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim Obj As New Search
         Obj.Show()
         Me.Close()
     End Sub
@@ -121,14 +99,7 @@ Public Class NormalUserPage
     End Sub
 
     Private Sub pbReport_Click(sender As Object, e As EventArgs) Handles pbReport.Click
-        Dim View As New ViewPage With {
-            .username = Me.username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim View As New ViewPage
         View.Show()
         Me.Close()
     End Sub

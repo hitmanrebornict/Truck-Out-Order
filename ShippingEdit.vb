@@ -1,19 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
-Imports System.Drawing.Text
+
 
 Public Class ShippingEdit
-    Public Username As String
-    Public role_id As Integer
+
     Public TruckOutNumber As Integer
-    Public departmentName As String
-    Public adminCheck As String
-    Public companyNameHeader As String
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
     Dim checkTempSealNo As Boolean = True
-    Public fullName As String
+
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -28,9 +24,9 @@ Public Class ShippingEdit
         dtpRTT.Enabled = False
         tbSendToCompany.Enabled = False
 
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         lblTooNumber.Text = Me.TruckOutNumber
-        lblCompanyNameHeader.Text = companyNameHeader
         'Read data from database
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -239,14 +235,7 @@ Public Class ShippingEdit
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel1.Click
         'Cancel Button
-        Dim obj As New Search With {
-            .username = Me.Username,
-            .role_id = Me.role_id,
-            .departmentName = Me.departmentName,
-            .adminCheck = Me.adminCheck,
-            .fullName = Me.fullName,
-            .companyNameHeader = Me.companyNameHeader
-        }
+        Dim obj As New Search
         obj.Show()
         Me.Close()
     End Sub
@@ -311,14 +300,14 @@ Public Class ShippingEdit
         Else
             'shipping save
             If checkShippingPost = "YES" Then
-                cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Update_User='" + Me.Username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
+                cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Update_User='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
                 ra = cmd.ExecuteNonQuery
                 btnCancel1.PerformClick()
                 MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                cmd.CommandText = "update Shipping set SHIPPING_POST = '" + "YES" + "',SHIPPING_POST_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',ORIGIN = '" + cmbCompany.Text + "',SHIPPING_POST_User = '" + Me.Username + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Update_User='" + Me.Username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB ='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo  WHERE ID =@TruckOutNumber"
+                cmd.CommandText = "update Shipping set SHIPPING_POST = '" + "YES" + "',SHIPPING_POST_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',ORIGIN = '" + cmbCompany.Text + "',SHIPPING_POST_User = '" + My.Settings.username + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Update_User='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB ='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo  WHERE ID =@TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
                 ra = cmd.ExecuteNonQuery
@@ -400,11 +389,11 @@ Public Class ShippingEdit
 
 
 
-    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Public Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
         Dim printFont As Font
         Dim tooNumberFont As Font
-        printfont = New Font("Microsoft Sans Serif", 12, FontStyle.Bold)
-        toonumberfont = New Font("Microsoft Sans Serif", 10)
+        printFont = New Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+        tooNumberFont = New Font("Microsoft Sans Serif", 10)
         Dim bit As Bitmap
         'e.Graphics.DrawString("1", printfont, Brushes.Black, 0, 0)
         'e.Graphics.DrawString("1", printfont, Brushes.Black, 50, 0)
@@ -449,91 +438,91 @@ Public Class ShippingEdit
         e.Graphics.DrawImage(bit, 0, 0)
 
         'Font Style
-        printfont = New Font("Microsoft Sans Serif", 10)
-        toonumberfont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
+        printFont = New Font("Microsoft Sans Serif", 10)
+        tooNumberFont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
 
         'Truck Out Number
-        e.Graphics.DrawString("Truck Out Number:" & Me.TruckOutNumber, toonumberfont, Brushes.Black, 550, 0)
+        e.Graphics.DrawString("Truck Out Number : " & Search.selected, tooNumberFont, Brushes.Black, 550, 0)
 
         'Company Details
-        e.Graphics.DrawString(companyName, toonumberfont, Brushes.Black, 0, 70)
-        e.Graphics.DrawString(addressLine1 & " " & addressline2, printfont, Brushes.Black, 0, 90)
-        e.Graphics.DrawString(PostalCode & " " & city & ", " & state & ", " & country, printfont, Brushes.Black, 0, 105)
-        e.Graphics.DrawString("Tel: " & phone & "  Fax: " & fax, printfont, Brushes.Black, 0, 120)
+        e.Graphics.DrawString(companyName, tooNumberFont, Brushes.Black, 0, 70)
+        e.Graphics.DrawString(addressLine1 & " " & addressline2, printFont, Brushes.Black, 0, 90)
+        e.Graphics.DrawString(PostalCode & " " & city & ", " & state & ", " & country, printFont, Brushes.Black, 0, 105)
+        e.Graphics.DrawString("Tel: " & phone & "  Fax: " & fax, printFont, Brushes.Black, 0, 120)
 
         'First Section (Shipping Details)
-        e.Graphics.DrawString("Company", printfont, Brushes.Black, 0, 170)
-        e.Graphics.DrawString("Company Full Name", printfont, Brushes.Black, 0, 200)
-        e.Graphics.DrawString("Loading Port", printfont, Brushes.Black, 0, 230)
-        e.Graphics.DrawString("Loading Port Full Name", printfont, Brushes.Black, 0, 260)
-        e.Graphics.DrawString("Product", printfont, Brushes.Black, 0, 290)
-        e.Graphics.DrawString("Send To Company", printfont, Brushes.Black, 0, 320)
+        e.Graphics.DrawString("Company", printFont, Brushes.Black, 0, 170)
+        e.Graphics.DrawString("Company Full Name", printFont, Brushes.Black, 0, 200)
+        e.Graphics.DrawString("Loading Port", printFont, Brushes.Black, 0, 230)
+        e.Graphics.DrawString("Loading Port Full Name", printFont, Brushes.Black, 0, 260)
+        e.Graphics.DrawString("Product", printFont, Brushes.Black, 0, 290)
+        e.Graphics.DrawString("Send To Company", printFont, Brushes.Black, 0, 320)
 
         'First Section Parellel Part
-        e.Graphics.DrawString("Invoice", printfont, Brushes.Black, 500, 170)
-        e.Graphics.DrawString("Shipment Closing Date", printfont, Brushes.Black, 500, 200)
-        e.Graphics.DrawString("Shipment Closing Time", printfont, Brushes.Black, 500, 230)
-        e.Graphics.DrawString("Haulier", printfont, Brushes.Black, 500, 260)
-        e.Graphics.DrawString("Container Size", printfont, Brushes.Black, 500, 290)
-        e.Graphics.DrawString("Shipping Line", printfont, Brushes.Black, 500, 320)
+        e.Graphics.DrawString("Invoice", printFont, Brushes.Black, 500, 170)
+        e.Graphics.DrawString("Shipment Closing Date", printFont, Brushes.Black, 500, 200)
+        e.Graphics.DrawString("Shipment Closing Time", printFont, Brushes.Black, 500, 230)
+        e.Graphics.DrawString("Haulier", printFont, Brushes.Black, 500, 260)
+        e.Graphics.DrawString("Container Size", printFont, Brushes.Black, 500, 290)
+        e.Graphics.DrawString("Shipping Line", printFont, Brushes.Black, 500, 320)
 
         'Line between First and Second Section
         e.Graphics.DrawLine(Pens.Black, 0, 360, 850, 360)
 
         'Second Section (Container No.)
-        e.Graphics.DrawString(lblContainerNo.Text, printfont, Brushes.Black, 0, 380)
-        e.Graphics.DrawString(lblEsSealNo.Text, printfont, Brushes.Black, 0, 410)
-        e.Graphics.DrawString(lblLinerSealNo.Text, printfont, Brushes.Black, 0, 440)
-        e.Graphics.DrawString(lblInternalSealNo.Text, printfont, Brushes.Black, 0, 470)
-        e.Graphics.DrawString(lblTemporarySealNo.Text, printfont, Brushes.Black, 0, 500)
+        e.Graphics.DrawString(lblContainerNo.Text, printFont, Brushes.Black, 0, 380)
+        e.Graphics.DrawString(lblEsSealNo.Text, printFont, Brushes.Black, 0, 410)
+        e.Graphics.DrawString(lblLinerSealNo.Text, printFont, Brushes.Black, 0, 440)
+        e.Graphics.DrawString(lblInternalSealNo.Text, printFont, Brushes.Black, 0, 470)
+        e.Graphics.DrawString(lblTemporarySealNo.Text, printFont, Brushes.Black, 0, 500)
 
         'Second Section parallel part
-        e.Graphics.DrawString(lblLCD.Text, printfont, Brushes.Black, 500, 380)
-        e.Graphics.DrawString(lblLCT.Text, printfont, Brushes.Black, 500, 410)
-        e.Graphics.DrawString(lblRTD.Text, printfont, Brushes.Black, 500, 440)
-        e.Graphics.DrawString(lblRTT.Text, printfont, Brushes.Black, 500, 470)
+        e.Graphics.DrawString(lblLCD.Text, printFont, Brushes.Black, 500, 380)
+        e.Graphics.DrawString(lblLCT.Text, printFont, Brushes.Black, 500, 410)
+        e.Graphics.DrawString(lblRTD.Text, printFont, Brushes.Black, 500, 440)
+        e.Graphics.DrawString(lblRTT.Text, printFont, Brushes.Black, 500, 470)
 
         'Line between Second and Third Section
         e.Graphics.DrawLine(Pens.Black, 0, 540, 850, 540)
 
         'Third Section (Post User)
-        e.Graphics.DrawString("Shipping Issue By", printfont, Brushes.Black, 0, 560)
-        e.Graphics.DrawString("Shipping Seal", printfont, Brushes.Black, 0, 590)
-        e.Graphics.DrawString("Shipping Verify By", printfont, Brushes.Black, 0, 620)
-        e.Graphics.DrawString("Shipping Verify by", printfont, Brushes.Black, 0, 650)
+        e.Graphics.DrawString("Shipping Issue By", printFont, Brushes.Black, 0, 560)
+        e.Graphics.DrawString("Shipping Seal", printFont, Brushes.Black, 0, 590)
+        e.Graphics.DrawString("Shipping Verify By", printFont, Brushes.Black, 0, 620)
+        e.Graphics.DrawString("Shipping Verify by", printFont, Brushes.Black, 0, 650)
 
         'First Section Content
-        e.Graphics.DrawString(":" & cmbCompany.Text, printfont, Brushes.Black, 175, 170)
-        e.Graphics.DrawString(":" & lblCompanyFullName.Text, printfont, Brushes.Black, 175, 200)
-        e.Graphics.DrawString(":" & cmbLoadingPort.Text, printfont, Brushes.Black, 175, 230)
-        e.Graphics.DrawString(":" & lblLoadingPortFullName.Text, printfont, Brushes.Black, 175, 260)
-        e.Graphics.DrawString(":" & tbProduct.Text, printfont, Brushes.Black, 175, 290)
-        e.Graphics.DrawString(":" & tbSendToCompany.Text, printfont, Brushes.Black, 175, 320)
+        e.Graphics.DrawString(": " & cmbCompany.Text, printFont, Brushes.Black, 175, 170)
+        e.Graphics.DrawString(": " & lblCompanyFullName.Text, printFont, Brushes.Black, 175, 200)
+        e.Graphics.DrawString(": " & cmbLoadingPort.Text, printFont, Brushes.Black, 175, 230)
+        e.Graphics.DrawString(": " & lblLoadingPortFullName.Text, printFont, Brushes.Black, 175, 260)
+        e.Graphics.DrawString(": " & tbProduct.Text, printFont, Brushes.Black, 175, 290)
+        e.Graphics.DrawString(": " & tbSendToCompany.Text, printFont, Brushes.Black, 175, 320)
 
         'First Section Content Parallel
-        e.Graphics.DrawString(":" & tbInvoice.Text, printfont, Brushes.Black, 700, 170)
-        e.Graphics.DrawString(":" & dtpSCD.Value.ToString("yyyy-MM-dd"), printfont, Brushes.Black, 700, 200)
-        e.Graphics.DrawString(":" & dtpSCT.Value.ToString("HH:mm:ss"), printfont, Brushes.Black, 700, 230)
-        e.Graphics.DrawString(":" & tbHaulier.Text, printfont, Brushes.Black, 700, 260)
-        e.Graphics.DrawString(":" & cmbContainerSize.Text, printfont, Brushes.Black, 700, 290)
-        e.Graphics.DrawString(":" & tbShippingLine.Text, printfont, Brushes.Black, 700, 320)
+        e.Graphics.DrawString(": " & tbInvoice.Text, printFont, Brushes.Black, 700, 170)
+        e.Graphics.DrawString(": " & dtpSCD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 200)
+        e.Graphics.DrawString(": " & dtpSCT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 230)
+        e.Graphics.DrawString(": " & tbHaulier.Text, printFont, Brushes.Black, 700, 260)
+        e.Graphics.DrawString(": " & cmbContainerSize.Text, printFont, Brushes.Black, 700, 290)
+        e.Graphics.DrawString(": " & tbShippingLine.Text, printFont, Brushes.Black, 700, 320)
 
         'Second Section Content
-        e.Graphics.DrawString(":" & tbContainerNo.Text, printfont, Brushes.Black, 175, 380)
-        e.Graphics.DrawString(":" & tbEsSealNo.Text, printfont, Brushes.Black, 175, 410)
-        e.Graphics.DrawString(":" & tbLinerSealNo.Text, printfont, Brushes.Black, 175, 440)
-        e.Graphics.DrawString(":" & tbInternalSealNo.Text, printfont, Brushes.Black, 175, 470)
+        e.Graphics.DrawString(": " & tbContainerNo.Text, printFont, Brushes.Black, 175, 380)
+        e.Graphics.DrawString(": " & tbEsSealNo.Text, printFont, Brushes.Black, 175, 410)
+        e.Graphics.DrawString(": " & tbLinerSealNo.Text, printFont, Brushes.Black, 175, 440)
+        e.Graphics.DrawString(": " & tbInternalSealNo.Text, printFont, Brushes.Black, 175, 470)
         If checkTempSealNo = True Then
-            e.Graphics.DrawString(":" & tbTempSeal.Text, printfont, Brushes.Black, 175, 500)
+            e.Graphics.DrawString(": " & tbTempSeal.Text, printFont, Brushes.Black, 175, 500)
         Else
-            e.Graphics.DrawString(":" & "NULL", printfont, Brushes.Black, 175, 500)
+            e.Graphics.DrawString(": " & "NULL", printFont, Brushes.Black, 175, 500)
         End If
 
         'Second Section Content Parallel
-        e.Graphics.DrawString(":" & dtpLCD.Value.ToString("yyyy-MM-dd"), printfont, Brushes.Black, 700, 380)
-        e.Graphics.DrawString(":" & dtpLCT.Value.ToString("HH:mm:ss"), printfont, Brushes.Black, 700, 410)
-        e.Graphics.DrawString(":" & dtpRTD.Value.ToString("yyyy-MM-dd"), printfont, Brushes.Black, 700, 440)
-        e.Graphics.DrawString(":" & dtpRTT.Value.ToString("HH:mm:ss"), printfont, Brushes.Black, 700, 470)
+        e.Graphics.DrawString(": " & dtpLCD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 380)
+        e.Graphics.DrawString(": " & dtpLCT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 410)
+        e.Graphics.DrawString(": " & dtpRTD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 440)
+        e.Graphics.DrawString(": " & dtpRTT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 470)
 
         'Check shipping, warehouse, security post statement
         Dim warehousePostUser As String
@@ -543,7 +532,7 @@ Public Class ShippingEdit
         con.Open()
 
         cmd.CommandText = "SELECT Shipping_Post_User, Warehouse_Post_User,Security_Post_User from shipping where ID = @TruckOutNumber"
-        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+        cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
         rd = cmd.ExecuteReader
         rd.Read()
         Dim shippingPostUser As String = rd.Item("Shipping_Post_User")
@@ -562,11 +551,11 @@ Public Class ShippingEdit
         con.Close()
 
         'Post User Section Detail
-        e.Graphics.DrawString(":" & shippingPostUser, printfont, Brushes.Black, 175, 560)
+        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
 
         con.Open()
         cmd.CommandText = "SELECT Warehouse_Checkpoint_Update_User, Warehouse_Checkpoint_Check from Warehouse Where Shipping_ID = @TruckOutNumberWarehouse"
-        cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Me.TruckOutNumber)
+        cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Search.selected)
         rd = cmd.ExecuteReader
         rd.Read()
         If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
@@ -583,26 +572,26 @@ Public Class ShippingEdit
 
 
         If checkWarehouseCheckPoint = "YES" Then
-            e.Graphics.DrawString(":" & warehouseCheckUser, printfont, Brushes.Black, 175, 590)
+            e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 590)
         Else
-            e.Graphics.DrawString(":" & "Uncompleted", printfont, Brushes.Black, 175, 590)
+            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 590)
         End If
 
         If checkWarehousePost = "YES" Then
-            e.Graphics.DrawString(":" & warehousePostUser, printfont, Brushes.Black, 175, 620)
+            e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 620)
         Else
-            e.Graphics.DrawString(":" & "Uncompleted", printfont, Brushes.Black, 175, 620)
+            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 620)
         End If
 
         If checkSecurityPost = "YES" Then
-            e.Graphics.DrawString(":" & securityPostUser, printfont, Brushes.Black, 175, 650)
+            e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 650)
         Else
-            e.Graphics.DrawString(":" & "Uncompleted", printfont, Brushes.Black, 175, 650)
+            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 650)
         End If
 
         'Current User Part
         e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
-        e.Graphics.DrawString("Current User", printfont, Brushes.Black, 0, 710)
-        e.Graphics.DrawString(":" & Me.Username, printfont, Brushes.Black, 175, 710)
+        e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 710)
+        e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 175, 710)
     End Sub
 End Class

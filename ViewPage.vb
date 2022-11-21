@@ -3,17 +3,13 @@ Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class ViewPage
-    Public username As String
-    Public role_id As String
-    Public departmentName As String
-    Public adminCheck As Boolean
-    Public companyNameHeader As String
+
     Dim ReportString As String = "report"
-    Public fullName As String
-    Public reportCheck As Boolean = "False"
+    Public Shared reportCheck As Boolean = "False"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & fullName & vbNewLine & "Department of " & departmentName)
-        lblCompanyNameHeader.Text = companyNameHeader
+
+        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         lblReport.Visible = False
         dgvView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgvView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -58,7 +54,7 @@ Public Class ViewPage
                     selectOptionAdmin = "SELECT ID, ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
             End Select
 
-            If adminCheck = False Then
+            If My.Settings.adminCheck = False Then
                 cmd.CommandText = (selectOptionNonAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
             Else
                 cmd.CommandText = (selectOptionAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
@@ -129,25 +125,11 @@ Public Class ViewPage
         Dim Admin As New Admin
         Dim User As New NormalUserPage
 
-        Select Case adminCheck
+        Select Case My.Settings.adminCheck
             Case True
-                Admin.username = Me.username
-                Admin.role_id = Me.role_id
-                Admin.departmentName = Me.departmentName
-                Admin.adminCheck = Me.adminCheck
-                Admin.fullName = Me.fullName
-                Admin.companyNameHeader = Me.companyNameHeader
                 Admin.Show()
                 Me.Close()
-
-
             Case Else
-                User.username = Me.username
-                User.role_id = Me.role_id
-                User.departmentName = Me.departmentName
-                User.adminCheck = Me.adminCheck
-                User.fullName = Me.fullName
-                User.companyNameHeader = Me.companyNameHeader
                 User.Show()
                 Me.Close()
 
@@ -167,7 +149,7 @@ Public Class ViewPage
         cmd2.Connection = con2
         con2.Open()
 
-        Select Case role_id
+        Select Case My.Settings.role_id
             Case 2
                 cmd2.CommandText = "SELECT ID from Shipping where SHIPPING_POST is NULL and ID = @shippingID"
             Case 3, 4
@@ -181,22 +163,13 @@ Public Class ViewPage
         rd2 = cmd2.ExecuteReader
 
         If rd2.HasRows Then
-
             Dim obj As New Edit
-            obj.Username = Me.username
-            obj.role_id = Me.role_id
             obj.TruckOutNumber = selected
-            obj.departmentName = Me.departmentName
-            obj.adminCheck = Me.adminCheck
-            obj.fullName = Me.fullName
-            obj.companyNameHeader = Me.companyNameHeader
-            obj.reportCheck = Me.reportCheck
             obj.Show()
             Me.Close()
 
         Else
             MessageBox.Show("You have no privilege to view this number.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         End If
 
     End Sub

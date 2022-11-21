@@ -85,6 +85,90 @@ Namespace My
                 Return CType(Me("TruckOutOrderConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property username() As String
+            Get
+                Return CType(Me("username"),String)
+            End Get
+            Set
+                Me("username") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property fullName() As String
+            Get
+                Return CType(Me("fullName"),String)
+            End Get
+            Set
+                Me("fullName") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property departmentName() As String
+            Get
+                Return CType(Me("departmentName"),String)
+            End Get
+            Set
+                Me("departmentName") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property adminCheck() As Boolean
+            Get
+                Return CType(Me("adminCheck"),Boolean)
+            End Get
+            Set
+                Me("adminCheck") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property role_id() As Integer
+            Get
+                Return CType(Me("role_id"),Integer)
+            End Get
+            Set
+                Me("role_id") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property companyNameHeader() As String
+            Get
+                Return CType(Me("companyNameHeader"),String)
+            End Get
+            Set
+                Me("companyNameHeader") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property newTOONumber() As Integer
+            Get
+                Return CType(Me("newTOONumber"),Integer)
+            End Get
+            Set
+                Me("newTOONumber") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
