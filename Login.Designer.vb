@@ -23,6 +23,7 @@ Partial Class Login
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.lblTooSystem = New System.Windows.Forms.Label()
         Me.lblUsername = New System.Windows.Forms.Label()
         Me.lblLogin = New System.Windows.Forms.Label()
@@ -183,6 +184,7 @@ Partial Class Login
         Me.Controls.Add(Me.pnlLogin)
         Me.Controls.Add(Me.lblTooSystem)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False

@@ -22,6 +22,7 @@ Partial Class Admin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Admin))
         Me.lblTooSystem = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
@@ -392,12 +393,13 @@ Partial Class Admin
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.pnlNew)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Admin"
-        Me.Text = "Form2"
+        Me.Text = "TOO System"
         Me.pnlNew.ResumeLayout(False)
         Me.pnlNew.PerformLayout()
         CType(Me.pbNew, System.ComponentModel.ISupportInitialize).EndInit()

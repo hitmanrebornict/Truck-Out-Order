@@ -22,6 +22,7 @@ Partial Class CompanyMaintenance
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompanyMaintenance))
         Me.btnDelete = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -423,6 +424,7 @@ Partial Class CompanyMaintenance
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnDelete)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False

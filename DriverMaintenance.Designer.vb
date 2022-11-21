@@ -22,6 +22,7 @@ Partial Class DriverMaintenance
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DriverMaintenance))
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cmbFullName = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -363,6 +364,7 @@ Partial Class DriverMaintenance
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False

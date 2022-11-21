@@ -22,6 +22,7 @@ Partial Class AddUserTry
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddUserTry))
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
@@ -322,6 +323,7 @@ Partial Class AddUserTry
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmbRoleID)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False

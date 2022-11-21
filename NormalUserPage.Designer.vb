@@ -22,6 +22,7 @@ Partial Class NormalUserPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NormalUserPage))
         Me.lblTooSystem = New System.Windows.Forms.Label()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -226,12 +227,13 @@ Partial Class NormalUserPage
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.lblTooSystem)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NormalUserPage"
-        Me.Text = "Form2"
+        Me.Text = "TOO System"
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlReport.ResumeLayout(False)
         Me.pnlReport.PerformLayout()
