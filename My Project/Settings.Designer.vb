@@ -148,6 +148,24 @@ Namespace My
                 Me("newTOONumber") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("15000")>  _
+        Public ReadOnly Property cargoWeight20() As Integer
+            Get
+                Return CType(Me("cargoWeight20"),Integer)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("26000")>  _
+        Public ReadOnly Property cargoWeight40() As Integer
+            Get
+                Return CType(Me("cargoWeight40"),Integer)
+            End Get
+        End Property
     End Class
 End Namespace
 

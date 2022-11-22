@@ -179,7 +179,7 @@ Public Class WarehouseEdit
         con.Close()
 
         con.Open()
-        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT from Warehouse where Shipping_ID = @TruckOutNumber2 "
+        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
         rd = cmd.ExecuteReader()
         While rd.Read()
@@ -200,6 +200,12 @@ Public Class WarehouseEdit
                 checkWarehouse = ""
             Else
                 checkWarehouse = rd.Item("shipping_id")
+            End If
+
+            If IsDBNull(rd.Item("Cargo_Weight")) Then
+                tbCargo.Text = ""
+            Else
+                tbCargo.Text = rd.Item("Cargo_Weight")
             End If
         End While
         con.Close()
@@ -357,11 +363,19 @@ Public Class WarehouseEdit
         cmd.Connection = con
         con.Open()
 
+        Dim a = Integer.Parse(tbCargo.Text)
+        Dim b = Integer.Parse(tbCargo.Text)
         If My.Settings.role_id = 3 Then
             If cmbEsSealNo.Text = "" Then
                 MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf cmbEsSealNo.Text = "yes" And tbEsSealNo.Text = "" Then
                 MessageBox.Show("Please Fill Out The ES_SEAL Number ..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbCargo.Text = "" Then
+                MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf cmbContainerSize.Text = "20" And a < My.Settings.cargoWeight20 Then
+                MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf cmbContainerSize.Text = "40" And a < My.Settings.cargoWeight40 Then
+                MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 If checkWarehousePost = "YES" Then
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -370,7 +384,7 @@ Public Class WarehouseEdit
                 Else
 
                     If checkWarehouse <> "" Then
-                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' where  Shipping_ID= @TruckOutNumber"
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "', Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
                         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
@@ -382,7 +396,7 @@ Public Class WarehouseEdit
                         btnCancel.PerformClick()
                         MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Else
-                        cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "')", con)
+                        cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY,Cargo_Weight)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "', '" + tbCargo.Text + "')", con)
                         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
@@ -458,11 +472,18 @@ Public Class WarehouseEdit
             MessageBox.Show("Please Fill Out The READY_TRUCK_OUT_TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbEsSealNo.Text = "YES" And tbEsSealNo.Text = "" Then
             MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbCargo.Text = "" Then
+            MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbContainerSize.Text = "20" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight20 Then
+            MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbContainerSize.Text = "40" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight40 Then
+            MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         Else
             Select Case My.Settings.role_id
                 Case 30
                     If checkWarehousePost = "" Then
-                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "'where  Shipping_ID= @TruckOutNumber"
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
                         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
@@ -474,7 +495,7 @@ Public Class WarehouseEdit
                         btnCancel.PerformClick()
                         MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Else
-                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "'where  Shipping_ID= @TruckOutNumber"
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
                         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
@@ -603,4 +624,6 @@ Public Class WarehouseEdit
         lblLoadingPortFullName.Visible = True
         con.Close()
     End Sub
+
+
 End Class

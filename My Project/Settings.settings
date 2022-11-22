@@ -30,5 +30,11 @@
     <Setting Name="newTOONumber" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="cargoWeight20" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">15000</Value>
+    </Setting>
+    <Setting Name="cargoWeight40" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">26000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

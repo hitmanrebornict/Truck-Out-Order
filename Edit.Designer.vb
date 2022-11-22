@@ -355,7 +355,7 @@ Partial Class Edit
         Me.btnPost.Location = New System.Drawing.Point(1076, 648)
         Me.btnPost.Name = "btnPost"
         Me.btnPost.Size = New System.Drawing.Size(78, 28)
-        Me.btnPost.TabIndex = 101
+        Me.btnPost.TabIndex = 102
         Me.btnPost.Text = "Post"
         Me.btnPost.UseVisualStyleBackColor = True
         '
@@ -376,7 +376,7 @@ Partial Class Edit
         Me.btnSave.Location = New System.Drawing.Point(992, 648)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(78, 28)
-        Me.btnSave.TabIndex = 100
+        Me.btnSave.TabIndex = 101
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -479,7 +479,7 @@ Partial Class Edit
         Me.btnPrint.Location = New System.Drawing.Point(908, 648)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(78, 28)
-        Me.btnPrint.TabIndex = 102
+        Me.btnPrint.TabIndex = 100
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = True
         '
@@ -489,7 +489,7 @@ Partial Class Edit
         Me.btnCancel.Location = New System.Drawing.Point(1161, 648)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(78, 28)
-        Me.btnCancel.TabIndex = 110
+        Me.btnCancel.TabIndex = 103
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
