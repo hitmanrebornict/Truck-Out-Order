@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+Imports Microsoft.Office.Interop.Excel
 
 Public Class Edit
 
@@ -463,14 +465,15 @@ Public Class Edit
             btnPost.Enabled = False
         End If
 
-        'Come from report page
-        'If True Then
-        '    For Each ctl As Control In Me.Controls
-        '        If ctl Is TextBox Then
-        '            ctl.Enabled = False
-        '        End If
-        '    Next
-        'End If
+        'Come From report page
+        If ViewPage.reportCheck = True Then
+            For Each ctrl As Control In Panel3.Controls
+                ctrl.Enabled = False
+            Next
+            btnPrint.Enabled = True
+            btnCancel.Enabled = True
+        End If
+
     End Sub
 
 
@@ -957,7 +960,15 @@ Public Class Edit
 
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        PrintDialog1.Document = PrintDocument1 'PrintDialog associate with PrintDocument.
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.Print()
 
+        End If
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        ShippingEdit.PrintDocument1_PrintPage(e, e)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
@@ -981,7 +992,7 @@ Public Class Edit
         End If
     End Sub
 
-    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
+    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
         'Show Company full name when the cmbcompany's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -1004,7 +1015,7 @@ Public Class Edit
         con.Close()
     End Sub
 
-    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
+    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs)
         'show the full name of loading port when the cmblodingport's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand

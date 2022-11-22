@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 
 Public Class SecurityEdit
 
@@ -449,9 +450,11 @@ Public Class SecurityEdit
                     cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
+                    MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btnPrint.PerformClick()
                     btnCancel.PerformClick()
                     con.Close()
-                    MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Else
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnCancel.PerformClick()
@@ -483,9 +486,10 @@ Public Class SecurityEdit
                     cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES' WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     rd = cmd.ExecuteReader
-                    btnCancel.PerformClick()
                     con.Close()
                     MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btnPrint.PerformClick()
+                    btnCancel.PerformClick()
                 Else
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnCancel.PerformClick()
@@ -496,7 +500,15 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        PrintDialog1.Document = PrintDocument1 'PrintDialog associate with PrintDocument.
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.Print()
 
+        End If
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        ShippingEdit.PrintDocument1_PrintPage(e, e)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
@@ -519,4 +531,47 @@ Public Class SecurityEdit
         End If
     End Sub
 
+    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        cmd.CommandText = "select full_name from details where company_name = '" + cmbCompany.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblCompanyFullName.Text = ""
+            Else
+                lblCompanyFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblCompanyFullName.Visible = True
+        con.Close()
+    End Sub
+
+    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
+        'show the full name of loading port when the cmblodingport's value is changed
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "select full_name from details where Loading_port = '" + cmbLoadingPort.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblLoadingPortFullName.Text = ""
+            Else
+                lblLoadingPortFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblLoadingPortFullName.Visible = True
+        con.Close()
+    End Sub
 End Class

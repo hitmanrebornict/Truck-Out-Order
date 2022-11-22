@@ -5,6 +5,7 @@ Public Class ViewPage
 
     Dim ReportString As String = "report"
     Public Shared reportCheck As Boolean = "False"
+    Public Shared reportSelected As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
@@ -24,8 +25,8 @@ Public Class ViewPage
         Dim sda As New SqlDataAdapter(cmd)
         Dim dt As New DataTable()
         Dim postOption As String
-        Dim selectOptionNonAdmin As String
-        Dim selectOptionAdmin As String
+        Dim selectOption As String
+        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
         Dim numOfReport As String
         Dim startDate, endDate As String
         startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
@@ -41,23 +42,19 @@ Public Class ViewPage
             Select Case cmbPostSelect.Text
                 Case "Shipping Post Completed"
                     postOption = "Shipping_POST_Time"
-                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User  from Shipping"
-                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Shipping_Post_Time,Shipping_POST_User from Shipping"
+                    selectOption = selectString & "Shipping_Post_Time as 'Shipping Post Time',Shipping_POST_User as 'Shipping Post User' from Shipping"
+
                 Case "Warehouse Post Completed"
                     postOption = "Warehouse_Post_Time"
-                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post_Time,Warehouse_Post_User from Shipping"
-                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User  from Shipping"
+                    selectOption = selectString & "Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User' from Shipping"
                 Case "Security Post Completed"
                     postOption = "Security_Post_Time"
-                    selectOptionNonAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
-                    selectOptionAdmin = "SELECT ID as 'TRUCK OUT NUMBER', ORIGIN,INVOICE,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO, ES_SEAL_NO,TEMPORARY_SEAL_NO, COMPANY,Container_Size,LOADING_PORT,SHIPPING_LINE,HAULIER,PRODUCT,DDB, SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Security_Post_Time,Security_Post_User  from Shipping"
+                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
+
             End Select
 
-            If My.Settings.adminCheck = False Then
-                cmd.CommandText = (selectOptionNonAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
-            Else
-                cmd.CommandText = (selectOptionAdmin & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
-            End If
+            cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
+
             rd = cmd.ExecuteReader
 
             con.Close()
@@ -170,6 +167,6 @@ Public Class ViewPage
         Else
             MessageBox.Show("You have no privilege to view this number.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-
+        Search.selected = selected
     End Sub
 End Class

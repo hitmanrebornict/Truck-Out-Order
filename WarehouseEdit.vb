@@ -559,4 +559,48 @@ Public Class WarehouseEdit
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
         ShippingEdit.PrintDocument1_PrintPage(e, e)
     End Sub
+
+    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        cmd.CommandText = "select full_name from details where company_name = '" + cmbCompany.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblCompanyFullName.Text = ""
+            Else
+                lblCompanyFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblCompanyFullName.Visible = True
+        con.Close()
+    End Sub
+
+    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
+        'show the full name of loading port when the cmblodingport's value is changed
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "select full_name from details where Loading_port = '" + cmbLoadingPort.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblLoadingPortFullName.Text = ""
+            Else
+                lblLoadingPortFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblLoadingPortFullName.Visible = True
+        con.Close()
+    End Sub
 End Class

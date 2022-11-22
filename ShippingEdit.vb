@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.Drawing.Printing
 
 
@@ -8,7 +9,7 @@ Public Class ShippingEdit
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
-    Dim checkTempSealNo As Boolean = True
+    Public Shared checkTempSealNo As Boolean = True
 
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
@@ -489,109 +490,229 @@ Public Class ShippingEdit
         e.Graphics.DrawString("Shipping Issue By", printFont, Brushes.Black, 0, 560)
         e.Graphics.DrawString("Shipping Seal", printFont, Brushes.Black, 0, 590)
         e.Graphics.DrawString("Shipping Verify By", printFont, Brushes.Black, 0, 620)
-        e.Graphics.DrawString("Shipping Verify by", printFont, Brushes.Black, 0, 650)
+        e.Graphics.DrawString("Security Issue by", printFont, Brushes.Black, 0, 650)
 
-        'First Section Content
-        e.Graphics.DrawString(": " & cmbCompany.Text, printFont, Brushes.Black, 175, 170)
-        e.Graphics.DrawString(": " & lblCompanyFullName.Text, printFont, Brushes.Black, 175, 200)
-        e.Graphics.DrawString(": " & cmbLoadingPort.Text, printFont, Brushes.Black, 175, 230)
-        e.Graphics.DrawString(": " & lblLoadingPortFullName.Text, printFont, Brushes.Black, 175, 260)
-        e.Graphics.DrawString(": " & tbProduct.Text, printFont, Brushes.Black, 175, 290)
-        e.Graphics.DrawString(": " & tbSendToCompany.Text, printFont, Brushes.Black, 175, 320)
+        ''First Section Content
+        'e.Graphics.DrawString(": " & cmbCompany.Text, printFont, Brushes.Black, 175, 170)
+        'e.Graphics.DrawString(": " & lblCompanyFullName.Text, printFont, Brushes.Black, 175, 200)
+        'e.Graphics.DrawString(": " & cmbLoadingPort.Text, printFont, Brushes.Black, 175, 230)
+        'e.Graphics.DrawString(": " & lblLoadingPortFullName.Text, printFont, Brushes.Black, 175, 260)
+        'e.Graphics.DrawString(": " & tbProduct.Text, printFont, Brushes.Black, 175, 290)
+        'e.Graphics.DrawString(": " & tbSendToCompany.Text, printFont, Brushes.Black, 175, 320)
 
+        ''First Section Content Parallel
+        'e.Graphics.DrawString(": " & tbInvoice.Text, printFont, Brushes.Black, 700, 170)
+        'e.Graphics.DrawString(": " & dtpSCD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 200)
+        'e.Graphics.DrawString(": " & dtpSCT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 230)
+        'e.Graphics.DrawString(": " & tbHaulier.Text, printFont, Brushes.Black, 700, 260)
+        'e.Graphics.DrawString(": " & cmbContainerSize.Text, printFont, Brushes.Black, 700, 290)
+        'e.Graphics.DrawString(": " & tbShippingLine.Text, printFont, Brushes.Black, 700, 320)
+
+        ''Second Section Content
+        'e.Graphics.DrawString(": " & tbContainerNo.Text, printFont, Brushes.Black, 175, 380)
+        'e.Graphics.DrawString(": " & tbEsSealNo.Text, printFont, Brushes.Black, 175, 410)
+        'e.Graphics.DrawString(": " & tbLinerSealNo.Text, printFont, Brushes.Black, 175, 440)
+        'e.Graphics.DrawString(": " & tbInternalSealNo.Text, printFont, Brushes.Black, 175, 470)
+        'If checkTempSealNo = True Then
+        '    e.Graphics.DrawString(": " & tbTempSeal.Text, printFont, Brushes.Black, 175, 500)
+        'Else
+        '    e.Graphics.DrawString(": " & "NULL", printFont, Brushes.Black, 175, 500)
+        'End If
+
+        con.Open()
+        cmd.CommandText = "SELECT * from shipping where ID = @TruckOutNumber"
+        cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
+        rd = cmd.ExecuteReader
+        rd.Read()
+
+        Dim origin As String = rd.Item("origin")
+        Dim loadingPort As String = rd.Item("Loading_Port")
+
+        e.Graphics.DrawString(": " & origin, printFont, Brushes.Black, 175, 170)
+
+        e.Graphics.DrawString(": " & loadingPort, printFont, Brushes.Black, 175, 230)
+
+        e.Graphics.DrawString(": " & rd.Item("Product"), printFont, Brushes.Black, 175, 290)
+        e.Graphics.DrawString(": " & rd.Item("Company"), printFont, Brushes.Black, 175, 320)
+
+        Dim scd As String = Date.Parse(rd.Item("Shipment_Closing_Date").ToString()).ToString("yyyy-MM-dd")
+        Dim sct As String = DateTime.Parse(rd.Item("Shipment_Closing_Time").ToString()).ToString("HH:mm:ss")
         'First Section Content Parallel
-        e.Graphics.DrawString(": " & tbInvoice.Text, printFont, Brushes.Black, 700, 170)
-        e.Graphics.DrawString(": " & dtpSCD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 200)
-        e.Graphics.DrawString(": " & dtpSCT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 230)
-        e.Graphics.DrawString(": " & tbHaulier.Text, printFont, Brushes.Black, 700, 260)
-        e.Graphics.DrawString(": " & cmbContainerSize.Text, printFont, Brushes.Black, 700, 290)
-        e.Graphics.DrawString(": " & tbShippingLine.Text, printFont, Brushes.Black, 700, 320)
+        e.Graphics.DrawString(": " & rd.Item("Invoice"), printFont, Brushes.Black, 700, 170)
+        e.Graphics.DrawString(": " & scd, printFont, Brushes.Black, 700, 200)
+        e.Graphics.DrawString(": " & sct, printFont, Brushes.Black, 700, 230)
+        e.Graphics.DrawString(": " & rd.Item("Haulier"), printFont, Brushes.Black, 700, 260)
+        e.Graphics.DrawString(": " & rd.Item("Container_Size"), printFont, Brushes.Black, 700, 290)
+        e.Graphics.DrawString(": " & rd.Item("Shipping_Line"), printFont, Brushes.Black, 700, 320)
 
         'Second Section Content
-        e.Graphics.DrawString(": " & tbContainerNo.Text, printFont, Brushes.Black, 175, 380)
-        e.Graphics.DrawString(": " & tbEsSealNo.Text, printFont, Brushes.Black, 175, 410)
-        e.Graphics.DrawString(": " & tbLinerSealNo.Text, printFont, Brushes.Black, 175, 440)
-        e.Graphics.DrawString(": " & tbInternalSealNo.Text, printFont, Brushes.Black, 175, 470)
+        e.Graphics.DrawString(": " & rd.Item("Container_No"), printFont, Brushes.Black, 175, 380)
+
+        e.Graphics.DrawString(": " & rd.Item("Liner_SEA_NO"), printFont, Brushes.Black, 175, 440)
+        e.Graphics.DrawString(": " & rd.Item("INTERNAL_SEAL_NO"), printFont, Brushes.Black, 175, 470)
+        Dim tempSealNo As String
         If checkTempSealNo = True Then
-            e.Graphics.DrawString(": " & tbTempSeal.Text, printFont, Brushes.Black, 175, 500)
+            tempSealNo = rd.Item("TEMPORARY_SEAL_NO")
+            If Len(tempSealNo) >= 1 Then
+            Else
+                tempSealNo = "NULL"
+            End If
+            e.Graphics.DrawString(": " & tempSealNo, printFont, Brushes.Black, 175, 500)
         Else
             e.Graphics.DrawString(": " & "NULL", printFont, Brushes.Black, 175, 500)
         End If
 
-        'Second Section Content Parallel
-        e.Graphics.DrawString(": " & dtpLCD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 380)
-        e.Graphics.DrawString(": " & dtpLCT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 410)
-        e.Graphics.DrawString(": " & dtpRTD.Value.ToString("yyyy-MM-dd"), printFont, Brushes.Black, 700, 440)
-        e.Graphics.DrawString(": " & dtpRTT.Value.ToString("HH:mm:ss"), printFont, Brushes.Black, 700, 470)
 
         'Check shipping, warehouse, security post statement
         Dim warehousePostUser As String
         Dim securityPostUser As String
         Dim checkWarehouseCheckPoint As String
         Dim warehouseCheckUser As String
-        con.Open()
 
-        cmd.CommandText = "SELECT Shipping_Post_User, Warehouse_Post_User,Security_Post_User from shipping where ID = @TruckOutNumber"
-        cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
-        rd = cmd.ExecuteReader
-        rd.Read()
         Dim shippingPostUser As String = rd.Item("Shipping_Post_User")
         If IsDBNull(rd.Item("Warehouse_Post_User")) Then
-            warehousePostUser = ""
+            warehousePostUser = "Uncompleted"
         Else
             warehousePostUser = rd.Item("Warehouse_Post_User")
         End If
 
         If IsDBNull(rd.Item("Security_Post_User")) Then
-            securityPostUser = ""
+            securityPostUser = "Uncompleted"
         Else
             securityPostUser = rd.Item("Security_Post_User")
         End If
 
         con.Close()
 
+        Dim companyFullName, loadingPortFullName As String
+        con.Open()
+        cmd.CommandText = "select distinct(full_name) as companyFullName from details where company_name = @origin and company_name is not null"
+        cmd.Parameters.AddWithValue("@origin", origin)
+        rd = cmd.ExecuteReader
+        rd.Read()
+        companyFullName = rd.Item("companyFullName")
+        con.Close()
+        con.Open()
+        cmd.CommandText = "select distinct(full_name) as loadingPortFullName from details where loading_port = @loadingPort and loading_port is not null"
+        cmd.Parameters.AddWithValue("@loadingPort", loadingPort)
+        rd = cmd.ExecuteReader
+        rd.Read()
+        loadingPortFullName = rd.Item("loadingPortFullName")
+        con.Close()
+
+        e.Graphics.DrawString(": " & companyFullName, printFont, Brushes.Black, 175, 200)
+        e.Graphics.DrawString(": " & loadingPortFullName, printFont, Brushes.Black, 175, 260)
+
         'Post User Section Detail
-        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
+
 
         con.Open()
-        cmd.CommandText = "SELECT Warehouse_Checkpoint_Update_User, Warehouse_Checkpoint_Check from Warehouse Where Shipping_ID = @TruckOutNumberWarehouse"
+        cmd.CommandText = "SELECT * from Warehouse Where Shipping_ID = @TruckOutNumberWarehouse"
         cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Search.selected)
         rd = cmd.ExecuteReader
         rd.Read()
-        If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
-            checkWarehouseCheckPoint = ""
+
+        Dim lcd, lct, rtd, rtt, esSealNo As String
+        If rd.HasRows() Then
+            lcd = Date.Parse(rd.Item("Loading_Completed_Date").ToString()).ToString("yyyy-MM-dd")
+            lct = DateTime.Parse(rd.Item("Loading_Completed_Time").ToString()).ToString("HH:mm:ss")
+            rtd = Date.Parse(rd.Item("Ready_Truck_Out_Date").ToString()).ToString("yyyy-MM-dd")
+            rtt = DateTime.Parse(rd.Item("Ready_Truck_Out_Time").ToString()).ToString("HH:mm:ss")
+            If IsDBNull(rd.Item("Es_Seal_No")) Then
+                esSealNo = "NULL"
+            Else
+                esSealNo = rd.Item("Es_Seal_No")
+                If Len(esSealNo) >= 1 Then
+                Else
+                    esSealNo = "NULL"
+                End If
+            End If
+            If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
+                checkWarehouseCheckPoint = ""
+            Else
+                checkWarehouseCheckPoint = rd.Item("Warehouse_Checkpoint_Check")
+            End If
+
+            If IsDBNull(rd.Item("Warehouse_CheckPoint_Update_User")) Then
+                warehouseCheckUser = ""
+            Else
+                warehouseCheckUser = rd.Item("Warehouse_CheckPoint_Update_User")
+            End If
         Else
-            checkWarehouseCheckPoint = rd.Item("Warehouse_Checkpoint_Check")
+            lcd = "NULL"
+            lct = "NULL"
+            rtd = "NULL"
+            rtt = "NULL"
+            esSealNo = "NULL"
         End If
 
-        If IsDBNull(rd.Item("Warehouse_CheckPoint_Update_User")) Then
-            warehouseCheckUser = ""
-        Else
-            warehouseCheckUser = rd.Item("Warehouse_CheckPoint_Update_User")
-        End If
 
+
+        e.Graphics.DrawString(": " & esSealNo, printFont, Brushes.Black, 175, 410)
+        'Second Section Content Parallel
+        e.Graphics.DrawString(": " & lcd, printFont, Brushes.Black, 700, 380)
+        e.Graphics.DrawString(": " & lct, printFont, Brushes.Black, 700, 410)
+        e.Graphics.DrawString(": " & rtd, printFont, Brushes.Black, 700, 440)
+        e.Graphics.DrawString(": " & rtt, printFont, Brushes.Black, 700, 470)
+
+        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
 
         If checkWarehouseCheckPoint = "YES" Then
             e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 590)
         Else
             e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 590)
         End If
+        e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 620)
+        e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 650)
 
-        If checkWarehousePost = "YES" Then
-            e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 620)
-        Else
-            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 620)
-        End If
-
-        If checkSecurityPost = "YES" Then
-            e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 650)
-        Else
-            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 650)
-        End If
 
         'Current User Part
         e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
         e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 710)
         e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 175, 710)
+    End Sub
+
+    Private Sub cmbCompany_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        cmd.CommandText = "select full_name from details where company_name = '" + cmbCompany.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblCompanyFullName.Text = ""
+            Else
+                lblCompanyFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblCompanyFullName.Visible = True
+        con.Close()
+    End Sub
+
+    Private Sub cmbLoadingPort_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
+        'show the full name of loading port when the cmblodingport's value is changed
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "select full_name from details where Loading_port = '" + cmbLoadingPort.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblLoadingPortFullName.Text = ""
+            Else
+                lblLoadingPortFullName.Text = rd.Item("full_name")
+            End If
+        End While
+        lblLoadingPortFullName.Visible = True
+        con.Close()
     End Sub
 End Class

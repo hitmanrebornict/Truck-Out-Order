@@ -30,10 +30,7 @@ Public Class NewPage
             tbLoadingBay.Enabled = False
             cmbWarehouseLocation.Enabled = False
             cmbEsSealNo.Enabled = False
-            dtpRTD.Enabled = False
-            dtpLCD.Enabled = False
-            dtpLCT.Enabled = False
-            dtpRTT.Enabled = False
+
         End If
 
         'Read Data Into Company Combobox
@@ -155,7 +152,7 @@ Public Class NewPage
 
     End Sub
 
-    Private Sub ComboBox5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSaveAndPost.SelectedIndexChanged
+    Private Sub ComboBox5_SelectedIndexChanged(sender As Object, e As EventArgs)
         btnSave.Enabled = True
     End Sub
 
@@ -224,7 +221,7 @@ Public Class NewPage
         End If
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
 
 
     End Sub

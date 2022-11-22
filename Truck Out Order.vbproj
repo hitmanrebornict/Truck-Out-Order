@@ -63,7 +63,10 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>untitled_pnO_icon.ico</ApplicationIcon>
+    <ApplicationIcon>TOO.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -248,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -315,13 +319,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Untitled design %281%29.png" />
-    <None Include="Resources\guanchong-removebg-preview.png" />
     <None Include="Resources\Untitled design %282%29.png" />
-    <None Include="Resources\editButton.png" />
-    <None Include="Resources\login.png" />
     <None Include="Resources\realGuanChongIcon-removebg-preview.png" />
-    <None Include="Resources\icons8-pencil-50.png" />
     <None Include="Resources\icons8-new-view-100.png" />
     <None Include="Resources\icons8-graph-report-100.png" />
     <None Include="Resources\icons8-account-100.png" />
@@ -331,7 +330,9 @@
     <None Include="Resources\icons8-pencil-100.png" />
     <None Include="Resources\icons8-enterprise-resource-planning-100.png" />
     <None Include="Resources\icons8-business-building-100.png" />
-    <Content Include="untitled_pnO_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TOO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

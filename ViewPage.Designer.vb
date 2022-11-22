@@ -22,10 +22,12 @@ Partial Class ViewPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ViewPage))
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lblReport = New System.Windows.Forms.Label()
+        Me.cmbPostSelect = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -37,8 +39,6 @@ Partial Class ViewPage
         Me.dtpTo = New System.Windows.Forms.DateTimePicker()
         Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.lblTo = New System.Windows.Forms.Label()
-        Me.cmbPostSelect = New System.Windows.Forms.ComboBox()
-        Me.lblReport = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,10 +63,30 @@ Partial Class ViewPage
         Me.Panel3.Size = New System.Drawing.Size(891, 705)
         Me.Panel3.TabIndex = 3
         '
+        'lblReport
+        '
+        Me.lblReport.AutoSize = True
+        Me.lblReport.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReport.Location = New System.Drawing.Point(4, 143)
+        Me.lblReport.Name = "lblReport"
+        Me.lblReport.Size = New System.Drawing.Size(74, 19)
+        Me.lblReport.TabIndex = 156
+        Me.lblReport.Text = "lblReport"
+        '
+        'cmbPostSelect
+        '
+        Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPostSelect.FormattingEnabled = True
+        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed"})
+        Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
+        Me.cmbPostSelect.Name = "cmbPostSelect"
+        Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
+        Me.cmbPostSelect.TabIndex = 155
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
-        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
         Me.Panel1.Controls.Add(Me.Panel2)
@@ -75,17 +95,6 @@ Partial Class ViewPage
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(891, 104)
         Me.Panel1.TabIndex = 154
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(781, 51)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(107, 24)
-        Me.Label1.TabIndex = 140
-        Me.Label1.Text = "View Page"
         '
         'Label9
         '
@@ -137,15 +146,15 @@ Partial Class ViewPage
         Me.dgvView.AllowUserToResizeRows = False
         Me.dgvView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.dgvView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.NullValue = "NULL"
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvView.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = "NULL"
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvView.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvView.Location = New System.Drawing.Point(0, 185)
         Me.dgvView.Name = "dgvView"
         Me.dgvView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
@@ -211,27 +220,6 @@ Partial Class ViewPage
         Me.lblTo.TabIndex = 0
         Me.lblTo.Text = "To"
         '
-        'cmbPostSelect
-        '
-        Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbPostSelect.FormattingEnabled = True
-        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed"})
-        Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
-        Me.cmbPostSelect.Name = "cmbPostSelect"
-        Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
-        Me.cmbPostSelect.TabIndex = 155
-        '
-        'lblReport
-        '
-        Me.lblReport.AutoSize = True
-        Me.lblReport.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReport.Location = New System.Drawing.Point(4, 143)
-        Me.lblReport.Name = "lblReport"
-        Me.lblReport.Size = New System.Drawing.Size(74, 19)
-        Me.lblReport.TabIndex = 156
-        Me.lblReport.Text = "lblReport"
-        '
         'ViewPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -241,6 +229,7 @@ Partial Class ViewPage
         Me.ClientSize = New System.Drawing.Size(1264, 704)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
@@ -264,7 +253,6 @@ Partial Class ViewPage
     Friend WithEvents btnExport As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel

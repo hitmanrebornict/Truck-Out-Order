@@ -22,6 +22,7 @@ Partial Class NewPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewPage))
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblLoadingPortFullName = New System.Windows.Forms.Label()
@@ -52,8 +53,6 @@ Partial Class NewPage
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblSCT = New System.Windows.Forms.Label()
         Me.lblSCD = New System.Windows.Forms.Label()
-        Me.cmbSaveAndPost = New System.Windows.Forms.ComboBox()
-        Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -75,21 +74,6 @@ Partial Class NewPage
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblTooNumber = New System.Windows.Forms.Label()
         Me.lblTruckOutNumber = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
-        Me.TableLayoutPanel11 = New System.Windows.Forms.TableLayoutPanel()
-        Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
-        Me.lblRTT = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpRTD = New System.Windows.Forms.DateTimePicker()
-        Me.lblRTD = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel14 = New System.Windows.Forms.TableLayoutPanel()
-        Me.TableLayoutPanel15 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
-        Me.lblLCT = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpLCD = New System.Windows.Forms.DateTimePicker()
-        Me.lblLCD = New System.Windows.Forms.Label()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
@@ -100,13 +84,6 @@ Partial Class NewPage
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
-        Me.TableLayoutPanel10.SuspendLayout()
-        Me.TableLayoutPanel11.SuspendLayout()
-        Me.TableLayoutPanel12.SuspendLayout()
-        Me.TableLayoutPanel13.SuspendLayout()
-        Me.TableLayoutPanel14.SuspendLayout()
-        Me.TableLayoutPanel15.SuspendLayout()
-        Me.TableLayoutPanel16.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -115,8 +92,6 @@ Partial Class NewPage
         Me.Panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
-        Me.Panel3.Controls.Add(Me.cmbSaveAndPost)
-        Me.Panel3.Controls.Add(Me.btnPrint)
         Me.Panel3.Controls.Add(Me.btnCancel)
         Me.Panel3.Controls.Add(Me.btnSave)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
@@ -130,8 +105,8 @@ Partial Class NewPage
         '
         Me.TableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel3.ColumnCount = 4
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.25523!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.23431!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.37828!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.09363!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.40586!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel3.Controls.Add(Me.lblLoadingPortFullName, 3, 1)
@@ -200,7 +175,7 @@ Partial Class NewPage
         '
         Me.lblCompanyFullName.AutoSize = True
         Me.lblCompanyFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompanyFullName.Location = New System.Drawing.Point(284, 45)
+        Me.lblCompanyFullName.Location = New System.Drawing.Point(243, 45)
         Me.lblCompanyFullName.Name = "lblCompanyFullName"
         Me.lblCompanyFullName.Size = New System.Drawing.Size(58, 19)
         Me.lblCompanyFullName.TabIndex = 128
@@ -222,7 +197,7 @@ Partial Class NewPage
         Me.cmbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCompany.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCompany.FormattingEnabled = True
-        Me.cmbCompany.Location = New System.Drawing.Point(284, 4)
+        Me.cmbCompany.Location = New System.Drawing.Point(243, 4)
         Me.cmbCompany.Name = "cmbCompany"
         Me.cmbCompany.Size = New System.Drawing.Size(220, 27)
         Me.cmbCompany.TabIndex = 1
@@ -249,7 +224,7 @@ Partial Class NewPage
         'tbInvoice
         '
         Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInvoice.Location = New System.Drawing.Point(284, 136)
+        Me.tbInvoice.Location = New System.Drawing.Point(243, 136)
         Me.tbInvoice.Name = "tbInvoice"
         Me.tbInvoice.Size = New System.Drawing.Size(218, 26)
         Me.tbInvoice.TabIndex = 3
@@ -267,7 +242,7 @@ Partial Class NewPage
         'tbProduct
         '
         Me.tbProduct.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbProduct.Location = New System.Drawing.Point(284, 180)
+        Me.tbProduct.Location = New System.Drawing.Point(243, 180)
         Me.tbProduct.Name = "tbProduct"
         Me.tbProduct.Size = New System.Drawing.Size(218, 26)
         Me.tbProduct.TabIndex = 4
@@ -295,7 +270,7 @@ Partial Class NewPage
         'tbShippingLine
         '
         Me.tbShippingLine.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbShippingLine.Location = New System.Drawing.Point(284, 224)
+        Me.tbShippingLine.Location = New System.Drawing.Point(243, 224)
         Me.tbShippingLine.Name = "tbShippingLine"
         Me.tbShippingLine.Size = New System.Drawing.Size(218, 26)
         Me.tbShippingLine.TabIndex = 5
@@ -335,7 +310,7 @@ Partial Class NewPage
         Me.cmbDDB.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDDB.FormattingEnabled = True
         Me.cmbDDB.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cmbDDB.Location = New System.Drawing.Point(284, 268)
+        Me.cmbDDB.Location = New System.Drawing.Point(243, 268)
         Me.cmbDDB.Name = "cmbDDB"
         Me.cmbDDB.Size = New System.Drawing.Size(218, 27)
         Me.cmbDDB.TabIndex = 6
@@ -355,7 +330,7 @@ Partial Class NewPage
         Me.dtpSCD.CustomFormat = """ """
         Me.dtpSCD.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpSCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpSCD.Location = New System.Drawing.Point(284, 92)
+        Me.dtpSCD.Location = New System.Drawing.Point(243, 92)
         Me.dtpSCD.Name = "dtpSCD"
         Me.dtpSCD.Size = New System.Drawing.Size(218, 26)
         Me.dtpSCD.TabIndex = 2
@@ -444,43 +419,22 @@ Partial Class NewPage
         Me.lblSCD.TabIndex = 103
         Me.lblSCD.Text = "Shipment Closing Date:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'cmbSaveAndPost
-        '
-        Me.cmbSaveAndPost.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cmbSaveAndPost.FormattingEnabled = True
-        Me.cmbSaveAndPost.Items.AddRange(New Object() {"Save", "Save & Post"})
-        Me.cmbSaveAndPost.Location = New System.Drawing.Point(894, 451)
-        Me.cmbSaveAndPost.Name = "cmbSaveAndPost"
-        Me.cmbSaveAndPost.Size = New System.Drawing.Size(121, 30)
-        Me.cmbSaveAndPost.TabIndex = 136
-        Me.cmbSaveAndPost.Visible = False
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(772, 622)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(92, 31)
-        Me.btnPrint.TabIndex = 42
-        Me.btnPrint.Text = "Print"
-        Me.btnPrint.UseVisualStyleBackColor = True
-        '
         'btnCancel
         '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(968, 622)
+        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(984, 646)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(92, 31)
+        Me.btnCancel.Size = New System.Drawing.Size(78, 28)
         Me.btnCancel.TabIndex = 41
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnSave
         '
-        Me.btnSave.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(870, 622)
+        Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(900, 646)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(92, 31)
+        Me.btnSave.Size = New System.Drawing.Size(78, 28)
         Me.btnSave.TabIndex = 40
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -522,7 +476,7 @@ Partial Class NewPage
         Me.tbInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbInternalSealNo.Location = New System.Drawing.Point(243, 144)
         Me.tbInternalSealNo.Name = "tbInternalSealNo"
-        Me.tbInternalSealNo.Size = New System.Drawing.Size(202, 26)
+        Me.tbInternalSealNo.Size = New System.Drawing.Size(255, 26)
         Me.tbInternalSealNo.TabIndex = 35
         '
         'tbLinerSealNo
@@ -531,7 +485,7 @@ Partial Class NewPage
         Me.tbLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbLinerSealNo.Location = New System.Drawing.Point(243, 102)
         Me.tbLinerSealNo.Name = "tbLinerSealNo"
-        Me.tbLinerSealNo.Size = New System.Drawing.Size(202, 26)
+        Me.tbLinerSealNo.Size = New System.Drawing.Size(255, 26)
         Me.tbLinerSealNo.TabIndex = 34
         '
         'tbContainerNo
@@ -540,7 +494,7 @@ Partial Class NewPage
         Me.tbContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbContainerNo.Location = New System.Drawing.Point(243, 4)
         Me.tbContainerNo.Name = "tbContainerNo"
-        Me.tbContainerNo.Size = New System.Drawing.Size(202, 26)
+        Me.tbContainerNo.Size = New System.Drawing.Size(255, 26)
         Me.tbContainerNo.TabIndex = 31
         '
         'lblContainerNo
@@ -601,7 +555,7 @@ Partial Class NewPage
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(202, 40)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(259, 40)
         Me.TableLayoutPanel2.TabIndex = 53
         '
         'cmbEsSealNo
@@ -612,16 +566,16 @@ Partial Class NewPage
         Me.cmbEsSealNo.Items.AddRange(New Object() {"YES", "NO"})
         Me.cmbEsSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbEsSealNo.Name = "cmbEsSealNo"
-        Me.cmbEsSealNo.Size = New System.Drawing.Size(93, 27)
+        Me.cmbEsSealNo.Size = New System.Drawing.Size(122, 27)
         Me.cmbEsSealNo.TabIndex = 32
         '
         'tbEsSealNo
         '
         Me.tbEsSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbEsSealNo.Location = New System.Drawing.Point(104, 4)
+        Me.tbEsSealNo.Location = New System.Drawing.Point(133, 4)
         Me.tbEsSealNo.Name = "tbEsSealNo"
-        Me.tbEsSealNo.Size = New System.Drawing.Size(94, 26)
+        Me.tbEsSealNo.Size = New System.Drawing.Size(122, 26)
         Me.tbEsSealNo.TabIndex = 33
         '
         'TableLayoutPanel5
@@ -636,16 +590,16 @@ Partial Class NewPage
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
         Me.TableLayoutPanel5.RowCount = 1
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(200, 41)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(259, 41)
         Me.TableLayoutPanel5.TabIndex = 137
         '
         'tbTemporarySealNo
         '
         Me.tbTemporarySealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbTemporarySealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTemporarySealNo.Location = New System.Drawing.Point(103, 4)
+        Me.tbTemporarySealNo.Location = New System.Drawing.Point(133, 4)
         Me.tbTemporarySealNo.Name = "tbTemporarySealNo"
-        Me.tbTemporarySealNo.Size = New System.Drawing.Size(93, 26)
+        Me.tbTemporarySealNo.Size = New System.Drawing.Size(122, 26)
         Me.tbTemporarySealNo.TabIndex = 37
         '
         'cmbCheckTempSealNo
@@ -655,7 +609,7 @@ Partial Class NewPage
         Me.cmbCheckTempSealNo.Items.AddRange(New Object() {"YES", "NO"})
         Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbCheckTempSealNo.Name = "cmbCheckTempSealNo"
-        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(92, 27)
+        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(122, 27)
         Me.cmbCheckTempSealNo.TabIndex = 36
         '
         'Panel2
@@ -704,215 +658,6 @@ Partial Class NewPage
         Me.lblTruckOutNumber.TabIndex = 134
         Me.lblTruckOutNumber.Text = "Truck Out Number:"
         '
-        'TableLayoutPanel10
-        '
-        Me.TableLayoutPanel10.BackColor = System.Drawing.Color.Transparent
-        Me.TableLayoutPanel10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
-        Me.TableLayoutPanel10.ColumnCount = 1
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel10.Controls.Add(Me.TableLayoutPanel11, 0, 1)
-        Me.TableLayoutPanel10.Controls.Add(Me.TableLayoutPanel14, 0, 0)
-        Me.TableLayoutPanel10.Cursor = System.Windows.Forms.Cursors.Default
-        Me.TableLayoutPanel10.Location = New System.Drawing.Point(1094, 328)
-        Me.TableLayoutPanel10.Name = "TableLayoutPanel10"
-        Me.TableLayoutPanel10.RowCount = 2
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel10.Size = New System.Drawing.Size(200, 219)
-        Me.TableLayoutPanel10.TabIndex = 128
-        Me.TableLayoutPanel10.Visible = False
-        '
-        'TableLayoutPanel11
-        '
-        Me.TableLayoutPanel11.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
-        Me.TableLayoutPanel11.ColumnCount = 1
-        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel11.Controls.Add(Me.TableLayoutPanel12, 0, 1)
-        Me.TableLayoutPanel11.Controls.Add(Me.TableLayoutPanel13, 0, 0)
-        Me.TableLayoutPanel11.Location = New System.Drawing.Point(4, 113)
-        Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
-        Me.TableLayoutPanel11.RowCount = 2
-        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.Size = New System.Drawing.Size(190, 89)
-        Me.TableLayoutPanel11.TabIndex = 1
-        '
-        'TableLayoutPanel12
-        '
-        Me.TableLayoutPanel12.ColumnCount = 1
-        Me.TableLayoutPanel12.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel12.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel12.Controls.Add(Me.dtpRTT, 0, 1)
-        Me.TableLayoutPanel12.Controls.Add(Me.lblRTT, 0, 0)
-        Me.TableLayoutPanel12.Location = New System.Drawing.Point(4, 48)
-        Me.TableLayoutPanel12.Name = "TableLayoutPanel12"
-        Me.TableLayoutPanel12.RowCount = 2
-        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.8209!))
-        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.17911!))
-        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel12.Size = New System.Drawing.Size(182, 36)
-        Me.TableLayoutPanel12.TabIndex = 2
-        '
-        'dtpRTT
-        '
-        Me.dtpRTT.CustomFormat = """ """
-        Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpRTT.Location = New System.Drawing.Point(3, 15)
-        Me.dtpRTT.Name = "dtpRTT"
-        Me.dtpRTT.ShowUpDown = True
-        Me.dtpRTT.Size = New System.Drawing.Size(176, 20)
-        Me.dtpRTT.TabIndex = 74
-        Me.dtpRTT.Visible = False
-        '
-        'lblRTT
-        '
-        Me.lblRTT.AutoSize = True
-        Me.lblRTT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTT.Location = New System.Drawing.Point(3, 0)
-        Me.lblRTT.Name = "lblRTT"
-        Me.lblRTT.Size = New System.Drawing.Size(139, 12)
-        Me.lblRTT.TabIndex = 32
-        Me.lblRTT.Text = "READY TRUCK OUT TIME"
-        Me.lblRTT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.lblRTT.Visible = False
-        '
-        'TableLayoutPanel13
-        '
-        Me.TableLayoutPanel13.ColumnCount = 1
-        Me.TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel13.Controls.Add(Me.dtpRTD, 0, 1)
-        Me.TableLayoutPanel13.Controls.Add(Me.lblRTD, 0, 0)
-        Me.TableLayoutPanel13.Location = New System.Drawing.Point(4, 4)
-        Me.TableLayoutPanel13.Name = "TableLayoutPanel13"
-        Me.TableLayoutPanel13.RowCount = 2
-        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.8209!))
-        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.17911!))
-        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel13.Size = New System.Drawing.Size(182, 36)
-        Me.TableLayoutPanel13.TabIndex = 1
-        '
-        'dtpRTD
-        '
-        Me.dtpRTD.CustomFormat = """ """
-        Me.dtpRTD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpRTD.Location = New System.Drawing.Point(3, 15)
-        Me.dtpRTD.Name = "dtpRTD"
-        Me.dtpRTD.Size = New System.Drawing.Size(176, 20)
-        Me.dtpRTD.TabIndex = 69
-        Me.dtpRTD.Visible = False
-        '
-        'lblRTD
-        '
-        Me.lblRTD.AutoSize = True
-        Me.lblRTD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblRTD.Location = New System.Drawing.Point(3, 0)
-        Me.lblRTD.Name = "lblRTD"
-        Me.lblRTD.Size = New System.Drawing.Size(142, 12)
-        Me.lblRTD.TabIndex = 32
-        Me.lblRTD.Text = "READY TRUCK OUT DATE"
-        Me.lblRTD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.lblRTD.Visible = False
-        '
-        'TableLayoutPanel14
-        '
-        Me.TableLayoutPanel14.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
-        Me.TableLayoutPanel14.ColumnCount = 1
-        Me.TableLayoutPanel14.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel14.Controls.Add(Me.TableLayoutPanel15, 0, 1)
-        Me.TableLayoutPanel14.Controls.Add(Me.TableLayoutPanel16, 0, 0)
-        Me.TableLayoutPanel14.Location = New System.Drawing.Point(4, 4)
-        Me.TableLayoutPanel14.Name = "TableLayoutPanel14"
-        Me.TableLayoutPanel14.RowCount = 2
-        Me.TableLayoutPanel14.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel14.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel14.Size = New System.Drawing.Size(190, 88)
-        Me.TableLayoutPanel14.TabIndex = 0
-        '
-        'TableLayoutPanel15
-        '
-        Me.TableLayoutPanel15.ColumnCount = 1
-        Me.TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel15.Controls.Add(Me.dtpLCT, 0, 1)
-        Me.TableLayoutPanel15.Controls.Add(Me.lblLCT, 0, 0)
-        Me.TableLayoutPanel15.Location = New System.Drawing.Point(4, 47)
-        Me.TableLayoutPanel15.Name = "TableLayoutPanel15"
-        Me.TableLayoutPanel15.RowCount = 2
-        Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.8209!))
-        Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.17911!))
-        Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel15.Size = New System.Drawing.Size(182, 36)
-        Me.TableLayoutPanel15.TabIndex = 1
-        '
-        'dtpLCT
-        '
-        Me.dtpLCT.CustomFormat = """ """
-        Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpLCT.Location = New System.Drawing.Point(3, 15)
-        Me.dtpLCT.Name = "dtpLCT"
-        Me.dtpLCT.ShowUpDown = True
-        Me.dtpLCT.Size = New System.Drawing.Size(176, 20)
-        Me.dtpLCT.TabIndex = 74
-        Me.dtpLCT.Visible = False
-        '
-        'lblLCT
-        '
-        Me.lblLCT.AutoSize = True
-        Me.lblLCT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCT.Location = New System.Drawing.Point(3, 0)
-        Me.lblLCT.Name = "lblLCT"
-        Me.lblLCT.Size = New System.Drawing.Size(153, 12)
-        Me.lblLCT.TabIndex = 32
-        Me.lblLCT.Text = "LOADING COMPLETED TIME"
-        Me.lblLCT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.lblLCT.Visible = False
-        '
-        'TableLayoutPanel16
-        '
-        Me.TableLayoutPanel16.ColumnCount = 1
-        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel16.Controls.Add(Me.dtpLCD, 0, 1)
-        Me.TableLayoutPanel16.Controls.Add(Me.lblLCD, 0, 0)
-        Me.TableLayoutPanel16.Location = New System.Drawing.Point(4, 4)
-        Me.TableLayoutPanel16.Name = "TableLayoutPanel16"
-        Me.TableLayoutPanel16.RowCount = 2
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.8209!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.17911!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel16.Size = New System.Drawing.Size(182, 36)
-        Me.TableLayoutPanel16.TabIndex = 0
-        '
-        'dtpLCD
-        '
-        Me.dtpLCD.CustomFormat = """ """
-        Me.dtpLCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpLCD.Location = New System.Drawing.Point(3, 15)
-        Me.dtpLCD.Name = "dtpLCD"
-        Me.dtpLCD.Size = New System.Drawing.Size(176, 20)
-        Me.dtpLCD.TabIndex = 69
-        Me.dtpLCD.Visible = False
-        '
-        'lblLCD
-        '
-        Me.lblLCD.AutoSize = True
-        Me.lblLCD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.lblLCD.Location = New System.Drawing.Point(3, 0)
-        Me.lblLCD.Name = "lblLCD"
-        Me.lblLCD.Size = New System.Drawing.Size(156, 12)
-        Me.lblLCD.TabIndex = 32
-        Me.lblLCD.Text = "LOADING COMPLETED DATE"
-        Me.lblLCD.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.lblLCD.Visible = False
-        '
         'lblUserDetails
         '
         Me.lblUserDetails.AutoSize = True
@@ -956,8 +701,8 @@ Partial Class NewPage
         Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.TableLayoutPanel10)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
@@ -976,17 +721,6 @@ Partial Class NewPage
         Me.TableLayoutPanel5.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
-        Me.TableLayoutPanel10.ResumeLayout(False)
-        Me.TableLayoutPanel11.ResumeLayout(False)
-        Me.TableLayoutPanel12.ResumeLayout(False)
-        Me.TableLayoutPanel12.PerformLayout()
-        Me.TableLayoutPanel13.ResumeLayout(False)
-        Me.TableLayoutPanel13.PerformLayout()
-        Me.TableLayoutPanel14.ResumeLayout(False)
-        Me.TableLayoutPanel15.ResumeLayout(False)
-        Me.TableLayoutPanel15.PerformLayout()
-        Me.TableLayoutPanel16.ResumeLayout(False)
-        Me.TableLayoutPanel16.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -994,24 +728,8 @@ Partial Class NewPage
     End Sub
 
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents btnPrint As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnSave As Button
-    Friend WithEvents TableLayoutPanel10 As TableLayoutPanel
-    Friend WithEvents TableLayoutPanel11 As TableLayoutPanel
-    Friend WithEvents TableLayoutPanel12 As TableLayoutPanel
-    Friend WithEvents dtpRTT As DateTimePicker
-    Friend WithEvents lblRTT As Label
-    Friend WithEvents TableLayoutPanel13 As TableLayoutPanel
-    Friend WithEvents dtpRTD As DateTimePicker
-    Friend WithEvents lblRTD As Label
-    Friend WithEvents TableLayoutPanel14 As TableLayoutPanel
-    Friend WithEvents TableLayoutPanel15 As TableLayoutPanel
-    Friend WithEvents dtpLCT As DateTimePicker
-    Friend WithEvents lblLCT As Label
-    Friend WithEvents TableLayoutPanel16 As TableLayoutPanel
-    Friend WithEvents dtpLCD As DateTimePicker
-    Friend WithEvents lblLCD As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents tbTemporarySealNo As TextBox
     Friend WithEvents tbInternalSealNo As TextBox
@@ -1053,7 +771,6 @@ Partial Class NewPage
     Friend WithEvents lblTruckOutNumber As Label
     Friend WithEvents lblTooNumber As Label
     Friend WithEvents tbInvoice As TextBox
-    Friend WithEvents cmbSaveAndPost As ComboBox
     Friend WithEvents lblLoadingPortFullName As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents lblCompanyFullName As Label

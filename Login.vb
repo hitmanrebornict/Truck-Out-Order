@@ -41,7 +41,7 @@ Public Class Login
                 validationCheck = rd.Item("validationCheck")
                 My.Settings.departmentName = rd.Item("department")
                 My.Settings.adminCheck = rd.Item("adminCheck")
-
+                My.Settings.username = rd.Item("username")
                 If IsDBNull(rd.Item("fullUserName")) Then
                     My.Settings.fullName = ""
                 Else
