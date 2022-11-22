@@ -60,7 +60,7 @@ Partial Class ViewPage
         Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(190, 1)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(891, 705)
+        Me.Panel3.Size = New System.Drawing.Size(891, 682)
         Me.Panel3.TabIndex = 3
         '
         'lblReport
@@ -78,7 +78,7 @@ Partial Class ViewPage
         Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPostSelect.FormattingEnabled = True
-        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed", "Cargo Weight Checking Failed"})
+        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed", "Cargo Weight Checking"})
         Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
         Me.cmbPostSelect.Name = "cmbPostSelect"
         Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
@@ -159,7 +159,7 @@ Partial Class ViewPage
         Me.dgvView.Name = "dgvView"
         Me.dgvView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvView.Size = New System.Drawing.Size(891, 517)
+        Me.dgvView.Size = New System.Drawing.Size(891, 494)
         Me.dgvView.TabIndex = 4
         '
         'btnCancel
@@ -226,11 +226,12 @@ Partial Class ViewPage
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 704)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "ViewPage"

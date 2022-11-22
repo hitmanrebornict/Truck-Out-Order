@@ -363,21 +363,20 @@ Public Class WarehouseEdit
         cmd.Connection = con
         con.Open()
 
-        Dim a = Integer.Parse(tbCargo.Text)
-        Dim b = Integer.Parse(tbCargo.Text)
+
         If My.Settings.role_id = 3 Then
-            If cmbEsSealNo.Text = "" Then
-                MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf cmbEsSealNo.Text = "yes" And tbEsSealNo.Text = "" Then
-                MessageBox.Show("Please Fill Out The ES_SEAL Number ..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf tbCargo.Text = "" Then
-                MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf cmbContainerSize.Text = "20" And a < My.Settings.cargoWeight20 Then
-                MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf cmbContainerSize.Text = "40" And a < My.Settings.cargoWeight40 Then
-                MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Else
-                If checkWarehousePost = "YES" Then
+            'If cmbEsSealNo.Text = "" Then
+            '    MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf cmbEsSealNo.Text = "yes" And tbEsSealNo.Text = "" Then
+            '    MessageBox.Show("Please Fill Out The ES_SEAL Number ..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf tbCargo.Text = "" Then
+            '    MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf cmbContainerSize.Text = "20" And a < My.Settings.cargoWeight20 Then
+            '    MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf cmbContainerSize.Text = "40" And a < My.Settings.cargoWeight40 Then
+            '    MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'Else
+            If checkWarehousePost = "YES" Then
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnCancel.PerformClick()
                     con.Close()
@@ -409,7 +408,7 @@ Public Class WarehouseEdit
                         MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End If
-            End If
+            'End If
         ElseIf my.Settings.role_id = 4 Then
             'warehousecheck for warehouse checking
             If cbContainerNo.Checked = True Then
@@ -474,10 +473,10 @@ Public Class WarehouseEdit
             MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbCargo.Text = "" Then
             MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbContainerSize.Text = "20" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight20 Then
-            MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbContainerSize.Text = "40" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight40 Then
-            MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf cmbContainerSize.Text = "20" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight20 Then
+            '    MessageBox.Show("The Cargo Weight shall be more then 15000KG when Container Size > 20'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'ElseIf cmbContainerSize.Text = "40" And Integer.parse(tbCargo.Text) < My.Settings.cargoWeight40 Then
+            '    MessageBox.Show("The Cargo Weight shall be more then 26000KG when Container Size > 40'", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Else
             Select Case My.Settings.role_id

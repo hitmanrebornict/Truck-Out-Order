@@ -1160,13 +1160,13 @@ Partial Class SecurityEdit
         '
         'TextBox1
         '
+        Me.TextBox1.Enabled = False
         Me.TextBox1.Font = New System.Drawing.Font("Helvetica Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(226, 219)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBox1.Size = New System.Drawing.Size(171, 27)
         Me.TextBox1.TabIndex = 153
-        Me.TextBox1.Text = "12345"
         '
         'Label8
         '
@@ -1176,7 +1176,7 @@ Partial Class SecurityEdit
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(163, 22)
         Me.Label8.TabIndex = 154
-        Me.Label8.Text = "Cargo Net Weight"
+        Me.Label8.Text = "Net Cargo Weight"
         '
         'SecurityEdit
         '
