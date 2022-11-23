@@ -1,10 +1,13 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Microsoft.Office.Interop.Excel
 
 Public Class CompanyMaintenance
 
     Dim selection As String
     Dim validationCheck As String
     Dim newCheck As Boolean = True
+    Dim maxTOONumber, age As Integer
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,7 +17,6 @@ Public Class CompanyMaintenance
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
-        Dim age As Integer
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
@@ -26,18 +28,35 @@ Public Class CompanyMaintenance
         con.Close()
 
         con.Open()
-
         cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
         rd = cmd.ExecuteReader
         While rd.Read()
             age = rd.Item("maxID")
         End While
+
         con.Close()
         con.Open()
-        cmd.CommandText = "SELECT DISTINCT(maxTooNum) from details where maxTooNum is not null"
+        cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        maxTOONumber = rd.Item("maxTOONumber")
+
+        If age = 0 Then
+            My.Settings.newTOONumber = 34800
+        Else
+            If age > maxTOONumber Then
+                My.Settings.newTOONumber = age + 1
+            Else
+                My.Settings.newTOONumber = maxTOONumber
+            End If
+
+        End If
+
+
+
 
         'Find Current Max TOO Number
-        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & age & "."
+        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & maxTOONumber & "."
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click
@@ -136,5 +155,29 @@ Public Class CompanyMaintenance
         Admin.Show()
         Me.Close()
     End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles btnTOOSave.Click
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        Try
+            If Integer.Parse(tbTOO.Text) < maxTOONumber Then
+                MessageBox.Show("The new TOO Number can't less than existing TOO Number", "Update Failed ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                cmd.CommandText = "Insert into details(TOO_Number) values (@TOO_Number)"
+                cmd.Parameters.AddWithValue("@TOO_Number", tbTOO.Text)
+                rd = cmd.ExecuteReader
+                MessageBox.Show("The new TOO Number is " & tbTOO.Text, "Update Completed ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
 
 End Class

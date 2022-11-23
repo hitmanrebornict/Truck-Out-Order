@@ -53,7 +53,11 @@ Public Class WarehouseEdit
             cmbEsSealNo.Enabled = False
             tbEsSealNo.Enabled = False
             tbLinerSealNo.Enabled = False
-
+            dtpLCD.Enabled = False
+            dtpLCT.Enabled = False
+            dtpRTD.Enabled = False
+            dtpRTT.Enabled = False
+            tbCargo.Enabled = False
         End If
         tbLinerSealNo.PasswordChar = "*"
         tbInternalSealNo.PasswordChar = "*"

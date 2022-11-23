@@ -53,7 +53,7 @@ Partial Class FieldMaintenance
         Me.Panel3.Controls.Add(Me.btnSave)
         Me.Panel3.Controls.Add(Me.btnNew)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel3.Location = New System.Drawing.Point(139, 1)
+        Me.Panel3.Location = New System.Drawing.Point(168, 1)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(928, 680)
         Me.Panel3.TabIndex = 3
@@ -205,7 +205,7 @@ Partial Class FieldMaintenance
         Me.Panel1.Controls.Add(Me.lblTitle)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Location = New System.Drawing.Point(139, 1)
+        Me.Panel1.Location = New System.Drawing.Point(168, 1)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(928, 97)
         Me.Panel1.TabIndex = 141

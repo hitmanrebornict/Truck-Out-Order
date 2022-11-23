@@ -46,6 +46,7 @@ Public Class NormalUserPage
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim age As Integer
+        Dim maxDetailsTOONumber As Integer
         Dim rd As SqlDataReader
 
         con.ConnectionString = My.Settings.connstr
@@ -58,10 +59,22 @@ Public Class NormalUserPage
             age = rd.Item("maxID")
         End While
 
+        con.Close()
+        con.Open()
+        cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        maxDetailsTOONumber = rd.Item("maxTOONumber")
+
         If age = 0 Then
             My.Settings.newTOONumber = 34800
         Else
-            My.Settings.newTOONumber = age + 1
+            If age > maxDetailsTOONumber Then
+                My.Settings.newTOONumber = age + 1
+            Else
+                My.Settings.newTOONumber = maxDetailsTOONumber
+            End If
+
         End If
         Dim Obj As New NewPage
         Obj.Show()
@@ -104,7 +117,9 @@ Public Class NormalUserPage
         Me.Close()
     End Sub
 
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
+    End Sub
 End Class
 
 

@@ -45,7 +45,7 @@ Partial Class Login
         Me.lblTooSystem.AutoSize = True
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
         Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooSystem.Location = New System.Drawing.Point(106, 122)
+        Me.lblTooSystem.Location = New System.Drawing.Point(95, 122)
         Me.lblTooSystem.Name = "lblTooSystem"
         Me.lblTooSystem.Size = New System.Drawing.Size(1074, 109)
         Me.lblTooSystem.TabIndex = 2
@@ -71,7 +71,7 @@ Partial Class Login
         Me.lblLogin.AutoSize = True
         Me.lblLogin.Font = New System.Drawing.Font("Helvetica", 17.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLogin.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.lblLogin.Location = New System.Drawing.Point(114, 30)
+        Me.lblLogin.Location = New System.Drawing.Point(111, 30)
         Me.lblLogin.Name = "lblLogin"
         Me.lblLogin.Size = New System.Drawing.Size(173, 27)
         Me.lblLogin.TabIndex = 6
@@ -96,7 +96,7 @@ Partial Class Login
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogin.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btnLogin.Location = New System.Drawing.Point(57, 260)
+        Me.btnLogin.Location = New System.Drawing.Point(55, 260)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(285, 37)
         Me.btnLogin.TabIndex = 4
@@ -156,7 +156,7 @@ Partial Class Login
         Me.pnlLogin.Controls.Add(Me.tbUsername)
         Me.pnlLogin.Controls.Add(Me.tbPassword)
         Me.pnlLogin.Controls.Add(Me.btnLogin)
-        Me.pnlLogin.Location = New System.Drawing.Point(433, 249)
+        Me.pnlLogin.Location = New System.Drawing.Point(435, 249)
         Me.pnlLogin.Name = "pnlLogin"
         Me.pnlLogin.Size = New System.Drawing.Size(394, 387)
         Me.pnlLogin.TabIndex = 7
@@ -169,7 +169,7 @@ Partial Class Login
         Me.pbGCB.BackColor = System.Drawing.Color.Transparent
         Me.pbGCB.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.pbGCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbGCB.Location = New System.Drawing.Point(447, 3)
+        Me.pbGCB.Location = New System.Drawing.Point(458, 3)
         Me.pbGCB.Name = "pbGCB"
         Me.pbGCB.Size = New System.Drawing.Size(349, 124)
         Me.pbGCB.TabIndex = 8

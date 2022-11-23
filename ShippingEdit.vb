@@ -12,6 +12,7 @@ Public Class ShippingEdit
     Public Shared checkTempSealNo As Boolean = True
 
 
+
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Disable for shipping
@@ -192,6 +193,7 @@ Public Class ShippingEdit
         End While
         con.Close()
 
+
         'cbpost checkin
         cbShippingPost.Enabled = False
         cbWarehousePost.Enabled = False
@@ -210,6 +212,8 @@ Public Class ShippingEdit
         Else
             cbWarehousePost.Checked = True
             cbWarehousePost.Text = "Posted"
+            btnSave1.Enabled = False
+            btnPost.Enabled = False
         End If
 
         If checkSecurityPost = "" Then
@@ -218,6 +222,8 @@ Public Class ShippingEdit
         Else
             cbSecurityPost.Checked = True
             cbSecurityPost.Text = "Posted"
+            btnSave1.Enabled = False
+            btnPost.Enabled = False
         End If
 
         'show text in cmbCheckTempSeal
@@ -225,13 +231,6 @@ Public Class ShippingEdit
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
-        End If
-
-        'if warehouse post ald, then shipping can't the value anymore
-        If checkWarehousePost = "" Then
-            btnSave.Enabled = True
-        Else
-            btnSave.Enabled = False
         End If
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel1.Click
@@ -374,17 +373,9 @@ Public Class ShippingEdit
     '    End If
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        'Add a Panel control.
-        'Show the Print Preview Dialog.
-        'Dim dialogResult As DialogResult = PrintDialog1.ShowDialog()
-        'If (dialogResult = DialogResult.OK) Then
-        '    PrintDocument1.Print()
-        'End If
-
         PrintDialog1.Document = PrintDocument1 'PrintDialog associate with PrintDocument.
         If PrintDialog1.ShowDialog() = DialogResult.OK Then
             PrintDocument1.Print()
-
         End If
     End Sub
 
@@ -410,6 +401,10 @@ Public Class ShippingEdit
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
+        Dim lcd, lct, rtd, rtt, esSealNo, netCargoWeight As String
+        Dim driverFullName, pmCode, registrationPlate, netCargoWeightCheckValue, netCargoWeightCheck As String
+        Dim checkCargoWeight As Boolean
+
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
@@ -612,19 +607,19 @@ Public Class ShippingEdit
         rd = cmd.ExecuteReader
         rd.Read()
 
-        Dim lcd, lct, rtd, rtt, esSealNo As String
+
         If rd.HasRows() Then
             lcd = Date.Parse(rd.Item("Loading_Completed_Date").ToString()).ToString("yyyy-MM-dd")
             lct = DateTime.Parse(rd.Item("Loading_Completed_Time").ToString()).ToString("HH:mm:ss")
             rtd = Date.Parse(rd.Item("Ready_Truck_Out_Date").ToString()).ToString("yyyy-MM-dd")
             rtt = DateTime.Parse(rd.Item("Ready_Truck_Out_Time").ToString()).ToString("HH:mm:ss")
             If IsDBNull(rd.Item("Es_Seal_No")) Then
-                esSealNo = "NULL"
+                esSealNo = ""
             Else
                 esSealNo = rd.Item("Es_Seal_No")
                 If Len(esSealNo) >= 1 Then
                 Else
-                    esSealNo = "NULL"
+                    esSealNo = ""
                 End If
             End If
             If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
@@ -638,15 +633,57 @@ Public Class ShippingEdit
             Else
                 warehouseCheckUser = rd.Item("Warehouse_CheckPoint_Update_User")
             End If
-        Else
-            lcd = "NULL"
-            lct = "NULL"
-            rtd = "NULL"
-            rtt = "NULL"
-            esSealNo = "NULL"
+            If IsDBNull(rd.Item("Cargo_Weight")) Then
+                netCargoWeight = ""
+            Else
+                netCargoWeight = rd.Item("Cargo_Weight")
+            End If
         End If
 
+        con.Close()
+        con.Open()
+        cmd.CommandText = "Select * from Security where Shipping_ID = @TruckOutNumber4"
+        cmd.Parameters.AddWithValue("@TruckOutNumber4", Search.selected)
+        rd = cmd.ExecuteReader()
+        If rd.HasRows() Then
+            rd.Read()
+            If Not IsDBNull(rd.Item("DRIVER_FULL_NAME")) Then
+                driverFullName = rd.Item("DRIVER_FULL_NAME")
+            Else
+                driverFullName = ""
+            End If
 
+            If Not IsDBNull(rd.Item("PM_CODE")) Then
+                pmCode = rd.Item("PM_CODE")
+            Else
+                pmCode = ""
+            End If
+
+            If Not IsDBNull(rd.Item("PM_REGISTRATION_PLATE")) Then
+                registrationPlate = rd.Item("PM_REGISTRATION_PLATE")
+            Else
+                registrationPlate = ""
+            End If
+
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check")) Then
+                checkCargoWeight = rd.Item("Cargo_Weight_Check")
+                If checkCargoWeight = True Then
+                    netCargoWeightCheck = "Passed"
+                Else
+                    netCargoWeightCheck = "Failed"
+                End If
+            Else
+                netCargoWeight = ""
+            End If
+
+
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check_Value")) Then
+                netCargoWeightCheckValue = rd.Item("Cargo_Weight_Check_Value")
+            Else
+                netCargoWeightCheckValue = ""
+            End If
+        End If
+        con.Close()
 
         e.Graphics.DrawString(": " & esSealNo, printFont, Brushes.Black, 175, 410)
         'Second Section Content Parallel
@@ -668,8 +705,23 @@ Public Class ShippingEdit
 
         'Current User Part
         e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
-        e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 710)
-        e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 175, 710)
+        e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 0, 710)
+        e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 0, 740)
+        e.Graphics.DrawString("Net Cargo Weight Checking Value", printFont, Brushes.Black, 0, 770)
+        e.Graphics.DrawLine(Pens.Black, 0, 810, 850, 810)
+        e.Graphics.DrawString("Driver's Full Name", printFont, Brushes.Black, 0, 830)
+        e.Graphics.DrawString("Driver's PM Code ", printFont, Brushes.Black, 0, 860)
+        e.Graphics.DrawString("Driver's PM Registration Plate", printFont, Brushes.Black, 0, 890)
+        e.Graphics.DrawLine(Pens.Black, 0, 930, 850, 930)
+        e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 950)
+
+        e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 275, 710)
+        e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 275, 740)
+        e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 275, 770)
+        e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
+        e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
+        e.Graphics.DrawString(": " & registrationPlate, printFont, Brushes.Black, 275, 890)
+        e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 275, 950)
     End Sub
 
     Private Sub cmbCompany_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged

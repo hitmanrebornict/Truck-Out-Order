@@ -58,7 +58,7 @@ Partial Class ViewPage
         Me.Panel3.Controls.Add(Me.dtpFrom)
         Me.Panel3.Controls.Add(Me.lblTo)
         Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(190, 1)
+        Me.Panel3.Location = New System.Drawing.Point(187, 1)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(891, 682)
         Me.Panel3.TabIndex = 3

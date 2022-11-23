@@ -27,7 +27,6 @@ Partial Class Admin
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
         Me.lblUserSetting = New System.Windows.Forms.Label()
-        Me.lblFieldSetting = New System.Windows.Forms.Label()
         Me.lblEdit = New System.Windows.Forms.Label()
         Me.lblDriverSetting = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -44,6 +43,7 @@ Partial Class Admin
         Me.pnlDriverSetting = New System.Windows.Forms.Panel()
         Me.pbDriverSetting = New System.Windows.Forms.PictureBox()
         Me.pnlFrieldSetting = New System.Windows.Forms.Panel()
+        Me.lblFieldSetting = New System.Windows.Forms.Label()
         Me.pbFieldSetting = New System.Windows.Forms.PictureBox()
         Me.pnlUser = New System.Windows.Forms.Panel()
         Me.pbUserSetting = New System.Windows.Forms.PictureBox()
@@ -71,63 +71,48 @@ Partial Class Admin
         '
         'lblTooSystem
         '
-        Me.lblTooSystem.AutoSize = True
+        Me.lblTooSystem.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
         Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooSystem.Location = New System.Drawing.Point(87, 139)
+        Me.lblTooSystem.Location = New System.Drawing.Point(0, 139)
         Me.lblTooSystem.Name = "lblTooSystem"
-        Me.lblTooSystem.Size = New System.Drawing.Size(1074, 109)
+        Me.lblTooSystem.Size = New System.Drawing.Size(1262, 109)
         Me.lblTooSystem.TabIndex = 3
         Me.lblTooSystem.Text = "Truck Out Order System"
         Me.lblTooSystem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblUserSetting
         '
-        Me.lblUserSetting.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblUserSetting.AutoSize = True
-        Me.lblUserSetting.BackColor = System.Drawing.Color.White
+        Me.lblUserSetting.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblUserSetting.BackColor = System.Drawing.Color.Transparent
         Me.lblUserSetting.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserSetting.Location = New System.Drawing.Point(39, 117)
+        Me.lblUserSetting.Location = New System.Drawing.Point(0, 113)
         Me.lblUserSetting.Name = "lblUserSetting"
-        Me.lblUserSetting.Size = New System.Drawing.Size(78, 38)
+        Me.lblUserSetting.Size = New System.Drawing.Size(162, 61)
         Me.lblUserSetting.TabIndex = 13
         Me.lblUserSetting.Text = "USER " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.lblUserSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblFieldSetting
-        '
-        Me.lblFieldSetting.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblFieldSetting.AutoSize = True
-        Me.lblFieldSetting.BackColor = System.Drawing.Color.White
-        Me.lblFieldSetting.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFieldSetting.Location = New System.Drawing.Point(46, 117)
-        Me.lblFieldSetting.Name = "lblFieldSetting"
-        Me.lblFieldSetting.Size = New System.Drawing.Size(78, 38)
-        Me.lblFieldSetting.TabIndex = 15
-        Me.lblFieldSetting.Text = "FIELD " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SETTING"
-        Me.lblFieldSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblUserSetting.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'lblEdit
         '
-        Me.lblEdit.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblEdit.AutoSize = True
-        Me.lblEdit.BackColor = System.Drawing.Color.White
+        Me.lblEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblEdit.BackColor = System.Drawing.Color.Transparent
         Me.lblEdit.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEdit.Location = New System.Drawing.Point(53, 169)
+        Me.lblEdit.Location = New System.Drawing.Point(0, 113)
         Me.lblEdit.Name = "lblEdit"
-        Me.lblEdit.Size = New System.Drawing.Size(47, 19)
+        Me.lblEdit.Size = New System.Drawing.Size(162, 128)
         Me.lblEdit.TabIndex = 14
         Me.lblEdit.Text = "EDIT" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblDriverSetting
         '
-        Me.lblDriverSetting.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblDriverSetting.AutoSize = True
-        Me.lblDriverSetting.BackColor = System.Drawing.Color.White
+        Me.lblDriverSetting.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblDriverSetting.BackColor = System.Drawing.Color.Transparent
         Me.lblDriverSetting.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDriverSetting.Location = New System.Drawing.Point(39, 117)
+        Me.lblDriverSetting.Location = New System.Drawing.Point(0, 113)
         Me.lblDriverSetting.Name = "lblDriverSetting"
-        Me.lblDriverSetting.Size = New System.Drawing.Size(78, 38)
+        Me.lblDriverSetting.Size = New System.Drawing.Size(162, 61)
         Me.lblDriverSetting.TabIndex = 17
         Me.lblDriverSetting.Text = "DRIVER " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.lblDriverSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -139,7 +124,7 @@ Partial Class Admin
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.Location = New System.Drawing.Point(1117, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(121, 79)
+        Me.Button1.Size = New System.Drawing.Size(121, 92)
         Me.Button1.TabIndex = 18
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -148,7 +133,7 @@ Partial Class Admin
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(1141, 87)
+        Me.Label8.Location = New System.Drawing.Point(1138, 100)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(82, 20)
         Me.Label8.TabIndex = 19
@@ -156,15 +141,15 @@ Partial Class Admin
         '
         'lblNew
         '
-        Me.lblNew.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblNew.AutoSize = True
-        Me.lblNew.BackColor = System.Drawing.Color.White
+        Me.lblNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblNew.BackColor = System.Drawing.Color.Transparent
         Me.lblNew.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNew.Location = New System.Drawing.Point(51, 169)
+        Me.lblNew.Location = New System.Drawing.Point(3, 113)
         Me.lblNew.Name = "lblNew"
-        Me.lblNew.Size = New System.Drawing.Size(46, 19)
+        Me.lblNew.Size = New System.Drawing.Size(156, 128)
         Me.lblNew.TabIndex = 20
         Me.lblNew.Text = "NEW" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblUserDetails
         '
@@ -203,22 +188,22 @@ Partial Class Admin
         Me.pnlReport.BackColor = System.Drawing.Color.White
         Me.pnlReport.Controls.Add(Me.lblReport)
         Me.pnlReport.Controls.Add(Me.pbReport)
-        Me.pnlReport.Location = New System.Drawing.Point(427, 376)
+        Me.pnlReport.Location = New System.Drawing.Point(426, 376)
         Me.pnlReport.Name = "pnlReport"
         Me.pnlReport.Size = New System.Drawing.Size(163, 241)
         Me.pnlReport.TabIndex = 23
         '
         'lblReport
         '
-        Me.lblReport.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblReport.AutoSize = True
-        Me.lblReport.BackColor = System.Drawing.Color.White
+        Me.lblReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblReport.BackColor = System.Drawing.Color.Transparent
         Me.lblReport.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReport.Location = New System.Drawing.Point(46, 169)
+        Me.lblReport.Location = New System.Drawing.Point(0, 113)
         Me.lblReport.Name = "lblReport"
-        Me.lblReport.Size = New System.Drawing.Size(73, 19)
+        Me.lblReport.Size = New System.Drawing.Size(163, 128)
         Me.lblReport.TabIndex = 16
         Me.lblReport.Text = "REPORT" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pbReport
         '
@@ -236,7 +221,7 @@ Partial Class Admin
         Me.pnlEdit.BackColor = System.Drawing.Color.White
         Me.pnlEdit.Controls.Add(Me.lblEdit)
         Me.pnlEdit.Controls.Add(Me.pbEdit)
-        Me.pnlEdit.Location = New System.Drawing.Point(224, 376)
+        Me.pnlEdit.Location = New System.Drawing.Point(222, 376)
         Me.pnlEdit.Name = "pnlEdit"
         Me.pnlEdit.Size = New System.Drawing.Size(162, 241)
         Me.pnlEdit.TabIndex = 23
@@ -283,6 +268,18 @@ Partial Class Admin
         Me.pnlFrieldSetting.Size = New System.Drawing.Size(162, 174)
         Me.pnlFrieldSetting.TabIndex = 24
         '
+        'lblFieldSetting
+        '
+        Me.lblFieldSetting.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFieldSetting.BackColor = System.Drawing.Color.Transparent
+        Me.lblFieldSetting.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFieldSetting.Location = New System.Drawing.Point(0, 113)
+        Me.lblFieldSetting.Name = "lblFieldSetting"
+        Me.lblFieldSetting.Size = New System.Drawing.Size(159, 61)
+        Me.lblFieldSetting.TabIndex = 19
+        Me.lblFieldSetting.Text = "FIELD " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblFieldSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'pbFieldSetting
         '
         Me.pbFieldSetting.BackColor = System.Drawing.Color.Azure
@@ -317,10 +314,11 @@ Partial Class Admin
         '
         'pbGCB
         '
+        Me.pbGCB.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.pbGCB.BackColor = System.Drawing.Color.Transparent
         Me.pbGCB.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.pbGCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbGCB.Location = New System.Drawing.Point(442, 12)
+        Me.pbGCB.Location = New System.Drawing.Point(458, 34)
         Me.pbGCB.Name = "pbGCB"
         Me.pbGCB.Size = New System.Drawing.Size(349, 124)
         Me.pbGCB.TabIndex = 25
@@ -338,15 +336,14 @@ Partial Class Admin
         '
         'lblCompany
         '
-        Me.lblCompany.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblCompany.AutoSize = True
-        Me.lblCompany.BackColor = System.Drawing.Color.White
+        Me.lblCompany.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCompany.BackColor = System.Drawing.Color.Transparent
         Me.lblCompany.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompany.Location = New System.Drawing.Point(35, 117)
+        Me.lblCompany.Location = New System.Drawing.Point(0, 113)
         Me.lblCompany.Name = "lblCompany"
-        Me.lblCompany.Size = New System.Drawing.Size(89, 38)
+        Me.lblCompany.Size = New System.Drawing.Size(162, 61)
         Me.lblCompany.TabIndex = 17
-        Me.lblCompany.Text = "COMPANY" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblCompany.Text = "SYSTEM" & Global.Microsoft.VisualBasic.ChrW(10) & " SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.lblCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pbCompany
@@ -401,26 +398,19 @@ Partial Class Admin
         Me.Name = "Admin"
         Me.Text = "TOO System"
         Me.pnlNew.ResumeLayout(False)
-        Me.pnlNew.PerformLayout()
         CType(Me.pbNew, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlReport.ResumeLayout(False)
-        Me.pnlReport.PerformLayout()
         CType(Me.pbReport, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlEdit.ResumeLayout(False)
-        Me.pnlEdit.PerformLayout()
         CType(Me.pbEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlDriverSetting.ResumeLayout(False)
-        Me.pnlDriverSetting.PerformLayout()
         CType(Me.pbDriverSetting, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlFrieldSetting.ResumeLayout(False)
-        Me.pnlFrieldSetting.PerformLayout()
         CType(Me.pbFieldSetting, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlUser.ResumeLayout(False)
-        Me.pnlUser.PerformLayout()
         CType(Me.pbUserSetting, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCompany.ResumeLayout(False)
-        Me.pnlCompany.PerformLayout()
         CType(Me.pbCompany, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -431,7 +421,6 @@ Partial Class Admin
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblUserSetting As Label
-    Friend WithEvents lblFieldSetting As Label
     Friend WithEvents lblEdit As Label
     Friend WithEvents lblDriverSetting As Label
     Public WithEvents Button1 As Button
@@ -456,4 +445,5 @@ Partial Class Admin
     Friend WithEvents lblCompany As Label
     Friend WithEvents pbCompany As PictureBox
     Friend WithEvents lblCompanyHeader As Label
+    Friend WithEvents lblFieldSetting As Label
 End Class

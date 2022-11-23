@@ -64,9 +64,9 @@ Partial Class NormalUserPage
         Me.btnLogout.BackColor = System.Drawing.Color.Azure
         Me.btnLogout.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.icons8_logout_rounded_down_100
         Me.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnLogout.Location = New System.Drawing.Point(1079, 12)
+        Me.btnLogout.Location = New System.Drawing.Point(1084, 12)
         Me.btnLogout.Name = "btnLogout"
-        Me.btnLogout.Size = New System.Drawing.Size(134, 72)
+        Me.btnLogout.Size = New System.Drawing.Size(134, 95)
         Me.btnLogout.TabIndex = 27
         Me.btnLogout.UseVisualStyleBackColor = False
         '
@@ -75,7 +75,7 @@ Partial Class NormalUserPage
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1108, 87)
+        Me.Label1.Location = New System.Drawing.Point(1110, 110)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 20)
         Me.Label1.TabIndex = 28
@@ -108,7 +108,7 @@ Partial Class NormalUserPage
         Me.pnlReport.BackColor = System.Drawing.Color.White
         Me.pnlReport.Controls.Add(Me.pbReport)
         Me.pnlReport.Controls.Add(Me.lblReport)
-        Me.pnlReport.Location = New System.Drawing.Point(749, 324)
+        Me.pnlReport.Location = New System.Drawing.Point(748, 324)
         Me.pnlReport.Name = "pnlReport"
         Me.pnlReport.Size = New System.Drawing.Size(162, 241)
         Me.pnlReport.TabIndex = 33
@@ -126,21 +126,22 @@ Partial Class NormalUserPage
         '
         'lblReport
         '
-        Me.lblReport.AutoSize = True
+        Me.lblReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblReport.BackColor = System.Drawing.Color.White
         Me.lblReport.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReport.Location = New System.Drawing.Point(37, 169)
+        Me.lblReport.Location = New System.Drawing.Point(3, 113)
         Me.lblReport.Name = "lblReport"
-        Me.lblReport.Size = New System.Drawing.Size(91, 23)
+        Me.lblReport.Size = New System.Drawing.Size(156, 128)
         Me.lblReport.TabIndex = 16
         Me.lblReport.Text = "REPORT" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pnlEdit
         '
         Me.pnlEdit.BackColor = System.Drawing.Color.White
         Me.pnlEdit.Controls.Add(Me.pbEdit)
         Me.pnlEdit.Controls.Add(Me.lblEdit)
-        Me.pnlEdit.Location = New System.Drawing.Point(543, 324)
+        Me.pnlEdit.Location = New System.Drawing.Point(541, 324)
         Me.pnlEdit.Name = "pnlEdit"
         Me.pnlEdit.Size = New System.Drawing.Size(162, 241)
         Me.pnlEdit.TabIndex = 32
@@ -158,14 +159,15 @@ Partial Class NormalUserPage
         '
         'lblEdit
         '
-        Me.lblEdit.AutoSize = True
+        Me.lblEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblEdit.BackColor = System.Drawing.Color.White
         Me.lblEdit.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEdit.Location = New System.Drawing.Point(53, 169)
+        Me.lblEdit.Location = New System.Drawing.Point(3, 113)
         Me.lblEdit.Name = "lblEdit"
-        Me.lblEdit.Size = New System.Drawing.Size(57, 23)
+        Me.lblEdit.Size = New System.Drawing.Size(156, 128)
         Me.lblEdit.TabIndex = 14
         Me.lblEdit.Text = "EDIT" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pnlNew
         '
@@ -190,14 +192,15 @@ Partial Class NormalUserPage
         '
         'lblNew
         '
-        Me.lblNew.AutoSize = True
+        Me.lblNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblNew.BackColor = System.Drawing.Color.White
         Me.lblNew.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNew.Location = New System.Drawing.Point(55, 169)
+        Me.lblNew.Location = New System.Drawing.Point(0, 113)
         Me.lblNew.Name = "lblNew"
-        Me.lblNew.Size = New System.Drawing.Size(56, 23)
+        Me.lblNew.Size = New System.Drawing.Size(159, 128)
         Me.lblNew.TabIndex = 20
         Me.lblNew.Text = "NEW" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblCompanyHeader
         '
@@ -236,13 +239,10 @@ Partial Class NormalUserPage
         Me.Text = "TOO System"
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlReport.ResumeLayout(False)
-        Me.pnlReport.PerformLayout()
         CType(Me.pbReport, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlEdit.ResumeLayout(False)
-        Me.pnlEdit.PerformLayout()
         CType(Me.pbEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlNew.ResumeLayout(False)
-        Me.pnlNew.PerformLayout()
         CType(Me.pbNew, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

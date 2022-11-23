@@ -492,6 +492,7 @@ Public Class Edit
             Next
             btnPrint.Enabled = True
             btnCancel.Enabled = True
+            lblCargoWeight.Enabled = True
         End If
 
         cbShippingPost.Enabled = False
@@ -522,13 +523,14 @@ Public Class Edit
         End If
 
         If checkCargoWeight = False Then
-            cbCargoWeightCheck.Checked = False
-            cbCargoWeightCheck.Text = "Failed"
+            lblCargoWeight.Text = "Failed"
+            lblCargoWeight.ForeColor = Color.Red
+
         Else
-            cbCargoWeightCheck.Checked = True
-            cbCargoWeightCheck.Text = "Passed"
+            lblCargoWeight.Text = "Passed"
 
         End If
+
     End Sub
 
 

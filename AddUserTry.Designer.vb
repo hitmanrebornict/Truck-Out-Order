@@ -60,7 +60,7 @@ Partial Class AddUserTry
         Me.Panel3.Controls.Add(Me.btnAddUser)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(192, 12)
+        Me.Panel3.Location = New System.Drawing.Point(179, 12)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(907, 669)
         Me.Panel3.TabIndex = 3
@@ -196,6 +196,7 @@ Partial Class AddUserTry
         Me.tbPassword.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPassword.Location = New System.Drawing.Point(455, 166)
         Me.tbPassword.Name = "tbPassword"
+        Me.tbPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.tbPassword.Size = New System.Drawing.Size(325, 26)
         Me.tbPassword.TabIndex = 4
         '
@@ -275,7 +276,7 @@ Partial Class AddUserTry
         Me.Panel1.Controls.Add(Me.lblUserMaintenance)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Location = New System.Drawing.Point(192, -5)
+        Me.Panel1.Location = New System.Drawing.Point(179, -5)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(907, 97)
         Me.Panel1.TabIndex = 139

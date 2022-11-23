@@ -91,6 +91,7 @@ Public Class Admin
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim age As Integer
+        Dim maxDetailsTOONumber As Integer
         Dim rd As SqlDataReader
 
         con.ConnectionString = My.Settings.connstr
@@ -103,10 +104,22 @@ Public Class Admin
             age = rd.Item("maxID")
         End While
 
+        con.Close()
+        con.Open()
+        cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        maxDetailsTOONumber = rd.Item("maxTOONumber")
+
         If age = 0 Then
-            Me.TruckOutNumber = 34800
+            My.Settings.newTOONumber = 34800
         Else
-            Me.TruckOutNumber = age + 1
+            If age > maxDetailsTOONumber Then
+                My.Settings.newTOONumber = age + 1
+            Else
+                My.Settings.newTOONumber = maxDetailsTOONumber
+            End If
+
         End If
         Dim Obj As New NewPage
         Obj.Show()
@@ -149,9 +162,65 @@ Public Class Admin
         Me.Close()
     End Sub
 
+    Private Sub pbSystem_Hover(sender As Object, e As EventArgs) Handles pbCompany.MouseHover
+        pbCompany.BackColor = Color.SkyBlue
+        pnlCompany.BackColor = Color.LightGray
+        lblCompany.BackColor = Color.LightGray
+    End Sub
+
+    Private Sub pbSystem_Leave(sender As Object, e As EventArgs) Handles pbCompany.MouseLeave
+        pbCompany.BackColor = Color.Azure
+        pnlCompany.BackColor = Color.White
+        lblCompany.BackColor = Color.White
+    End Sub
+
     Private Sub pbCompany_Click(sender As Object, e As EventArgs) Handles pbCompany.Click
         Dim Company As New CompanyMaintenance
         Company.Show()
         Me.Close()
     End Sub
+
+    Private Sub lblNew_Click(sender As Object, e As EventArgs) Handles lblNew.Click
+        Dim newPage As New NewPage
+        newPage.Show()
+        newPage.Close()
+    End Sub
+
+    Private Sub lblEdit_Click(sender As Object, e As EventArgs) Handles lblEdit.Click
+        Dim searchPage As New Search
+        searchPage.Show()
+        searchPage.Close()
+    End Sub
+
+    Private Sub lblReport_Click(sender As Object, e As EventArgs) Handles lblReport.Click
+        Dim reportPage As New ViewPage
+        reportPage.Show()
+        reportPage.Close()
+    End Sub
+
+    Private Sub lblUserSetting_Click(sender As Object, e As EventArgs) Handles lblUserSetting.Click
+        Dim userSetting As New AddUserTry
+        userSetting.Show()
+        userSetting.Close()
+    End Sub
+
+    Private Sub lblFieldSetting_Click(sender As Object, e As EventArgs) Handles lblFieldSetting.Click
+        Dim fieldSetting As New FieldMaintenance
+        fieldSetting.Show()
+        fieldSetting.Close()
+    End Sub
+
+    Private Sub lblDriverSetting_Click(sender As Object, e As EventArgs) Handles lblDriverSetting.Click
+        Dim driverSetting As New DriverMaintenance
+        driverSetting.Show()
+        driverSetting.Close()
+    End Sub
+
+    Private Sub lblCompany_Click(sender As Object, e As EventArgs) Handles lblCompany.Click
+        Dim systemSetting As New CompanyMaintenance
+        systemSetting.Show()
+        systemSetting.Close()
+    End Sub
+
+
 End Class

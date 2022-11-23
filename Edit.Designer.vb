@@ -24,8 +24,9 @@ Partial Class Edit
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Edit))
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lblCargoWeight = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tbCargo = New System.Windows.Forms.TextBox()
+        Me.tbCargoChecking = New System.Windows.Forms.TextBox()
         Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.cmbCheckTempSealNo = New System.Windows.Forms.ComboBox()
@@ -49,8 +50,9 @@ Partial Class Edit
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cbCargoWeightCheck = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbCargo = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.lblPortFullName = New System.Windows.Forms.Label()
         Me.lblLoadingPortFullName = New System.Windows.Forms.Label()
         Me.lblCompanyFullName = New System.Windows.Forms.Label()
@@ -111,8 +113,6 @@ Partial Class Edit
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.tbCargoChecking = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
@@ -145,6 +145,15 @@ Partial Class Edit
         Me.Panel3.Size = New System.Drawing.Size(1245, 684)
         Me.Panel3.TabIndex = 3
         '
+        'lblCargoWeight
+        '
+        Me.lblCargoWeight.AutoSize = True
+        Me.lblCargoWeight.Location = New System.Drawing.Point(4, 183)
+        Me.lblCargoWeight.Name = "lblCargoWeight"
+        Me.lblCargoWeight.Size = New System.Drawing.Size(58, 19)
+        Me.lblCargoWeight.TabIndex = 161
+        Me.lblCargoWeight.Text = "Label8"
+        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -155,7 +164,7 @@ Partial Class Edit
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 307.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbCargoChecking, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel7, 1, 4)
@@ -178,16 +187,16 @@ Partial Class Edit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(578, 241)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(579, 241)
         Me.TableLayoutPanel1.TabIndex = 160
         '
-        'tbCargo
+        'tbCargoChecking
         '
-        Me.tbCargo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCargo.Location = New System.Drawing.Point(751, 263)
-        Me.tbCargo.Name = "tbCargo"
-        Me.tbCargo.Size = New System.Drawing.Size(224, 26)
-        Me.tbCargo.TabIndex = 60
+        Me.tbCargoChecking.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCargoChecking.Location = New System.Drawing.Point(274, 204)
+        Me.tbCargoChecking.Name = "tbCargoChecking"
+        Me.tbCargoChecking.Size = New System.Drawing.Size(277, 26)
+        Me.tbCargoChecking.TabIndex = 161
         '
         'tbInternalSealNo
         '
@@ -347,14 +356,14 @@ Partial Class Edit
         Me.TableLayoutPanel8.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel8.ColumnCount = 1
         Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.Controls.Add(Me.cbSecurityPost, 0, 5)
+        Me.TableLayoutPanel8.Controls.Add(Me.lblCargoWeight, 0, 7)
         Me.TableLayoutPanel8.Controls.Add(Me.cbShippingPost, 0, 1)
         Me.TableLayoutPanel8.Controls.Add(Me.cbWarehousePost, 0, 3)
         Me.TableLayoutPanel8.Controls.Add(Me.Label6, 0, 0)
         Me.TableLayoutPanel8.Controls.Add(Me.Label2, 0, 2)
         Me.TableLayoutPanel8.Controls.Add(Me.Label3, 0, 4)
         Me.TableLayoutPanel8.Controls.Add(Me.Label4, 0, 6)
-        Me.TableLayoutPanel8.Controls.Add(Me.cbCargoWeightCheck, 0, 7)
+        Me.TableLayoutPanel8.Controls.Add(Me.cbSecurityPost, 0, 5)
         Me.TableLayoutPanel8.Location = New System.Drawing.Point(1056, 412)
         Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
         Me.TableLayoutPanel8.RowCount = 8
@@ -442,16 +451,6 @@ Partial Class Edit
         Me.Label4.TabIndex = 160
         Me.Label4.Text = "Net Cargo Weight"
         '
-        'cbCargoWeightCheck
-        '
-        Me.cbCargoWeightCheck.AutoSize = True
-        Me.cbCargoWeightCheck.Location = New System.Drawing.Point(4, 186)
-        Me.cbCargoWeightCheck.Name = "cbCargoWeightCheck"
-        Me.cbCargoWeightCheck.Size = New System.Drawing.Size(172, 19)
-        Me.cbCargoWeightCheck.TabIndex = 161
-        Me.cbCargoWeightCheck.Text = "cbCargoWeightCheck"
-        Me.cbCargoWeightCheck.UseVisualStyleBackColor = True
-        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
@@ -506,6 +505,23 @@ Partial Class Edit
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(998, 303)
         Me.TableLayoutPanel3.TabIndex = 158
+        '
+        'tbCargo
+        '
+        Me.tbCargo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCargo.Location = New System.Drawing.Point(751, 263)
+        Me.tbCargo.Name = "tbCargo"
+        Me.tbCargo.Size = New System.Drawing.Size(224, 26)
+        Me.tbCargo.TabIndex = 60
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(502, 260)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(168, 22)
+        Me.Label7.TabIndex = 161
+        Me.Label7.Text = "Net Cargo Weight:"
         '
         'lblPortFullName
         '
@@ -892,7 +908,7 @@ Partial Class Edit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 313.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -1131,23 +1147,6 @@ Partial Class Edit
         'PrintDocument1
         '
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(502, 260)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(168, 22)
-        Me.Label7.TabIndex = 161
-        Me.Label7.Text = "Net Cargo Weight:"
-        '
-        'tbCargoChecking
-        '
-        Me.tbCargoChecking.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCargoChecking.Location = New System.Drawing.Point(274, 204)
-        Me.tbCargoChecking.Name = "tbCargoChecking"
-        Me.tbCargoChecking.Size = New System.Drawing.Size(277, 26)
-        Me.tbCargoChecking.TabIndex = 161
-        '
         'Edit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1258,7 +1257,6 @@ Partial Class Edit
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents cbCargoWeightCheck As CheckBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents tbCargo As TextBox
     Friend WithEvents tbInternalSealNo As TextBox
@@ -1278,4 +1276,5 @@ Partial Class Edit
     Friend WithEvents lblContainerNo As Label
     Friend WithEvents tbCargoChecking As TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents lblCargoWeight As Label
 End Class

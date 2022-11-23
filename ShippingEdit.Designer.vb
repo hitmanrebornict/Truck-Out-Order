@@ -27,12 +27,10 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblPortFullName = New System.Windows.Forms.Label()
         Me.lblLoadingPortFullName = New System.Windows.Forms.Label()
-        Me.lblCompanyFullName = New System.Windows.Forms.Label()
         Me.lblCompany = New System.Windows.Forms.Label()
         Me.cmbCompany = New System.Windows.Forms.ComboBox()
         Me.cmbContainerSize = New System.Windows.Forms.ComboBox()
         Me.lblInvoice = New System.Windows.Forms.Label()
-        Me.tbInvoice = New System.Windows.Forms.TextBox()
         Me.lblProduct = New System.Windows.Forms.Label()
         Me.tbProduct = New System.Windows.Forms.TextBox()
         Me.lblContainerSize = New System.Windows.Forms.Label()
@@ -55,6 +53,8 @@ Partial Class ShippingEdit
         Me.lblWarehouseLocation = New System.Windows.Forms.Label()
         Me.tbLoadingBay = New System.Windows.Forms.TextBox()
         Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
+        Me.tbInvoice = New System.Windows.Forms.TextBox()
+        Me.lblCompanyFullName = New System.Windows.Forms.Label()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.btnSave1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -207,16 +207,6 @@ Partial Class ShippingEdit
         Me.lblLoadingPortFullName.TabIndex = 132
         Me.lblLoadingPortFullName.Text = "Loading Port Full Name"
         '
-        'lblCompanyFullName
-        '
-        Me.lblCompanyFullName.AutoSize = True
-        Me.lblCompanyFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompanyFullName.Location = New System.Drawing.Point(225, 40)
-        Me.lblCompanyFullName.Name = "lblCompanyFullName"
-        Me.lblCompanyFullName.Size = New System.Drawing.Size(143, 17)
-        Me.lblCompanyFullName.TabIndex = 130
-        Me.lblCompanyFullName.Text = "Company Full Name" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
         'lblCompany
         '
         Me.lblCompany.AutoSize = True
@@ -256,14 +246,6 @@ Partial Class ShippingEdit
         Me.lblInvoice.Size = New System.Drawing.Size(77, 22)
         Me.lblInvoice.TabIndex = 105
         Me.lblInvoice.Text = "Invoice:"
-        '
-        'tbInvoice
-        '
-        Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInvoice.Location = New System.Drawing.Point(225, 121)
-        Me.tbInvoice.Name = "tbInvoice"
-        Me.tbInvoice.Size = New System.Drawing.Size(272, 26)
-        Me.tbInvoice.TabIndex = 3
         '
         'lblProduct
         '
@@ -477,6 +459,24 @@ Partial Class ShippingEdit
         Me.cmbWarehouseLocation.Size = New System.Drawing.Size(224, 27)
         Me.cmbWarehouseLocation.TabIndex = 12
         '
+        'tbInvoice
+        '
+        Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbInvoice.Location = New System.Drawing.Point(225, 121)
+        Me.tbInvoice.Name = "tbInvoice"
+        Me.tbInvoice.Size = New System.Drawing.Size(272, 26)
+        Me.tbInvoice.TabIndex = 3
+        '
+        'lblCompanyFullName
+        '
+        Me.lblCompanyFullName.AutoSize = True
+        Me.lblCompanyFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyFullName.Location = New System.Drawing.Point(225, 40)
+        Me.lblCompanyFullName.Name = "lblCompanyFullName"
+        Me.lblCompanyFullName.Size = New System.Drawing.Size(156, 19)
+        Me.lblCompanyFullName.TabIndex = 130
+        Me.lblCompanyFullName.Text = "Company Full Name" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
         'btnPost
         '
         Me.btnPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -521,7 +521,7 @@ Partial Class ShippingEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 429.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 431.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -782,7 +782,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 293.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbContainerNo, 1, 0)
@@ -803,7 +803,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.35986!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(516, 198)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(518, 198)
         Me.TableLayoutPanel1.TabIndex = 50
         '
         'tbInternalSealNo
@@ -938,7 +938,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
         Me.TableLayoutPanel7.Size = New System.Drawing.Size(277, 34)
         Me.TableLayoutPanel7.TabIndex = 57
         '
@@ -972,7 +972,7 @@ Partial Class ShippingEdit
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Location = New System.Drawing.Point(16, 1)
+        Me.Panel1.Location = New System.Drawing.Point(15, 1)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1235, 121)
