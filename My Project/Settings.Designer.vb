@@ -54,17 +54,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source =10.10.4.8; Initial Catalog = TOOSystem; Integrated Security = False "& _ 
-            "; User ID = sa ; Password =Gccm12345")>  _
-        Public ReadOnly Property connstr() As String
-            Get
-                Return CType(Me("connstr"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
@@ -164,6 +153,17 @@ Namespace My
         Public ReadOnly Property cargoWeight40() As Integer
             Get
                 Return CType(Me("cargoWeight40"),Integer)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Secu"& _ 
+            "rity = False ; User ID = too ; Password = admin")>  _
+        Public ReadOnly Property connstr() As String
+            Get
+                Return CType(Me("connstr"),String)
             End Get
         End Property
     End Class

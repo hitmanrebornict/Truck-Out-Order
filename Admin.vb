@@ -183,43 +183,43 @@ Public Class Admin
     Private Sub lblNew_Click(sender As Object, e As EventArgs) Handles lblNew.Click
         Dim newPage As New NewPage
         newPage.Show()
-        newPage.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblEdit_Click(sender As Object, e As EventArgs) Handles lblEdit.Click
         Dim searchPage As New Search
         searchPage.Show()
-        searchPage.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblReport_Click(sender As Object, e As EventArgs) Handles lblReport.Click
         Dim reportPage As New ViewPage
         reportPage.Show()
-        reportPage.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblUserSetting_Click(sender As Object, e As EventArgs) Handles lblUserSetting.Click
         Dim userSetting As New AddUserTry
         userSetting.Show()
-        userSetting.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblFieldSetting_Click(sender As Object, e As EventArgs) Handles lblFieldSetting.Click
         Dim fieldSetting As New FieldMaintenance
         fieldSetting.Show()
-        fieldSetting.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblDriverSetting_Click(sender As Object, e As EventArgs) Handles lblDriverSetting.Click
         Dim driverSetting As New DriverMaintenance
         driverSetting.Show()
-        driverSetting.Close()
+        Me.Close()
     End Sub
 
     Private Sub lblCompany_Click(sender As Object, e As EventArgs) Handles lblCompany.Click
         Dim systemSetting As New CompanyMaintenance
         systemSetting.Show()
-        systemSetting.Close()
+        Me.Close()
     End Sub
 
 

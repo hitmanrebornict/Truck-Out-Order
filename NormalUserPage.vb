@@ -117,8 +117,22 @@ Public Class NormalUserPage
         Me.Close()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub lblNew_Click(sender As Object, e As EventArgs) Handles lblNew.Click
+        Dim newPage As New NewPage
+        newPage.Show()
+        Me.Close()
+    End Sub
 
+    Private Sub lblEdit_Click(sender As Object, e As EventArgs) Handles lblEdit.Click
+        Dim searchPage As New Search
+        searchPage.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub lblReport_Click(sender As Object, e As EventArgs) Handles lblReport.Click
+        Dim reportPage As New ViewPage
+        reportPage.Show()
+        Me.Close()
     End Sub
 End Class
 
