@@ -75,7 +75,7 @@ Partial Class CompanyMaintenance
         Me.tbTOONumber.Controls.Add(Me.btnDel)
         Me.tbTOONumber.Controls.Add(Me.TableLayoutPanel1)
         Me.tbTOONumber.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTOONumber.Location = New System.Drawing.Point(120, 1)
+        Me.tbTOONumber.Location = New System.Drawing.Point(113, 1)
         Me.tbTOONumber.Name = "tbTOONumber"
         Me.tbTOONumber.Size = New System.Drawing.Size(1039, 680)
         Me.tbTOONumber.TabIndex = 3
@@ -393,7 +393,7 @@ Partial Class CompanyMaintenance
         Me.Panel1.Controls.Add(Me.lblUserMaintenance)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
-        Me.Panel1.Location = New System.Drawing.Point(120, 1)
+        Me.Panel1.Location = New System.Drawing.Point(113, 1)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1039, 97)
         Me.Panel1.TabIndex = 140
