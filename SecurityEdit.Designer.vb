@@ -85,7 +85,7 @@ Partial Class SecurityEdit
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
+        Me.tbCheckCargoWeight = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.cmbCheckTempSealNo = New System.Windows.Forms.ComboBox()
         Me.tbTempSeal = New System.Windows.Forms.TextBox()
@@ -104,6 +104,8 @@ Partial Class SecurityEdit
         Me.tbSecurityCheckInternalSealNo = New System.Windows.Forms.TextBox()
         Me.tbSecurityCheckTemporarySealNo = New System.Windows.Forms.TextBox()
         Me.lblTemporarySealNo = New System.Windows.Forms.Label()
+        Me.tbCargo1 = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -113,9 +115,7 @@ Partial Class SecurityEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.tbCheckCargoWeight = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
         Me.tbCargo.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -152,7 +152,7 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -859,8 +859,8 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel1.Controls.Add(Me.tbSecurityCheckInternalSealNo, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbSecurityCheckTemporarySealNo, 2, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.lblTemporarySealNo, 0, 4)
-        Me.TableLayoutPanel1.Controls.Add(Me.TextBox1, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.Label8, 0, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.tbCargo1, 1, 5)
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 409)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -874,14 +874,13 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(655, 260)
         Me.TableLayoutPanel1.TabIndex = 50
         '
-        'tbInternalSealNo
+        'tbCheckCargoWeight
         '
-        Me.tbInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tbInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInternalSealNo.Location = New System.Drawing.Point(226, 133)
-        Me.tbInternalSealNo.Name = "tbInternalSealNo"
-        Me.tbInternalSealNo.Size = New System.Drawing.Size(171, 26)
-        Me.tbInternalSealNo.TabIndex = 56
+        Me.tbCheckCargoWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCheckCargoWeight.Location = New System.Drawing.Point(417, 219)
+        Me.tbCheckCargoWeight.Name = "tbCheckCargoWeight"
+        Me.tbCheckCargoWeight.Size = New System.Drawing.Size(233, 26)
+        Me.tbCheckCargoWeight.TabIndex = 152
         '
         'TableLayoutPanel7
         '
@@ -1063,6 +1062,26 @@ Partial Class SecurityEdit
         Me.lblTemporarySealNo.TabIndex = 31
         Me.lblTemporarySealNo.Text = "Temporary Seal No."
         '
+        'tbCargo1
+        '
+        Me.tbCargo1.Enabled = False
+        Me.tbCargo1.Font = New System.Drawing.Font("Helvetica Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCargo1.Location = New System.Drawing.Point(226, 219)
+        Me.tbCargo1.Name = "tbCargo1"
+        Me.tbCargo1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.tbCargo1.Size = New System.Drawing.Size(171, 27)
+        Me.tbCargo1.TabIndex = 153
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(4, 216)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(163, 22)
+        Me.Label8.TabIndex = 154
+        Me.Label8.Text = "Net Cargo Weight"
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
@@ -1150,33 +1169,14 @@ Partial Class SecurityEdit
         'PrintDocument1
         '
         '
-        'tbCheckCargoWeight
+        'tbInternalSealNo
         '
-        Me.tbCheckCargoWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCheckCargoWeight.Location = New System.Drawing.Point(417, 219)
-        Me.tbCheckCargoWeight.Name = "tbCheckCargoWeight"
-        Me.tbCheckCargoWeight.Size = New System.Drawing.Size(233, 26)
-        Me.tbCheckCargoWeight.TabIndex = 152
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Font = New System.Drawing.Font("Helvetica Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(226, 219)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox1.Size = New System.Drawing.Size(171, 27)
-        Me.TextBox1.TabIndex = 153
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(4, 216)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(163, 22)
-        Me.Label8.TabIndex = 154
-        Me.Label8.Text = "Net Cargo Weight"
+        Me.tbInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.tbInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbInternalSealNo.Location = New System.Drawing.Point(226, 133)
+        Me.tbInternalSealNo.Name = "tbInternalSealNo"
+        Me.tbInternalSealNo.Size = New System.Drawing.Size(171, 26)
+        Me.tbInternalSealNo.TabIndex = 56
         '
         'SecurityEdit
         '
@@ -1223,7 +1223,6 @@ Partial Class SecurityEdit
     Friend WithEvents btnPrint As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents tbInternalSealNo As TextBox
     Friend WithEvents tbLinerSealNo As TextBox
     Friend WithEvents tbContainerNo As TextBox
     Friend WithEvents lblContainerNo As Label
@@ -1310,6 +1309,7 @@ Partial Class SecurityEdit
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents tbCheckCargoWeight As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbCargo1 As TextBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents tbInternalSealNo As TextBox
 End Class

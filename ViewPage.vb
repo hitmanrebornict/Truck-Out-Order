@@ -26,7 +26,8 @@ Public Class ViewPage
         Dim dt As New DataTable()
         Dim postOption As String
         Dim selectOption As String
-        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size',Warehouse.Cargo_Weight as 'Cargo Weight' ,CASE WHEN Cargo_Weight_Check = 1 Then 'Pass' else 'Failed' END AS Cargo_Weight_Check, LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
+        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size',Warehouse.Cargo_Weight as 'Net Cargo Weight' , Security.Cargo_Weight_Check_Value as 'Net Cargo Weight Checking Value', CASE WHEN Cargo_Weight_Check = 1 Then 'Pass' else 'Failed' END AS 'Cargo Weight Checking', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
+        Dim selectStringNormal As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
         Dim numOfReport As String
         Dim startDate, endDate As String
         startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
@@ -42,19 +43,19 @@ Public Class ViewPage
             Select Case cmbPostSelect.Text
                 Case "Shipping Post Completed"
                     postOption = "Shipping_POST_Time"
-                    selectOption = selectString & "Shipping_Post_Time as 'Shipping Post Time',Shipping_POST_User as 'Shipping Post User' from Shipping"
+                    selectOption = selectStringNormal & "Shipping_Post_Time as 'Shipping Post Time',Shipping_POST_User as 'Shipping Post User' from Shipping"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Warehouse Post Completed"
                     postOption = "Warehouse_Post_Time"
-                    selectOption = selectString & "Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User' from Shipping"
+                    selectOption = selectStringNormal & "Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User' from Shipping"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Security Post Completed"
                     postOption = "Security_Post_Time"
-                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
+                    selectOption = selectStringNormal & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping "
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Cargo Weight Checking"
                     postOption = "Security_Post_Time"
-                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping Inner join Security  on Shipping.ID = Security.Shipping_ID inner join warehouse on shipping.ID = warehouse.shipping_ID"
+                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and warehouse.cargo_weight is not null  Order by security.cargo_weight_check,shipping.container_size, id")
             End Select
 
@@ -72,7 +73,7 @@ Public Class ViewPage
             Select Case cmbPostSelect.Text
                 Case "Cargo Weight Checking"
                     postString = " Net Cargo Weight Checking Post Between "
-                    cmd.CommandText = "SELECT COUNT(ID) as numofReport from shipping inner join security on shipping.id = security.shipping_id where security.Cargo_Weight_Check = 0 and " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') "
+                    cmd.CommandText = "SELECT COUNT(ID) as numofReport from shipping inner join security on shipping.id = security.shipping_id where  " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') "
                 Case Else
                     postString = " Completed Post Between "
                     cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
@@ -160,13 +161,13 @@ Public Class ViewPage
         con2.Open()
 
         Select Case My.Settings.role_id
-            Case 2
-                cmd2.CommandText = "SELECT ID from Shipping where SHIPPING_POST is NULL and ID = @shippingID"
-            Case 3, 4
-                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-            Case 5
-                cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
-            Case 1, 20, 30
+            'Case 2
+            '    cmd2.CommandText = "SELECT ID from Shipping where SHIPPING_POST is NULL and ID = @shippingID"
+            'Case 3, 4
+            '    cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+            'Case 5
+            '    cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "NO" + "'  AND ID = @shippingID"
+            Case Else
                 cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID"
         End Select
         cmd2.Parameters.AddWithValue("@shippingID", selected)

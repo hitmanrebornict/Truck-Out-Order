@@ -394,6 +394,13 @@ Public Class Edit
             Else
                 checkCargoWeight = True
             End If
+
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check_Value")) Then
+                tbCargoChecking.Text = rd.Item("Cargo_Weight_Check_Value")
+            Else
+                tbCargoChecking.Text = "NULL"
+            End If
+
         End While
 
         con.Close()
@@ -517,7 +524,6 @@ Public Class Edit
         If checkCargoWeight = False Then
             cbCargoWeightCheck.Checked = False
             cbCargoWeightCheck.Text = "Failed"
-            MessageBox.Show("Please Inform Warehouse (Net Cargo Weight Checking Failed)", "Failed Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             cbCargoWeightCheck.Checked = True
             cbCargoWeightCheck.Text = "Passed"

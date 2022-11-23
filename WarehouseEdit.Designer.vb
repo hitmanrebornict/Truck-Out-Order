@@ -67,6 +67,7 @@ Partial Class WarehouseEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbWarehouseCheckLinerSealNo = New System.Windows.Forms.TextBox()
         Me.tbWarehouseCheckInternalSealNo = New System.Windows.Forms.TextBox()
         Me.cbContainerNo = New System.Windows.Forms.CheckBox()
         Me.cbEsSealNo = New System.Windows.Forms.CheckBox()
@@ -91,6 +92,7 @@ Partial Class WarehouseEdit
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbCargo = New System.Windows.Forms.TextBox()
         Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.cmbCheckTempSealNo = New System.Windows.Forms.ComboBox()
@@ -105,11 +107,9 @@ Partial Class WarehouseEdit
         Me.lblInternalSealNo = New System.Windows.Forms.Label()
         Me.lblTemporarySealNo = New System.Windows.Forms.Label()
         Me.lblContainerNo = New System.Windows.Forms.Label()
+        Me.lblNetCargoWeight = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.tbWarehouseCheckLinerSealNo = New System.Windows.Forms.TextBox()
-        Me.tbCargo = New System.Windows.Forms.TextBox()
-        Me.lblNetCargoWeight = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -634,6 +634,15 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel8.Size = New System.Drawing.Size(219, 179)
         Me.TableLayoutPanel8.TabIndex = 61
         '
+        'tbWarehouseCheckLinerSealNo
+        '
+        Me.tbWarehouseCheckLinerSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.tbWarehouseCheckLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbWarehouseCheckLinerSealNo.Location = New System.Drawing.Point(4, 75)
+        Me.tbWarehouseCheckLinerSealNo.Name = "tbWarehouseCheckLinerSealNo"
+        Me.tbWarehouseCheckLinerSealNo.Size = New System.Drawing.Size(211, 26)
+        Me.tbWarehouseCheckLinerSealNo.TabIndex = 64
+        '
         'tbWarehouseCheckInternalSealNo
         '
         Me.tbWarehouseCheckInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -766,7 +775,7 @@ Partial Class WarehouseEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -917,7 +926,7 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 288.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 289.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbCargo, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel7, 1, 4)
@@ -940,8 +949,16 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(528, 217)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(529, 217)
         Me.TableLayoutPanel1.TabIndex = 50
+        '
+        'tbCargo
+        '
+        Me.tbCargo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCargo.Location = New System.Drawing.Point(242, 184)
+        Me.tbCargo.Name = "tbCargo"
+        Me.tbCargo.Size = New System.Drawing.Size(281, 26)
+        Me.tbCargo.TabIndex = 60
         '
         'tbInternalSealNo
         '
@@ -964,7 +981,7 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
         Me.TableLayoutPanel7.Size = New System.Drawing.Size(281, 29)
         Me.TableLayoutPanel7.TabIndex = 57
         '
@@ -1087,30 +1104,6 @@ Partial Class WarehouseEdit
         Me.lblContainerNo.TabIndex = 27
         Me.lblContainerNo.Text = "Container No."
         '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.UseEXDialog = True
-        '
-        'PrintDocument1
-        '
-        '
-        'tbWarehouseCheckLinerSealNo
-        '
-        Me.tbWarehouseCheckLinerSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tbWarehouseCheckLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbWarehouseCheckLinerSealNo.Location = New System.Drawing.Point(4, 75)
-        Me.tbWarehouseCheckLinerSealNo.Name = "tbWarehouseCheckLinerSealNo"
-        Me.tbWarehouseCheckLinerSealNo.Size = New System.Drawing.Size(211, 26)
-        Me.tbWarehouseCheckLinerSealNo.TabIndex = 64
-        '
-        'tbCargo
-        '
-        Me.tbCargo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCargo.Location = New System.Drawing.Point(242, 184)
-        Me.tbCargo.Name = "tbCargo"
-        Me.tbCargo.Size = New System.Drawing.Size(281, 26)
-        Me.tbCargo.TabIndex = 60
-        '
         'lblNetCargoWeight
         '
         Me.lblNetCargoWeight.AutoSize = True
@@ -1119,6 +1112,13 @@ Partial Class WarehouseEdit
         Me.lblNetCargoWeight.Size = New System.Drawing.Size(168, 22)
         Me.lblNetCargoWeight.TabIndex = 158
         Me.lblNetCargoWeight.Text = "Net Cargo Weight:"
+        '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
+        'PrintDocument1
+        '
         '
         'WarehouseEdit
         '

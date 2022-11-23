@@ -191,7 +191,7 @@ Public Class SecurityEdit
 
         con.Close()
         con.Open()
-        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT ,Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
+        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
         rd = cmd.ExecuteReader()
         While rd.Read()
@@ -208,7 +208,6 @@ Public Class SecurityEdit
             dtpRTD.Text = rd.Item("READY_TRUCK_OUT_DATE")
             dtpRTT.Text = rd.Item("RCT")
 
-
             If IsDBNull(rd.Item("Shipping_ID")) Then
                 checkWarehouse = ""
             Else
@@ -216,11 +215,9 @@ Public Class SecurityEdit
             End If
 
             If IsDBNull(rd.Item("Cargo_Weight")) Then
-                checkCargoWeight = False
-                tbCargo.Text = ""
+                tbCargo1.Text = ""
             Else
-                checkCargoWeight = True
-                tbCargo.Text = rd.Item("Cargo_Weight")
+                tbCargo1.Text = rd.Item("Cargo_Weight")
             End If
         End While
         con.Close()
@@ -460,9 +457,10 @@ Public Class SecurityEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     con.Open()
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Cargo_Weight_Check = @checkCargoWeight WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     cmd.Parameters.AddWithValue("@checkCargoWeight", checkCargoWeight)
+                    cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
                     rd = cmd.ExecuteReader
                     MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     btnPrint.PerformClick()
@@ -509,9 +507,10 @@ Public Class SecurityEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     con.Open()
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     cmd.Parameters.AddWithValue("@checkCargoWeight", Me.checkCargoWeight)
+                    cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
                     rd = cmd.ExecuteReader
                     con.Close()
                     MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
