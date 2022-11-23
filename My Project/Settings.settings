@@ -2,13 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="connstr" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source =10.10.4.8; Initial Catalog = TOOSystem; Integrated Security = False ; User ID = sa ; Password =Gccm12345&lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source =10.10.4.8; Initial Catalog = TOOSystem; Integrated Security = False ; User ID = sa ; Password =Gccm12345</Value>
-    </Setting>
     <Setting Name="username" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -35,6 +28,13 @@
     </Setting>
     <Setting Name="cargoWeight40" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">26000</Value>
+    </Setting>
+    <Setting Name="connstr" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Security = False ; User ID = too ; Password = admin&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Security = False ; User ID = too ; Password = admin</Value>
     </Setting>
   </Settings>
 </SettingsFile>
