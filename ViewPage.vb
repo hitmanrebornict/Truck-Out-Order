@@ -56,7 +56,7 @@ Public Class ViewPage
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Cargo Weight Checking"
                     postOption = "Security_Post_Time"
-                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' , from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
+                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and warehouse.cargo_weight is not null  Order by security.cargo_weight_check,shipping.container_size, id")
             End Select
 

@@ -360,6 +360,12 @@ Public Class Edit
         Else
             btnAdminSave.Enabled = False
         End If
+
+        If checkSecurityPost = "YES" Then
+
+        Else
+            lblCargoWeight.Text = "Uncompleted"
+        End If
     End Sub
 
 
@@ -475,23 +481,28 @@ Public Class Edit
 
         con.Open()
 
-        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber1"
-        cmd.Parameters.AddWithValue("@TruckOutNumber1", Me.TruckOutNumber)
-        rd = cmd.ExecuteReader
-        con.Close()
-        con.Open()
-        cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID= @TruckOutNumber2"
-        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-        rd = cmd.ExecuteReader
-        con.Close()
+        Try
+            cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber1"
+            cmd.Parameters.AddWithValue("@TruckOutNumber1", Me.TruckOutNumber)
+            rd = cmd.ExecuteReader
+            con.Close()
+            con.Open()
+            cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID= @TruckOutNumber2"
+            cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+            rd = cmd.ExecuteReader
+            con.Close()
 
-        con.Open()
-        cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = 'YES' ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "' where  Shipping_ID= @TruckOutNumber3”
-        cmd.Parameters.AddWithValue("@TruckOutNumber3", Me.TruckOutNumber)
-        rd = cmd.ExecuteReader
-        con.Close()
+            con.Open()
+            cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = 'YES' ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "' where  Shipping_ID= @TruckOutNumber3”
+            cmd.Parameters.AddWithValue("@TruckOutNumber3", Me.TruckOutNumber)
+            rd = cmd.ExecuteReader
+            con.Close()
 
-        MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        btnCancel.PerformClick()
+            MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            btnCancel.PerformClick()
+        Catch ex As Exception
+            MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 End Class

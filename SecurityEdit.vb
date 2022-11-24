@@ -493,29 +493,35 @@ Public Class SecurityEdit
 
             Else
                 If checkSecurityPost = "" Then
-                    If cmbContainerSize.Text = "20" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight20 Then
-                        MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        checkCargoWeight = False
-                    ElseIf cmbContainerSize.Text = "40" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight40 Then
-                        MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        checkCargoWeight = False
-                    Else
-                        checkCargoWeight = True
-                    End If
-                    cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue WHERE Shipping_ID = @TruckOutNumber2"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    cmd.Parameters.AddWithValue("@checkCargoWeight", Me.checkCargoWeight)
-                    cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    btnPrint.PerformClick()
-                    btnCancel.PerformClick()
+                    Try
+                        If cmbContainerSize.Text = "20" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight20 Then
+                            MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            checkCargoWeight = False
+                        ElseIf cmbContainerSize.Text = "40" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight40 Then
+                            MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            checkCargoWeight = False
+                        Else
+                            checkCargoWeight = True
+                        End If
+                        cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue WHERE Shipping_ID = @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        cmd.Parameters.AddWithValue("@checkCargoWeight", Me.checkCargoWeight)
+                        cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        btnPrint.PerformClick()
+                        btnCancel.PerformClick()
+                    Catch ex As Exception
+                        MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+
+
                 Else
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnCancel.PerformClick()

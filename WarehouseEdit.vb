@@ -392,17 +392,22 @@ Public Class WarehouseEdit
                 ElseIf tbCargo.Text = "" Then
                     MessageBox.Show("Please Fill Out The Cargo Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "', Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' where ID= @TruckOutNumber2"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    btnCancel.PerformClick()
+                    Try
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "', Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' where ID= @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        btnCancel.PerformClick()
+                    Catch ex As Exception
+                        MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+
                 End If
             ElseIf checkWarehousePost = "YES" And My.Settings.adminCheck = False Then
                 MessageBox.Show("This number is posted, Please contact admin to modify", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -410,29 +415,39 @@ Public Class WarehouseEdit
             Else
 
                 If checkWarehouse <> "" Then
-                    cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "', Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "',ES_SEAL_NO = '" + cmbEsSealNo.Text + "'where ID= @TruckOutNumber2"
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    btnCancel.PerformClick()
+                    Try
+                        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',ES_SEAL_NO ='" + tbEsSealNo.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "', Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "',ES_SEAL_NO = '" + cmbEsSealNo.Text + "'where ID= @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        btnCancel.PerformClick()
+                    Catch ex As Exception
+                        MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+
                 Else
-                    cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY,Cargo_Weight)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "', '" + tbCargo.Text + "')", con)
-                    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    con.Open()
-                    cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
-                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                    rd = cmd.ExecuteReader
-                    con.Close()
-                    MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    btnCancel.PerformClick()
+                    Try
+                        cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY,Cargo_Weight)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "', '" + tbCargo.Text + "')", con)
+                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        con.Open()
+                        cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        btnCancel.PerformClick()
+                    Catch ex As Exception
+                        MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+
                 End If
             End If
             'End If
@@ -575,18 +590,18 @@ Public Class WarehouseEdit
         cmd.Connection = con
         con.Open()
         If cbContainerNo.Checked = True Then
-            cbContainerNo.Text = "Yes"
+            cbContainerNo.Text = "Checked"
         Else
             cbContainerNo.Text = "NO"
         End If
 
         If cbEsSealNo.Checked = True Then
-            cbEsSealNo.Text = "Yes"
+            cbEsSealNo.Text = "Checked"
         Else
             cbEsSealNo.Text = "NO"
         End If
         If cbTemporarySealNo.Checked = True Then
-            cbTemporarySealNo.Text = "Yes"
+            cbTemporarySealNo.Text = "Checked"
         Else
             cbTemporarySealNo.Text = "NO"
         End If
