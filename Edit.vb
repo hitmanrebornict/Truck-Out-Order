@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
-Imports Microsoft.Office.Interop.Excel
 
 Public Class Edit
 
@@ -355,9 +353,13 @@ Public Class Edit
 
         Else
             lblCargoWeight.Text = "Passed"
-
         End If
 
+        If My.Settings.role_id = 1 And My.Settings.adminCheck = True Then
+            btnAdminSave.Enabled = True
+        Else
+            btnAdminSave.Enabled = False
+        End If
     End Sub
 
 
@@ -455,5 +457,41 @@ Public Class Edit
         End While
         lblLoadingPortFullName.Visible = True
         con.Close()
+    End Sub
+
+    Private Sub btnAdminSave_Click(sender As Object, e As EventArgs) Handles btnAdminSave.Click
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+
+        con.Open()
+        cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
+        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+        cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
+        rd = cmd.ExecuteReader
+        con.Close()
+
+        con.Open()
+
+        cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' , Cargo_weight = '" + tbCargo.Text + "' where  Shipping_ID= @TruckOutNumber1"
+        cmd.Parameters.AddWithValue("@TruckOutNumber1", Me.TruckOutNumber)
+        rd = cmd.ExecuteReader
+        con.Close()
+        con.Open()
+        cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID= @TruckOutNumber2"
+        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+        rd = cmd.ExecuteReader
+        con.Close()
+
+        con.Open()
+        cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = 'YES' ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "' where  Shipping_ID= @TruckOutNumber3”
+        cmd.Parameters.AddWithValue("@TruckOutNumber3", Me.TruckOutNumber)
+        rd = cmd.ExecuteReader
+        con.Close()
+
+        MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        btnCancel.PerformClick()
     End Sub
 End Class

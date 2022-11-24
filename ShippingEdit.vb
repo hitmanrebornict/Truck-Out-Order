@@ -11,6 +11,7 @@ Public Class ShippingEdit
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
+    Dim checkWarehouseCheckpoint As String
     Public Shared checkTempSealNo As Boolean = True
 
 
@@ -146,7 +147,7 @@ Public Class ShippingEdit
         con.Close()
 
         con.Open()
-        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT from Warehouse where Shipping_ID = @TruckOutNumber2 "
+        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Warehouse_Checkpoint_Check from Warehouse where Shipping_ID = @TruckOutNumber2 "
         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
         rd = cmd.ExecuteReader()
         While rd.Read()
@@ -163,6 +164,11 @@ Public Class ShippingEdit
             dtpRTD.Text = rd.Item("READY_TRUCK_OUT_DATE")
             dtpRTT.Text = rd.Item("RCT")
 
+            If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
+                checkWarehouseCheckpoint = ""
+            Else
+                checkWarehouseCheckpoint = rd.Item("Warehouse_Checkpoint_Check")
+            End If
         End While
         con.Close()
 
@@ -223,14 +229,35 @@ Public Class ShippingEdit
             cbSecurityPost.Checked = True
             cbSecurityPost.Text = "Posted"
             btnSave1.Enabled = False
-
         End If
 
-        'show text in cmbCheckTempSeal
-        If checkTempSealNo = True Then
+            'show text in cmbCheckTempSeal
+            If checkTempSealNo = True Then
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
+        End If
+
+        If checkWarehouseCheckpoint = "YES" Then
+            tbContainerNo.Enabled = False
+            tbEsSealNo.Enabled = False
+            tbInternalSealNo.Enabled = False
+            tbLinerSealNo.Enabled = False
+            tbTempSeal.Enabled = False
+            cmbEsSealNo.Enabled = False
+            cmbCheckTempSealNo.Enabled = False
+        End If
+
+        'IT admin can make modification all time
+        If (My.Settings.role_id = 1 And My.Settings.adminCheck = True) Then
+            btnSave1.Enabled = True
+            tbContainerNo.Enabled = True
+            tbEsSealNo.Enabled = True
+            tbInternalSealNo.Enabled = True
+            tbLinerSealNo.Enabled = True
+            tbTempSeal.Enabled = True
+            cmbEsSealNo.Enabled = True
+            cmbCheckTempSealNo.Enabled = True
         End If
     End Sub
 

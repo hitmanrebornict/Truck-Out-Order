@@ -111,6 +111,7 @@ Partial Class Edit
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.btnAdminSave = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
@@ -126,6 +127,7 @@ Partial Class Edit
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel3.Controls.Add(Me.btnAdminSave)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel8)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
@@ -1123,6 +1125,16 @@ Partial Class Edit
         'PrintDocument1
         '
         '
+        'btnAdminSave
+        '
+        Me.btnAdminSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdminSave.Location = New System.Drawing.Point(993, 649)
+        Me.btnAdminSave.Name = "btnAdminSave"
+        Me.btnAdminSave.Size = New System.Drawing.Size(78, 28)
+        Me.btnAdminSave.TabIndex = 161
+        Me.btnAdminSave.Text = "Save"
+        Me.btnAdminSave.UseVisualStyleBackColor = True
+        '
         'Edit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1251,4 +1263,5 @@ Partial Class Edit
     Friend WithEvents tbCargoChecking As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents lblCargoWeight As Label
+    Friend WithEvents btnAdminSave As Button
 End Class

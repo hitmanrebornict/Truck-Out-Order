@@ -56,7 +56,7 @@ Public Class CompanyMaintenance
 
 
         'Find Current Max TOO Number
-        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & maxTOONumber & "."
+        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & My.Settings.newTOONumber & "."
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click

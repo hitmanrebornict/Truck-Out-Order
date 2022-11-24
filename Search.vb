@@ -73,7 +73,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
                         cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
-                    Case 1, 20, 30
+                    Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
                         cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
                 End Select
@@ -89,7 +89,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
                         cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
-                    Case 1, 20, 30
+                    Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'"
                         cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
                 End Select
@@ -104,7 +104,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
                         cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                    Case 1, 20, 30
+                    Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'"
                         cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"
                 End Select
@@ -127,6 +127,11 @@ Public Class Search
                     rd3.Read()
                     selected = rd3.Item("Truck Out Number")
                     Select Case My.Settings.role_id
+                        Case 1
+                            Dim obj As New Edit
+                            Edit.TruckOutNumber = selected
+                            Edit.Show()
+                            Me.Close()
                         Case 2
                             Dim obj As New ShippingEdit
                             obj.TruckOutNumber = selected
@@ -383,6 +388,11 @@ Public Class Search
             Dim se As New ShippingEdit
             Me.selected = selected
             Select Case My.Settings.role_id
+                Case 1
+                    Dim obj As New Edit
+                    Edit.TruckOutNumber = selected
+                    Edit.Show()
+                    Me.Close()
                 Case 2
                     Dim obj As New ShippingEdit
                     obj.TruckOutNumber = selected

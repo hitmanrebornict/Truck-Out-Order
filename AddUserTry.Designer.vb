@@ -168,6 +168,7 @@ Partial Class AddUserTry
         '
         Me.cmbSelectDepartmentID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSelectDepartmentID.FormattingEnabled = True
+        Me.cmbSelectDepartmentID.Items.AddRange(New Object() {"IT", "Shipping", "Security", "Warehouse", "Warehouse Checking"})
         Me.cmbSelectDepartmentID.Location = New System.Drawing.Point(455, 112)
         Me.cmbSelectDepartmentID.Name = "cmbSelectDepartmentID"
         Me.cmbSelectDepartmentID.Size = New System.Drawing.Size(325, 27)

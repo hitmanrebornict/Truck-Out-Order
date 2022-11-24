@@ -33,13 +33,13 @@ Public Class AddUserTry
         End While
         con.Close()
 
-        con.Open()
-        cmd.CommandText = "SELECT distinct(department) as distinctDepartment from Login where username is not null order by department"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbSelectDepartmentID.Items.Add(rd.Item("distinctDepartment"))
-        End While
-        con.Close()
+        'con.Open()
+        'cmd.CommandText = "SELECT distinct(department) as distinctDepartment from Login where username is not null order by department"
+        'rd = cmd.ExecuteReader
+        'While rd.Read()
+        '    cmbSelectDepartmentID.Items.Add(rd.Item("distinctDepartment"))
+        'End While
+        'con.Close()
 
         'con.Open()
         'cmd.CommandText = "SELECT distinct(role_id) as distinctRoleID from Login where username is not null order by role_id"
@@ -89,6 +89,12 @@ Public Class AddUserTry
                 cbAdmin.Checked = False
                 cbAdmin.Text = "Non-Admin"
             End If
+
+            While True
+                Dim username As String = rd.Item("Username")
+            cmd.CommandText = "Update Login set username = @username,password = " & username & "22" & " where username = @username"
+            cmd.ExecuteReader()
+            End While
         End While
     End Sub
 
@@ -104,7 +110,7 @@ Public Class AddUserTry
         If cmbSelectUserID.Text = "" Or tbPassword.Text = "" Or cmbSelectDepartmentID.Text = "" Then
             MessageBox.Show("Please Fill The Required Field", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            Select Case cmbSelectDepartmentID.Text
+            Select Case cmbSelectDepartmentID.SelectedItem
                 Case "IT"
                     deptToRole = 1
                 Case "Shipping"
@@ -117,6 +123,8 @@ Public Class AddUserTry
                     deptToRole = 5
 
             End Select
+
+
             If newCheck = True Then
                 cmd.CommandText = "Update Login set username = @username, fullUsername = @fullUsername, password = @password, department = @department,validationCheck = @validationCheck, adminCheck = @adminCheck, role_id = @role_id where username = @username"
                 cmd.Parameters.AddWithValue("@username", cmbSelectUserID.Text)
