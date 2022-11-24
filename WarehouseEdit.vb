@@ -342,6 +342,8 @@ Public Class WarehouseEdit
             cbTemporarySealNo.Enabled = False
             tbWarehouseCheckInternalSealNo.Enabled = False
             tbWarehouseCheckLinerSealNo.Enabled = False
+            btnCheck.Visible = False
+
         End If
     End Sub
 
@@ -400,6 +402,7 @@ Public Class WarehouseEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btnCancel.PerformClick()
                 End If
             ElseIf checkWarehousePost = "YES" And My.Settings.adminCheck = False Then
                 MessageBox.Show("This number is posted, Please contact admin to modify", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -417,6 +420,7 @@ Public Class WarehouseEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btnCancel.PerformClick()
                 Else
                     cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY,Cargo_Weight)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "', '" + tbCargo.Text + "')", con)
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
@@ -428,6 +432,7 @@ Public Class WarehouseEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    btnCancel.PerformClick()
                 End If
             End If
             'End If
@@ -492,18 +497,16 @@ Public Class WarehouseEdit
             '    End If
 
             If checkWarehousePost = "" Then
-                        cmd.CommandText = "update Shipping set Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Post = 'YES' where ID= @TruckOutNumber"
-                        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                        rd = cmd.ExecuteReader
-                        con.Close()
-                        MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        btnCancel.PerformClick()
-                    Else
-                        btnCancel.PerformClick()
-                        MessageBox.Show("Data Already Post. Please use 'Save' button to modify.", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-
-
+                cmd.CommandText = "update Shipping set Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Post = 'YES' where ID= @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                rd = cmd.ExecuteReader
+                con.Close()
+                MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                btnCancel.PerformClick()
+            Else
+                MessageBox.Show("Data Already Post. Please use 'Save' button to modify.", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                btnCancel.PerformClick()
+            End If
         End If
     End Sub
 
