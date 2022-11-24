@@ -27,9 +27,10 @@ Public Class ViewPage
         Dim postOption As String
         Dim selectOption As String
         Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size',Warehouse.Cargo_Weight as 'Net Cargo Weight' , Security.Cargo_Weight_Check_Value as 'Net Cargo Weight Checking Value', CASE WHEN Cargo_Weight_Check = 1 Then 'Pass' else 'Failed' END AS 'Cargo Weight Checking', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
-        Dim selectStringNormal As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
+        Dim selectStringNormal As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
         Dim numOfReport As String
         Dim startDate, endDate As String
+        Dim departmentOption As String
         startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
         endDate = dtpTo.Value.ToString("yyyy-MM-dd")
 
@@ -43,19 +44,19 @@ Public Class ViewPage
             Select Case cmbPostSelect.Text
                 Case "Shipping Post Completed"
                     postOption = "Shipping_POST_Time"
-                    selectOption = selectStringNormal & "Shipping_Post_Time as 'Shipping Post Time',Shipping_POST_User as 'Shipping Post User' from Shipping"
+                    selectOption = selectStringNormal & " Shipping_POST_User as 'Shipping Post User',Shipping_Post_Time as 'Shipping Post Time',Last_Modified_User as 'Last Modified User', Shipping.Update_Time as 'Last Modified Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Warehouse Post Completed"
                     postOption = "Warehouse_Post_Time"
-                    selectOption = selectStringNormal & "Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User' from Shipping"
+                    selectOption = selectStringNormal & " Warehouse_Post_User as 'Warehouse Post User',Warehouse_Post_Time as 'Warehouse Post Time', warehouse.Update_User as 'Last Modified User', warehouse.Update_Time as 'Last Modified Time' from Shipping join warehouse on shipping.id = warehouse.shipping_id"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Security Post Completed"
                     postOption = "Security_Post_Time"
-                    selectOption = selectStringNormal & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping "
+                    selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping join warehouse on shipping.id = warehouse.shipping_id join security on shipping.id = security.shipping_id "
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Cargo Weight Checking"
                     postOption = "Security_Post_Time"
-                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
+                    selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' , from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and warehouse.cargo_weight is not null  Order by security.cargo_weight_check,shipping.container_size, id")
             End Select
 
@@ -78,11 +79,9 @@ Public Class ViewPage
                     postString = " Completed Post Between "
                     cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
             End Select
-
             rd = cmd.ExecuteReader
             rd.Read()
             numOfReport = rd.Item("numOfReport")
-
             lblReport.Visible = True
 
             lblReport.Text = "There are " & numOfReport & postString & startDate & " To " & endDate & ""

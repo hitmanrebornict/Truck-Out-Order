@@ -194,7 +194,7 @@ Partial Class CompanyMaintenance
         Me.TableLayoutPanel1.Controls.Add(Me.lblIcNumber, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.tbAddressLine1, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.tbPostalCode, 1, 6)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1, 68)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1, 103)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 10
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
@@ -207,14 +207,14 @@ Partial Class CompanyMaintenance
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1033, 395)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1033, 360)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'lblDriverID
         '
         Me.lblDriverID.AutoSize = True
         Me.lblDriverID.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDriverID.Location = New System.Drawing.Point(4, 352)
+        Me.lblDriverID.Location = New System.Drawing.Point(4, 316)
         Me.lblDriverID.Name = "lblDriverID"
         Me.lblDriverID.Size = New System.Drawing.Size(244, 24)
         Me.lblDriverID.TabIndex = 9
@@ -226,21 +226,21 @@ Partial Class CompanyMaintenance
         Me.cmbCompanyName.FormattingEnabled = True
         Me.cmbCompanyName.Location = New System.Drawing.Point(344, 4)
         Me.cmbCompanyName.Name = "cmbCompanyName"
-        Me.cmbCompanyName.Size = New System.Drawing.Size(433, 27)
+        Me.cmbCompanyName.Size = New System.Drawing.Size(654, 27)
         Me.cmbCompanyName.TabIndex = 1
         '
         'tbRegistrationNo
         '
-        Me.tbRegistrationNo.Location = New System.Drawing.Point(344, 355)
+        Me.tbRegistrationNo.Location = New System.Drawing.Point(344, 319)
         Me.tbRegistrationNo.Name = "tbRegistrationNo"
-        Me.tbRegistrationNo.Size = New System.Drawing.Size(433, 26)
+        Me.tbRegistrationNo.Size = New System.Drawing.Size(654, 26)
         Me.tbRegistrationNo.TabIndex = 10
         '
         'lblPmRegistrationPlate
         '
         Me.lblPmRegistrationPlate.AutoSize = True
         Me.lblPmRegistrationPlate.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPmRegistrationPlate.Location = New System.Drawing.Point(4, 313)
+        Me.lblPmRegistrationPlate.Location = New System.Drawing.Point(4, 281)
         Me.lblPmRegistrationPlate.Name = "lblPmRegistrationPlate"
         Me.lblPmRegistrationPlate.Size = New System.Drawing.Size(49, 24)
         Me.lblPmRegistrationPlate.TabIndex = 3
@@ -248,16 +248,16 @@ Partial Class CompanyMaintenance
         '
         'tbFax
         '
-        Me.tbFax.Location = New System.Drawing.Point(344, 316)
+        Me.tbFax.Location = New System.Drawing.Point(344, 284)
         Me.tbFax.Name = "tbFax"
-        Me.tbFax.Size = New System.Drawing.Size(433, 26)
+        Me.tbFax.Size = New System.Drawing.Size(654, 26)
         Me.tbFax.TabIndex = 9
         '
         'lblPmCode
         '
         Me.lblPmCode.AutoSize = True
         Me.lblPmCode.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPmCode.Location = New System.Drawing.Point(4, 274)
+        Me.lblPmCode.Location = New System.Drawing.Point(4, 246)
         Me.lblPmCode.Name = "lblPmCode"
         Me.lblPmCode.Size = New System.Drawing.Size(107, 24)
         Me.lblPmCode.TabIndex = 2
@@ -265,9 +265,9 @@ Partial Class CompanyMaintenance
         '
         'tbTelephone
         '
-        Me.tbTelephone.Location = New System.Drawing.Point(344, 277)
+        Me.tbTelephone.Location = New System.Drawing.Point(344, 249)
         Me.tbTelephone.Name = "tbTelephone"
-        Me.tbTelephone.Size = New System.Drawing.Size(433, 26)
+        Me.tbTelephone.Size = New System.Drawing.Size(654, 26)
         Me.tbTelephone.TabIndex = 8
         '
         'lblFullName
@@ -284,7 +284,7 @@ Partial Class CompanyMaintenance
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(4, 235)
+        Me.Label6.Location = New System.Drawing.Point(4, 211)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(124, 24)
         Me.Label6.TabIndex = 24
@@ -294,7 +294,7 @@ Partial Class CompanyMaintenance
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(4, 196)
+        Me.Label5.Location = New System.Drawing.Point(4, 176)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 24)
         Me.Label5.TabIndex = 24
@@ -302,16 +302,16 @@ Partial Class CompanyMaintenance
         '
         'tbCountry
         '
-        Me.tbCountry.Location = New System.Drawing.Point(344, 199)
+        Me.tbCountry.Location = New System.Drawing.Point(344, 179)
         Me.tbCountry.Name = "tbCountry"
-        Me.tbCountry.Size = New System.Drawing.Size(433, 26)
+        Me.tbCountry.Size = New System.Drawing.Size(654, 26)
         Me.tbCountry.TabIndex = 6
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(4, 157)
+        Me.Label4.Location = New System.Drawing.Point(4, 141)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(63, 24)
         Me.Label4.TabIndex = 24
@@ -320,16 +320,16 @@ Partial Class CompanyMaintenance
         'tbState
         '
         Me.tbState.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbState.Location = New System.Drawing.Point(344, 160)
+        Me.tbState.Location = New System.Drawing.Point(344, 144)
         Me.tbState.Name = "tbState"
-        Me.tbState.Size = New System.Drawing.Size(433, 26)
+        Me.tbState.Size = New System.Drawing.Size(654, 26)
         Me.tbState.TabIndex = 5
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(4, 118)
+        Me.Label3.Location = New System.Drawing.Point(4, 106)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 24)
         Me.Label3.TabIndex = 24
@@ -338,16 +338,16 @@ Partial Class CompanyMaintenance
         'tbCity
         '
         Me.tbCity.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCity.Location = New System.Drawing.Point(344, 121)
+        Me.tbCity.Location = New System.Drawing.Point(344, 109)
         Me.tbCity.Name = "tbCity"
-        Me.tbCity.Size = New System.Drawing.Size(433, 26)
+        Me.tbCity.Size = New System.Drawing.Size(654, 26)
         Me.tbCity.TabIndex = 4
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 79)
+        Me.Label2.Location = New System.Drawing.Point(4, 71)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(149, 24)
         Me.Label2.TabIndex = 24
@@ -356,16 +356,16 @@ Partial Class CompanyMaintenance
         'tbAddressLine2
         '
         Me.tbAddressLine2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbAddressLine2.Location = New System.Drawing.Point(344, 82)
+        Me.tbAddressLine2.Location = New System.Drawing.Point(344, 74)
         Me.tbAddressLine2.Name = "tbAddressLine2"
-        Me.tbAddressLine2.Size = New System.Drawing.Size(433, 26)
+        Me.tbAddressLine2.Size = New System.Drawing.Size(654, 26)
         Me.tbAddressLine2.TabIndex = 3
         '
         'lblIcNumber
         '
         Me.lblIcNumber.AutoSize = True
         Me.lblIcNumber.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIcNumber.Location = New System.Drawing.Point(4, 40)
+        Me.lblIcNumber.Location = New System.Drawing.Point(4, 36)
         Me.lblIcNumber.Name = "lblIcNumber"
         Me.lblIcNumber.Size = New System.Drawing.Size(149, 24)
         Me.lblIcNumber.TabIndex = 1
@@ -374,16 +374,16 @@ Partial Class CompanyMaintenance
         'tbAddressLine1
         '
         Me.tbAddressLine1.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbAddressLine1.Location = New System.Drawing.Point(344, 43)
+        Me.tbAddressLine1.Location = New System.Drawing.Point(344, 39)
         Me.tbAddressLine1.Name = "tbAddressLine1"
-        Me.tbAddressLine1.Size = New System.Drawing.Size(433, 26)
+        Me.tbAddressLine1.Size = New System.Drawing.Size(654, 26)
         Me.tbAddressLine1.TabIndex = 2
         '
         'tbPostalCode
         '
-        Me.tbPostalCode.Location = New System.Drawing.Point(344, 238)
+        Me.tbPostalCode.Location = New System.Drawing.Point(344, 214)
         Me.tbPostalCode.Name = "tbPostalCode"
-        Me.tbPostalCode.Size = New System.Drawing.Size(433, 26)
+        Me.tbPostalCode.Size = New System.Drawing.Size(654, 26)
         Me.tbPostalCode.TabIndex = 7
         '
         'Panel1

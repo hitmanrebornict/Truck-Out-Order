@@ -112,9 +112,9 @@ Public Class Admin
         maxDetailsTOONumber = rd.Item("maxTOONumber")
 
         If age = 0 Then
-            My.Settings.newTOONumber = 34800
+            My.Settings.newTOONumber = 10000
         Else
-            If age > maxDetailsTOONumber Then
+            If age >= maxDetailsTOONumber Then
                 My.Settings.newTOONumber = age + 1
             Else
                 My.Settings.newTOONumber = maxDetailsTOONumber

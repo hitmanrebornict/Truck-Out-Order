@@ -436,7 +436,7 @@ Partial Class NewPage
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(78, 28)
         Me.btnSave.TabIndex = 40
-        Me.btnSave.Text = "Save"
+        Me.btnSave.Text = "Post"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1

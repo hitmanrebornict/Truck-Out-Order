@@ -23,15 +23,12 @@ Public Class NewPage
         cmd.Connection = con
         con.Open()
         cmbDDB.SelectedItem = "No"
-        surface.DrawLine(pen1, 10, 10, 100, 10)
 
-        If My.Settings.role_id = "2" Or My.Settings.role_id = "20" Then
-            tbEsSealNo.Enabled = False
+        tbEsSealNo.Enabled = False
             tbLoadingBay.Enabled = False
             cmbWarehouseLocation.Enabled = False
             cmbEsSealNo.Enabled = False
 
-        End If
 
         'Read Data Into Company Combobox
         cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES'  order by company_name"
@@ -65,11 +62,7 @@ Public Class NewPage
             cmbContainerSize.Items.Add(rd.Item("r"))
         End While
         con.Close()
-
-
     End Sub
-
-
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         'Cancel Button
@@ -83,7 +76,6 @@ Public Class NewPage
             Case False
                 User.Show()
                 Me.Close()
-
         End Select
     End Sub
 
@@ -140,20 +132,17 @@ Public Class NewPage
             '    MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'Else
 
-            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Update_User,Update_Time,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + "YES" + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo)", con)
+            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo, Last_Modified_User,Update_Time) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + "YES" + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')", con)
+            ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
             cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
             cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
             ra = cmd.ExecuteNonQuery
             btnCancel.PerformClick()
-            MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Post Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
         con.Close()
 
-    End Sub
-
-    Private Sub ComboBox5_SelectedIndexChanged(sender As Object, e As EventArgs)
-        btnSave.Enabled = True
     End Sub
 
     Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
@@ -219,10 +208,5 @@ Public Class NewPage
         Else
             tbEsSealNo.Enabled = True
         End If
-    End Sub
-
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
-
-
     End Sub
 End Class

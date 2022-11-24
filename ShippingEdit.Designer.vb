@@ -55,7 +55,6 @@ Partial Class ShippingEdit
         Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
         Me.tbInvoice = New System.Windows.Forms.TextBox()
         Me.lblCompanyFullName = New System.Windows.Forms.Label()
-        Me.btnPost = New System.Windows.Forms.Button()
         Me.btnSave1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnCancel1 = New System.Windows.Forms.Button()
@@ -119,7 +118,6 @@ Partial Class ShippingEdit
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
-        Me.Panel3.Controls.Add(Me.btnPost)
         Me.Panel3.Controls.Add(Me.btnSave1)
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.btnCancel1)
@@ -477,20 +475,10 @@ Partial Class ShippingEdit
         Me.lblCompanyFullName.TabIndex = 130
         Me.lblCompanyFullName.Text = "Company Full Name" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'btnPost
-        '
-        Me.btnPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPost.Location = New System.Drawing.Point(1070, 646)
-        Me.btnPost.Name = "btnPost"
-        Me.btnPost.Size = New System.Drawing.Size(78, 28)
-        Me.btnPost.TabIndex = 102
-        Me.btnPost.Text = "Post"
-        Me.btnPost.UseVisualStyleBackColor = True
-        '
         'btnSave1
         '
         Me.btnSave1.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave1.Location = New System.Drawing.Point(986, 646)
+        Me.btnSave1.Location = New System.Drawing.Point(1070, 646)
         Me.btnSave1.Name = "btnSave1"
         Me.btnSave1.Size = New System.Drawing.Size(78, 28)
         Me.btnSave1.TabIndex = 101
@@ -500,7 +488,7 @@ Partial Class ShippingEdit
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(902, 646)
+        Me.Button2.Location = New System.Drawing.Point(987, 646)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(78, 28)
         Me.Button2.TabIndex = 100
@@ -521,7 +509,7 @@ Partial Class ShippingEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 431.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 433.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -782,7 +770,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 293.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 295.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbContainerNo, 1, 0)
@@ -803,7 +791,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.35986!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(518, 198)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(520, 198)
         Me.TableLayoutPanel1.TabIndex = 50
         '
         'tbInternalSealNo
@@ -1165,7 +1153,6 @@ Partial Class ShippingEdit
     Friend WithEvents lblTruckOutNumber As Label
     Friend WithEvents lblUserDetails As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents btnPost As Button
     Friend WithEvents btnSave1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents btnCancel1 As Button

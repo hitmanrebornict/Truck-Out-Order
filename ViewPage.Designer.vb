@@ -157,6 +157,7 @@ Partial Class ViewPage
         Me.dgvView.DefaultCellStyle = DataGridViewCellStyle1
         Me.dgvView.Location = New System.Drawing.Point(0, 185)
         Me.dgvView.Name = "dgvView"
+        Me.dgvView.ReadOnly = True
         Me.dgvView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvView.Size = New System.Drawing.Size(891, 494)

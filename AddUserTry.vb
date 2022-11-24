@@ -107,8 +107,8 @@ Public Class AddUserTry
             Select Case cmbSelectDepartmentID.Text
                 Case "IT"
                     deptToRole = 1
-                Case "shipping"
-                    deptToRole = 20
+                Case "Shipping"
+                    deptToRole = 2
                 Case "Warehouse"
                     deptToRole = 3
                 Case "Warehouse Checking"

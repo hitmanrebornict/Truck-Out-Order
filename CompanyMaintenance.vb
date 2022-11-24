@@ -44,7 +44,7 @@ Public Class CompanyMaintenance
         If age = 0 Then
             My.Settings.newTOONumber = 34800
         Else
-            If age > maxTOONumber Then
+            If age >= maxTOONumber Then
                 My.Settings.newTOONumber = age + 1
             Else
                 My.Settings.newTOONumber = maxTOONumber

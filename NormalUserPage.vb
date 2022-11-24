@@ -6,7 +6,7 @@ Public Class NormalUserPage
         lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
         lblCompanyHeader.Text = My.Settings.companyNameHeader
 
-        If My.Settings.role_id = 20 Then
+        If My.Settings.role_id = 2 Then
             pnlNew.Visible = True
         Else
             pnlNew.Visible = False
@@ -67,9 +67,9 @@ Public Class NormalUserPage
         maxDetailsTOONumber = rd.Item("maxTOONumber")
 
         If age = 0 Then
-            My.Settings.newTOONumber = 34800
+            My.Settings.newTOONumber = 10000
         Else
-            If age > maxDetailsTOONumber Then
+            If age >= maxDetailsTOONumber Then
                 My.Settings.newTOONumber = age + 1
             Else
                 My.Settings.newTOONumber = maxDetailsTOONumber

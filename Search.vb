@@ -10,7 +10,7 @@ Public Class Search
         lblCompanyNameHeader.Text = My.Settings.companyNameHeader
         dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB,Update_User as 'Update User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
+        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -19,16 +19,17 @@ Public Class Search
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        Select Case My.Settings.role_id
-            Case 1, 20, 30
-                cmd.CommandText = (selectString & " order by id desc")
-            Case 2
-                cmd.CommandText = (selectString & " where shipping_post is null order by id desc ")
-            Case 3, 4
-                cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
-            Case 5
-                cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null order by id desc")
-        End Select
+
+        If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
+            cmd.CommandText = (selectString & " order by id desc")
+        Else
+            Select Case My.Settings.role_id
+                Case 3, 4
+                    cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
+                Case 5
+                    cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null order by id desc")
+            End Select
+        End If
         rd = cmd.ExecuteReader
         con.Close()
         sda.Fill(dt)
@@ -49,7 +50,7 @@ Public Class Search
         Dim dt As New DataTable()
         Dim selected As String = tbShippingId.Text
         Dim checkDuplicate As Integer
-        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB,Update_User as 'Update User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
+        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
         Dim fieldValue As String
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2
@@ -64,8 +65,8 @@ Public Class Search
             If tbShippingId.Text <> "" And tbInvoice.Text = "" And tbContainerNo.Text = "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where SHIPPING_POST Is NULL And ID = '" + tbShippingId.Text + "'"
-                        cmd3.CommandText = selectString & " where SHIPPING_POST Is NULL And ID = '" + tbShippingId.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
+                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
                     Case 3, 4
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
                         cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
@@ -80,8 +81,8 @@ Public Class Search
             ElseIf tbShippingId.Text = "" And tbInvoice.Text <> "" And tbContainerNo.Text = "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where SHIPPING_POST Is NULL And INVOICE = '" + tbInvoice.Text + "'"
-                        cmd3.CommandText = selectString & " where SHIPPING_POST is NULL And INVOICE = '" + tbInvoice.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where  INVOICE = '" + tbInvoice.Text + "'"
+                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
                     Case 3, 4
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
                         cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
@@ -95,8 +96,8 @@ Public Class Search
             ElseIf tbShippingId.Text = "" And tbInvoice.Text = "" And tbContainerNo.Text <> "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where SHIPPING_POST Is NULL And CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                        cmd3.CommandText = selectString & " where SHIPPING_POST Is NULL And CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping WHERE CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"
                     Case 3, 4
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
                         cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
@@ -124,18 +125,14 @@ Public Class Search
                     con3.Open()
                     rd3 = cmd3.ExecuteReader
                     rd3.Read()
-                    selected = rd3.Item("ID")
+                    selected = rd3.Item("Truck Out Number")
                     Select Case My.Settings.role_id
-                        Case 1
-                            Dim obj As New Edit
-                            obj.Show()
-                            Me.Close()
-                        Case 2, 20
+                        Case 2
                             Dim obj As New ShippingEdit
                             obj.TruckOutNumber = selected
                             obj.Show()
                             Me.Close()
-                        Case 3, 30, 4
+                        Case 3, 4
                             Dim obj As New WarehouseEdit
                             obj.TruckOutNumber = selected
                             obj.Show()
@@ -369,33 +366,29 @@ Public Class Search
         cmd2.Connection = con2
         con2.Open()
 
-        Select Case My.Settings.role_id
-            Case 2
-                cmd2.CommandText = "SELECT ID from Shipping where SHIPPING_POST is NULL and ID = @shippingID"
-            Case 3, 4
-                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-            Case 5
-                cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
-            Case 1, 20, 30
-                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID"
-        End Select
+        If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
+            cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID "
+        Else
+            Select Case My.Settings.role_id
+                Case 3, 4
+                    cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+                Case 5
+                    cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
+            End Select
+        End If
+
         cmd2.Parameters.AddWithValue("@shippingID", selected)
         rd2 = cmd2.ExecuteReader
         If rd2.HasRows Then
             Dim se As New ShippingEdit
             Me.selected = selected
             Select Case My.Settings.role_id
-                Case 1
-                    Dim obj As New Edit
-                    obj.TruckOutNumber = selected
-                    obj.Show()
-                    Me.Close()
-                Case 2, 20
+                Case 2
                     Dim obj As New ShippingEdit
                     obj.TruckOutNumber = selected
                     obj.Show()
                     Me.Close()
-                Case 3, 30, 4
+                Case 3, 4
                     Dim obj As New WarehouseEdit
                     obj.TruckOutNumber = selected
                     obj.Show()
@@ -410,7 +403,6 @@ Public Class Search
             MessageBox.Show("You have no privilege to view this number.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End If
-
     End Sub
 
 
