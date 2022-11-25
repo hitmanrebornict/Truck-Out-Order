@@ -4,6 +4,7 @@ Imports System.Drawing.Printing
 
 
 Public Class GlobalFunction
+    Public Shared checkTempSealNo As Boolean
 
     Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label)
         lblWelcome.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)

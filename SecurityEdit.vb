@@ -11,7 +11,7 @@ Public Class SecurityEdit
     Dim checkSecurityDriver As String
     Dim checkSecurityPost As String
     Dim checkSecurityCheck As String
-    Dim checkTempSealNo As Boolean = True
+
     Dim checkCargoWeight As Boolean
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
@@ -108,7 +108,7 @@ Public Class SecurityEdit
             checkWarehousePost,
             checkSecurityPost,
             tbSendToCompany,
-            checkTempSealNo
+            GlobalFunction.checkTempSealNo
             )
 
         con.Open()
@@ -260,7 +260,7 @@ Public Class SecurityEdit
 
 
 
-        If checkTempSealNo = True Then
+        If GlobalFunction.checkTempSealNo = True Then
             cmbCheckTempSealNo.SelectedItem = "YES"
             If My.Settings.role_id = 5 Then
                 tbSecurityCheckTemporarySealNo.Enabled = True
@@ -301,7 +301,7 @@ Public Class SecurityEdit
         End If
 
         'show text in cmbCheckTempSeal
-        If checkTempSealNo = True Then
+        If GlobalFunction.checkTempSealNo = True Then
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
@@ -462,7 +462,7 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, GlobalFunction.checkTempSealNo)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged

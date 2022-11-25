@@ -12,7 +12,6 @@ Public Class Edit
     Dim checkSecurityDriver As String
     Dim checkSecurityPost As String
     Dim checkSecurityCheck As String
-    Dim checkTempSealNo As Boolean = True
     Dim checkCargoWeight As Boolean
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
@@ -79,7 +78,7 @@ Public Class Edit
             checkWarehousePost,
             checkSecurityPost,
             tbSendToCompany,
-            checkTempSealNo
+            GlobalFunction.checkTempSealNo
             )
 
 
@@ -222,7 +221,7 @@ Public Class Edit
             tbInternalSealNo.PasswordChar = "*"
         End If
 
-        If checkTempSealNo = True Then
+        If GlobalFunction.checkTempSealNo = True Then
             cmbCheckTempSealNo.SelectedItem = "YES"
         Else
             cmbCheckTempSealNo.SelectedItem = "NO"
@@ -318,7 +317,7 @@ Public Class Edit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, GlobalFunction.checkTempSealNo)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -334,10 +333,10 @@ Public Class Edit
     Private Sub cmbCheckTempSealNo_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cmbCheckTempSealNo.SelectedItem = "YES" Then
             tbTempSeal.Enabled = True
-            checkTempSealNo = True
+            GlobalFunction.checkTempSealNo = True
         Else
             tbTempSeal.Enabled = False
-            checkTempSealNo = False
+            GlobalFunction.checkTempSealNo = False
             tbTempSeal.Text = ""
         End If
     End Sub
@@ -397,7 +396,7 @@ Public Class Edit
         con.Open()
         cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-        cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
+        cmd.Parameters.AddWithValue("checkTempSealNo", GlobalFunction.checkTempSealNo)
         rd = cmd.ExecuteReader
         con.Close()
 

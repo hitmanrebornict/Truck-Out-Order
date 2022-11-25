@@ -7,7 +7,6 @@ Public Class WarehouseEdit
     Dim checkShippingPost As String
     Dim checkWarehousePost As String
     Dim checkSecurityPost As String
-    Dim checkTempSealNo As Boolean = True
     Dim checkWarehouse As String
     Dim checkWarehouseCheckpoint As String
     Dim con As New SqlConnection
@@ -99,7 +98,7 @@ Public Class WarehouseEdit
             checkWarehousePost,
             checkSecurityPost,
             tbSendToCompany,
-            checkTempSealNo
+            GlobalFunction.checkTempSealNo
             )
 
 
@@ -248,7 +247,7 @@ Public Class WarehouseEdit
         End If
 
         'show text in cmbCheckTempSeal
-        If checkTempSealNo = True Then
+        If GlobalFunction.checkTempSealNo = True Then
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
@@ -456,7 +455,7 @@ Public Class WarehouseEdit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, GlobalFunction.checkTempSealNo)
     End Sub
 
     Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
@@ -512,18 +511,18 @@ Public Class WarehouseEdit
         cmd.Connection = con
         con.Open()
         If cbContainerNo.Checked = True Then
-            cbContainerNo.Text = "Checked"
+            cbContainerNo.Text = "YES"
         Else
             cbContainerNo.Text = "NO"
         End If
 
         If cbEsSealNo.Checked = True Then
-            cbEsSealNo.Text = "Checked"
+            cbEsSealNo.Text = "YES"
         Else
             cbEsSealNo.Text = "NO"
         End If
         If cbTemporarySealNo.Checked = True Then
-            cbTemporarySealNo.Text = "Checked"
+            cbTemporarySealNo.Text = "YES"
         Else
             cbTemporarySealNo.Text = "NO"
         End If
