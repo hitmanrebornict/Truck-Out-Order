@@ -14,10 +14,11 @@ Public Class SecurityEdit
     Dim checkTempSealNo As Boolean = True
     Dim checkCargoWeight As Boolean
 
+
+
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
@@ -83,38 +84,39 @@ Public Class SecurityEdit
         con.Close()
         con.Open()
 
-        'Read Data Into Company Combobox
-        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES' order by company_name"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbCompany.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
+        getCmbItem()
+        ''Read Data Into Company Combobox
+        'cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES' order by company_name"
+        'rd = cmd.ExecuteReader
+        'While rd.Read()
+        '    cmbCompany.Items.Add(rd.Item("r"))
+        'End While
+        'con.Close()
 
-        con.Open()
-        'Read Data Into Loading Port Combobox
-        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbLoadingPort.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Warehouse Location Combobox
-        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbWarehouseLocation.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Container Size Combobox
-        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES' order by container_size"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbContainerSize.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
+        'con.Open()
+        ''Read Data Into Loading Port Combobox
+        'cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
+        'rd = cmd.ExecuteReader
+        'While rd.Read()
+        '    cmbLoadingPort.Items.Add(rd.Item("r"))
+        'End While
+        'con.Close()
+        'con.Open()
+        ''Read Data Into Warehouse Location Combobox
+        'cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
+        'rd = cmd.ExecuteReader
+        'While rd.Read()
+        '    cmbWarehouseLocation.Items.Add(rd.Item("r"))
+        'End While
+        'con.Close()
+        'con.Open()
+        ''Read Data Into Container Size Combobox
+        'cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES' order by container_size"
+        'rd = cmd.ExecuteReader
+        'While rd.Read()
+        '    cmbContainerSize.Items.Add(rd.Item("r"))
+        'End While
+        'con.Close()
 
         con.Open()
         cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company from Shipping where id = @TruckOutNumber"
@@ -606,4 +608,45 @@ Public Class SecurityEdit
         lblLoadingPortFullName.Visible = True
         con.Close()
     End Sub
+
+    Private Function getCmbItem()
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES' order by company_name"
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbCompany.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
+
+        con.Open()
+        'Read Data Into Loading Port Combobox
+        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbLoadingPort.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
+        con.Open()
+        'Read Data Into Warehouse Location Combobox
+        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbWarehouseLocation.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
+        con.Open()
+        'Read Data Into Container Size Combobox
+        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES' order by container_size"
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbContainerSize.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
+    End Function
+
 End Class

@@ -4,9 +4,8 @@ Public Class Admin
 
     Public TruckOutNumber As Integer
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
-        ''Me.TruckOutNumber = 70535
         lblCompanyHeader.Text = My.Settings.companyNameHeader
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click

@@ -9,8 +9,8 @@ Public Class AddUserTry
     Dim deptToRole As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+
         cbAdmin.Appearance = Appearance.Button
         cbAdmin.AutoSize = False
         cbAdmin.Size = New Size(100, 40)

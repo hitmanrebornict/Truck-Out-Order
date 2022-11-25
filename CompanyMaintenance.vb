@@ -11,8 +11,7 @@ Public Class CompanyMaintenance
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDownList
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand

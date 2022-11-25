@@ -11,8 +11,7 @@ Public Class FieldMaintenance
     Dim rd As SqlDataReader
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDownList
         cbActive.Appearance = Appearance.Button

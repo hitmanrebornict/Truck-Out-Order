@@ -116,6 +116,7 @@
     <Compile Include="DriverMaintenance.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GlobalFunction.vb" />
     <Compile Include="SecurityEdit.Designer.vb">
       <DependentUpon>SecurityEdit.vb</DependentUpon>
     </Compile>

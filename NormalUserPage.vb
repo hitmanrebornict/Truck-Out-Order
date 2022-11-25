@@ -2,10 +2,7 @@
 
 Public Class NormalUserPage
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyHeader.Text = My.Settings.companyNameHeader
-
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader)
         If My.Settings.role_id = 2 Then
             pnlNew.Visible = True
         Else
