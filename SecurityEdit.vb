@@ -82,7 +82,7 @@ Public Class SecurityEdit
             cmbPmRegistrationPlate.Items.Add(rd.Item("PM_Plate"))
         End While
         con.Close()
-        con.Open()
+
 
         getCmbItem()
         ''Read Data Into Company Combobox
@@ -390,12 +390,13 @@ Public Class SecurityEdit
     End Sub
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'Cancel Button
-        Dim obj As New Search
-        obj.Show()
-        Me.Close()
-    End Sub
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    '    'Cancel Button
+    '    Dim obj As New Search
+    '    obj.Show()
+    '    Me.Close()
+    'End Sub
+
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click
         'Driver Check
         Dim con As New SqlConnection
@@ -466,7 +467,7 @@ Public Class SecurityEdit
                     rd = cmd.ExecuteReader
                     MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     btnPrint.PerformClick()
-                    btnCancel.PerformClick()
+                    meclose()
                     con.Close()
 
                 Else
@@ -518,7 +519,7 @@ Public Class SecurityEdit
                         con.Close()
                         MessageBox.Show("Post Complete", "Post Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         btnPrint.PerformClick()
-                        btnCancel.PerformClick()
+                        meclose()
                     Catch ex As Exception
                         MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -526,7 +527,7 @@ Public Class SecurityEdit
 
                 Else
                     MessageBox.Show("This Number is Posted Already", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnCancel.PerformClick()
+                    meclose()
                     con.Close()
                 End If
             End If
@@ -649,4 +650,18 @@ Public Class SecurityEdit
         con.Close()
     End Function
 
+    Private Function meclose()
+        Dim obj As New Search
+        obj.Show()
+        Me.Close()
+    End Function
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+            Dim obj As New Search
+            obj.Show()
+            Me.Close()
+            Me.Close()
+        End If
+    End Sub
 End Class

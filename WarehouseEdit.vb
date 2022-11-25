@@ -347,12 +347,12 @@ Public Class WarehouseEdit
     End Sub
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'Cancel Button
-        Dim obj As New Search
-        obj.Show()
-        Me.Close()
-    End Sub
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    '    'Cancel Button
+    '    Dim obj As New Search
+    '    obj.Show()
+    '    Me.Close()
+    'End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
         If cmbEsSealNo.Text = "NO" Then
@@ -401,8 +401,9 @@ Public Class WarehouseEdit
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
+                        meclose()
                         MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        btnCancel.PerformClick()
+
                     Catch ex As Exception
                         MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -424,8 +425,9 @@ Public Class WarehouseEdit
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
+                        meclose()
                         MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        btnCancel.PerformClick()
+
                     Catch ex As Exception
                         MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -441,8 +443,9 @@ Public Class WarehouseEdit
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         rd = cmd.ExecuteReader
                         con.Close()
+                        meclose()
                         MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        btnCancel.PerformClick()
+
                     Catch ex As Exception
                         MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -515,11 +518,12 @@ Public Class WarehouseEdit
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
                 con.Close()
+                meclose()
                 MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                btnCancel.PerformClick()
+
             Else
                 MessageBox.Show("Data Already Post. Please use 'Save' button to modify.", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                btnCancel.PerformClick()
+
             End If
         End If
     End Sub
@@ -615,10 +619,33 @@ Public Class WarehouseEdit
             MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'Else
             '    cmd.CommandText = "Update warehouse set Warehouse_Checkpoint_Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Checkpoint_Update_User = '" + My.Settings.username + "',Container_No_Check = '" + cbContainerNo.Text + "', Es_Seal_No_Check = '" + cbEsSealNo.Text + "',Liner_Seal_No_Check = '" + tbWarehouseCheckLinerSealNo.Text + "', Internal_Seal_No_Check = '" + tbWarehouseCheckInternalSealNo.Text + "',Temporary_Seal_No_Check= '" + cbTemporarySealNo.Text + "' Where Shipping_ID = @TruckOutNumber"
-            '    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+            '    cmd.Parameters.AddWithValue("@c", Me.TruckOutNumber)
             '    rd = cmd.ExecuteReader
             '    btnCancel.PerformClick()
             '    MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            checkWarehouseCheckpoint = "YES"
+            btnCheck.Enabled = False
+            tbWarehouseCheckInternalSealNo.Enabled = False
+            tbWarehouseCheckLinerSealNo.Enabled = False
+            cbContainerNo.Enabled = False
+            cbEsSealNo.Enabled = False
+            cbTemporarySealNo.Enabled = False
         End If
     End Sub
+
+    Private Function meclose()
+        Dim obj As New Search
+        obj.Show()
+        Me.Close()
+    End Function
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+            Dim obj As New Search
+            obj.Show()
+            Me.Close()
+            Me.Close()
+        End If
+    End Sub
+
 End Class

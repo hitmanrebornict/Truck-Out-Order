@@ -1,9 +1,6 @@
-﻿Imports System.ComponentModel
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
-Imports System.Globalization
-Imports System.Runtime.CompilerServices
-Imports System.Runtime.Remoting.Channels
+
 
 Public Class ShippingEdit
 
@@ -180,10 +177,11 @@ Public Class ShippingEdit
         If checkShippingPost = "" Then
             cbShippingPost.Checked = False
             cbShippingPost.Text = “Unposted"
+            btnSave1.Enabled = True
         Else
             cbShippingPost.Checked = True
             cbShippingPost.Text = "Posted"
-
+            btnSave1.Enabled = False
         End If
 
         If checkWarehousePost = "" Then
@@ -233,12 +231,12 @@ Public Class ShippingEdit
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel1.Click
-        'Cancel Button
-        Dim obj As New Search
-        obj.Show()
-        Me.Close()
-    End Sub
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel1.Click
+    '    'Cancel Button
+    '    Dim obj As New Search
+    '    obj.Show()
+    '    Me.Close()
+    'End Sub
 
     Private Sub cmbCheckTempSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCheckTempSealNo.SelectedIndexChanged
         If cmbCheckTempSealNo.SelectedItem = "YES" Then
@@ -253,67 +251,30 @@ Public Class ShippingEdit
     End Sub
 
     Private Sub btnShippingSave_Click(sender As Object, e As EventArgs) Handles btnSave1.Click
-        'save button
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
         Dim ra As Integer
         Dim con3 As New SqlConnection
         Dim cmd3 As New SqlCommand
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        con3.ConnectionString = My.Settings.connstr
-        cmd3.Connection = con3
-        con3.Open()
 
-        If dtpSCD.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPMENT CLOSING DATE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbCompany.Text = "" Then
-            MessageBox.Show("Please Fill Out The COMPANY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf dtpSCT.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPPING CLOSING TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbInvoice.Text = "" Then
-            MessageBox.Show("Please Fill Out The INVOICE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbProduct.Text = "" Then
-            MessageBox.Show("Please Fill Out The PRODUCT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbShippingLine.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPPING_LINE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbHaulier.Text = "" Then
-            MessageBox.Show("Please Fill Out The HAULIER Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbLoadingPort.Text = "" Then
-            MessageBox.Show("Please Fill Out The LOADING_PORT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbContainerSize.Text = "" Then
-            MessageBox.Show("Please Fill Out The Container_Size Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbContainerNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The CONTAINER NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbInternalSealNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The INTERNAL SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbCheckTempSealNo.SelectedItem = "YES" And tbTempSeal.Text = "" Then
-            MessageBox.Show("Please Fill Out The TEMPORARY SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ' ElseIf ComboBox3.Text = "" Then
-            '     MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf cmbDDB.Text = "" Then
-            MessageBox.Show("Please Fill Out The DDB Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If checkShippingPost = "" Then
+            cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
+            cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+            cmd.Parameters.AddWithValue("@checkTempSealNo", Me.checkTempSealNo)
+            ra = cmd.ExecuteNonQuery
+            'btnCancel.PerformClick()
+            MessageBox.Show("Save Complete as " & Me.TruckOutNumber, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            meclose()
         Else
-            'shipping save
-            If checkShippingPost = "YES" And My.Settings.adminCheck = True Then
-                cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
-                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
-                ra = cmd.ExecuteNonQuery
-                btnCancel1.PerformClick()
-                MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                'cmd.CommandText = "update Shipping set SHIPPING_POST = '" + "YES" + "',SHIPPING_POST_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',ORIGIN = '" + cmbCompany.Text + "',SHIPPING_POST_User = '" + My.Settings.username + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Update_User='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB ='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo  WHERE ID =@TruckOutNumber"
-                'cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                'cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
-                'ra = cmd.ExecuteNonQuery
-                'btnCancel1.PerformClick()
-                'MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                MessageBox.Show("This Number is posted. Please contact admin for modification. ", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+            MessageBox.Show("This Number is posted. Please contact admin for modification. ", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+
         con.Close()
+
     End Sub
 
     Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -801,4 +762,85 @@ Public Class ShippingEdit
         End While
         con.Close()
     End Function
+
+    Private Sub btnPost_Click(sender As Object, e As EventArgs) Handles btnPost.Click
+        'save button
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim ra As Integer
+        Dim con3 As New SqlConnection
+        Dim cmd3 As New SqlCommand
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        con3.ConnectionString = My.Settings.connstr
+        cmd3.Connection = con3
+        con3.Open()
+
+        If dtpSCD.Text = "" Then
+            MessageBox.Show("Please Fill Out The SHIPMENT CLOSING DATE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbCompany.Text = "" Then
+            MessageBox.Show("Please Fill Out The COMPANY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf dtpSCT.Text = "" Then
+            MessageBox.Show("Please Fill Out The SHIPPING CLOSING TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbInvoice.Text = "" Then
+            MessageBox.Show("Please Fill Out The INVOICE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbProduct.Text = "" Then
+            MessageBox.Show("Please Fill Out The PRODUCT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbShippingLine.Text = "" Then
+            MessageBox.Show("Please Fill Out The SHIPPING_LINE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbHaulier.Text = "" Then
+            MessageBox.Show("Please Fill Out The HAULIER Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbLoadingPort.Text = "" Then
+            MessageBox.Show("Please Fill Out The LOADING_PORT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbContainerSize.Text = "" Then
+            MessageBox.Show("Please Fill Out The Container_Size Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbContainerNo.Text = "" Then
+            MessageBox.Show("Please Fill Out The CONTAINER NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbInternalSealNo.Text = "" Then
+            MessageBox.Show("Please Fill Out The INTERNAL SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbCheckTempSealNo.SelectedItem = "YES" And tbTempSeal.Text = "" Then
+            MessageBox.Show("Please Fill Out The TEMPORARY SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ' ElseIf ComboBox3.Text = "" Then
+            '     MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf cmbDDB.Text = "" Then
+            MessageBox.Show("Please Fill Out The DDB Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            'shipping save
+            If checkShippingPost = "YES" And My.Settings.adminCheck = True Then
+                cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
+                ra = cmd.ExecuteNonQuery
+
+                MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                meclose()
+            ElseIf checkShippingPost = "YES" And My.Settings.adminCheck = False Then
+                MessageBox.Show("This Number is posted. Please contact admin for modification. ", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                cmd.CommandText = "update Shipping set SHIPPING_POST = '" + "YES" + "',SHIPPING_POST_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',ORIGIN = '" + cmbCompany.Text + "',SHIPPING_POST_User = '" + My.Settings.username + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB ='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo  WHERE ID =@TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
+                ra = cmd.ExecuteNonQuery
+                MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                meclose()
+            End If
+        End If
+        con.Close()
+    End Sub
+
+    Private Function meclose()
+        Dim obj As New Search
+        obj.Show()
+        Me.Close()
+    End Function
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel1.Click
+        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+            Dim obj As New Search
+            obj.Show()
+            Me.Close()
+            Me.Close()
+        End If
+    End Sub
 End Class

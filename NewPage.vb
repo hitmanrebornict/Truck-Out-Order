@@ -80,7 +80,7 @@ Public Class NewPage
     'End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPost.Click
-        'save button
+        'Post button
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim ra As Integer
@@ -250,7 +250,7 @@ Public Class NewPage
         End If
     End Sub
 
-    Function meClose()
+    Private Function meClose()
         Dim Admin As New Admin
         Dim User As New NormalUserPage
 
