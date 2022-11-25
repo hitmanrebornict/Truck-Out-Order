@@ -64,22 +64,23 @@ Public Class NewPage
         con.Close()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'Cancel Button
-        Dim Admin As New Admin
-        Dim User As New NormalUserPage
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    '    'Cancel Button
+    '    'Dim Admin As New Admin
+    '    'Dim User As New NormalUserPage
 
-        Select Case My.Settings.adminCheck
-            Case True
-                Admin.Show()
-                Me.Close()
-            Case False
-                User.Show()
-                Me.Close()
-        End Select
-    End Sub
+    '    'Select Case My.Settings.adminCheck
+    '    '    Case True
+    '    '        Admin.Show()
+    '    '        Me.Close()
+    '    '    Case False
+    '    '        User.Show()
+    '    '        Me.Close()
+    '    'End Select
+    '    Me.Close()
+    'End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPost.Click
         'save button
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -137,7 +138,8 @@ Public Class NewPage
             cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
             cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
             ra = cmd.ExecuteNonQuery
-            btnCancel.PerformClick()
+            'btnCancel.PerformClick()
+            meClose()
             MessageBox.Show("Post Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
@@ -196,17 +198,70 @@ Public Class NewPage
         If cmbCheckTempSealNo.Text = "NO" Then
             tbTemporarySealNo.Enabled = False
             checkTempSealNo = False
+            tbTemporarySealNo.Text = ""
         Else
             tbTemporarySealNo.Enabled = True
             checkTempSealNo = True
         End If
     End Sub
 
-    Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
-        If cmbEsSealNo.SelectedItem = "NO" Then
-            tbEsSealNo.Enabled = False
-        Else
-            tbEsSealNo.Enabled = True
+    'Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
+    '    If cmbEsSealNo.SelectedItem = "NO" Then
+    '        tbEsSealNo.Enabled = False
+    '        tbEsSealNo.Text = ""
+    '    Else
+    '        tbEsSealNo.Enabled = True
+    '    End If
+    'End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim ra As Integer
+        Dim con3 As New SqlConnection
+        Dim cmd3 As New SqlCommand
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,DDB,checkTempSealNo, Last_Modified_User,Update_Time) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')", con)
+        ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
+        cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
+        cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
+        ra = cmd.ExecuteNonQuery
+        'btnCancel.PerformClick()
+        meClose()
+        MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        con.Close()
+    End Sub
+
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+            Dim Admin As New Admin
+            Dim User As New NormalUserPage
+
+            Select Case My.Settings.adminCheck
+                Case True
+                    Admin.Show()
+                Case False
+                    User.Show()
+            End Select
+            Me.Close()
         End If
     End Sub
+
+    Function meClose()
+        Dim Admin As New Admin
+        Dim User As New NormalUserPage
+
+        Select Case My.Settings.adminCheck
+            Case True
+                Admin.Show()
+            Case False
+                User.Show()
+        End Select
+        Me.Close()
+    End Function
+
 End Class
