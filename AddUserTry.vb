@@ -90,11 +90,6 @@ Public Class AddUserTry
                 cbAdmin.Text = "Non-Admin"
             End If
 
-            While True
-                Dim username As String = rd.Item("Username")
-            cmd.CommandText = "Update Login set username = @username,password = " & username & "22" & " where username = @username"
-            cmd.ExecuteReader()
-            End While
         End While
     End Sub
 
