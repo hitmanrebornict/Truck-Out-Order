@@ -4,15 +4,10 @@ Public Class Admin
 
     Public TruckOutNumber As Integer
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        lblUserDetails.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyHeader.Text = My.Settings.companyNameHeader
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader)
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim loginPage As New Login
-        loginPage.Show()
-        Me.Close()
-
+        GlobalFunction.backToPage(login, Me)
     End Sub
 
     Private Sub Button1_Hover(sender As Object, e As EventArgs) Handles Button1.MouseHover

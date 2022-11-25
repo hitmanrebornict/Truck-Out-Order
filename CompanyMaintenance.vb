@@ -104,7 +104,7 @@ Public Class CompanyMaintenance
             cmd.Parameters.AddWithValue("@RegistrationNum", tbRegistrationNo.Text)
             rd = cmd.ExecuteReader
             MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            btnCancel.PerformClick()
+            GlobalFunction.backToPage(Admin, Me)
         End If
 
     End Sub
@@ -146,7 +146,7 @@ Public Class CompanyMaintenance
         cmd.Parameters.AddWithValue("@companyName", cmbCompanyName.Text)
         rd = cmd.ExecuteReader
         MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        btnCancel.PerformClick()
+        GlobalFunction.backToPage(Admin, Me)
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnCancel.Click

@@ -13,9 +13,7 @@ Public Class NormalUserPage
 
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim loginPage As New Login
-        loginPage.Show()
-        Me.Close()
+        GlobalFunction.backToPage(Login, Me)
     End Sub
 
     Private Sub btnLogout_Hover(sender As Object, e As EventArgs) Handles btnLogout.MouseHover

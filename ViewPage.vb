@@ -131,18 +131,7 @@ Public Class ViewPage
 
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        Dim Admin As New Admin
-        Dim User As New NormalUserPage
-
-        Select Case My.Settings.adminCheck
-            Case True
-                Admin.Show()
-                Me.Close()
-            Case Else
-                User.Show()
-                Me.Close()
-
-        End Select
+        GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
     End Sub
 
 

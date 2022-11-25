@@ -15,69 +15,15 @@ Public Class NewPage
         tbTemporarySealNo.Enabled = False
         cmbCheckTempSealNo.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCheckTempSealNo.SelectedItem = "NO"
-        Dim con As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim rd As SqlDataReader
-        con.ConnectionString = My.Settings.connstr
-        cmd.Connection = con
-        con.Open()
         cmbDDB.SelectedItem = "No"
-
         tbEsSealNo.Enabled = False
             tbLoadingBay.Enabled = False
             cmbWarehouseLocation.Enabled = False
             cmbEsSealNo.Enabled = False
 
+        GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
 
-        'Read Data Into Company Combobox
-        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES'  order by company_name"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbCompany.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-
-        con.Open()
-        'Read Data Into Loading Port Combobox
-        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbLoadingPort.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Warehouse Location Combobox
-        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbWarehouseLocation.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Container Size Combobox
-        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES'  order by container_size"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbContainerSize.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
     End Sub
-
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-    '    'Cancel Button
-    '    'Dim Admin As New Admin
-    '    'Dim User As New NormalUserPage
-
-    '    'Select Case My.Settings.adminCheck
-    '    '    Case True
-    '    '        Admin.Show()
-    '    '        Me.Close()
-    '    '    Case False
-    '    '        User.Show()
-    '    '        Me.Close()
-    '    'End Select
-    '    Me.Close()
-    'End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPost.Click
         'Post button
@@ -138,7 +84,7 @@ Public Class NewPage
             cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
             ra = cmd.ExecuteNonQuery
             'btnCancel.PerformClick()
-            meClose()
+            GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
             MessageBox.Show("Post Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
@@ -229,7 +175,7 @@ Public Class NewPage
         cmd.Parameters.AddWithValue("checkTempSealNo", Me.checkTempSealNo)
         ra = cmd.ExecuteNonQuery
         'btnCancel.PerformClick()
-        meClose()
+        GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
         MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         con.Close()
     End Sub
@@ -237,30 +183,8 @@ Public Class NewPage
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
-            Dim Admin As New Admin
-            Dim User As New NormalUserPage
-
-            Select Case My.Settings.adminCheck
-                Case True
-                    Admin.Show()
-                Case False
-                    User.Show()
-            End Select
-            Me.Close()
+            GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
         End If
     End Sub
-
-    Private Function meClose()
-        Dim Admin As New Admin
-        Dim User As New NormalUserPage
-
-        Select Case My.Settings.adminCheck
-            Case True
-                Admin.Show()
-            Case False
-                User.Show()
-        End Select
-        Me.Close()
-    End Function
 
 End Class

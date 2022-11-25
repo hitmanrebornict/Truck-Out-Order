@@ -163,7 +163,7 @@ Public Class FieldMaintenance
             End Select
             rd = cmd.ExecuteReader
             MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            btnCancel.PerformClick()
+            GlobalFunction.backToPage(Admin, Me)
 
         End If
     End Sub

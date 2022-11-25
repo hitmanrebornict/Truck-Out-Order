@@ -14,6 +14,9 @@ Public Class Edit
     Dim checkSecurityCheck As String
     Dim checkTempSealNo As Boolean = True
     Dim checkCargoWeight As Boolean
+    Dim con As New SqlConnection
+    Dim cmd As New SqlCommand
+    Dim rd As SqlDataReader
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,13 +26,11 @@ Public Class Edit
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmRegistrationPlate.DropDownStyle = ComboBoxStyle.DropDownList
-        Dim con As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim rd As SqlDataReader
+
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        con.Open()
 
+        con.Open()
         'Read Data into Driver Check Section Combobox
         cmd.CommandText = "SELECT distinct(Full_Name) as Driver_Name from Driver_Info  where Full_Name is not null and validationCheck = 'YES' order by Full_Name"
         rd = cmd.ExecuteReader
@@ -53,112 +54,34 @@ Public Class Edit
             cmbPmRegistrationPlate.Items.Add(rd.Item("PM_Plate"))
         End While
         con.Close()
-        con.Open()
 
-        'Read Data Into Company Combobox
-        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES' order by company_name"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbCompany.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
+        GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
 
-        con.Open()
-        'Read Data Into Loading Port Combobox
-        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbLoadingPort.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Warehouse Location Combobox
-        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbWarehouseLocation.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
-        con.Open()
-        'Read Data Into Container Size Combobox
-        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES' order by container_size"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbContainerSize.Items.Add(rd.Item("r"))
-        End While
-        con.Close()
+        'Read data from Shipping Table
+        GlobalFunction.selectFromShipping(
+            Me.TruckOutNumber,
+            cmbCompany,
+            dtpSCD,
+            dtpSCT,
+            tbInvoice,
+            tbProduct,
+            tbShippingLine,
+            cmbContainerSize,
+            tbHaulier,
+            cmbLoadingPort,
+            tbContainerNo,
+            tbLinerSealNo,
+            tbInternalSealNo,
+            tbTempSeal,
+            cmbEsSealNo,
+            cmbDDB,
+            checkShippingPost,
+            checkWarehousePost,
+            checkSecurityPost,
+            tbSendToCompany,
+            checkTempSealNo
+            )
 
-        con.Open()
-        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company from Shipping where id = @TruckOutNumber"
-        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-        rd = cmd.ExecuteReader
-
-
-        While rd.Read()
-            If IsDBNull(rd.Item("ORIGIN")) Then
-                cmbCompany.Text = ""
-            Else
-                cmbCompany.Text = rd.Item("ORIGIN")
-            End If
-
-            dtpSCD.Text = rd.Item("SHIPMENT_CLOSING_DATE")
-            dtpSCT.Text = rd.Item("CloseTime")
-            tbInvoice.Text = rd.Item("INVOICE")
-            tbProduct.Text = rd.Item("PRODUCT")
-            tbShippingLine.Text = rd.Item("SHIPPING_LINE")
-            cmbContainerSize.Text = rd.Item("Container_Size")
-            tbHaulier.Text = rd.Item("HAULIER")
-            cmbLoadingPort.Text = rd.Item("LOADING_PORT")
-            tbContainerNo.Text = rd.Item("CONTAINER_NO")
-            tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
-            tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
-            tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
-
-            If IsDBNull(rd.Item("ES_SEAL_NO")) Then
-                cmbEsSealNo.Text = ""
-            Else
-                cmbEsSealNo.Text = rd.Item("ES_SEAL_NO")
-            End If
-            If IsDBNull(rd.Item("DDB")) Then
-                cmbDDB.Text = ""
-            Else
-                cmbDDB.Text = rd.Item("DDB")
-            End If
-
-            If IsDBNull(rd.Item("Shipping_Post")) Then
-                checkShippingPost = ""
-            Else
-                checkShippingPost = rd.Item("Shipping_Post")
-            End If
-
-            If IsDBNull(rd.Item("Warehouse_Post")) Then
-                checkWarehousePost = ""
-            Else
-                checkWarehousePost = rd.Item("Warehouse_Post")
-            End If
-
-            If IsDBNull(rd.Item("Security_Post")) Then
-                checkSecurityPost = ""
-            Else
-                checkSecurityPost = rd.Item("Security_Post")
-
-
-            End If
-
-            If IsDBNull(rd.Item("company")) Then
-                tbSendToCompany.Text = ""
-            Else
-                tbSendToCompany.Text = rd.Item("company")
-            End If
-
-            If IsDBNull(rd.Item("checkTempSealNo")) Then
-                checkTempSealNo = False
-            Else
-                checkTempSealNo = rd.Item("checkTempSealNo")
-            End If
-        End While
-
-        con.Close()
 
         con.Open()
         cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
@@ -395,7 +318,7 @@ Public Class Edit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        ShippingEdit.PrintDocument1_PrintPage(e, e)
+        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs)

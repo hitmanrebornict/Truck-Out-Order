@@ -139,7 +139,7 @@ Public Class AddUserTry
                 rd.Read()
                 If rd.HasRows() Then
                     MessageBox.Show("The user is already exist, please use different username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnCancel.PerformClick()
+
                 Else
                     cmd.CommandText = ("Insert into Login(username,fullUsername,password,department,role_id,validationCheck,adminCheck) values(@username1,@fullUsername,@password,@department,@role_id,@validationCheck,@adminCheck)")
                     cmd.Parameters.AddWithValue("@username1", cmbSelectUserID.Text)
@@ -157,7 +157,7 @@ Public Class AddUserTry
 
 
             MessageBox.Show("Update Complete", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            btnCancel.PerformClick()
+            GlobalFunction.backToPage(Admin, Me)
         End If
     End Sub
 
