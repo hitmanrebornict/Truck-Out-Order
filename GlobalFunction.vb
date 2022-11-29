@@ -1,14 +1,34 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
-
-
-
 Public Class GlobalFunction
-    Public Shared checkTempSealNo As Boolean
 
-    Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label)
+    Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label, companyNameHeader As String)
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT CompanyName From Company WHERE companyID = 1"
+        rd = cmd.ExecuteReader
+        'If rd.HasRows() Then
+        '    My.Settings.companyNameHeader = rd.Item("CompanyName")
+        'Else
+        '    My.Settings.companyNameHeader = "Guan Chong Cocoa Manufacturer Sdn Bhd"
+        'End If
+
+        While rd.Read()
+            If Not rd.HasRows() Then
+                companyNameHeader = "ABC"
+            Else
+                companyNameHeader = rd.Item("CompanyName")
+            End If
+
+        End While
+
+        con.Close()
         lblWelcome.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
-        lblCompanyNameHeader.Text = My.Settings.companyNameHeader
+        lblCompanyNameHeader.Text = companyNameHeader
         Return ""
     End Function
 
@@ -160,9 +180,9 @@ Public Class GlobalFunction
 
         'Third Section (Post User)
         e.Graphics.DrawString("Shipping Issue By", printFont, Brushes.Black, 0, 560)
-        e.Graphics.DrawString("Shipping Seal", printFont, Brushes.Black, 0, 590)
-        e.Graphics.DrawString("Shipping Verify By", printFont, Brushes.Black, 0, 620)
-        e.Graphics.DrawString("Security Issue by", printFont, Brushes.Black, 0, 650)
+        e.Graphics.DrawString("Warehouse Seal", printFont, Brushes.Black, 0, 590)
+        e.Graphics.DrawString("Warehouse Verify By", printFont, Brushes.Black, 0, 620)
+        e.Graphics.DrawString("Security Verify by", printFont, Brushes.Black, 0, 650)
 
         con.Open()
         cmd.CommandText = "SELECT * from shipping where ID = @TruckOutNumber"
@@ -209,12 +229,18 @@ Public Class GlobalFunction
 
 
         'Check shipping, warehouse, security post statement
+        Dim shippingPostUser As String
         Dim warehousePostUser As String
         Dim securityPostUser As String
         Dim checkWarehouseCheckPoint As String
         Dim warehouseCheckUser As String
 
-        Dim shippingPostUser As String = rd.Item("Shipping_Post_User")
+        If IsDBNull(rd.Item("Shipping_Post_User")) Then
+            shippingPostUser = "Uncompleted"
+        Else
+            shippingPostUser = rd.Item("Shipping_Post_User")
+        End If
+
         If IsDBNull(rd.Item("Warehouse_Post_User")) Then
             warehousePostUser = "Uncompleted"
         Else
@@ -405,11 +431,11 @@ Public Class GlobalFunction
     tbTempSeal As TextBox,
     cmbEsSealNo As ComboBox,
     cmbDDB As ComboBox,
+    tbSendToCompany As TextBox,
+    checkTempSealNo As Boolean,
     checkShippingPost As String,
     checkWarehousePost As String,
-    checkSecurityPost As String,
-    tbSendToCompany As TextBox,
-    checkTempSealNo As Boolean
+    checkSecurityPost As String
     )
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -422,71 +448,199 @@ Public Class GlobalFunction
         rd = cmd.ExecuteReader
 
 
+        rd.Read()
+        If IsDBNull(rd.Item("ORIGIN")) Then
+            cmbcompany.Text = ""
+        Else
+            cmbcompany.Text = rd.Item("ORIGIN")
+        End If
+
+        dtpSCD.Text = rd.Item("SHIPMENT_CLOSING_DATE")
+        dtpSCT.Text = rd.Item("CloseTime")
+        tbInvoice.Text = rd.Item("INVOICE")
+        tbProduct.Text = rd.Item("PRODUCT")
+        tbShippingLine.Text = rd.Item("SHIPPING_LINE")
+        cmbContainerSize.Text = rd.Item("Container_Size")
+        tbHaulier.Text = rd.Item("HAULIER")
+        cmbLoadingPort.Text = rd.Item("LOADING_PORT")
+        tbContainerNo.Text = rd.Item("CONTAINER_NO")
+        tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
+        tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
+        tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
+
+        'tbTemporarySealNo.Text = rd.Item("TEMPORARY_SEAL_NO")
+        If IsDBNull(rd.Item("ES_SEAL_NO")) Then
+            cmbEsSealNo.Text = ""
+        Else
+            cmbEsSealNo.Text = rd.Item("ES_SEAL_NO")
+        End If
+        If IsDBNull(rd.Item("DDB")) Then
+            cmbDDB.Text = ""
+        Else
+            cmbDDB.Text = rd.Item("DDB")
+        End If
+
+        If IsDBNull(rd.Item("Shipping_Post")) Then
+            checkShippingPost = ""
+        Else
+            checkShippingPost = rd.Item("Shipping_Post")
+        End If
+
+        If IsDBNull(rd.Item("Warehouse_Post")) Then
+            checkWarehousePost = ""
+        Else
+            checkWarehousePost = rd.Item("Warehouse_Post")
+        End If
+
+        If IsDBNull(rd.Item("Security_Post")) Then
+            checkSecurityPost = ""
+        Else
+            checkSecurityPost = rd.Item("Security_Post")
+        End If
+
+        If IsDBNull(rd.Item("company")) Then
+            tbSendToCompany.Text = ""
+        Else
+            tbSendToCompany.Text = rd.Item("company")
+        End If
+
+        If IsDBNull(rd.Item("checkTempSealNo")) Then
+        Else
+            checkTempSealNo = rd.Item("checkTempSealNo")
+        End If
+
+        con.Close()
+        Return ""
+    End Function
+
+    Public Shared Function selectFromWarehouse(
+        TruckOutNumber As String,
+        cmbWarehouseLocation As ComboBox,
+        tbLoadingBay As TextBox,
+        cmbEsSealNo As ComboBox,
+        tbEssealNo As TextBox,
+        dtpLCD As DateTimePicker,
+        dtpLCT As DateTimePicker,
+        dtpRTD As DateTimePicker,
+        dtpRTT As DateTimePicker,
+        tbCargo As TextBox,
+        checkWarehouse As String
+        )
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
+        cmd.Parameters.AddWithValue("@TruckOutNumber2", TruckOutNumber)
+        rd = cmd.ExecuteReader()
         While rd.Read()
-            If IsDBNull(rd.Item("ORIGIN")) Then
-                cmbcompany.Text = ""
+            cmbWarehouseLocation.Text = rd.Item("WAREHOUSE_LOCATION")
+            tbLoadingBay.Text = rd.Item("LOADING_BAY")
+            If cmbEsSealNo.Text = "NO" Then
+                tbEssealNo.Enabled = False
             Else
-                cmbcompany.Text = rd.Item("ORIGIN")
+                tbEssealNo.Text = rd.Item("ES_SEAL_NO")
             End If
 
-            dtpSCD.Text = rd.Item("SHIPMENT_CLOSING_DATE")
-            dtpSCT.Text = rd.Item("CloseTime")
-            tbInvoice.Text = rd.Item("INVOICE")
-            tbProduct.Text = rd.Item("PRODUCT")
-            tbShippingLine.Text = rd.Item("SHIPPING_LINE")
-            cmbContainerSize.Text = rd.Item("Container_Size")
-            tbHaulier.Text = rd.Item("HAULIER")
-            cmbLoadingPort.Text = rd.Item("LOADING_PORT")
-            tbContainerNo.Text = rd.Item("CONTAINER_NO")
-            'ComboBox3.Text = rd.Item("ES_SEAL_NO")
-            tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
-            tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
-            tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
+            dtpLCD.Text = rd.Item("LOADING_COMPLETED_DATE")
+            dtpLCT.Text = rd.Item("LCT")
+            dtpRTD.Text = rd.Item("READY_TRUCK_OUT_DATE")
+            dtpRTT.Text = rd.Item("RCT")
 
-            'tbTemporarySealNo.Text = rd.Item("TEMPORARY_SEAL_NO")
-            If IsDBNull(rd.Item("ES_SEAL_NO")) Then
-                cmbEsSealNo.Text = ""
+            If IsDBNull(rd.Item("Shipping_ID")) Then
+                checkWarehouse = ""
             Else
-                cmbEsSealNo.Text = rd.Item("ES_SEAL_NO")
-            End If
-            If IsDBNull(rd.Item("DDB")) Then
-                cmbDDB.Text = ""
-            Else
-                cmbDDB.Text = rd.Item("DDB")
+                checkWarehouse = rd.Item("shipping_id")
             End If
 
-            If IsDBNull(rd.Item("Shipping_Post")) Then
-                checkShippingPost = ""
+            If IsDBNull(rd.Item("Cargo_Weight")) Then
+                tbCargo.Text = ""
             Else
-                checkShippingPost = rd.Item("Shipping_Post")
-            End If
-
-            If IsDBNull(rd.Item("Warehouse_Post")) Then
-                checkWarehousePost = ""
-            Else
-                checkWarehousePost = rd.Item("Warehouse_Post")
-            End If
-
-            If IsDBNull(rd.Item("Security_Post")) Then
-                checkSecurityPost = ""
-            Else
-                checkSecurityPost = rd.Item("Security_Post")
-            End If
-
-            If IsDBNull(rd.Item("company")) Then
-                tbSendToCompany.Text = ""
-            Else
-                tbSendToCompany.Text = rd.Item("company")
-            End If
-
-            If IsDBNull(rd.Item("checkTempSealNo")) Then
-                checkTempSealNo = False
-            Else
-                checkTempSealNo = rd.Item("checkTempSealNo")
+                tbCargo.Text = rd.Item("Cargo_Weight")
             End If
         End While
+        con.Close()
+        Return ""
+    End Function
 
+    Public Shared Function checkPostBox(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, lblCargoWeight As Label, checkReport As Boolean, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean)
+        'cbpost checkin
+        cbShippingPost.Enabled = False
+        cbWarehousePost.Enabled = False
+        cbSecurityPost.Enabled = False
+        If checkShippingPost = "" Then
+            cbShippingPost.Checked = False
+            cbShippingPost.Text = “Unposted"
+        Else
+            cbShippingPost.Checked = True
+            cbShippingPost.Text = "Posted"
+        End If
 
+        If checkWarehousePost = "" Then
+            cbWarehousePost.Checked = False
+            cbWarehousePost.Text = "Unposted"
+        Else
+            cbWarehousePost.Checked = True
+            cbWarehousePost.Text = "Posted"
+        End If
+
+        If checkSecurityPost = "" Then
+            cbSecurityPost.Checked = False
+            cbSecurityPost.Text = "Unposted"
+        Else
+            cbSecurityPost.Checked = True
+            cbSecurityPost.Text = "Posted"
+        End If
+
+        If checkReport = True Then
+            If checkCargoWeight = False Then
+                lblCargoWeight.Text = "Failed"
+                lblCargoWeight.ForeColor = Color.Red
+            Else
+                lblCargoWeight.Text = "Passed"
+            End If
+        Else
+
+        End If
+
+        Return ""
+    End Function
+
+    Public Shared Function loadFullNameIntoLabel(cmbCompany As ComboBox, cmbLoadingPort As ComboBox, lblCompanyFullName As Label, lblLoadingPortFullName As Label)
+        'Read the full_name into lblCompanyFullName
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "select full_name from details where company_name = '" + cmbCompany.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblCompanyFullName.Text = ""
+            Else
+                lblCompanyFullName.Text = rd.Item("full_name")
+            End If
+
+        End While
+        con.Close()
+
+        'Read the full_name into lblLoadingPortFullName
+        con.Open()
+        cmd.CommandText = "select full_name from details where Loading_port = '" + cmbLoadingPort.Text + "'"
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            If IsDBNull(rd.Item("full_name")) Then
+                lblLoadingPortFullName.Text = ""
+            Else
+                lblLoadingPortFullName.Text = rd.Item("full_name")
+            End If
+        End While
         con.Close()
         Return ""
     End Function

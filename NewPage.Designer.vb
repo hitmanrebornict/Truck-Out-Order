@@ -30,15 +30,10 @@ Partial Class NewPage
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblCompanyFullName = New System.Windows.Forms.Label()
         Me.lblCompanyShort = New System.Windows.Forms.Label()
-        Me.lblDDB = New System.Windows.Forms.Label()
         Me.cmbCompany = New System.Windows.Forms.ComboBox()
         Me.lblLoadingPort = New System.Windows.Forms.Label()
         Me.cmbLoadingPort = New System.Windows.Forms.ComboBox()
         Me.dtpSCD = New System.Windows.Forms.DateTimePicker()
-        Me.lblLoadingBay = New System.Windows.Forms.Label()
-        Me.lblWarehouseLocation = New System.Windows.Forms.Label()
-        Me.tbLoadingBay = New System.Windows.Forms.TextBox()
-        Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblSCD = New System.Windows.Forms.Label()
         Me.lblShippingLine = New System.Windows.Forms.Label()
@@ -53,7 +48,12 @@ Partial Class NewPage
         Me.cmbContainerSize = New System.Windows.Forms.ComboBox()
         Me.lblHaulier = New System.Windows.Forms.Label()
         Me.tbHaulier = New System.Windows.Forms.TextBox()
+        Me.lblDDB = New System.Windows.Forms.Label()
         Me.cmbDDB = New System.Windows.Forms.ComboBox()
+        Me.lblWarehouseLocation = New System.Windows.Forms.Label()
+        Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
+        Me.lblLoadingBay = New System.Windows.Forms.Label()
+        Me.tbLoadingBay = New System.Windows.Forms.TextBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -100,7 +100,7 @@ Partial Class NewPage
         Me.Panel3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(95, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1075, 680)
+        Me.Panel3.Size = New System.Drawing.Size(1076, 680)
         Me.Panel3.TabIndex = 3
         '
         'btnSave
@@ -118,9 +118,9 @@ Partial Class NewPage
         Me.TableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel3.ColumnCount = 4
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.40567!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.18352!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25094!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0306!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.1161!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.19101!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.12734!))
         Me.TableLayoutPanel3.Controls.Add(Me.lblLoadingPortFullName, 3, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.Label3, 2, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.lblCompanyFullName, 1, 1)
@@ -167,7 +167,7 @@ Partial Class NewPage
         'lblLoadingPortFullName
         '
         Me.lblLoadingPortFullName.AutoSize = True
-        Me.lblLoadingPortFullName.Location = New System.Drawing.Point(803, 38)
+        Me.lblLoadingPortFullName.Location = New System.Drawing.Point(823, 38)
         Me.lblLoadingPortFullName.Name = "lblLoadingPortFullName"
         Me.lblLoadingPortFullName.Size = New System.Drawing.Size(58, 19)
         Me.lblLoadingPortFullName.TabIndex = 130
@@ -178,7 +178,7 @@ Partial Class NewPage
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(544, 38)
+        Me.Label3.Location = New System.Drawing.Point(586, 38)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(218, 22)
         Me.Label3.TabIndex = 129
@@ -205,16 +205,6 @@ Partial Class NewPage
         Me.lblCompanyShort.TabIndex = 115
         Me.lblCompanyShort.Text = "Company :"
         '
-        'lblDDB
-        '
-        Me.lblDDB.AutoSize = True
-        Me.lblDDB.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDDB.Location = New System.Drawing.Point(4, 260)
-        Me.lblDDB.Name = "lblDDB"
-        Me.lblDDB.Size = New System.Drawing.Size(61, 22)
-        Me.lblDDB.TabIndex = 113
-        Me.lblDDB.Text = "DDB :"
-        '
         'cmbCompany
         '
         Me.cmbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -222,14 +212,14 @@ Partial Class NewPage
         Me.cmbCompany.FormattingEnabled = True
         Me.cmbCompany.Location = New System.Drawing.Point(243, 4)
         Me.cmbCompany.Name = "cmbCompany"
-        Me.cmbCompany.Size = New System.Drawing.Size(280, 27)
+        Me.cmbCompany.Size = New System.Drawing.Size(336, 27)
         Me.cmbCompany.TabIndex = 1
         '
         'lblLoadingPort
         '
         Me.lblLoadingPort.AutoSize = True
         Me.lblLoadingPort.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadingPort.Location = New System.Drawing.Point(544, 1)
+        Me.lblLoadingPort.Location = New System.Drawing.Point(586, 1)
         Me.lblLoadingPort.Name = "lblLoadingPort"
         Me.lblLoadingPort.Size = New System.Drawing.Size(125, 22)
         Me.lblLoadingPort.TabIndex = 119
@@ -239,9 +229,9 @@ Partial Class NewPage
         '
         Me.cmbLoadingPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbLoadingPort.FormattingEnabled = True
-        Me.cmbLoadingPort.Location = New System.Drawing.Point(803, 4)
+        Me.cmbLoadingPort.Location = New System.Drawing.Point(823, 4)
         Me.cmbLoadingPort.Name = "cmbLoadingPort"
-        Me.cmbLoadingPort.Size = New System.Drawing.Size(256, 27)
+        Me.cmbLoadingPort.Size = New System.Drawing.Size(242, 27)
         Me.cmbLoadingPort.TabIndex = 8
         '
         'dtpSCD
@@ -251,44 +241,8 @@ Partial Class NewPage
         Me.dtpSCD.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpSCD.Location = New System.Drawing.Point(243, 78)
         Me.dtpSCD.Name = "dtpSCD"
-        Me.dtpSCD.Size = New System.Drawing.Size(278, 26)
+        Me.dtpSCD.Size = New System.Drawing.Size(336, 26)
         Me.dtpSCD.TabIndex = 2
-        '
-        'lblLoadingBay
-        '
-        Me.lblLoadingBay.AutoSize = True
-        Me.lblLoadingBay.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadingBay.Location = New System.Drawing.Point(544, 186)
-        Me.lblLoadingBay.Name = "lblLoadingBay"
-        Me.lblLoadingBay.Size = New System.Drawing.Size(124, 22)
-        Me.lblLoadingBay.TabIndex = 121
-        Me.lblLoadingBay.Text = "Loading Bay:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'lblWarehouseLocation
-        '
-        Me.lblWarehouseLocation.AutoSize = True
-        Me.lblWarehouseLocation.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWarehouseLocation.Location = New System.Drawing.Point(544, 149)
-        Me.lblWarehouseLocation.Name = "lblWarehouseLocation"
-        Me.lblWarehouseLocation.Size = New System.Drawing.Size(193, 22)
-        Me.lblWarehouseLocation.TabIndex = 120
-        Me.lblWarehouseLocation.Text = "Warehouse Location:"
-        '
-        'tbLoadingBay
-        '
-        Me.tbLoadingBay.Location = New System.Drawing.Point(803, 189)
-        Me.tbLoadingBay.Name = "tbLoadingBay"
-        Me.tbLoadingBay.Size = New System.Drawing.Size(256, 26)
-        Me.tbLoadingBay.TabIndex = 12
-        '
-        'cmbWarehouseLocation
-        '
-        Me.cmbWarehouseLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbWarehouseLocation.FormattingEnabled = True
-        Me.cmbWarehouseLocation.Location = New System.Drawing.Point(803, 152)
-        Me.cmbWarehouseLocation.Name = "cmbWarehouseLocation"
-        Me.cmbWarehouseLocation.Size = New System.Drawing.Size(256, 27)
-        Me.cmbWarehouseLocation.TabIndex = 11
         '
         'Label1
         '
@@ -325,7 +279,7 @@ Partial Class NewPage
         Me.tbShippingLine.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbShippingLine.Location = New System.Drawing.Point(243, 226)
         Me.tbShippingLine.Name = "tbShippingLine"
-        Me.tbShippingLine.Size = New System.Drawing.Size(278, 26)
+        Me.tbShippingLine.Size = New System.Drawing.Size(336, 26)
         Me.tbShippingLine.TabIndex = 6
         '
         'lblProduct
@@ -343,7 +297,7 @@ Partial Class NewPage
         Me.tbProduct.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbProduct.Location = New System.Drawing.Point(243, 189)
         Me.tbProduct.Name = "tbProduct"
-        Me.tbProduct.Size = New System.Drawing.Size(278, 26)
+        Me.tbProduct.Size = New System.Drawing.Size(336, 26)
         Me.tbProduct.TabIndex = 5
         '
         'lblInvoice
@@ -361,7 +315,7 @@ Partial Class NewPage
         Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbInvoice.Location = New System.Drawing.Point(243, 152)
         Me.tbInvoice.Name = "tbInvoice"
-        Me.tbInvoice.Size = New System.Drawing.Size(278, 26)
+        Me.tbInvoice.Size = New System.Drawing.Size(336, 26)
         Me.tbInvoice.TabIndex = 4
         '
         'lblSCT
@@ -381,14 +335,14 @@ Partial Class NewPage
         Me.dtpSCT.Location = New System.Drawing.Point(243, 115)
         Me.dtpSCT.Name = "dtpSCT"
         Me.dtpSCT.ShowUpDown = True
-        Me.dtpSCT.Size = New System.Drawing.Size(278, 26)
+        Me.dtpSCT.Size = New System.Drawing.Size(336, 26)
         Me.dtpSCT.TabIndex = 3
         '
         'lblContainerSize
         '
         Me.lblContainerSize.AutoSize = True
         Me.lblContainerSize.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblContainerSize.Location = New System.Drawing.Point(544, 75)
+        Me.lblContainerSize.Location = New System.Drawing.Point(586, 75)
         Me.lblContainerSize.Name = "lblContainerSize"
         Me.lblContainerSize.Size = New System.Drawing.Size(142, 22)
         Me.lblContainerSize.TabIndex = 117
@@ -398,16 +352,16 @@ Partial Class NewPage
         '
         Me.cmbContainerSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbContainerSize.FormattingEnabled = True
-        Me.cmbContainerSize.Location = New System.Drawing.Point(803, 78)
+        Me.cmbContainerSize.Location = New System.Drawing.Point(823, 78)
         Me.cmbContainerSize.Name = "cmbContainerSize"
-        Me.cmbContainerSize.Size = New System.Drawing.Size(256, 27)
+        Me.cmbContainerSize.Size = New System.Drawing.Size(242, 27)
         Me.cmbContainerSize.TabIndex = 9
         '
         'lblHaulier
         '
         Me.lblHaulier.AutoSize = True
         Me.lblHaulier.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHaulier.Location = New System.Drawing.Point(544, 112)
+        Me.lblHaulier.Location = New System.Drawing.Point(586, 112)
         Me.lblHaulier.Name = "lblHaulier"
         Me.lblHaulier.Size = New System.Drawing.Size(76, 22)
         Me.lblHaulier.TabIndex = 118
@@ -415,11 +369,21 @@ Partial Class NewPage
         '
         'tbHaulier
         '
-        Me.tbHaulier.Location = New System.Drawing.Point(803, 115)
+        Me.tbHaulier.Location = New System.Drawing.Point(823, 115)
         Me.tbHaulier.Name = "tbHaulier"
-        Me.tbHaulier.Size = New System.Drawing.Size(256, 26)
+        Me.tbHaulier.Size = New System.Drawing.Size(242, 26)
         Me.tbHaulier.TabIndex = 10
         Me.tbHaulier.Text = "PHD"
+        '
+        'lblDDB
+        '
+        Me.lblDDB.AutoSize = True
+        Me.lblDDB.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDDB.Location = New System.Drawing.Point(4, 260)
+        Me.lblDDB.Name = "lblDDB"
+        Me.lblDDB.Size = New System.Drawing.Size(61, 22)
+        Me.lblDDB.TabIndex = 113
+        Me.lblDDB.Text = "DDB :"
         '
         'cmbDDB
         '
@@ -429,8 +393,44 @@ Partial Class NewPage
         Me.cmbDDB.Items.AddRange(New Object() {"Yes", "No"})
         Me.cmbDDB.Location = New System.Drawing.Point(243, 263)
         Me.cmbDDB.Name = "cmbDDB"
-        Me.cmbDDB.Size = New System.Drawing.Size(278, 27)
+        Me.cmbDDB.Size = New System.Drawing.Size(336, 27)
         Me.cmbDDB.TabIndex = 7
+        '
+        'lblWarehouseLocation
+        '
+        Me.lblWarehouseLocation.AutoSize = True
+        Me.lblWarehouseLocation.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWarehouseLocation.Location = New System.Drawing.Point(586, 149)
+        Me.lblWarehouseLocation.Name = "lblWarehouseLocation"
+        Me.lblWarehouseLocation.Size = New System.Drawing.Size(193, 22)
+        Me.lblWarehouseLocation.TabIndex = 120
+        Me.lblWarehouseLocation.Text = "Warehouse Location:"
+        '
+        'cmbWarehouseLocation
+        '
+        Me.cmbWarehouseLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbWarehouseLocation.FormattingEnabled = True
+        Me.cmbWarehouseLocation.Location = New System.Drawing.Point(823, 152)
+        Me.cmbWarehouseLocation.Name = "cmbWarehouseLocation"
+        Me.cmbWarehouseLocation.Size = New System.Drawing.Size(242, 27)
+        Me.cmbWarehouseLocation.TabIndex = 11
+        '
+        'lblLoadingBay
+        '
+        Me.lblLoadingBay.AutoSize = True
+        Me.lblLoadingBay.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoadingBay.Location = New System.Drawing.Point(586, 186)
+        Me.lblLoadingBay.Name = "lblLoadingBay"
+        Me.lblLoadingBay.Size = New System.Drawing.Size(124, 22)
+        Me.lblLoadingBay.TabIndex = 121
+        Me.lblLoadingBay.Text = "Loading Bay:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'tbLoadingBay
+        '
+        Me.tbLoadingBay.Location = New System.Drawing.Point(823, 189)
+        Me.tbLoadingBay.Name = "tbLoadingBay"
+        Me.tbLoadingBay.Size = New System.Drawing.Size(242, 26)
+        Me.tbLoadingBay.TabIndex = 12
         '
         'btnCancel
         '

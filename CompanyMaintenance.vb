@@ -8,10 +8,12 @@ Public Class CompanyMaintenance
     Dim validationCheck As String
     Dim newCheck As Boolean = True
     Dim maxTOONumber, age As Integer
-
+    Dim companyID As Integer = 1
+    Dim nullCheck As Boolean = False
+    Private companyNameHeader As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDownList
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -22,15 +24,29 @@ Public Class CompanyMaintenance
         cmd.CommandText = "SELECT distinct(CompanyName) as CompanyName from Company  where CompanyName is not null order by CompanyName"
         rd = cmd.ExecuteReader
         While rd.Read()
-            cmbCompanyName.Items.Add(rd.Item("CompanyName"))
+            If IsDBNull(rd.Item("CompanyName")) Then
+                btnNew.Enabled = True
+                nullCheck = True
+            Else
+                cmbCompanyName.Items.Add(rd.Item("CompanyName"))
+                btnNew.Enabled = False
+            End If
+
         End While
         con.Close()
 
         con.Open()
+
+
+
         cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
         rd = cmd.ExecuteReader
         While rd.Read()
-            age = rd.Item("maxID")
+            If IsDBNull(rd.Item("maxID")) Then
+                age = 0
+            Else
+                age = rd.Item("maxID")
+            End If
         End While
 
         con.Close()
@@ -38,10 +54,15 @@ Public Class CompanyMaintenance
         cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
         rd = cmd.ExecuteReader
         rd.Read()
-        maxTOONumber = rd.Item("maxTOONumber")
+        If IsDBNull(rd.Item(maxTOONumber)) Then
+            maxTOONumber = 0
+        Else
+            maxTOONumber = rd.Item("maxTOONumber")
+        End If
+
 
         If age = 0 Then
-            My.Settings.newTOONumber = 34800
+            My.Settings.newTOONumber = 10000
         Else
             If age >= maxTOONumber Then
                 My.Settings.newTOONumber = age + 1
@@ -90,7 +111,7 @@ Public Class CompanyMaintenance
             If newCheck = True Then
                 cmd.CommandText = "update Company set CompanyName = @CompanyName, AddressLine1 = @AddressLine1, AddressLine2 = @AddressLine2, City = @City, State = @State, Country = @Country, PostalCode = @PostalCode, Phone = @Phone, Fax = @Fax, RegistrationNum = @RegistrationNum where companyName = @companyName"
             Else
-                cmd.CommandText = "INSERT INTO Company (CompanyName,AddressLine1,AddressLine2,City,State,Country,PostalCode,Phone,Fax,RegistrationNum) values (@CompanyName,@AddressLine1,@AddressLine2,@City,@State,@Country,@PostalCode,@Phone,@Fax,@RegistrationNum)"
+                cmd.CommandText = "INSERT INTO Company (CompanyName,AddressLine1,AddressLine2,City,State,Country,PostalCode,Phone,Fax,RegistrationNum,CompanyID) values (@CompanyName,@AddressLine1,@AddressLine2,@City,@State,@Country,@PostalCode,@Phone,@Fax,@RegistrationNum,@CompanyID)"
             End If
             cmd.Parameters.AddWithValue("@CompanyName", cmbCompanyName.Text)
             cmd.Parameters.AddWithValue("@AddressLine1", tbAddressLine1.Text)
@@ -102,6 +123,7 @@ Public Class CompanyMaintenance
             cmd.Parameters.AddWithValue("@Phone", tbTelephone.Text)
             cmd.Parameters.AddWithValue("@Fax", tbFax.Text)
             cmd.Parameters.AddWithValue("@RegistrationNum", tbRegistrationNo.Text)
+            cmd.Parameters.AddWithValue("@companyID", companyID)
             rd = cmd.ExecuteReader
             MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)

@@ -21,12 +21,25 @@ Public Class Login
         Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        con.Open()
-        cmd.CommandText = "SELECT CompanyName From Company WHERE CompanyID = 1"
-        rd = cmd.ExecuteReader
-        rd.Read()
-        My.Settings.companyNameHeader = rd.Item("CompanyName")
-        con.Close()
+        'con.Open()
+        'cmd.CommandText = "SELECT CompanyName From Company WHERE companyID = 1"
+        'rd = cmd.ExecuteReader
+        ''If rd.HasRows() Then
+        ''    My.Settings.companyNameHeader = rd.Item("CompanyName")
+        ''Else
+        ''    My.Settings.companyNameHeader = "Guan Chong Cocoa Manufacturer Sdn Bhd"
+        ''End If
+
+        'While rd.Read()
+        '    If IsDBNull(rd.Item("CompanyName")) Then
+        '        My.Settings.companyNameHeader = rd.Item("CompanyName")
+        '    Else
+        '        My.Settings.companyNameHeader = "Guan Chong Cocoa Manufacturer Sdn Bhd"
+        '    End If
+
+        'End While
+
+        'con.Close()
         con.Open()
         If tbUsername.Text = "" Or tbPassword.Text = "" Then
             MessageBox.Show("Please complete the required fields..", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

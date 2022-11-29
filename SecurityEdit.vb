@@ -4,28 +4,25 @@ Imports System.Drawing.Printing
 Public Class SecurityEdit
 
     Public TruckOutNumber As Integer
-    Dim checkShippingPost As String
-    Dim checkWarehousePost As String
-    Dim checkWarehouse As String
-    Dim checkWarehouseCheckpoint As String
-    Dim checkSecurityDriver As String
-    Dim checkSecurityPost As String
-    Dim checkSecurityCheck As String
-
-    Dim checkCargoWeight As Boolean
-    Dim con As New SqlConnection
-    Dim cmd As New SqlCommand
-    Dim rd As SqlDataReader
-
-
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+    Private checkTempSealNo As Boolean
+    Private checkDriver As String
+    Private checkSecurityCheck As String
+    Private checkWarehouse As String
+    Private checkShippingPost As String
+    Private checkWarehousePost As String
+    Private checkSecurityPost As String
+    Private checkCargoWeight As Boolean
+    Private companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmRegistrationPlate.DropDownStyle = ComboBoxStyle.DropDownList
-
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
 
@@ -87,33 +84,120 @@ Public Class SecurityEdit
         GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
 
         'Read data from Shipping Table
-        GlobalFunction.selectFromShipping(
-            Me.TruckOutNumber,
-            cmbCompany,
-            dtpSCD,
-            dtpSCT,
-            tbInvoice,
-            tbProduct,
-            tbShippingLine,
-            cmbContainerSize,
-            tbHaulier,
-            cmbLoadingPort,
-            tbContainerNo,
-            tbLinerSealNo,
-            tbInternalSealNo,
-            tbTempSeal,
-            cmbEsSealNo,
-            cmbDDB,
-            checkShippingPost,
-            checkWarehousePost,
-            checkSecurityPost,
-            tbSendToCompany,
-            GlobalFunction.checkTempSealNo
-            )
+        'GlobalFunction.selectFromShipping(
+        '    Me.TruckOutNumber,
+        '    cmbCompany,
+        '    dtpSCD,
+        '    dtpSCT,
+        '    tbInvoice,
+        '    tbProduct,
+        '    tbShippingLine,
+        '    cmbContainerSize,
+        '    tbHaulier,
+        '    cmbLoadingPort,
+        '    tbContainerNo,
+        '    tbLinerSealNo,
+        '    tbInternalSealNo,
+        '    tbTempSeal,
+        '    cmbEsSealNo,
+        '    cmbDDB,
+        '    tbSendToCompany,
+        '    checkTempSealNo
+        '    )
+
+        'Read Data from Warehouse Table
+        'GlobalFunction.selectFromWarehouse(
+        '    Me.TruckOutNumber,
+        '    cmbWarehouseLocation,
+        '    tbLoadingBay,
+        '    cmbEsSealNo,
+        '    tbEsSealNo,
+        '    dtpLCD,
+        '    dtpLCT,
+        '    dtpRTD,
+        '    dtpRTT,
+        '    tbCargo1
+        '    )
+
+
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company from Shipping where id = @TruckOutNumber"
+        cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber)
+        rd = cmd.ExecuteReader
+
+
+        While (rd.Read())
+            If IsDBNull(rd.Item("ORIGIN")) Then
+                cmbCompany.Text = ""
+            Else
+                cmbCompany.Text = rd.Item("ORIGIN")
+            End If
+
+            dtpSCD.Text = rd.Item("SHIPMENT_CLOSING_DATE")
+            dtpSCT.Text = rd.Item("CloseTime")
+            tbInvoice.Text = rd.Item("INVOICE")
+            tbProduct.Text = rd.Item("PRODUCT")
+            tbShippingLine.Text = rd.Item("SHIPPING_LINE")
+            cmbContainerSize.Text = rd.Item("Container_Size")
+            tbHaulier.Text = rd.Item("HAULIER")
+            cmbLoadingPort.Text = rd.Item("LOADING_PORT")
+            tbContainerNo.Text = rd.Item("CONTAINER_NO")
+            tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
+            tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
+            tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
+
+            'tbTemporarySealNo.Text = rd.Item("TEMPORARY_SEAL_NO")
+            If IsDBNull(rd.Item("ES_SEAL_NO")) Then
+                cmbEsSealNo.Text = ""
+            Else
+                cmbEsSealNo.Text = rd.Item("ES_SEAL_NO")
+            End If
+            If IsDBNull(rd.Item("DDB")) Then
+                cmbDDB.Text = ""
+            Else
+                cmbDDB.Text = rd.Item("DDB")
+            End If
+
+            If IsDBNull(rd.Item("Shipping_Post")) Then
+                checkShippingPost = ""
+            Else
+                checkShippingPost = rd.Item("Shipping_Post")
+            End If
+
+            If IsDBNull(rd.Item("Warehouse_Post")) Then
+                checkWarehousePost = ""
+            Else
+                checkWarehousePost = rd.Item("Warehouse_Post")
+            End If
+
+            If IsDBNull(rd.Item("Security_Post")) Then
+                checkSecurityPost = ""
+            Else
+                checkSecurityPost = rd.Item("Security_Post")
+            End If
+
+
+            If IsDBNull(rd.Item("company")) Then
+                tbSendToCompany.Text = ""
+            Else
+                tbSendToCompany.Text = rd.Item("company")
+
+            End If
+
+            If IsDBNull(rd.Item("checkTempSealNo")) Then
+                checkTempSealNo = False
+            Else
+                checkTempSealNo = rd.Item("checkTempSealNo")
+
+            End If
+        End While
+        con.Close()
 
         con.Open()
         cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
-        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+        cmd.Parameters.AddWithValue("@TruckOutNumber2", TruckOutNumber)
         rd = cmd.ExecuteReader()
         While rd.Read()
             cmbWarehouseLocation.Text = rd.Item("WAREHOUSE_LOCATION")
@@ -143,12 +227,15 @@ Public Class SecurityEdit
         End While
         con.Close()
 
+
         'Load Data From Security Table
         con.Open()
         cmd.CommandText = "Select * from Security where Shipping_ID = @TruckOutNumber4"
         cmd.Parameters.AddWithValue("@TruckOutNumber4", Me.TruckOutNumber)
         rd = cmd.ExecuteReader()
-        While rd.Read()
+        rd.Read()
+
+        If rd.HasRows() Then
             If Not IsDBNull(rd.Item("DRIVER_FULL_NAME")) Then
                 cmbFullName.Text = rd.Item("DRIVER_FULL_NAME")
             Else
@@ -167,72 +254,40 @@ Public Class SecurityEdit
                 cmbPmRegistrationPlate.Text = ""
             End If
             If Not IsDBNull(rd.Item("Driver_Check")) Then
-                checkSecurityDriver = rd.Item("Driver_Check")
+                checkDriver = rd.Item("Driver_Check")
             Else
-                checkSecurityDriver = ""
+                checkDriver = ""
             End If
             If Not IsDBNull(rd.Item("Security_Check")) Then
-                checkSecurityCheck = rd.Item("Driver_Check")
+                checkSecurityCheck = rd.Item("Security_Check")
             Else
                 checkSecurityCheck = ""
             End If
 
-            If Not IsDBNull(rd.Item("Security_Check")) Then
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check")) Then
                 checkCargoWeight = rd.Item("Cargo_Weight_Check")
             Else
                 checkCargoWeight = True
             End If
-        End While
-
-        con.Close()
-        'Read the full_name into lblCompanyFullName
-        con.Open()
-        cmd.CommandText = "select full_name from details where company_name = '" + cmbCompany.Text + "'"
-        rd = cmd.ExecuteReader
-
-        While rd.Read()
-            If IsDBNull(rd.Item("full_name")) Then
-                lblCompanyFullName.Text = ""
-            Else
-                lblCompanyFullName.Text = rd.Item("full_name")
-            End If
-
-        End While
+        End If
         con.Close()
 
-        'Read the full_name into lblLoadingPortFullName
-        con.Open()
-        cmd.CommandText = "select full_name from details where Loading_port = '" + cmbLoadingPort.Text + "'"
-        rd = cmd.ExecuteReader
+        'Read the full_name into lblcompanyfullname and lblLoadingport
+        GlobalFunction.loadFullNameIntoLabel(cmbCompany, cmbLoadingPort, lblCompanyFullName, lblLoadingPortFullName)
 
-        While rd.Read()
-            If IsDBNull(rd.Item("full_name")) Then
-                lblLoadingPortFullName.Text = ""
-            Else
-                lblLoadingPortFullName.Text = rd.Item("full_name")
-            End If
-        End While
-        con.Close()
 
         'Driver Check Button Visible
-        If checkSecurityDriver = "" Then
-            btnDriverCheck.Visible = True
-            btnSecurityPost.Visible = False
-        Else
+        If checkDriver = "YES" Then
             btnDriverCheck.Visible = False
             btnSecurityPost.Visible = True
             cmbFullName.Enabled = False
             cmbPmCode.Enabled = False
             cmbPmRegistrationPlate.Enabled = False
-        End If
-
-        If My.Settings.role_id = 2 Or My.Settings.role_id = 20 Or My.Settings.role_id = 3 Or My.Settings.role_id = 4 Then
-            btnDriverCheck.Visible = False
-        End If
-
-        If My.Settings.role_id = 2 Or My.Settings.role_id = 20 Then
+        Else
+            btnDriverCheck.Visible = True
             btnSecurityPost.Visible = False
         End If
+
 
         'IF ES_SEAL_NO = False then textbox11 can't be enabled
         If cmbEsSealNo.Text = "NO" Then
@@ -258,9 +313,7 @@ Public Class SecurityEdit
         tbLinerSealNo.PasswordChar = "*"
         tbTempSeal.PasswordChar = "*"
 
-
-
-        If GlobalFunction.checkTempSealNo = True Then
+        If checkTempSealNo = True Then
             cmbCheckTempSealNo.SelectedItem = "YES"
             If My.Settings.role_id = 5 Then
                 tbSecurityCheckTemporarySealNo.Enabled = True
@@ -273,48 +326,15 @@ Public Class SecurityEdit
         End If
 
         'cbpost checkin
-        cbShippingPost.Enabled = False
-        cbWarehousePost.Enabled = False
-        cbSecurityPost.Enabled = False
-        If checkShippingPost = "" Then
-            cbShippingPost.Checked = False
-            cbShippingPost.Text = “Unposted"
-        Else
-            cbShippingPost.Checked = True
-            cbShippingPost.Text = "Posted"
-        End If
-
-        If checkWarehousePost = "" Then
-            cbWarehousePost.Checked = False
-            cbWarehousePost.Text = "Unposted"
-        Else
-            cbWarehousePost.Checked = True
-            cbWarehousePost.Text = "Posted"
-        End If
-
-        If checkSecurityPost = "" Then
-            cbSecurityPost.Checked = False
-            cbSecurityPost.Text = "Unposted"
-        Else
-            cbSecurityPost.Checked = True
-            cbSecurityPost.Text = "Posted"
-        End If
+        GlobalFunction.checkPostBox(cbShippingPost, cbWarehousePost, cbSecurityPost, Label9, ViewPage.reportCheck, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight)
 
         'show text in cmbCheckTempSeal
-        If GlobalFunction.checkTempSealNo = True Then
+        If checkTempSealNo = True Then
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
         End If
     End Sub
-
-
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-    '    'Cancel Button
-    '    Dim obj As New Search
-    '    obj.Show()
-    '    Me.Close()
-    'End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click
         'Driver Check
@@ -363,10 +383,11 @@ Public Class SecurityEdit
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
+
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        con.Open()
 
+        con.Open()
         If cmbDDB.Text = "NO" Then
             If tbSecurityCheckContainerNo.Text <> tbContainerNo.Text Then
                 MessageBox.Show("Please Check CONTAINER_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -432,7 +453,7 @@ Public Class SecurityEdit
                         con.Open()
                         cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue WHERE Shipping_ID = @TruckOutNumber2"
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                        cmd.Parameters.AddWithValue("@checkCargoWeight", Me.checkCargoWeight)
+                        cmd.Parameters.AddWithValue("@checkCargoWeight", checkCargoWeight)
                         cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
                         rd = cmd.ExecuteReader
                         con.Close()
@@ -462,7 +483,7 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, GlobalFunction.checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged

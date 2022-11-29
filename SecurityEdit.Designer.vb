@@ -25,14 +25,14 @@ Partial Class SecurityEdit
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SecurityEdit))
         Me.tbCargo = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
+        Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
         Me.dtpLCD = New System.Windows.Forms.DateTimePicker()
         Me.dtpRTD = New System.Windows.Forms.DateTimePicker()
-        Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
         Me.lblRTD = New System.Windows.Forms.Label()
         Me.lblLCT = New System.Windows.Forms.Label()
         Me.lblLCD = New System.Windows.Forms.Label()
         Me.lblRTT = New System.Windows.Forms.Label()
+        Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -116,6 +116,7 @@ Partial Class SecurityEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.tbCargo.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -131,6 +132,7 @@ Partial Class SecurityEdit
         'tbCargo
         '
         Me.tbCargo.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.tbCargo.Controls.Add(Me.Label9)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel6)
         Me.tbCargo.Controls.Add(Me.Label7)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel3)
@@ -152,16 +154,16 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTD, 0, 5)
-        Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.lblRTD, 0, 4)
         Me.TableLayoutPanel6.Controls.Add(Me.lblLCT, 0, 2)
         Me.TableLayoutPanel6.Controls.Add(Me.lblLCD, 0, 0)
         Me.TableLayoutPanel6.Controls.Add(Me.lblRTT, 0, 6)
+        Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Location = New System.Drawing.Point(1003, 112)
         Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
         Me.TableLayoutPanel6.RowCount = 8
@@ -176,15 +178,16 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel6.Size = New System.Drawing.Size(233, 268)
         Me.TableLayoutPanel6.TabIndex = 31
         '
-        'dtpRTT
+        'dtpLCT
         '
-        Me.dtpRTT.CustomFormat = "HH:mm:ss"
-        Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpRTT.Location = New System.Drawing.Point(4, 234)
-        Me.dtpRTT.Name = "dtpRTT"
-        Me.dtpRTT.ShowUpDown = True
-        Me.dtpRTT.Size = New System.Drawing.Size(214, 26)
-        Me.dtpRTT.TabIndex = 34
+        Me.dtpLCT.CustomFormat = "HH:mm:ss"
+        Me.dtpLCT.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpLCT.Location = New System.Drawing.Point(4, 103)
+        Me.dtpLCT.Name = "dtpLCT"
+        Me.dtpLCT.ShowUpDown = True
+        Me.dtpLCT.Size = New System.Drawing.Size(214, 26)
+        Me.dtpLCT.TabIndex = 32
         '
         'dtpLCD
         '
@@ -203,16 +206,6 @@ Partial Class SecurityEdit
         Me.dtpRTD.Name = "dtpRTD"
         Me.dtpRTD.Size = New System.Drawing.Size(214, 26)
         Me.dtpRTD.TabIndex = 33
-        '
-        'dtpLCT
-        '
-        Me.dtpLCT.CustomFormat = "HH:mm:ss"
-        Me.dtpLCT.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpLCT.Location = New System.Drawing.Point(4, 103)
-        Me.dtpLCT.Name = "dtpLCT"
-        Me.dtpLCT.ShowUpDown = True
-        Me.dtpLCT.Size = New System.Drawing.Size(214, 26)
-        Me.dtpLCT.TabIndex = 32
         '
         'lblRTD
         '
@@ -261,6 +254,17 @@ Partial Class SecurityEdit
         Me.lblRTT.TabIndex = 32
         Me.lblRTT.Text = "Ready Truck Out Time"
         Me.lblRTT.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'dtpRTT
+        '
+        Me.dtpRTT.CustomFormat = "HH:mm:ss"
+        Me.dtpRTT.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpRTT.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpRTT.Location = New System.Drawing.Point(4, 234)
+        Me.dtpRTT.Name = "dtpRTT"
+        Me.dtpRTT.ShowUpDown = True
+        Me.dtpRTT.Size = New System.Drawing.Size(214, 26)
+        Me.dtpRTT.TabIndex = 34
         '
         'Label7
         '
@@ -1178,6 +1182,16 @@ Partial Class SecurityEdit
         'PrintDocument1
         '
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(1174, 616)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(58, 19)
+        Me.Label9.TabIndex = 152
+        Me.Label9.Text = "Label9"
+        Me.Label9.Visible = False
+        '
         'SecurityEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1291,10 +1305,8 @@ Partial Class SecurityEdit
     Friend WithEvents Label5 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
-    Friend WithEvents dtpRTT As DateTimePicker
     Friend WithEvents dtpLCD As DateTimePicker
     Friend WithEvents dtpRTD As DateTimePicker
-    Friend WithEvents dtpLCT As DateTimePicker
     Friend WithEvents lblRTD As Label
     Friend WithEvents lblLCT As Label
     Friend WithEvents lblLCD As Label
@@ -1312,4 +1324,7 @@ Partial Class SecurityEdit
     Friend WithEvents tbCargo1 As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents tbInternalSealNo As TextBox
+    Friend WithEvents dtpLCT As DateTimePicker
+    Friend WithEvents dtpRTT As DateTimePicker
+    Friend WithEvents Label9 As Label
 End Class

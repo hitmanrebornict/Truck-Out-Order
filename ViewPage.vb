@@ -6,8 +6,9 @@ Public Class ViewPage
     Dim ReportString As String = "report"
     Public Shared reportCheck As Boolean = "False"
     Public Shared reportSelected As String
+    Private companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         lblReport.Visible = False
         dgvView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells

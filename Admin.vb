@@ -3,8 +3,9 @@
 Public Class Admin
 
     Public TruckOutNumber As Integer
+    Private companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         GlobalFunction.backToPage(login, Me)
@@ -91,19 +92,27 @@ Public Class Admin
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-
         cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
         rd = cmd.ExecuteReader
-        While rd.Read()
+        rd.Read()
+        If IsDBNull(rd.Item("maxID")) Then
+            age = 0
+        Else
             age = rd.Item("maxID")
-        End While
+        End If
+
 
         con.Close()
         con.Open()
         cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
         rd = cmd.ExecuteReader
         rd.Read()
-        maxDetailsTOONumber = rd.Item("maxTOONumber")
+        If IsDBNull(rd.Item("maxTOONumber")) Then
+            maxDetailsTOONumber = 0
+        Else
+            maxDetailsTOONumber = rd.Item("maxTOONumber")
+        End If
+
 
         If age = 0 Then
             My.Settings.newTOONumber = 10000

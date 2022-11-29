@@ -5,9 +5,9 @@ Public Class DriverMaintenance
     Dim selection As String
     Dim validationCheck As String
     Dim newCheck As Boolean = True
-
+    Private companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
         cbActive.Size = New Size(100, 40)

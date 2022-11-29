@@ -9,9 +9,10 @@ Public Class FieldMaintenance
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
     Dim rd As SqlDataReader
+    Private companyNameHeader As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDownList
         cbActive.Appearance = Appearance.Button

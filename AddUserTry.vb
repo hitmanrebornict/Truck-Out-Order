@@ -7,9 +7,10 @@ Public Class AddUserTry
     Dim selection As String
     Dim newCheck As Boolean = True
     Dim deptToRole As String
+    Private companyNameHeader As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader)
+        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         cbAdmin.Appearance = Appearance.Button
         cbAdmin.AutoSize = False
