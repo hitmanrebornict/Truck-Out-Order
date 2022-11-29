@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports Microsoft.Office.Interop.Excel
+
 
 Public Class CompanyMaintenance
 
@@ -164,11 +164,15 @@ Public Class CompanyMaintenance
         cmd.Connection = con
         con.Open()
 
-        cmd.CommandText = "Delete from Company where CompanyName = @CompanyName"
-        cmd.Parameters.AddWithValue("@companyName", cmbCompanyName.Text)
-        rd = cmd.ExecuteReader
-        MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        GlobalFunction.backToPage(Admin, Me)
+        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+            cmd.CommandText = "Delete from Company where CompanyName = @CompanyName"
+            cmd.Parameters.AddWithValue("@companyName", cmbCompanyName.Text)
+            rd = cmd.ExecuteReader
+            MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            GlobalFunction.backToPage(Admin, Me)
+        Else
+
+        End If
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnCancel.Click
