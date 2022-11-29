@@ -52,7 +52,7 @@ Partial Class NormalUserPage
         Me.lblTooSystem.AutoSize = True
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
         Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooSystem.Location = New System.Drawing.Point(93, 125)
+        Me.lblTooSystem.Location = New System.Drawing.Point(95, 181)
         Me.lblTooSystem.Name = "lblTooSystem"
         Me.lblTooSystem.Size = New System.Drawing.Size(1074, 109)
         Me.lblTooSystem.TabIndex = 3
@@ -97,7 +97,7 @@ Partial Class NormalUserPage
         Me.pbGCB.BackColor = System.Drawing.Color.Transparent
         Me.pbGCB.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
         Me.pbGCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbGCB.Location = New System.Drawing.Point(452, -2)
+        Me.pbGCB.Location = New System.Drawing.Point(458, 54)
         Me.pbGCB.Name = "pbGCB"
         Me.pbGCB.Size = New System.Drawing.Size(349, 124)
         Me.pbGCB.TabIndex = 30
@@ -108,7 +108,7 @@ Partial Class NormalUserPage
         Me.pnlReport.BackColor = System.Drawing.Color.White
         Me.pnlReport.Controls.Add(Me.pbReport)
         Me.pnlReport.Controls.Add(Me.lblReport)
-        Me.pnlReport.Location = New System.Drawing.Point(748, 324)
+        Me.pnlReport.Location = New System.Drawing.Point(759, 352)
         Me.pnlReport.Name = "pnlReport"
         Me.pnlReport.Size = New System.Drawing.Size(162, 241)
         Me.pnlReport.TabIndex = 33
@@ -141,7 +141,7 @@ Partial Class NormalUserPage
         Me.pnlEdit.BackColor = System.Drawing.Color.White
         Me.pnlEdit.Controls.Add(Me.pbEdit)
         Me.pnlEdit.Controls.Add(Me.lblEdit)
-        Me.pnlEdit.Location = New System.Drawing.Point(541, 324)
+        Me.pnlEdit.Location = New System.Drawing.Point(551, 352)
         Me.pnlEdit.Name = "pnlEdit"
         Me.pnlEdit.Size = New System.Drawing.Size(162, 241)
         Me.pnlEdit.TabIndex = 32
@@ -174,7 +174,7 @@ Partial Class NormalUserPage
         Me.pnlNew.BackColor = System.Drawing.Color.White
         Me.pnlNew.Controls.Add(Me.pbNew)
         Me.pnlNew.Controls.Add(Me.lblNew)
-        Me.pnlNew.Location = New System.Drawing.Point(334, 324)
+        Me.pnlNew.Location = New System.Drawing.Point(343, 352)
         Me.pnlNew.Name = "pnlNew"
         Me.pnlNew.Size = New System.Drawing.Size(162, 241)
         Me.pnlNew.TabIndex = 31

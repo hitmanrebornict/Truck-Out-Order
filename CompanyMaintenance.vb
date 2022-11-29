@@ -164,7 +164,7 @@ Public Class CompanyMaintenance
         cmd.Connection = con
         con.Open()
 
-        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+        If MsgBox("Are you sure you want to delete?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
             cmd.CommandText = "Delete from Company where CompanyName = @CompanyName"
             cmd.Parameters.AddWithValue("@companyName", cmbCompanyName.Text)
             rd = cmd.ExecuteReader

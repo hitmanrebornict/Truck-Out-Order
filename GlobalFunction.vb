@@ -644,4 +644,10 @@ Public Class GlobalFunction
         con.Close()
         Return ""
     End Function
+
+    Public Shared Function TrimSpace(trimText As String) As String
+        Dim trimmedText As String
+        trimmedText = trimText.Replace(" ", "")
+        Return trimmedText
+    End Function
 End Class
