@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+
+
 Public Class GlobalFunction
 
     Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label, companyNameHeader As String)
@@ -73,6 +75,21 @@ Public Class GlobalFunction
         Return ""
     End Function
 
+    Public Shared Function getProductType(cmbProductType As ComboBox)
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT distinct(Product_Type) as r from details where Product_Type is not null and validationCheck = 'YES' order by Product_Type"
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmbProductType.Items.Add(rd.Item("r"))
+        End While
+        con.Close()
+        Return ""
+    End Function
     Public Shared Function backToPage(page As Form, self As Form)
         page.Show()
         self.Close()
@@ -565,7 +582,7 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-    Public Shared Function checkPostBox(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, lblCargoWeight As Label, checkReport As Boolean, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean)
+    Public Shared Function checkPostBoxWithoutCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String)
         'cbpost checkin
         cbShippingPost.Enabled = False
         cbWarehousePost.Enabled = False
@@ -594,20 +611,29 @@ Public Class GlobalFunction
             cbSecurityPost.Text = "Posted"
         End If
 
-        If checkReport = True Then
-            If checkCargoWeight = False Then
-                lblCargoWeight.Text = "Failed"
-                lblCargoWeight.ForeColor = Color.Red
-            Else
-                lblCargoWeight.Text = "Passed"
-            End If
-        Else
-
-        End If
-
         Return ""
     End Function
 
+    Public Shared Function checkPostBoxWithCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean, lblCargoWeight As Label, checkSecurityCheck As String)
+
+        checkPostBoxWithoutCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost)
+
+        If checkCargoWeight = False Then
+            lblCargoWeight.Text = "Failed"
+            lblCargoWeight.ForeColor = Color.Red
+        Else
+            lblCargoWeight.Text = "Passed"
+            lblCargoWeight.ForeColor = Color.Black
+        End If
+
+        If checkSecurityCheck <> "YES" Then
+            lblCargoWeight.Text = "Uncompleted"
+            lblCargoWeight.ForeColor = Color.Black
+        End If
+
+
+        Return ""
+    End Function
     Public Shared Function loadFullNameIntoLabel(cmbCompany As ComboBox, cmbLoadingPort As ComboBox, lblCompanyFullName As Label, lblLoadingPortFullName As Label)
         'Read the full_name into lblCompanyFullName
         Dim con As New SqlConnection
@@ -649,5 +675,34 @@ Public Class GlobalFunction
         Dim trimmedText As String
         trimmedText = trimText.Replace(" ", "")
         Return trimmedText
+    End Function
+
+    Public Shared Function GetValueForCmb(content As String, database As String, TruckOutNumber As Integer, cmb As ComboBox)
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT " & content & "FROM " & database & " Where ID = " & TruckOutNumber
+
+
+        Return ""
+    End Function
+
+    Public Shared Function ReadForDriverCheck(columnName As String, cmb As ComboBox)
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT distinct( " & columnName & " ) as Item from Driver_Info  where " & columnName & " is not null and validationCheck = 'YES' order by " & columnName & " "
+        rd = cmd.ExecuteReader
+        While rd.Read()
+            cmb.Items.Add(rd.Item("Item"))
+        End While
+        con.Close()
+        Return ""
     End Function
 End Class

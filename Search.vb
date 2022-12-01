@@ -6,6 +6,7 @@ Public Class Search
 
     Public Shared selected As String
     Private companyNameHeader As String
+    Private checkCargoWeight As Boolean
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
@@ -20,12 +21,16 @@ Public Class Search
         cmd.Connection = con
         con.Open()
 
-        If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
+        If My.Settings.adminCheck = True And (My.Settings.role_id = 2 Or My.Settings.role_id = 1) Then
             cmd.CommandText = (selectString & " order by id desc")
         Else
             Select Case My.Settings.role_id
                 Case 3, 4
-                    cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
+                    If (My.Settings.adminCheck) Then
+                        cmd.CommandText = selectString & " WHERE SHIPPING_POST = '" + "YES" + "' and Security_Post is null order by id desc"
+                    Else
+                        cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
+                    End If
                 Case 5
                     cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null order by id desc")
             End Select
@@ -143,7 +148,7 @@ Public Class Search
                             obj.Show()
                             Me.Close()
                         Case 5
-                            Dim obj As New Edit
+                            Dim obj As New SecurityEdit
                             obj.TruckOutNumber = selected
                             obj.Show()
                             Me.Close()
@@ -157,142 +162,6 @@ Public Class Search
             End Try
 
         End If
-        '    con2.Open()
-        'Select Case role_id
-        '    Case 1, 20, 30
-        '        cmd2.CommandText = ("select ID,ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,HAULIER,PRODUCT,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Update_User,Reversion,Update_Time,Shipping_POST,SHIPMENT_CLOSING_TIME,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post,Security_Post_Time,Security_Post_User,DDB from shipping order by id desc")
-        '    Case 2
-        '        cmd2.CommandText = ("select ID,ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,HAULIER,PRODUCT,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Update_User,Reversion,Update_Time,Shipping_POST,SHIPMENT_CLOSING_TIME,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post,Security_Post_Time,Security_Post_User,DDB from shipping where shipping_post is null order by id desc ")
-        '    Case 3, 4
-        '        cmd2.CommandText = ("SELECT ID,ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,HAULIER,PRODUCT,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Update_User,Reversion,Update_Time,Shipping_POST,SHIPMENT_CLOSING_TIME,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post,Security_Post_Time,Security_Post_User,DDB from Shipping where  shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
-        '    Case 5
-        '        cmd2.CommandText = ("SELECT ID,ORIGIN,INVOICE,CONTAINER_NO,COMPANY,Container_Size,LOADING_PORT,HAULIER,PRODUCT,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,Update_User,Reversion,Update_Time,Shipping_POST,SHIPMENT_CLOSING_TIME,Shipping_POST_User,Warehouse_Post,Warehouse_Post_Time,Warehouse_Post_User,Security_Post,Security_Post_Time,Security_Post_User,DDB from Shipping where  shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null order by id desc")
-        'End Select
-
-        'If checkDuplicate > 1 Then
-        '    rd3 = cmd3.ExecuteReader
-        '    con3.Close()
-        '    sda3.Fill(dt)
-        '    dgv.DataSource = dt
-        'Else
-        '    con3.Close()
-        '    con3.Open()
-        '    rd3 = cmd3.ExecuteReader
-        '    rd3.Read()
-        '    selected = rd3.Item("ID")
-        '    Select Case Me.role_id
-        '            Case 1
-        '                Dim obj As New Edit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 2, 20
-        '                Dim obj As New ShippingEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 3, 30, 4
-        '                Dim obj As New WarehouseEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 5
-        '                Dim obj As New SecurityEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '        End Select
-        '    End If
-        'End If
-        '    ElseIf tbShippingId.Text = "" And tbInvoice.Text <> "" Then
-        '        Select Case role_id
-        '        Case 2
-        '            cmd2.CommandText = "SELECT ID from Shipping where SHIPPING_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
-        '        Case 3, 4
-        '            cmd2.CommandText = "SELECT ID from Shipping where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-        '        Case 5
-        '            cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
-        '        Case 1, 20, 30
-        '            cmd2.CommandText = "SELECT ID from Shipping where INVOICE = '" + tbInvoice.Text + "'"
-
-        '    End Select
-        'End If
-
-        'Try
-        '    rd2 = cmd2.ExecuteReader
-        '    rd2.Read()
-        '    If rd2.HasRows Then
-        '        selected = rd2.Item("ID")
-        '        Select Case Me.role_id
-        '            Case 1
-        '                Dim obj As New Edit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 2, 20
-        '                Dim obj As New ShippingEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 3, 30, 4
-        '                Dim obj As New WarehouseEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '            Case 5
-        '                Dim obj As New SecurityEdit
-        '                obj.Username = Me.username
-        '                obj.role_id = Me.role_id
-        '                obj.TruckOutNumber = selected
-        '                obj.departmentName = Me.departmentName
-        '                obj.adminCheck = Me.adminCheck
-        '                obj.fullName = Me.fullName
-        '                obj.Show()
-        '                Me.Close()
-        '        End Select
-        '    Else
-        '        MessageBox.Show("Data not found.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-        '    End If
-        'Catch ex As InvalidOperationException
-        '    MessageBox.Show("Please only fill one textbox", "Filter Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '    Exit Try
-        'End Try
 
         tbContainerNo.Text = ""
             tbInvoice.Text = ""
@@ -360,22 +229,26 @@ Public Class Search
         cmd2.Connection = con2
         con2.Open()
 
-        If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
-            cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID "
-        Else
-            Select Case My.Settings.role_id
-                Case 3, 4
-                    cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-                Case 5
-                    cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
-            End Select
-        End If
+        'If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
+        '    cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID "
+        'Else
+        '    Select Case My.Settings.role_id
+        '        Case 3, 4
+        '            If (My.Settings.adminCheck) Then
+        '                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL or Security_Post is null)"
+        '            Else
+        '                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+        '            End If
 
-        cmd2.Parameters.AddWithValue("@shippingID", selected)
-        rd2 = cmd2.ExecuteReader
-        If rd2.HasRows Then
-            Dim se As New ShippingEdit
-            Me.selected = selected
+        '        Case 5
+        '            cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
+        '    End Select
+        'End If
+
+        'cmd2.Parameters.AddWithValue("@shippingID", selected)
+        'rd2 = cmd2.ExecuteReader
+        'If rd2.HasRows Then
+        Try
             Select Case My.Settings.role_id
                 Case 1
                     Dim obj As New Edit
@@ -388,20 +261,38 @@ Public Class Search
                     obj.Show()
                     Me.Close()
                 Case 3, 4
-                    Dim obj As New WarehouseEdit
-                    obj.TruckOutNumber = selected
-                    obj.Show()
-                    Me.Close()
+                    If (My.Settings.adminCheck) Then
+                        cmd2.CommandText = "SELECT Cargo_Weight_Check From Security where shipping_id = @shippingID and Allow_To_Post is not null"
+                        cmd2.Parameters.AddWithValue("@shippingID", selected)
+                        rd2 = cmd2.ExecuteReader
+                        If (rd2.HasRows()) Then
+                            Dim editPage As New Edit
+                            editPage.TruckOutNumber = selected
+                            editPage.Show()
+                            Me.Close()
+                        Else
+                            Dim obj As New WarehouseEdit
+                            obj.TruckOutNumber = selected
+                            obj.Show()
+                            Me.Close()
+                        End If
+
+                    Else
+                        Dim obj As New WarehouseEdit
+                        obj.TruckOutNumber = selected
+                        obj.Show()
+                        Me.Close()
+                    End If
+
                 Case 5
                     Dim obj As New SecurityEdit
                     obj.TruckOutNumber = selected
                     obj.Show()
                     Me.Close()
             End Select
-        Else
-            MessageBox.Show("You have no privilege to view this number.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-        End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 

@@ -17,6 +17,7 @@ Public Class Edit
     Private checkWarehouseCheckpoint As String
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private companyNameHeader As String
+    Private checkAllowToPost As Boolean
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -32,31 +33,12 @@ Public Class Edit
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
 
-
-        con.Open()
         'Read Data into Driver Check Section Combobox
-        cmd.CommandText = "SELECT distinct(Full_Name) as Driver_Name from Driver_Info  where Full_Name is not null and validationCheck = 'YES' order by Full_Name"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbFullName.Items.Add(rd.Item("Driver_Name"))
-        End While
-        con.Close()
-        con.Open()
 
-        cmd.CommandText = "SELECT distinct(PM_Code) as PM from Driver_Info where PM_Code is not null and validationCheck = 'YES' order by PM_Code"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbPmCode.Items.Add(rd.Item("PM"))
-        End While
-        con.Close()
+        GlobalFunction.ReadForDriverCheck("Full_Name", cmbFullName)
+        GlobalFunction.ReadForDriverCheck("PM_Code", cmbPmCode)
+        GlobalFunction.ReadForDriverCheck("PM_Registration_Plate", cmbPmRegistrationPlate)
 
-        con.Open()
-        cmd.CommandText = "SELECT distinct(PM_Registration_Plate) as PM_Plate from Driver_Info where PM_Registration_Plate is not null and validationCheck = 'YES' order by PM_Registration_Plate"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            cmbPmRegistrationPlate.Items.Add(rd.Item("PM_Plate"))
-        End While
-        con.Close()
 
         GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
 
@@ -99,7 +81,7 @@ Public Class Edit
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company from Shipping where id = @TruckOutNumber"
+        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company,Product_Type, Net_Cargo_Weight from Shipping where id = @TruckOutNumber"
         cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber)
         rd = cmd.ExecuteReader
 
@@ -168,11 +150,23 @@ Public Class Edit
                 checkTempSealNo = rd.Item("checkTempSealNo")
 
             End If
+
+            If IsDBNull(rd.Item("Product_Type")) Then
+                cmbProductType.Text = ""
+            Else
+                cmbProductType.Text = rd.Item("Product_Type")
+            End If
+
+            If IsDBNull(rd.Item("Net_Cargo_Weight")) Then
+                tbCargo.Text = ""
+            Else
+                tbCargo.Text = rd.Item("Net_Cargo_Weight")
+            End If
         End While
         con.Close()
 
         con.Open()
-        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT, Cargo_Weight from Warehouse where Shipping_ID = @TruckOutNumber2 "
+        cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT from Warehouse where Shipping_ID = @TruckOutNumber2 "
         cmd.Parameters.AddWithValue("@TruckOutNumber2", TruckOutNumber)
         rd = cmd.ExecuteReader()
         While rd.Read()
@@ -195,11 +189,7 @@ Public Class Edit
                 checkWarehouse = rd.Item("shipping_id")
             End If
 
-            If IsDBNull(rd.Item("Cargo_Weight")) Then
-                tbCargo.Text = ""
-            Else
-                tbCargo.Text = rd.Item("Cargo_Weight")
-            End If
+
         End While
         con.Close()
 
@@ -264,6 +254,11 @@ Public Class Edit
                 tbCargoChecking.Text = "NULL"
             End If
 
+            If IsDBNull(rd.Item("Allow_To_Post")) Then
+                checkAllowToPost = False
+            Else
+                checkAllowToPost = rd.Item("Allow_To_Post")
+            End If
         End While
 
         con.Close()
@@ -297,9 +292,18 @@ Public Class Edit
             btnPrint.Enabled = True
             btnCancel.Enabled = True
             lblCargoWeight.Enabled = True
+            btnAdminSave.Visible = False
+            btnCargoCheck.Visible = False
         End If
 
-        GlobalFunction.checkPostBox(cbShippingPost, cbWarehousePost, cbSecurityPost, lblCargoWeight, ViewPage.reportCheck, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight)
+        If My.Settings.role_id <> 1 And My.Settings.adminCheck = True Then
+            For Each ctrl As Control In Panel3.Controls
+                ctrl.Enabled = False
+            Next
+            btnPrint.Enabled = True
+            btnCancel.Enabled = True
+            lblCargoWeight.Enabled = True
+        End If
 
         If My.Settings.role_id = 1 And My.Settings.adminCheck = True Then
             btnAdminSave.Enabled = True
@@ -307,10 +311,14 @@ Public Class Edit
             btnAdminSave.Enabled = False
         End If
 
-        If checkSecurityPost = "YES" Then
+        GlobalFunction.checkPostBoxWithCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight, lblCargoWeight, checkSecurityCheck)
+
+        If checkSecurityPost <> "YES" And checkCargoWeight = False Then
+            btnCargoCheck.Enabled = True
         Else
-            lblCargoWeight.Text = "Uncompleted"
+            btnCargoCheck.Enabled = False
         End If
+
     End Sub
 
 
@@ -413,8 +421,6 @@ Public Class Edit
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         Try
-
-
             con.Open()
             cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo WHERE ID = @TruckOutNumber"
             cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
@@ -445,5 +451,18 @@ Public Class Edit
             MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub btnCargoCheck_Click(sender As Object, e As EventArgs) Handles btnCargoCheck.Click
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "update Security set Allow_To_Post = 1 ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "'where shipping_ID = @TruckOutNumber"
+        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+        rd = cmd.ExecuteReader
+        MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

@@ -31,19 +31,22 @@ Public Class FieldMaintenance
         con.Open()
         Select Case cmbField.Text
             Case "Company"
-                cmd.CommandText = "SELECT * from details where company_name = @company_name"
+                cmd.CommandText = "SELECT Company_Name from details where company_name = @field"
                 cmd.Parameters.AddWithValue("@company_name", cmbShortname.Text)
             Case "Loading Port"
-                cmd.CommandText = "SELECT * from details where loading_port = @loading_port"
+                cmd.CommandText = "SELECT Loading_Port from details where loading_port = @field"
                 cmd.Parameters.AddWithValue("@loading_port", cmbShortname.Text)
             Case "Container Size"
-                cmd.CommandText = "SELECT * from details where container_size = @container_size"
+                cmd.CommandText = "SELECT Container_Size from details where container_size = @field"
                 cmd.Parameters.AddWithValue("@container_size", cmbShortname.Text)
             Case "Warehouse Location"
-                cmd.CommandText = "SELECT * from details where warehouse_location = @warehouse_location"
+                cmd.CommandText = "SELECT Warehouse_Location from details where warehouse_location = @field"
                 cmd.Parameters.AddWithValue("@warehouse_location", cmbShortname.Text)
-        End Select
+            Case "Product Type"
+                cmd.CommandText = "SELECT Product_Type from details where product_type = @field"
 
+        End Select
+        cmd.Parameters.AddWithValue("@field", cmbShortname.Text)
         rd = cmd.ExecuteReader
         While rd.Read()
             If IsDBNull(rd.Item("full_name")) Then
@@ -83,6 +86,9 @@ Public Class FieldMaintenance
             Case "Warehouse Location"
                 lblTitle.Text = "Warehouse Location Maintenance"
                 cmd.CommandText = "SELECT distinct(warehouse_location) as r from details where warehouse_location is not null order by warehouse_location"
+            Case "Product Type"
+                lblTitle.Text = "Product Type Maintenance"
+                cmd.CommandText = "SELECT distinct(Product_Type) as r from details where Product_Type is not null order by product_type"
         End Select
         rd = cmd.ExecuteReader
         While rd.Read()
@@ -159,6 +165,16 @@ Public Class FieldMaintenance
                     Else
                         cmd.CommandText = "Insert into details(container_size,validationCheck) values(@container_size,@validationCheck)"
                         cmd.Parameters.AddWithValue("@container_size", cmbShortname.Text)
+                        cmd.Parameters.AddWithValue("@validationCheck", validationCheck)
+                    End If
+                Case "Product Type"
+                    If newCheck = True Then
+                        cmd.CommandText = "Update details set validationCheck = @validationCheck where Product_Type = @Product_Type"
+                        cmd.Parameters.AddWithValue("@container_size", cmbShortname.Text)
+                        cmd.Parameters.AddWithValue("@validationCheck", validationCheck)
+                    Else
+                        cmd.CommandText = "Insert into details(Product_Type,validationCheck) values(@Product_Type,@validationCheck)"
+                        cmd.Parameters.AddWithValue("@Product_Type", cmbShortname.Text)
                         cmd.Parameters.AddWithValue("@validationCheck", validationCheck)
                     End If
             End Select

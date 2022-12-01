@@ -19,7 +19,7 @@ Public Class NewPage
         cmbEsSealNo.Enabled = False
 
         GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
-
+        GlobalFunction.getProductType(cmbProductType)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPost.Click
@@ -68,7 +68,7 @@ Public Class NewPage
         ElseIf cmbDDB.Text = "" Then
             MessageBox.Show("Please Fill Out The DDB Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo, Last_Modified_User,Update_Time) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "','" + GlobalFunction.TrimSpace(tbLinerSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbInternalSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbTemporarySealNo.Text) + "','" + "YES" + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')", con)
+            cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo, Last_Modified_User,Update_Time,Product_Type,Net_Cargo_Weight) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "','" + GlobalFunction.TrimSpace(tbLinerSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbInternalSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbTemporarySealNo.Text) + "','" + "YES" + "','" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbProductType.Text + "','" + tbCargo.Text + "')", con)
             ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
             cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
             cmd.Parameters.AddWithValue("checkTempSealNo", checkTempSealNo)
@@ -82,7 +82,7 @@ Public Class NewPage
 
     End Sub
 
-    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
+    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
         'Show Company full name when the cmbcompany's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -106,7 +106,7 @@ Public Class NewPage
         con.Close()
     End Sub
 
-    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
+    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs)
         'show the full name of loading port when the cmblodingport's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -140,16 +140,8 @@ Public Class NewPage
         End If
     End Sub
 
-    'Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
-    '    If cmbEsSealNo.SelectedItem = "NO" Then
-    '        tbEsSealNo.Enabled = False
-    '        tbEsSealNo.Text = ""
-    '    Else
-    '        tbEsSealNo.Enabled = True
-    '    End If
-    'End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub Button_Save(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim ra As Integer
@@ -159,7 +151,7 @@ Public Class NewPage
         cmd.Connection = con
         con.Open()
 
-        cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,DDB,checkTempSealNo, Last_Modified_User,Update_Time) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + tbContainerNo.Text + "','" + tbLinerSealNo.Text + "','" + tbInternalSealNo.Text + "','" + tbTemporarySealNo.Text + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')", con)
+        cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,DDB,checkTempSealNo, Last_Modified_User,Update_Time,Product_Type,Net_Cargo_Weight) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "','" + GlobalFunction.TrimSpace(tbLinerSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbInternalSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbTemporarySealNo.Text) + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbProductType.Text + "','" + tbCargo.Text + "')", con)
         ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
         cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
         cmd.Parameters.AddWithValue("checkTempSealNo", checkTempSealNo)

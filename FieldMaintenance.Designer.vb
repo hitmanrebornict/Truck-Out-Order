@@ -116,7 +116,7 @@ Partial Class FieldMaintenance
         '
         Me.cmbField.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbField.FormattingEnabled = True
-        Me.cmbField.Items.AddRange(New Object() {"Company", "Loading Port", "Warehouse Location", "Container Size"})
+        Me.cmbField.Items.AddRange(New Object() {"Company", "Loading Port", "Warehouse Location", "Container Size", "Product Type"})
         Me.cmbField.Location = New System.Drawing.Point(464, 4)
         Me.cmbField.Name = "cmbField"
         Me.cmbField.Size = New System.Drawing.Size(352, 27)
