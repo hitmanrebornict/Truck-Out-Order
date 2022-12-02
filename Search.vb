@@ -21,7 +21,7 @@ Public Class Search
         cmd.Connection = con
         con.Open()
 
-        If My.Settings.adminCheck = True Or (My.Settings.role_id = 2 Or My.Settings.role_id = 1) Then
+        If My.Settings.adminCheck = True And (My.Settings.role_id = 2 Or My.Settings.role_id = 1) Then
             cmd.CommandText = (selectString & " order by id desc")
         Else
             Select Case My.Settings.role_id

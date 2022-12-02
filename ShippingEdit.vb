@@ -292,7 +292,7 @@ Public Class ShippingEdit
 
     'the details of print function
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, checkTempSealNo, Me.TruckOutNumber)
     End Sub
 
     'change the company full name when the cmb selected value changed

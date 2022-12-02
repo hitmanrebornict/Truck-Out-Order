@@ -182,7 +182,7 @@ Public Class SecurityEdit
             End If
 
             If IsDBNull(rd.Item("net_cargo_weight")) Then
-                netCargoWeight = ""
+
                 tbCargo1.Text = ""
             Else
                 netCargoWeight = rd.Item("Net_Cargo_Weight")
@@ -388,7 +388,8 @@ Public Class SecurityEdit
                 rd = cmd.ExecuteReader
                 con.Close()
                 MessageBox.Show("DRIVER VALIDATION PASS", "VALIDATION PASS", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                btnSecurityPost.Visible = True
+                checkDriver = "YES"
+                btnSecurityCheck.Visible = True
             End If
 
         End If
@@ -429,7 +430,7 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        GlobalFunction.printPage(e, Panel2, checkTempSealNo)
+        GlobalFunction.printPage(e, Panel2, checkTempSealNo, Me.TruckOutNumber)
     End Sub
 
     Private Sub cmbEsSealNo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEsSealNo.SelectedIndexChanged
@@ -539,33 +540,13 @@ Public Class SecurityEdit
             'MessageBox.Show("Please enter Cargo Weight Field", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             Try
-                Select Case cmbProductType.Text
-                    Case "Powder"
-                        If cmbContainerSize.Text = "20" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight20 Then
-                            checkCargoWeight = False
-                            checkAllowToPost = False
-                        ElseIf cmbContainerSize.Text = "40" And Integer.Parse(tbCheckCargoWeight.Text) < My.Settings.cargoWeight40 Then
-                            checkCargoWeight = False
-                            checkAllowToPost = False
-                        Else
-                            checkCargoWeight = True
-                            checkAllowToPost = True
-                        End If
-                    Case "Butter"
-                        If cmbContainerSize.Text = "20" And Integer.Parse(tbCheckCargoWeight.Text) < 20000 Then
-                            checkCargoWeight = False
-                            checkAllowToPost = False
-                        ElseIf cmbContainerSize.Text = "40" And Integer.Parse(tbCheckCargoWeight.Text) < 25000 Then
-                            checkCargoWeight = False
-                            checkAllowToPost = False
-                        Else
-                            checkCargoWeight = True
-                            checkAllowToPost = True
-                        End If
-                    Case Else
-                        checkCargoWeight = False
-                        checkAllowToPost = False
-                End Select
+                If Integer.Parse(tbCheckCargoWeight.Text) >= netCargoWeight Then
+                    checkCargoWeight = True
+                    checkAllowToPost = True
+                Else
+                    checkCargoWeight = False
+                    checkAllowToPost = False
+                End If
 
                 cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue,Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
                 cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
@@ -575,7 +556,6 @@ Public Class SecurityEdit
                 rd = cmd.ExecuteReader
                 con.Close()
                 If (checkCargoWeight) Then
-
                     MessageBox.Show("Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -592,5 +572,6 @@ Public Class SecurityEdit
                 MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
+        btnSecurityPost.Visible = True
     End Sub
 End Class

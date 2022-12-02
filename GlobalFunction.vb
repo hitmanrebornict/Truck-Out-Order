@@ -96,7 +96,7 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-    Public Shared Function printPage(e As PrintPageEventArgs, panel2 As Panel, checkTempSealNo As Boolean)
+    Public Shared Function printPage(e As PrintPageEventArgs, panel2 As Panel, checkTempSealNo As Boolean, TruckOutNumber As Integer)
         Dim printFont As Font
         Dim tooNumberFont As Font
         printFont = New Font("Microsoft Sans Serif", 12, FontStyle.Bold)
@@ -152,9 +152,10 @@ Public Class GlobalFunction
         tooNumberFont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
 
         'Truck Out Number
-        e.Graphics.DrawString("Truck Out Number : " & Search.selected, tooNumberFont, Brushes.Black, 550, 0)
+        'e.Graphics.DrawString("Truck Out Number : " & Search.selected, tooNumberFont, Brushes.Black, 550, 0)
+        e.Graphics.DrawString("Truck Out Number : " & TruckOutNumber.ToString, tooNumberFont, Brushes.Black, 550, 0)
 
-        'Company Details
+        ''Company Details
         e.Graphics.DrawString(companyName, tooNumberFont, Brushes.Black, 0, 70)
         e.Graphics.DrawString(addressLine1 & " " & addressline2, printFont, Brushes.Black, 0, 90)
         e.Graphics.DrawString(PostalCode & " " & city & ", " & state & ", " & country, printFont, Brushes.Black, 0, 105)
@@ -203,7 +204,8 @@ Public Class GlobalFunction
 
         con.Open()
         cmd.CommandText = "SELECT * from shipping where ID = @TruckOutNumber"
-        cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
+        'cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber.ToString)
         rd = cmd.ExecuteReader
         rd.Read()
 
@@ -270,6 +272,12 @@ Public Class GlobalFunction
             securityPostUser = rd.Item("Security_Post_User")
         End If
 
+        If IsDBNull(rd.Item("Net_Cargo_Weight")) Then
+            netCargoWeight = ""
+        Else
+            netCargoWeight = rd.Item("Net_Cargo_Weight")
+        End If
+
         con.Close()
 
         Dim companyFullName, loadingPortFullName As String
@@ -296,7 +304,8 @@ Public Class GlobalFunction
 
         con.Open()
         cmd.CommandText = "SELECT * from Warehouse Where Shipping_ID = @TruckOutNumberWarehouse"
-        cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Search.selected)
+        'cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", TruckOutNumber.ToString)
         rd = cmd.ExecuteReader
         rd.Read()
 
@@ -326,17 +335,14 @@ Public Class GlobalFunction
             Else
                 warehouseCheckUser = rd.Item("Warehouse_CheckPoint_Update_User")
             End If
-            If IsDBNull(rd.Item("Cargo_Weight")) Then
-                netCargoWeight = ""
-            Else
-                netCargoWeight = rd.Item("Cargo_Weight")
-            End If
+
         End If
 
         con.Close()
         con.Open()
         cmd.CommandText = "Select * from Security where Shipping_ID = @TruckOutNumber4"
-        cmd.Parameters.AddWithValue("@TruckOutNumber4", Search.selected)
+        'cmd.Parameters.AddWithValue("@TruckOutNumber4", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumber4", TruckOutNumber.ToString)
         rd = cmd.ExecuteReader()
         If rd.HasRows() Then
             rd.Read()
