@@ -41,6 +41,7 @@ Public Class Edit
 
 
         GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
+        GlobalFunction.getProductType(cmbProductType)
 
         ''Read data from Shipping Table
         'GlobalFunction.selectFromShipping(

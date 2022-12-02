@@ -15,6 +15,7 @@ Public Class SecurityEdit
     Private checkCargoWeight As Boolean
     Private companyNameHeader As String
     Private checkAllowToPost As Boolean
+    Private netCargoWeight As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
@@ -181,8 +182,10 @@ Public Class SecurityEdit
             End If
 
             If IsDBNull(rd.Item("net_cargo_weight")) Then
+                netCargoWeight = ""
                 tbCargo1.Text = ""
             Else
+                netCargoWeight = rd.Item("Net_Cargo_Weight")
                 tbCargo1.Text = rd.Item("net_cargo_weight")
             End If
         End While
@@ -282,13 +285,15 @@ Public Class SecurityEdit
         'Driver Check Button Visible
         If checkDriver = "YES" Then
             btnDriverCheck.Visible = False
-            btnSecurityPost.Visible = True
+            btnSecurityCheck.Visible = True
             cmbFullName.Enabled = False
             cmbPmCode.Enabled = False
             cmbPmRegistrationPlate.Enabled = False
+
         Else
             btnDriverCheck.Visible = True
             btnSecurityPost.Visible = False
+            btnSecurityCheck.Visible = False
         End If
 
 
@@ -302,6 +307,7 @@ Public Class SecurityEdit
         If checkSecurityCheck = "YES" Then
             btnSecurityPost.Enabled = True
             btnSecurityCheck.Enabled = False
+            btnSecurityCheck.Visible = False
             tbSecurityCheckContainerNo.Text = tbContainerNo.Text
             tbSecurityCheckLinerSealNo.Text = tbLinerSealNo.Text
             tbSecurityCheckInternalSealNo.Text = tbInternalSealNo.Text
@@ -314,10 +320,7 @@ Public Class SecurityEdit
             tbSecurityCheckInternalSealNo.Enabled = False
             tbSecurityCheckLinerSealNo.Enabled = False
             tbSecurityCheckTemporarySealNo.Enabled = False
-
         Else
-
-
         End If
 
 

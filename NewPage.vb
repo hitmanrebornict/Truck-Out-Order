@@ -17,7 +17,8 @@ Public Class NewPage
         tbLoadingBay.Enabled = False
         cmbWarehouseLocation.Enabled = False
         cmbEsSealNo.Enabled = False
-
+        lblCompanyName.Text = ""
+        lblLoadingPortFullName.Text = ""
         GlobalFunction.getCmbValue(cmbCompany, cmbLoadingPort, cmbWarehouseLocation, cmbContainerSize)
         GlobalFunction.getProductType(cmbProductType)
     End Sub
@@ -82,7 +83,7 @@ Public Class NewPage
 
     End Sub
 
-    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCompany.SelectedIndexChanged
         'Show Company full name when the cmbcompany's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -96,17 +97,17 @@ Public Class NewPage
 
         While rd.Read()
             If IsDBNull(rd.Item("full_name")) Then
-                lblCompanyFullName.Text = ""
+                lblCompanyName.Text = ""
             Else
-                lblCompanyFullName.Text = rd.Item("full_name")
+                lblCompanyName.Text = rd.Item("full_name")
             End If
 
         End While
-        lblCompanyFullName.Visible = True
+        lblCompanyName.Visible = True
         con.Close()
     End Sub
 
-    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLoadingPort.SelectedIndexChanged
         'show the full name of loading port when the cmblodingport's value is changed
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -168,5 +169,6 @@ Public Class NewPage
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
         End If
     End Sub
+
 
 End Class

@@ -24,6 +24,15 @@ Partial Class SecurityEdit
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SecurityEdit))
         Me.tbCargo = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblCargoWeight = New System.Windows.Forms.Label()
+        Me.cbShippingPost = New System.Windows.Forms.CheckBox()
+        Me.cbWarehousePost = New System.Windows.Forms.CheckBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cbSecurityPost = New System.Windows.Forms.CheckBox()
         Me.btnSecurityCheck = New System.Windows.Forms.Button()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
@@ -81,6 +90,7 @@ Partial Class SecurityEdit
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbCargo1 = New System.Windows.Forms.TextBox()
         Me.tbCheckCargoWeight = New System.Windows.Forms.TextBox()
         Me.tbInternalSealNo = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
@@ -111,17 +121,8 @@ Partial Class SecurityEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.tbCargo1 = New System.Windows.Forms.TextBox()
-        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
-        Me.lblCargoWeight = New System.Windows.Forms.Label()
-        Me.cbShippingPost = New System.Windows.Forms.CheckBox()
-        Me.cbWarehousePost = New System.Windows.Forms.CheckBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.cbSecurityPost = New System.Windows.Forms.CheckBox()
         Me.tbCargo.SuspendLayout()
+        Me.TableLayoutPanel8.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
@@ -131,7 +132,6 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
-        Me.TableLayoutPanel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'tbCargo
@@ -155,6 +155,115 @@ Partial Class SecurityEdit
         Me.tbCargo.Size = New System.Drawing.Size(1245, 703)
         Me.tbCargo.TabIndex = 11
         '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
+        Me.TableLayoutPanel8.ColumnCount = 1
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.lblCargoWeight, 0, 7)
+        Me.TableLayoutPanel8.Controls.Add(Me.cbShippingPost, 0, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.cbWarehousePost, 0, 3)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label6, 0, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label2, 0, 2)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label5, 0, 4)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 6)
+        Me.TableLayoutPanel8.Controls.Add(Me.cbSecurityPost, 0, 5)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(1081, 397)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 8
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(153, 224)
+        Me.TableLayoutPanel8.TabIndex = 160
+        '
+        'lblCargoWeight
+        '
+        Me.lblCargoWeight.AutoSize = True
+        Me.lblCargoWeight.Location = New System.Drawing.Point(4, 190)
+        Me.lblCargoWeight.Name = "lblCargoWeight"
+        Me.lblCargoWeight.Size = New System.Drawing.Size(120, 19)
+        Me.lblCargoWeight.TabIndex = 161
+        Me.lblCargoWeight.Text = "lblCargoWeight"
+        '
+        'cbShippingPost
+        '
+        Me.cbShippingPost.AutoSize = True
+        Me.cbShippingPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbShippingPost.Location = New System.Drawing.Point(4, 31)
+        Me.cbShippingPost.Name = "cbShippingPost"
+        Me.cbShippingPost.Size = New System.Drawing.Size(111, 20)
+        Me.cbShippingPost.TabIndex = 119
+        Me.cbShippingPost.Text = "CheckBox1"
+        Me.cbShippingPost.UseVisualStyleBackColor = True
+        '
+        'cbWarehousePost
+        '
+        Me.cbWarehousePost.AutoSize = True
+        Me.cbWarehousePost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbWarehousePost.Location = New System.Drawing.Point(4, 85)
+        Me.cbWarehousePost.Name = "cbWarehousePost"
+        Me.cbWarehousePost.Size = New System.Drawing.Size(111, 20)
+        Me.cbWarehousePost.TabIndex = 120
+        Me.cbWarehousePost.Text = "CheckBox1"
+        Me.cbWarehousePost.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(4, 1)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(120, 19)
+        Me.Label6.TabIndex = 116
+        Me.Label6.Text = "Shipping Post"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(4, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(141, 19)
+        Me.Label2.TabIndex = 115
+        Me.Label2.Text = "Warehouse Post"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(4, 109)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(116, 19)
+        Me.Label5.TabIndex = 121
+        Me.Label5.Text = "Security Post"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(4, 163)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(92, 26)
+        Me.Label10.TabIndex = 160
+        Me.Label10.Text = "Net Cargo Weight"
+        '
+        'cbSecurityPost
+        '
+        Me.cbSecurityPost.AutoSize = True
+        Me.cbSecurityPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSecurityPost.Location = New System.Drawing.Point(4, 139)
+        Me.cbSecurityPost.Name = "cbSecurityPost"
+        Me.cbSecurityPost.Size = New System.Drawing.Size(111, 20)
+        Me.cbSecurityPost.TabIndex = 122
+        Me.cbSecurityPost.Text = "CheckBox1"
+        Me.cbSecurityPost.UseVisualStyleBackColor = True
+        '
         'btnSecurityCheck
         '
         Me.btnSecurityCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -169,7 +278,7 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 330.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 331.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -355,7 +464,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel9.Name = "TableLayoutPanel9"
         Me.TableLayoutPanel9.RowCount = 1
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel9.Size = New System.Drawing.Size(285, 28)
         Me.TableLayoutPanel9.TabIndex = 158
         '
@@ -833,6 +942,14 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(655, 248)
         Me.TableLayoutPanel1.TabIndex = 50
         '
+        'tbCargo1
+        '
+        Me.tbCargo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCargo1.Location = New System.Drawing.Point(226, 209)
+        Me.tbCargo1.Name = "tbCargo1"
+        Me.tbCargo1.Size = New System.Drawing.Size(171, 26)
+        Me.tbCargo1.TabIndex = 154
+        '
         'tbCheckCargoWeight
         '
         Me.tbCheckCargoWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -862,7 +979,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
         Me.TableLayoutPanel7.Size = New System.Drawing.Size(171, 34)
         Me.TableLayoutPanel7.TabIndex = 57
         '
@@ -943,7 +1060,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(175, 34)
         Me.TableLayoutPanel2.TabIndex = 52
         '
@@ -1127,123 +1244,6 @@ Partial Class SecurityEdit
         'PrintDocument1
         '
         '
-        'tbCargo1
-        '
-        Me.tbCargo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCargo1.Location = New System.Drawing.Point(226, 209)
-        Me.tbCargo1.Name = "tbCargo1"
-        Me.tbCargo1.Size = New System.Drawing.Size(171, 26)
-        Me.tbCargo1.TabIndex = 154
-        '
-        'TableLayoutPanel8
-        '
-        Me.TableLayoutPanel8.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
-        Me.TableLayoutPanel8.ColumnCount = 1
-        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.Controls.Add(Me.lblCargoWeight, 0, 7)
-        Me.TableLayoutPanel8.Controls.Add(Me.cbShippingPost, 0, 1)
-        Me.TableLayoutPanel8.Controls.Add(Me.cbWarehousePost, 0, 3)
-        Me.TableLayoutPanel8.Controls.Add(Me.Label6, 0, 0)
-        Me.TableLayoutPanel8.Controls.Add(Me.Label2, 0, 2)
-        Me.TableLayoutPanel8.Controls.Add(Me.Label5, 0, 4)
-        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 6)
-        Me.TableLayoutPanel8.Controls.Add(Me.cbSecurityPost, 0, 5)
-        Me.TableLayoutPanel8.Location = New System.Drawing.Point(1081, 397)
-        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
-        Me.TableLayoutPanel8.RowCount = 8
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(153, 224)
-        Me.TableLayoutPanel8.TabIndex = 160
-        '
-        'lblCargoWeight
-        '
-        Me.lblCargoWeight.AutoSize = True
-        Me.lblCargoWeight.Location = New System.Drawing.Point(4, 190)
-        Me.lblCargoWeight.Name = "lblCargoWeight"
-        Me.lblCargoWeight.Size = New System.Drawing.Size(120, 19)
-        Me.lblCargoWeight.TabIndex = 161
-        Me.lblCargoWeight.Text = "lblCargoWeight"
-        '
-        'cbShippingPost
-        '
-        Me.cbShippingPost.AutoSize = True
-        Me.cbShippingPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbShippingPost.Location = New System.Drawing.Point(4, 31)
-        Me.cbShippingPost.Name = "cbShippingPost"
-        Me.cbShippingPost.Size = New System.Drawing.Size(111, 20)
-        Me.cbShippingPost.TabIndex = 119
-        Me.cbShippingPost.Text = "CheckBox1"
-        Me.cbShippingPost.UseVisualStyleBackColor = True
-        '
-        'cbWarehousePost
-        '
-        Me.cbWarehousePost.AutoSize = True
-        Me.cbWarehousePost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbWarehousePost.Location = New System.Drawing.Point(4, 85)
-        Me.cbWarehousePost.Name = "cbWarehousePost"
-        Me.cbWarehousePost.Size = New System.Drawing.Size(111, 20)
-        Me.cbWarehousePost.TabIndex = 120
-        Me.cbWarehousePost.Text = "CheckBox1"
-        Me.cbWarehousePost.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(4, 1)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(120, 19)
-        Me.Label6.TabIndex = 116
-        Me.Label6.Text = "Shipping Post"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 55)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(141, 19)
-        Me.Label2.TabIndex = 115
-        Me.Label2.Text = "Warehouse Post"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(4, 109)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(116, 19)
-        Me.Label5.TabIndex = 121
-        Me.Label5.Text = "Security Post"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(4, 163)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(92, 26)
-        Me.Label10.TabIndex = 160
-        Me.Label10.Text = "Net Cargo Weight"
-        '
-        'cbSecurityPost
-        '
-        Me.cbSecurityPost.AutoSize = True
-        Me.cbSecurityPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSecurityPost.Location = New System.Drawing.Point(4, 139)
-        Me.cbSecurityPost.Name = "cbSecurityPost"
-        Me.cbSecurityPost.Size = New System.Drawing.Size(111, 20)
-        Me.cbSecurityPost.TabIndex = 122
-        Me.cbSecurityPost.Text = "CheckBox1"
-        Me.cbSecurityPost.UseVisualStyleBackColor = True
-        '
         'SecurityEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1263,6 +1263,8 @@ Partial Class SecurityEdit
         Me.Text = "TOO System"
         Me.tbCargo.ResumeLayout(False)
         Me.tbCargo.PerformLayout()
+        Me.TableLayoutPanel8.ResumeLayout(False)
+        Me.TableLayoutPanel8.PerformLayout()
         Me.TableLayoutPanel6.ResumeLayout(False)
         Me.TableLayoutPanel6.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
@@ -1281,8 +1283,6 @@ Partial Class SecurityEdit
         Me.Panel1.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
-        Me.TableLayoutPanel8.ResumeLayout(False)
-        Me.TableLayoutPanel8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
