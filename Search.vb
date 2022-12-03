@@ -7,11 +7,12 @@ Public Class Search
     Public Shared selected As String
     Private companyNameHeader As String
     Private checkCargoWeight As Boolean
+    Private checkISOTank As Boolean
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
+        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank' from Shipping"
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -239,10 +240,28 @@ Public Class Search
                     Edit.Show()
                     Me.Close()
                 Case 2
-                    Dim obj As New ShippingEdit
-                    obj.TruckOutNumber = selected
-                    obj.Show()
-                    Me.Close()
+                    If (My.Settings.adminCheck) Then
+                        cmd2.CommandText = "SELECT id from shipping join security on shipping.id = security.shipping_id where shipping_id = @shippingID and Check_ISO_Tank = 1 and Allow_To_Post is not null"
+                        cmd2.Parameters.AddWithValue("@shippingID", selected)
+                        rd2 = cmd2.ExecuteReader
+                        If (rd2.HasRows()) Then
+                            Dim Security As New SecurityEdit
+                            Security.TruckOutNumber = selected
+                            Security.Show()
+                            Me.Close()
+                        Else
+                            Dim se As New ShippingEdit
+                            se.TruckOutNumber = selected
+                            se.Show()
+                            Me.Close()
+                        End If
+                    Else
+                        Dim obj As New ShippingEdit
+                        obj.TruckOutNumber = selected
+                        obj.Show()
+                        Me.Close()
+                    End If
+
                 Case 3, 4
                     If (My.Settings.adminCheck) Then
                         cmd2.CommandText = "SELECT Cargo_Weight_Check From Security where shipping_id = @shippingID and Allow_To_Post is not null"

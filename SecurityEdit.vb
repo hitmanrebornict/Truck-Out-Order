@@ -16,6 +16,9 @@ Public Class SecurityEdit
     Private companyNameHeader As String
     Private checkAllowToPost As Boolean
     Private netCargoWeight As Integer
+    Private checkTry As Boolean
+    Private ISOTankWeight As Integer
+    Private ISOTODValue As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
@@ -27,38 +30,6 @@ Public Class SecurityEdit
         Dim rd As SqlDataReader
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-
-
-        dtpRTD.Enabled = False
-        dtpLCD.Enabled = False
-        dtpLCT.Enabled = False
-        dtpRTT.Enabled = False
-        cmbWarehouseLocation.Enabled = False
-        tbLoadingBay.Enabled = False
-        tbSendToCompany.Enabled = False
-
-        cmbCompany.Enabled = False
-        dtpSCD.Enabled = False
-        dtpSCT.Enabled = False
-        tbInvoice.Enabled = False
-        tbShippingLine.Enabled = False
-        tbProduct.Enabled = False
-        cmbDDB.Enabled = False
-        tbHaulier.Enabled = False
-        cmbLoadingPort.Enabled = False
-        cmbContainerSize.Enabled = False
-        tbContainerNo.Enabled = False
-        tbInternalSealNo.Enabled = False
-
-
-        tbLinerSealNo.Enabled = False
-        cmbCheckTempSealNo.Enabled = False
-        tbTempSeal.Enabled = False
-        cmbEsSealNo.Enabled = False
-        tbEsSealNo.Enabled = False
-
-        cmbProductType.Enabled = False
-        tbCargo1.Enabled = False
 
         GlobalFunction.ReadForDriverCheck("Full_Name", cmbFullName)
         GlobalFunction.ReadForDriverCheck("PM_Code", cmbPmCode)
@@ -104,8 +75,11 @@ Public Class SecurityEdit
         '    tbCargo1
         '    )
 
+
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
         con.Open()
-        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company,Product_Type, Net_Cargo_Weight from Shipping where id = @TruckOutNumber"
+        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company,Product_Type, Net_Cargo_Weight,Check_ISO_Tank,ISO_Truck_Out_Date,ISO_Tank_Weight from Shipping where id = @TruckOutNumber"
         cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber)
         rd = cmd.ExecuteReader
 
@@ -126,11 +100,25 @@ Public Class SecurityEdit
             tbHaulier.Text = rd.Item("HAULIER")
             cmbLoadingPort.Text = rd.Item("LOADING_PORT")
             tbContainerNo.Text = rd.Item("CONTAINER_NO")
-            tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
-            tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
-            tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
 
-            'tbTemporarySealNo.Text = rd.Item("TEMPORARY_SEAL_NO")
+            If IsDBNull(rd.Item("Liner_Sea_No")) Then
+                tbLinerSealNo.Text = ""
+            Else
+                tbLinerSealNo.Text = rd.Item("LINER_SEA_NO")
+            End If
+
+            If IsDBNull(rd.Item("Internal_Seal_No")) Then
+                tbInternalSealNo.Text = ""
+            Else
+                tbInternalSealNo.Text = rd.Item("INTERNAL_SEAL_NO")
+            End If
+
+            If IsDBNull(rd.Item("Temporary_Seal_No")) Then
+                tbTempSeal.Text = ""
+            Else
+                tbTempSeal.Text = rd.Item("TEMPORARY_SEAL_NO")
+            End If
+
             If IsDBNull(rd.Item("ES_SEAL_NO")) Then
                 cmbEsSealNo.Text = ""
             Else
@@ -181,16 +169,34 @@ Public Class SecurityEdit
                 cmbProductType.Text = rd.Item("Product_Type")
             End If
 
-            If IsDBNull(rd.Item("net_cargo_weight")) Then
-
-                tbCargo1.Text = ""
+            If IsDBNull(rd.Item("Net_Cargo_Weight")) Then
+                tbCargo.Text = ""
             Else
-                netCargoWeight = rd.Item("Net_Cargo_Weight")
-                tbCargo1.Text = rd.Item("net_cargo_weight")
+                tbCargo.Text = rd.Item("Net_Cargo_Weight")
+            End If
+
+            If IsDBNull(rd.Item("Check_ISO_Tank")) Then
+                cbISO.Checked = False
+            Else
+                checkTry = rd.Item("Check_ISO_Tank")
+            End If
+
+
+            If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
+                ISOTODValue = ""
+            Else
+                ISOTODValue = rd.Item("ISO_Truck_Out_Date")
+            End If
+
+            If IsDBNull(rd.Item("ISO_Tank_Weight")) Then
+                ISOTankWeight = ""
+            Else
+                ISOTankWeight = rd.Item("ISO_Tank_Weight")
             End If
         End While
         con.Close()
 
+        lblCompany.Text = ISOTODValue
 
         con.Open()
         cmd.CommandText = "Select Shipping_id, warehouse_location, loading_bay,es_seal_no,loading_completed_date, CONVERT(varchar,loading_completed_time,8) as LCT, READY_TRUCK_OUT_DATE, CONVERT(varchar,ready_truck_out_time,8) as RCT from Warehouse where Shipping_ID = @TruckOutNumber2 "
@@ -304,7 +310,7 @@ Public Class SecurityEdit
 
 
         'Fill in security check field
-        If checkSecurityCheck = "YES" Then
+        If checkSecurityCheck = "YES" And My.Settings.adminCheck <> True And My.Settings.role_id <> 5 Then
             btnSecurityPost.Enabled = True
             btnSecurityCheck.Enabled = False
             btnSecurityCheck.Visible = False
@@ -349,6 +355,17 @@ Public Class SecurityEdit
             cmbCheckTempSealNo.Text = "YES"
         Else
             cmbCheckTempSealNo.Text = "NO"
+        End If
+
+        cbISO.Checked = checkTry
+        cbISO.Enabled = False
+        If checkTry Then
+            tbSecurityCheckLinerSealNo.Enabled = False
+            tbSecurityCheckEsSealNo.Enabled = False
+            tbSecurityCheckInternalSealNo.Enabled = False
+            tbSecurityCheckTemporarySealNo.Enabled = False
+            tbCheckCargoWeight.Enabled = False
+            tlpISO.Visible = True
         End If
     End Sub
 
@@ -515,63 +532,110 @@ Public Class SecurityEdit
         cmd.Connection = con
 
         con.Open()
-
-        If (My.Settings.role_id = 3 Or My.Settings.role_id = 4 Or My.Settings.role_id = 1) And My.Settings.adminCheck = True Then
-            checkCargoWeight = True
-            cmd.CommandText = "Update Security set Cargo_Weight_Check = @Cargo_Weight_Check"
-            cmd.Parameters.AddWithValue("@Cargo_Weight_Check", checkCargoWeight)
-            rd = cmd.ExecuteReader
-            con.Close()
-            MessageBox.Show("Update Complete", "This number can be posted now.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf cmbEsSealNo.Text = "YES" And tbSecurityCheckEsSealNo.Text = "" Then
-            MessageBox.Show("Please Check ES_SEAL_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbSecurityCheckEsSealNo.Text <> tbEsSealNo.Text Then
-            tbSecurityCheckEsSealNo.Enabled = False
-
-        ElseIf tbSecurityCheckContainerNo.Text <> tbContainerNo.Text Then
-            MessageBox.Show("Please Check CONTAINER_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbSecurityCheckLinerSealNo.Text <> tbLinerSealNo.Text Then
-            MessageBox.Show("Please Check LINER'S SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbSecurityCheckInternalSealNo.Text <> tbInternalSealNo.Text Then
-            MessageBox.Show("Please Check INTERNAL SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbSecurityCheckTemporarySealNo.Text <> tbTempSeal.Text Then
-            MessageBox.Show("Please Check TEMPORARY SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'ElseIf tbCheckCargoWeight.Text = " " Then
-            'MessageBox.Show("Please enter Cargo Weight Field", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            Try
-                If Integer.Parse(tbCheckCargoWeight.Text) >= netCargoWeight Then
-                    checkCargoWeight = True
-                    checkAllowToPost = True
-                Else
-                    checkCargoWeight = False
-                    checkAllowToPost = False
-                End If
-
-                cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue,Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
-                cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                cmd.Parameters.AddWithValue("@checkCargoWeight", checkCargoWeight)
-                cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
-                cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
+        If cbISO.Checked = True Then
+            If (My.Settings.role_id = 2 Or My.Settings.role_id = 1) And My.Settings.adminCheck = True Then
+                'ISO TANK is not allow to post
+                cmd.CommandText = "update Security set Allow_To_Post = 1 ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "'where shipping_ID = @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
                 con.Close()
-                If (checkCargoWeight) Then
-                    MessageBox.Show("Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-                checkSecurityCheck = "YES"
-                btnSecurityCheck.Visible = False
-                tbCheckCargoWeight.Enabled = False
-                tbSecurityCheckContainerNo.Enabled = False
+                MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                Try
+                    If Integer.Parse(tbISOTankWeight.Text) >= ISOTankWeight And String.Compare(dtpISO.Value.ToString(), ISOTODValue) And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) Then
+                        'Check ISO Tank
+                        checkAllowToPost = True
+                        checkSecurityCheck = "YES"
+                        btnSecurityCheck.Visible = False
+                        tbSecurityCheckContainerNo.Enabled = False
+                        dtpISO.Enabled = False
+                        tbISOTankWeight.Enabled = False
+                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("ISO Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ElseIf String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) Then
+                        MessageBox.Show("Please Check Container No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ElseIf String.Compare(dtpISO.Value.ToString(), ISOTODValue) Or Integer.Parse(tbISOTankWeight.Text) >= ISOTankWeight Then
+                        checkAllowToPost = False
+                        checkSecurityCheck = "YES"
+                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
+                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                        cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
+                        rd = cmd.ExecuteReader
+                        con.Close()
+                        MessageBox.Show("Inform Shipping", "ISO Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+
+                    'MessageBox.Show("Inform Shipping", "ISO Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        Else
+            If (My.Settings.role_id = 3 Or My.Settings.role_id = 4 Or My.Settings.role_id = 1) And My.Settings.adminCheck = True Then
+                ' Allow Cargo Check TO Post
+                cmd.CommandText = "update Security set Allow_To_Post = 1 ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "'where shipping_ID = @TruckOutNumber"
+                cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                rd = cmd.ExecuteReader
+                con.Close()
+                MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ElseIf cmbEsSealNo.Text = "YES" And tbSecurityCheckEsSealNo.Text = "" Then
+                MessageBox.Show("Please Check ES_SEAL_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbSecurityCheckEsSealNo.Text <> tbEsSealNo.Text Then
                 tbSecurityCheckEsSealNo.Enabled = False
-                tbSecurityCheckInternalSealNo.Enabled = False
-                tbSecurityCheckLinerSealNo.Enabled = False
-                tbSecurityCheckTemporarySealNo.Enabled = False
-            Catch ex As Exception
-                MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+
+            ElseIf tbSecurityCheckContainerNo.Text <> tbContainerNo.Text Then
+                MessageBox.Show("Please Check CONTAINER_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbSecurityCheckLinerSealNo.Text <> tbLinerSealNo.Text Then
+                MessageBox.Show("Please Check LINER'S SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbSecurityCheckInternalSealNo.Text <> tbInternalSealNo.Text Then
+                MessageBox.Show("Please Check INTERNAL SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf tbSecurityCheckTemporarySealNo.Text <> tbTempSeal.Text Then
+                MessageBox.Show("Please Check TEMPORARY SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'ElseIf tbCheckCargoWeight.Text = " " Then
+                'MessageBox.Show("Please enter Cargo Weight Field", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                'Security Check Cargo Weight
+                Try
+                    If Integer.Parse(tbCheckCargoWeight.Text) >= netCargoWeight Then
+                        checkCargoWeight = True
+                        checkAllowToPost = True
+                    Else
+                        checkCargoWeight = False
+                        checkAllowToPost = False
+                    End If
+
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue,Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                    cmd.Parameters.AddWithValue("@checkCargoWeight", checkCargoWeight)
+                    cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
+                    cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
+                    rd = cmd.ExecuteReader
+                    con.Close()
+                    If (checkCargoWeight) Then
+                        MessageBox.Show("Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                    checkSecurityCheck = "YES"
+                    btnSecurityCheck.Visible = False
+                    tbCheckCargoWeight.Enabled = False
+                    tbSecurityCheckContainerNo.Enabled = False
+                    tbSecurityCheckEsSealNo.Enabled = False
+                    tbSecurityCheckInternalSealNo.Enabled = False
+                    tbSecurityCheckLinerSealNo.Enabled = False
+                    tbSecurityCheckTemporarySealNo.Enabled = False
+                Catch ex As Exception
+                    MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
         End If
+
         btnSecurityPost.Visible = True
     End Sub
+
 End Class
