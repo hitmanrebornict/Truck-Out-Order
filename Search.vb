@@ -25,14 +25,16 @@ Public Class Search
             cmd.CommandText = (selectString & " order by id desc")
         Else
             Select Case My.Settings.role_id
+                Case 2
+                    cmd.CommandText = (selectString & " order by id desc")
                 Case 3, 4
                     If (My.Settings.adminCheck) Then
-                        cmd.CommandText = selectString & " WHERE SHIPPING_POST = '" + "YES" + "' and Security_Post is null order by id desc"
+                        cmd.CommandText = selectString & " WHERE SHIPPING_POST = '" + "YES" + "' and Security_Post is null and Check_ISO_Tank = 0 order by id desc"
                     Else
-                        cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null order by id desc")
+                        cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null and Check_ISO_Tank = 0 order by id desc")
                     End If
                 Case 5
-                    cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null order by id desc")
+                    cmd.CommandText = (selectString & " where (shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null) or (shipping_post = '" + "YES" + "' and Check_ISO_Tank = 1 and security_post is null) order by id desc")
             End Select
         End If
         rd = cmd.ExecuteReader
@@ -229,25 +231,6 @@ Public Class Search
         cmd2.Connection = con2
         con2.Open()
 
-        'If My.Settings.adminCheck = True Or My.Settings.role_id = 2 Then
-        '    cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID "
-        'Else
-        '    Select Case My.Settings.role_id
-        '        Case 3, 4
-        '            If (My.Settings.adminCheck) Then
-        '                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL or Security_Post is null)"
-        '            Else
-        '                cmd2.CommandText = "SELECT ID from Shipping where ID = @shippingID and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-        '            End If
-
-        '        Case 5
-        '            cmd2.CommandText = "SELECT ID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL AND ID = @shippingID"
-        '    End Select
-        'End If
-
-        'cmd2.Parameters.AddWithValue("@shippingID", selected)
-        'rd2 = cmd2.ExecuteReader
-        'If rd2.HasRows Then
         Try
             Select Case My.Settings.role_id
                 Case 1

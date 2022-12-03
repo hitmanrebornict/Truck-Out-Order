@@ -711,4 +711,7 @@ Public Class GlobalFunction
         con.Close()
         Return ""
     End Function
+
+
+
 End Class

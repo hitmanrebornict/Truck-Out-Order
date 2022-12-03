@@ -24,8 +24,14 @@ Partial Class ShippingEdit
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ShippingEdit))
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.tlpISO = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.dtpISO = New System.Windows.Forms.DateTimePicker()
+        Me.tbISOTankWeight = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.tbCargo = New System.Windows.Forms.TextBox()
+        Me.cbISO = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnPost = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
@@ -110,6 +116,7 @@ Partial Class ShippingEdit
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.Panel3.SuspendLayout()
+        Me.tlpISO.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel8.SuspendLayout()
@@ -125,6 +132,7 @@ Partial Class ShippingEdit
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel3.Controls.Add(Me.tlpISO)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel9)
         Me.Panel3.Controls.Add(Me.btnPost)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
@@ -143,6 +151,61 @@ Partial Class ShippingEdit
         Me.Panel3.Size = New System.Drawing.Size(1264, 754)
         Me.Panel3.TabIndex = 3
         '
+        'tlpISO
+        '
+        Me.tlpISO.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
+        Me.tlpISO.ColumnCount = 2
+        Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.41725!))
+        Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.58275!))
+        Me.tlpISO.Controls.Add(Me.Label4, 0, 1)
+        Me.tlpISO.Controls.Add(Me.Label3, 0, 0)
+        Me.tlpISO.Controls.Add(Me.dtpISO, 1, 0)
+        Me.tlpISO.Controls.Add(Me.tbISOTankWeight, 1, 1)
+        Me.tlpISO.Location = New System.Drawing.Point(550, 542)
+        Me.tlpISO.Name = "tlpISO"
+        Me.tlpISO.RowCount = 2
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tlpISO.Size = New System.Drawing.Size(430, 88)
+        Me.tlpISO.TabIndex = 152
+        Me.tlpISO.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(4, 44)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(108, 16)
+        Me.Label4.TabIndex = 137
+        Me.Label4.Text = "ISO Tank Weight"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(4, 1)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(99, 16)
+        Me.Label3.TabIndex = 136
+        Me.Label3.Text = "Truck Out Date:"
+        '
+        'dtpISO
+        '
+        Me.dtpISO.CustomFormat = """ """
+        Me.dtpISO.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpISO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpISO.Location = New System.Drawing.Point(216, 4)
+        Me.dtpISO.Name = "dtpISO"
+        Me.dtpISO.Size = New System.Drawing.Size(210, 26)
+        Me.dtpISO.TabIndex = 135
+        '
+        'tbISOTankWeight
+        '
+        Me.tbISOTankWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeight.Location = New System.Drawing.Point(216, 47)
+        Me.tbISOTankWeight.Name = "tbISOTankWeight"
+        Me.tbISOTankWeight.Size = New System.Drawing.Size(210, 26)
+        Me.tbISOTankWeight.TabIndex = 47
+        '
         'TableLayoutPanel9
         '
         Me.TableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
@@ -150,13 +213,14 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel9.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.18033!))
         Me.TableLayoutPanel9.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.81967!))
         Me.TableLayoutPanel9.Controls.Add(Me.tbCargo, 1, 0)
+        Me.TableLayoutPanel9.Controls.Add(Me.cbISO, 1, 1)
         Me.TableLayoutPanel9.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel9.Location = New System.Drawing.Point(550, 448)
         Me.TableLayoutPanel9.Name = "TableLayoutPanel9"
-        Me.TableLayoutPanel9.RowCount = 1
-        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
-        Me.TableLayoutPanel9.Size = New System.Drawing.Size(430, 45)
+        Me.TableLayoutPanel9.RowCount = 2
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel9.Size = New System.Drawing.Size(430, 81)
         Me.TableLayoutPanel9.TabIndex = 150
         '
         'tbCargo
@@ -166,6 +230,17 @@ Partial Class ShippingEdit
         Me.tbCargo.Name = "tbCargo"
         Me.tbCargo.Size = New System.Drawing.Size(211, 26)
         Me.tbCargo.TabIndex = 61
+        '
+        'cbISO
+        '
+        Me.cbISO.AutoSize = True
+        Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
+        Me.cbISO.Location = New System.Drawing.Point(215, 44)
+        Me.cbISO.Name = "cbISO"
+        Me.cbISO.Size = New System.Drawing.Size(111, 23)
+        Me.cbISO.TabIndex = 151
+        Me.cbISO.Text = "CheckBox1"
+        Me.cbISO.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -591,7 +666,7 @@ Partial Class ShippingEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 444.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 445.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
@@ -850,7 +925,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbContainerNo, 1, 0)
@@ -871,7 +946,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.35986!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28647!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(541, 218)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(542, 218)
         Me.TableLayoutPanel1.TabIndex = 50
         '
         'tbInternalSealNo
@@ -936,8 +1011,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(277, 33)
         Me.TableLayoutPanel2.TabIndex = 52
         '
@@ -1170,6 +1245,8 @@ Partial Class ShippingEdit
         Me.Text = "TOO System"
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.tlpISO.ResumeLayout(False)
+        Me.tlpISO.PerformLayout()
         Me.TableLayoutPanel9.ResumeLayout(False)
         Me.TableLayoutPanel9.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
@@ -1280,4 +1357,10 @@ Partial Class ShippingEdit
     Friend WithEvents TableLayoutPanel9 As TableLayoutPanel
     Friend WithEvents tbCargo As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents cbISO As CheckBox
+    Friend WithEvents tlpISO As TableLayoutPanel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents dtpISO As DateTimePicker
+    Friend WithEvents tbISOTankWeight As TextBox
 End Class
