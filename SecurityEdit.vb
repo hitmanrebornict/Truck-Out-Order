@@ -411,6 +411,10 @@ Public Class SecurityEdit
         If checkAllowToPost = True Then
             dtpISO.Value = ISOTODValue
         End If
+
+        If checkSecurityPost = "YES" Then
+            btnSecurityCheck.Enabled = False
+        End If
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click
@@ -598,7 +602,7 @@ Public Class SecurityEdit
                 checkSecurityCheck = "YES"
             Else
                 Try
-                    If Integer.Parse(tbSecurityCheckISOTankWeight.Text) >= Integer.Parse(tbISOTankWeightLower.Text) And Integer.Parse(tbSecurityCheckISOTankWeight.Text) <= Integer.Parse(tbISOTankWeightUpper.Text) And String.Compare(dtpISO.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
+                    If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And String.Compare(dtpISO.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
                         'Check ISO Tank
                         checkAllowToPost = True
                         checkSecurityCheck = "YES"
@@ -617,7 +621,7 @@ Public Class SecurityEdit
                         btnSecurityCheck.Enabled = False
                     ElseIf Not String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
                         MessageBox.Show("Please Check Container No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    ElseIf Not String.Compare(dtpISO.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 Or Integer.Parse(tbSecurityCheckISOTankWeight.Text) < Integer.Parse(tbISOTankWeightLower.Text) Or Integer.Parse(tbSecurityCheckISOTankWeight.Text) > Integer.Parse(tbISOTankWeightUpper.Text) Then
+                    ElseIf Not String.Compare(dtpISO.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
                         checkSecurityCheck = "YES"
                         cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight WHERE Shipping_ID = @TruckOutNumber2"

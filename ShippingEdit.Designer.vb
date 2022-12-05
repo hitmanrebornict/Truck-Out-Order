@@ -161,16 +161,14 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel9.ColumnCount = 2
         Me.TableLayoutPanel9.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.34965!))
         Me.TableLayoutPanel9.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.65035!))
-        Me.TableLayoutPanel9.Controls.Add(Me.Label7, 0, 1)
         Me.TableLayoutPanel9.Controls.Add(Me.tbCargo, 1, 0)
-        Me.TableLayoutPanel9.Controls.Add(Me.cbISO, 1, 1)
         Me.TableLayoutPanel9.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel9.Location = New System.Drawing.Point(550, 448)
         Me.TableLayoutPanel9.Name = "TableLayoutPanel9"
-        Me.TableLayoutPanel9.RowCount = 2
-        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel9.Size = New System.Drawing.Size(430, 81)
+        Me.TableLayoutPanel9.RowCount = 1
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel9.Size = New System.Drawing.Size(430, 46)
         Me.TableLayoutPanel9.TabIndex = 150
         '
         'tbCargo
@@ -185,7 +183,7 @@ Partial Class ShippingEdit
         '
         Me.cbISO.AutoSize = True
         Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
-        Me.cbISO.Location = New System.Drawing.Point(219, 44)
+        Me.cbISO.Location = New System.Drawing.Point(762, 277)
         Me.cbISO.Name = "cbISO"
         Me.cbISO.Size = New System.Drawing.Size(55, 23)
         Me.cbISO.TabIndex = 151
@@ -220,6 +218,8 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.09877!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.14815!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.8107!))
+        Me.TableLayoutPanel3.Controls.Add(Me.Label7, 2, 7)
+        Me.TableLayoutPanel3.Controls.Add(Me.cbISO, 3, 7)
         Me.TableLayoutPanel3.Controls.Add(Me.TableLayoutPanel8, 1, 5)
         Me.TableLayoutPanel3.Controls.Add(Me.lblPortFullName, 2, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.lblLoadingPortFullName, 3, 1)
@@ -1185,7 +1185,7 @@ Partial Class ShippingEdit
         Me.tlpISO.Controls.Add(Me.Label3, 0, 0)
         Me.tlpISO.Controls.Add(Me.dtpISO, 1, 0)
         Me.tlpISO.Enabled = False
-        Me.tlpISO.Location = New System.Drawing.Point(550, 538)
+        Me.tlpISO.Location = New System.Drawing.Point(550, 500)
         Me.tlpISO.Name = "tlpISO"
         Me.tlpISO.RowCount = 2
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -1228,7 +1228,7 @@ Partial Class ShippingEdit
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(4, 41)
+        Me.Label7.Location = New System.Drawing.Point(537, 274)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(95, 22)
         Me.Label7.TabIndex = 152

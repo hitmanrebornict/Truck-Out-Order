@@ -135,7 +135,7 @@ Partial Class NewPage
         Me.tlpISO.Controls.Add(Me.Label3, 0, 0)
         Me.tlpISO.Controls.Add(Me.dtpISO, 1, 0)
         Me.tlpISO.Enabled = False
-        Me.tlpISO.Location = New System.Drawing.Point(594, 541)
+        Me.tlpISO.Location = New System.Drawing.Point(594, 498)
         Me.tlpISO.Name = "tlpISO"
         Me.tlpISO.RowCount = 2
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -189,7 +189,9 @@ Partial Class NewPage
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.8107!))
         Me.TableLayoutPanel3.Controls.Add(Me.lblPortFullName, 2, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.lblLoadingPortFullName, 3, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.cbISO, 3, 7)
         Me.TableLayoutPanel3.Controls.Add(Me.lblCompany, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label1, 2, 7)
         Me.TableLayoutPanel3.Controls.Add(Me.cmbCompany, 1, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.lblLoadingPort, 2, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.cmbLoadingPort, 3, 0)
@@ -558,14 +560,12 @@ Partial Class NewPage
         Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.87064!))
         Me.TableLayoutPanel7.Controls.Add(Me.tbCargo, 1, 0)
         Me.TableLayoutPanel7.Controls.Add(Me.Label2, 0, 0)
-        Me.TableLayoutPanel7.Controls.Add(Me.cbISO, 1, 1)
-        Me.TableLayoutPanel7.Controls.Add(Me.Label1, 0, 1)
         Me.TableLayoutPanel7.Location = New System.Drawing.Point(594, 442)
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
-        Me.TableLayoutPanel7.RowCount = 2
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel7.Size = New System.Drawing.Size(478, 97)
+        Me.TableLayoutPanel7.RowCount = 1
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(478, 50)
         Me.TableLayoutPanel7.TabIndex = 43
         '
         'tbCargo
@@ -589,7 +589,7 @@ Partial Class NewPage
         '
         Me.cbISO.AutoSize = True
         Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
-        Me.cbISO.Location = New System.Drawing.Point(247, 52)
+        Me.cbISO.Location = New System.Drawing.Point(837, 291)
         Me.cbISO.Name = "cbISO"
         Me.cbISO.Size = New System.Drawing.Size(55, 23)
         Me.cbISO.TabIndex = 45
@@ -599,7 +599,7 @@ Partial Class NewPage
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 49)
+        Me.Label1.Location = New System.Drawing.Point(588, 288)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(95, 22)
         Me.Label1.TabIndex = 63
