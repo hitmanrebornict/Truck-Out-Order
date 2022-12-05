@@ -28,7 +28,7 @@ Partial Class NewPage
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtpISO = New System.Windows.Forms.DateTimePicker()
-        Me.tbISOTankWeight = New System.Windows.Forms.TextBox()
+        Me.tbISOTankWeightLower = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblPortFullName = New System.Windows.Forms.Label()
         Me.lblLoadingPortFullName = New System.Windows.Forms.Label()
@@ -92,7 +92,8 @@ Partial Class NewPage
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbISOTankWeightUpper = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         Me.tlpISO.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -103,6 +104,7 @@ Partial Class NewPage
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.TableLayoutPanel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -128,10 +130,10 @@ Partial Class NewPage
         Me.tlpISO.ColumnCount = 2
         Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.04602!))
         Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.95398!))
+        Me.tlpISO.Controls.Add(Me.TableLayoutPanel8, 1, 1)
         Me.tlpISO.Controls.Add(Me.Label4, 0, 1)
         Me.tlpISO.Controls.Add(Me.Label3, 0, 0)
         Me.tlpISO.Controls.Add(Me.dtpISO, 1, 0)
-        Me.tlpISO.Controls.Add(Me.tbISOTankWeight, 1, 1)
         Me.tlpISO.Enabled = False
         Me.tlpISO.Location = New System.Drawing.Point(594, 541)
         Me.tlpISO.Name = "tlpISO"
@@ -146,9 +148,9 @@ Partial Class NewPage
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(4, 38)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(160, 22)
+        Me.Label4.Size = New System.Drawing.Size(198, 22)
         Me.Label4.TabIndex = 137
-        Me.Label4.Text = "ISO Tank Weight:"
+        Me.Label4.Text = "ISO Tank Weight (mt):"
         '
         'Label3
         '
@@ -169,13 +171,13 @@ Partial Class NewPage
         Me.dtpISO.Size = New System.Drawing.Size(227, 26)
         Me.dtpISO.TabIndex = 135
         '
-        'tbISOTankWeight
+        'tbISOTankWeightLower
         '
-        Me.tbISOTankWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeight.Location = New System.Drawing.Point(247, 41)
-        Me.tbISOTankWeight.Name = "tbISOTankWeight"
-        Me.tbISOTankWeight.Size = New System.Drawing.Size(227, 26)
-        Me.tbISOTankWeight.TabIndex = 47
+        Me.tbISOTankWeightLower.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
+        Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
+        Me.tbISOTankWeightLower.Size = New System.Drawing.Size(106, 26)
+        Me.tbISOTankWeightLower.TabIndex = 47
         '
         'TableLayoutPanel3
         '
@@ -579,9 +581,9 @@ Partial Class NewPage
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(4, 1)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(168, 22)
+        Me.Label2.Size = New System.Drawing.Size(206, 22)
         Me.Label2.TabIndex = 62
-        Me.Label2.Text = "Net Cargo Weight:"
+        Me.Label2.Text = "Net Cargo Weight (kg):"
         '
         'cbISO
         '
@@ -885,6 +887,29 @@ Partial Class NewPage
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.ColumnCount = 2
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightUpper, 1, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightLower, 0, 0)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(247, 41)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 1
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(227, 31)
+        Me.TableLayoutPanel8.TabIndex = 49
+        '
+        'tbISOTankWeightUpper
+        '
+        Me.tbISOTankWeightUpper.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(116, 3)
+        Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
+        Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(106, 26)
+        Me.tbISOTankWeightUpper.TabIndex = 48
+        '
         'NewPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -922,6 +947,8 @@ Partial Class NewPage
         Me.TableLayoutPanel4.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.TableLayoutPanel8.ResumeLayout(False)
+        Me.TableLayoutPanel8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -951,7 +978,6 @@ Partial Class NewPage
     Friend WithEvents lblUserDetails As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents btnSave As Button
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
@@ -993,7 +1019,9 @@ Partial Class NewPage
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents dtpISO As DateTimePicker
-    Friend WithEvents tbISOTankWeight As TextBox
+    Friend WithEvents tbISOTankWeightLower As TextBox
     Friend WithEvents cbISO As CheckBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
+    Friend WithEvents tbISOTankWeightUpper As TextBox
 End Class

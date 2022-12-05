@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Runtime.Serialization.Formatters
+Imports System.Security.Permissions
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class ViewPage
@@ -52,12 +54,16 @@ Public Class ViewPage
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Security Post Completed"
                     postOption = "Security_Post_Time"
-                    selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping join warehouse on shipping.id = warehouse.shipping_id join security on shipping.id = security.shipping_id "
+                    selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id inner join security on shipping.id = security.shipping_id "
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
                 Case "Cargo Weight Checking"
                     postOption = "Security_Post_Time"
                     selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and shipping.Net_Cargo_Weight is not null  Order by security.cargo_weight_check,shipping.container_size, id")
+                Case "ISO Tank"
+                    postOption = "Security_Post_Time"
+                    selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id join security on shipping.id = security.shipping_id "
+                    cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and Shipping.Check_ISO_Tank = 1 Order by id ")
             End Select
 
 
@@ -75,6 +81,9 @@ Public Class ViewPage
                 Case "Cargo Weight Checking"
                     postString = " Net Cargo Weight Checking Post Between "
                     cmd.CommandText = "SELECT COUNT(ID) as numofReport from shipping inner join security on shipping.id = security.shipping_id where  " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') "
+                Case "ISO Tank"
+                    postString = " Completed Post Between "
+                    cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and Check_ISO_Tank = 1 "
                 Case Else
                     postString = " Completed Post Between "
                     cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "

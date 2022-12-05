@@ -78,7 +78,7 @@ Partial Class ViewPage
         Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPostSelect.FormattingEnabled = True
-        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed", "Cargo Weight Checking"})
+        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed", "Cargo Weight Checking", "ISO Tank"})
         Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
         Me.cmbPostSelect.Name = "cmbPostSelect"
         Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
