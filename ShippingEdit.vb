@@ -478,7 +478,7 @@ Public Class ShippingEdit
 
     Private Sub cbISO_CheckedChanged(sender As Object, e As EventArgs) Handles cbISO.CheckedChanged
         If cbISO.Checked Then
-            tlpISO.Visible = True
+            tlpISO.Enabled = True
             cmbEsSealNo.Enabled = False
             cmbCheckTempSealNo.Enabled = False
             tbTempSeal.Enabled = False
@@ -494,7 +494,7 @@ Public Class ShippingEdit
             tbEsSealNo.Text = ""
             tbCargo.Text = ""
         Else
-            tlpISO.Visible = False
+            tlpISO.Enabled = False
             cmbCheckTempSealNo.Enabled = True
             tbTempSeal.Enabled = True
             tbLinerSealNo.Enabled = True

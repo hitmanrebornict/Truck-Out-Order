@@ -206,7 +206,7 @@ Public Class NewPage
 
     Private Sub cbISO_CheckedChanged(sender As Object, e As EventArgs) Handles cbISO.CheckedChanged
         If cbISO.Checked Then
-            tlpISO.Visible = True
+            tlpISO.Enabled = True
             cmbEsSealNo.Enabled = False
             cmbCheckTempSealNo.Enabled = False
             tbTemporarySealNo.Enabled = False
@@ -222,7 +222,7 @@ Public Class NewPage
             tbEsSealNo.Text = ""
             tbCargo.Text = ""
         Else
-            tlpISO.Visible = False
+            tlpISO.Enabled = False
             cmbCheckTempSealNo.Enabled = True
             tbTemporarySealNo.Enabled = True
             tbLinerSealNo.Enabled = True

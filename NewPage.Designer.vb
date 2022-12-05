@@ -132,23 +132,23 @@ Partial Class NewPage
         Me.tlpISO.Controls.Add(Me.Label3, 0, 0)
         Me.tlpISO.Controls.Add(Me.dtpISO, 1, 0)
         Me.tlpISO.Controls.Add(Me.tbISOTankWeight, 1, 1)
+        Me.tlpISO.Enabled = False
         Me.tlpISO.Location = New System.Drawing.Point(594, 541)
         Me.tlpISO.Name = "tlpISO"
         Me.tlpISO.RowCount = 2
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlpISO.Size = New System.Drawing.Size(478, 88)
+        Me.tlpISO.Size = New System.Drawing.Size(478, 76)
         Me.tlpISO.TabIndex = 48
-        Me.tlpISO.Visible = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(4, 44)
+        Me.Label4.Location = New System.Drawing.Point(4, 38)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(155, 22)
+        Me.Label4.Size = New System.Drawing.Size(160, 22)
         Me.Label4.TabIndex = 137
-        Me.Label4.Text = "ISO Tank Weight"
+        Me.Label4.Text = "ISO Tank Weight:"
         '
         'Label3
         '
@@ -172,7 +172,7 @@ Partial Class NewPage
         'tbISOTankWeight
         '
         Me.tbISOTankWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeight.Location = New System.Drawing.Point(247, 47)
+        Me.tbISOTankWeight.Location = New System.Drawing.Point(247, 41)
         Me.tbISOTankWeight.Name = "tbISOTankWeight"
         Me.tbISOTankWeight.Size = New System.Drawing.Size(227, 26)
         Me.tbISOTankWeight.TabIndex = 47
@@ -589,9 +589,9 @@ Partial Class NewPage
         Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
         Me.cbISO.Location = New System.Drawing.Point(247, 52)
         Me.cbISO.Name = "cbISO"
-        Me.cbISO.Size = New System.Drawing.Size(111, 23)
+        Me.cbISO.Size = New System.Drawing.Size(55, 23)
         Me.cbISO.TabIndex = 45
-        Me.cbISO.Text = "CheckBox1"
+        Me.cbISO.Text = "ISO"
         Me.cbISO.UseVisualStyleBackColor = True
         '
         'Label1
@@ -640,7 +640,7 @@ Partial Class NewPage
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 341.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbContainerNo, 1, 0)
@@ -659,7 +659,7 @@ Partial Class NewPage
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.64706!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 239)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(588, 239)
         Me.TableLayoutPanel1.TabIndex = 30
         '
         'tbInternalSealNo
@@ -901,7 +901,7 @@ Partial Class NewPage
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NewPage"
-        Me.Text = "TOO System"
+        Me.Text = "ISO"
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.tlpISO.ResumeLayout(False)

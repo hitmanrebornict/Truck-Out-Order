@@ -268,7 +268,7 @@ Public Class Search
                         cmd2.Parameters.AddWithValue("@shippingID", selected)
                         rd2 = cmd2.ExecuteReader
                         If (rd2.HasRows()) Then
-                            Dim editPage As New Edit
+                            Dim editPage As New SecurityEdit
                             editPage.TruckOutNumber = selected
                             editPage.Show()
                             Me.Close()
