@@ -18,6 +18,7 @@ Public Class Edit
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private companyNameHeader As String
     Private checkAllowToPost As Boolean
+    Private checkISO As Boolean
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -83,7 +84,7 @@ Public Class Edit
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company,Product_Type, Net_Cargo_Weight,Check_ISO_Tank,ISO_Truck_Out_Date,ISO_Tank_Weight from Shipping where id = @TruckOutNumber"
+        cmd.CommandText = "Select checkTempSealNo, ORIGIN, INVOICE, CONTAINER_NO, LINER_SEA_NO, INTERNAL_SEAL_NO, ES_SEAL_NO, COMPANY, TEMPORARY_SEAL_NO, Container_Size, LOADING_PORT, SHIPPING_LINE, HAULIER, PRODUCT, SHIPMENT_CLOSING_DATE, CONVERT(varchar,SHIPMENT_CLOSING_TIME,8) as CloseTime, DDB ,Shipping_Post,warehouse_post,security_post,company,Product_Type, Net_Cargo_Weight,Check_ISO_Tank,ISO_Truck_Out_Date,ISO_Tank_Weight_Lower,ISO_Tank_Weight_Upper from Shipping where id = @TruckOutNumber"
         cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber)
         rd = cmd.ExecuteReader
 
@@ -174,29 +175,36 @@ Public Class Edit
             End If
 
             If IsDBNull(rd.Item("Net_Cargo_Weight")) Then
-                tbCargoChecking.Text = ""
+                tbCargo.Text = ""
             Else
-                tbCargoChecking.Text = rd.Item("Net_Cargo_Weight")
+                tbCargo.Text = rd.Item("Net_Cargo_Weight")
             End If
 
-            'If IsDBNull(rd.Item("Check_ISO_Tank")) Then
-            '    checkISO = False
-            'Else
-            '    checkISO = rd.Item("Check_ISO_Tank")
-            'End If
+            If IsDBNull(rd.Item("Check_ISO_Tank")) Then
+                cbISO.Checked = False
+            Else
+                cbISO.Checked = rd.Item("Check_ISO_Tank")
+            End If
 
 
-            'If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
-            '    dtpISO.Text = ""
-            'Else
-            '    dtpISO.Text = rd.Item("ISO_Truck_Out_Date")
-            'End If
+            If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
+                dtpISO.Text = ""
+            Else
+                dtpISO.Text = rd.Item("ISO_Truck_Out_Date")
+            End If
 
-            'If IsDBNull(rd.Item("ISO_Tank_Weight")) Then
-            '    tbISOTankWeight.Text = ""
-            'Else
-            '    tbISOTankWeight.Text = rd.Item("ISO_Tank_Weight")
-            'End If
+
+            If IsDBNull(rd.Item("ISO_Tank_Weight_Lower")) Then
+                tbISOTankWeightLower.Text = ""
+            Else
+                tbISOTankWeightLower.Text = rd.Item("ISO_Tank_Weight_Lower")
+            End If
+
+            If IsDBNull(rd.Item("ISO_Tank_Weight_Upper")) Then
+                tbISOTankWeightUpper.Text = ""
+            Else
+                tbISOTankWeightUpper.Text = rd.Item("ISO_Tank_Weight_Upper")
+            End If
         End While
         con.Close()
 
@@ -286,7 +294,7 @@ Public Class Edit
             If Not IsDBNull(rd.Item("Cargo_Weight_Check_Value")) Then
                 tbCargoChecking.Text = rd.Item("Cargo_Weight_Check_Value")
             Else
-                tbCargoChecking.Text = "NULL"
+                tbCargoChecking.Text = ""
             End If
 
             If IsDBNull(rd.Item("Allow_To_Post")) Then
@@ -294,6 +302,19 @@ Public Class Edit
             Else
                 checkAllowToPost = rd.Item("Allow_To_Post")
             End If
+
+            If IsDBNull(rd.Item("Security_Check_ISO_Tank_Weight")) Then
+                tbSecurityCheckISOTankWeight.Text = ""
+            Else
+                tbSecurityCheckISOTankWeight.Text = rd.Item("Security_Check_ISO_Tank_Weight")
+            End If
+
+            If IsDBNull(rd.Item("Security_Check_ISO_Truck_Out_Date")) Then
+                dtpISOCheck.Text = ""
+            Else
+                dtpISOCheck.Text = rd.Item("Security_Check_ISO_Truck_Out_Date")
+            End If
+
         End While
 
         con.Close()
@@ -354,6 +375,10 @@ Public Class Edit
             btnCargoCheck.Enabled = False
         End If
 
+        If cbISO.Checked Then
+            lblChecking.Text = "ISO Tank Check"
+            cbWarehousePost.Visible = False
+        End If
     End Sub
 
 
@@ -430,16 +455,16 @@ Public Class Edit
 
     End Sub
 
-    Private Sub btnCargoCheck_Click(sender As Object, e As EventArgs) Handles btnCargoCheck.Click
-        Dim con As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim rd As SqlDataReader
-        con.ConnectionString = My.Settings.connstr
-        cmd.Connection = con
-        con.Open()
-        cmd.CommandText = "update Security set Allow_To_Post = 1 ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "'where shipping_ID = @TruckOutNumber"
-        cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-        rd = cmd.ExecuteReader
-        MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
+    'Private Sub btnCargoCheck_Click(sender As Object, e As EventArgs) Handles btnCargoCheck.Click
+    '    Dim con As New SqlConnection
+    '    Dim cmd As New SqlCommand
+    '    Dim rd As SqlDataReader
+    '    con.ConnectionString = My.Settings.connstr
+    '    cmd.Connection = con
+    '    con.Open()
+    '    cmd.CommandText = "update Security set Allow_To_Post = 1 ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "'where shipping_ID = @TruckOutNumber"
+    '    cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+    '    rd = cmd.ExecuteReader
+    '    MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    'End Sub
 End Class

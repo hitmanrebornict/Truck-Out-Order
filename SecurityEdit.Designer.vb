@@ -27,21 +27,24 @@ Partial Class SecurityEdit
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tlpISO = New System.Windows.Forms.TableLayoutPanel()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.tbSecurityCheckISOTankWeight = New System.Windows.Forms.TextBox()
         Me.cbISO = New System.Windows.Forms.CheckBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.dtpISO = New System.Windows.Forms.DateTimePicker()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.tbSecurityCheckISOTankWeight = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbISOTankWeightUpper = New System.Windows.Forms.TextBox()
+        Me.tbISOTankWeightLower = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
-        Me.lblCargoWeight = New System.Windows.Forms.Label()
         Me.cbShippingPost = New System.Windows.Forms.CheckBox()
         Me.cbWarehousePost = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblChecking = New System.Windows.Forms.Label()
         Me.cbSecurityPost = New System.Windows.Forms.CheckBox()
+        Me.lblCargoWeight = New System.Windows.Forms.Label()
         Me.btnSecurityCheck = New System.Windows.Forms.Button()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.dtpLCT = New System.Windows.Forms.DateTimePicker()
@@ -130,11 +133,11 @@ Partial Class SecurityEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tbISOTankWeightUpper = New System.Windows.Forms.TextBox()
-        Me.tbISOTankWeightLower = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.dtpISOCheck = New System.Windows.Forms.DateTimePicker()
         Me.tbCargo.SuspendLayout()
         Me.tlpISO.SuspendLayout()
+        Me.TableLayoutPanel10.SuspendLayout()
         Me.TableLayoutPanel8.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -145,7 +148,6 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
-        Me.TableLayoutPanel10.SuspendLayout()
         Me.SuspendLayout()
         '
         'tbCargo
@@ -187,23 +189,26 @@ Partial Class SecurityEdit
         Me.tlpISO.ColumnCount = 2
         Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.78788!))
         Me.tlpISO.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.21212!))
-        Me.tlpISO.Controls.Add(Me.TableLayoutPanel10, 1, 2)
+        Me.tlpISO.Controls.Add(Me.dtpISOCheck, 1, 2)
+        Me.tlpISO.Controls.Add(Me.Label10, 0, 2)
         Me.tlpISO.Controls.Add(Me.Label14, 0, 0)
-        Me.tlpISO.Controls.Add(Me.Label12, 0, 3)
-        Me.tlpISO.Controls.Add(Me.tbSecurityCheckISOTankWeight, 1, 3)
         Me.tlpISO.Controls.Add(Me.cbISO, 1, 0)
-        Me.tlpISO.Controls.Add(Me.Label9, 0, 2)
         Me.tlpISO.Controls.Add(Me.Label11, 0, 1)
         Me.tlpISO.Controls.Add(Me.dtpISO, 1, 1)
+        Me.tlpISO.Controls.Add(Me.Label12, 0, 4)
+        Me.tlpISO.Controls.Add(Me.tbSecurityCheckISOTankWeight, 1, 4)
+        Me.tlpISO.Controls.Add(Me.Label9, 0, 3)
+        Me.tlpISO.Controls.Add(Me.TableLayoutPanel10, 1, 3)
         Me.tlpISO.Enabled = False
         Me.tlpISO.Location = New System.Drawing.Point(902, 426)
         Me.tlpISO.Name = "tlpISO"
-        Me.tlpISO.RowCount = 4
-        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.78616!))
-        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.15723!))
-        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.67296!))
-        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.64151!))
-        Me.tlpISO.Size = New System.Drawing.Size(335, 160)
+        Me.tlpISO.RowCount = 5
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.tlpISO.Size = New System.Drawing.Size(335, 157)
         Me.tlpISO.TabIndex = 162
         '
         'Label14
@@ -214,22 +219,6 @@ Partial Class SecurityEdit
         Me.Label14.Size = New System.Drawing.Size(78, 19)
         Me.Label14.TabIndex = 162
         Me.Label14.Text = "ISO Tank:"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(4, 123)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(182, 19)
-        Me.Label12.TabIndex = 138
-        Me.Label12.Text = "ISO Tank Weight Check:"
-        '
-        'tbSecurityCheckISOTankWeight
-        '
-        Me.tbSecurityCheckISOTankWeight.Location = New System.Drawing.Point(200, 126)
-        Me.tbSecurityCheckISOTankWeight.Name = "tbSecurityCheckISOTankWeight"
-        Me.tbSecurityCheckISOTankWeight.Size = New System.Drawing.Size(127, 26)
-        Me.tbSecurityCheckISOTankWeight.TabIndex = 139
         '
         'cbISO
         '
@@ -242,19 +231,10 @@ Partial Class SecurityEdit
         Me.cbISO.Text = "ISO"
         Me.cbISO.UseVisualStyleBackColor = True
         '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(4, 80)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(163, 19)
-        Me.Label9.TabIndex = 137
-        Me.Label9.Text = "ISO Tank Weight (mt):"
-        '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(4, 41)
+        Me.Label11.Location = New System.Drawing.Point(4, 32)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(119, 19)
         Me.Label11.TabIndex = 136
@@ -262,13 +242,70 @@ Partial Class SecurityEdit
         '
         'dtpISO
         '
-        Me.dtpISO.CustomFormat = """ """
+        Me.dtpISO.CustomFormat = """"""
         Me.dtpISO.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpISO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpISO.Location = New System.Drawing.Point(200, 44)
+        Me.dtpISO.Location = New System.Drawing.Point(200, 35)
         Me.dtpISO.Name = "dtpISO"
         Me.dtpISO.Size = New System.Drawing.Size(127, 26)
         Me.dtpISO.TabIndex = 135
+        Me.dtpISO.Visible = False
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(4, 125)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(182, 19)
+        Me.Label12.TabIndex = 138
+        Me.Label12.Text = "ISO Tank Weight Check:"
+        '
+        'tbSecurityCheckISOTankWeight
+        '
+        Me.tbSecurityCheckISOTankWeight.Location = New System.Drawing.Point(200, 128)
+        Me.tbSecurityCheckISOTankWeight.Name = "tbSecurityCheckISOTankWeight"
+        Me.tbSecurityCheckISOTankWeight.Size = New System.Drawing.Size(127, 26)
+        Me.tbSecurityCheckISOTankWeight.TabIndex = 139
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(4, 94)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(163, 19)
+        Me.Label9.TabIndex = 137
+        Me.Label9.Text = "ISO Tank Weight (mt):"
+        '
+        'TableLayoutPanel10
+        '
+        Me.TableLayoutPanel10.ColumnCount = 2
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel10.Controls.Add(Me.tbISOTankWeightUpper, 1, 0)
+        Me.TableLayoutPanel10.Controls.Add(Me.tbISOTankWeightLower, 0, 0)
+        Me.TableLayoutPanel10.Location = New System.Drawing.Point(200, 97)
+        Me.TableLayoutPanel10.Name = "TableLayoutPanel10"
+        Me.TableLayoutPanel10.RowCount = 1
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.TableLayoutPanel10.Size = New System.Drawing.Size(131, 24)
+        Me.TableLayoutPanel10.TabIndex = 164
+        '
+        'tbISOTankWeightUpper
+        '
+        Me.tbISOTankWeightUpper.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(68, 3)
+        Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
+        Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(60, 26)
+        Me.tbISOTankWeightUpper.TabIndex = 48
+        '
+        'tbISOTankWeightLower
+        '
+        Me.tbISOTankWeightLower.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
+        Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
+        Me.tbISOTankWeightLower.Size = New System.Drawing.Size(59, 26)
+        Me.tbISOTankWeightLower.TabIndex = 47
         '
         'TableLayoutPanel8
         '
@@ -280,7 +317,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel8.Controls.Add(Me.Label6, 0, 0)
         Me.TableLayoutPanel8.Controls.Add(Me.Label2, 0, 2)
         Me.TableLayoutPanel8.Controls.Add(Me.Label5, 0, 4)
-        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 6)
+        Me.TableLayoutPanel8.Controls.Add(Me.lblChecking, 0, 6)
         Me.TableLayoutPanel8.Controls.Add(Me.cbSecurityPost, 0, 5)
         Me.TableLayoutPanel8.Controls.Add(Me.lblCargoWeight, 0, 7)
         Me.TableLayoutPanel8.Location = New System.Drawing.Point(1084, 110)
@@ -296,15 +333,6 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel8.Size = New System.Drawing.Size(153, 282)
         Me.TableLayoutPanel8.TabIndex = 160
-        '
-        'lblCargoWeight
-        '
-        Me.lblCargoWeight.AutoSize = True
-        Me.lblCargoWeight.Location = New System.Drawing.Point(4, 246)
-        Me.lblCargoWeight.Name = "lblCargoWeight"
-        Me.lblCargoWeight.Size = New System.Drawing.Size(120, 19)
-        Me.lblCargoWeight.TabIndex = 161
-        Me.lblCargoWeight.Text = "lblCargoWeight"
         '
         'cbShippingPost
         '
@@ -358,15 +386,15 @@ Partial Class SecurityEdit
         Me.Label5.TabIndex = 121
         Me.Label5.Text = "Security Post"
         '
-        'Label10
+        'lblChecking
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(4, 211)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(92, 34)
-        Me.Label10.TabIndex = 160
-        Me.Label10.Text = "Net Cargo Weight"
+        Me.lblChecking.AutoSize = True
+        Me.lblChecking.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblChecking.Location = New System.Drawing.Point(4, 211)
+        Me.lblChecking.Name = "lblChecking"
+        Me.lblChecking.Size = New System.Drawing.Size(92, 34)
+        Me.lblChecking.TabIndex = 160
+        Me.lblChecking.Text = "Net Cargo Weight"
         '
         'cbSecurityPost
         '
@@ -379,10 +407,19 @@ Partial Class SecurityEdit
         Me.cbSecurityPost.Text = "CheckBox1"
         Me.cbSecurityPost.UseVisualStyleBackColor = True
         '
+        'lblCargoWeight
+        '
+        Me.lblCargoWeight.AutoSize = True
+        Me.lblCargoWeight.Location = New System.Drawing.Point(4, 246)
+        Me.lblCargoWeight.Name = "lblCargoWeight"
+        Me.lblCargoWeight.Size = New System.Drawing.Size(120, 19)
+        Me.lblCargoWeight.TabIndex = 161
+        Me.lblCargoWeight.Text = "lblCargoWeight"
+        '
         'btnSecurityCheck
         '
         Me.btnSecurityCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSecurityCheck.Location = New System.Drawing.Point(1013, 596)
+        Me.btnSecurityCheck.Location = New System.Drawing.Point(1027, 607)
         Me.btnSecurityCheck.Name = "btnSecurityCheck"
         Me.btnSecurityCheck.Size = New System.Drawing.Size(137, 28)
         Me.btnSecurityCheck.TabIndex = 153
@@ -393,7 +430,7 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -1309,7 +1346,7 @@ Partial Class SecurityEdit
         '
         'Panel2
         '
-        Me.Panel2.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
+        Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel2.Location = New System.Drawing.Point(3, 0)
         Me.Panel2.Name = "Panel2"
@@ -1371,42 +1408,30 @@ Partial Class SecurityEdit
         'PrintDocument1
         '
         '
-        'TableLayoutPanel10
+        'Label10
         '
-        Me.TableLayoutPanel10.ColumnCount = 2
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel10.Controls.Add(Me.tbISOTankWeightUpper, 1, 0)
-        Me.TableLayoutPanel10.Controls.Add(Me.tbISOTankWeightLower, 0, 0)
-        Me.TableLayoutPanel10.Location = New System.Drawing.Point(200, 83)
-        Me.TableLayoutPanel10.Name = "TableLayoutPanel10"
-        Me.TableLayoutPanel10.RowCount = 1
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel10.Size = New System.Drawing.Size(131, 31)
-        Me.TableLayoutPanel10.TabIndex = 164
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(4, 63)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(169, 19)
+        Me.Label10.TabIndex = 164
+        Me.Label10.Text = "Truck Out Date Check:"
         '
-        'tbISOTankWeightUpper
+        'dtpISOCheck
         '
-        Me.tbISOTankWeightUpper.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(68, 3)
-        Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
-        Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(60, 26)
-        Me.tbISOTankWeightUpper.TabIndex = 48
-        '
-        'tbISOTankWeightLower
-        '
-        Me.tbISOTankWeightLower.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
-        Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
-        Me.tbISOTankWeightLower.Size = New System.Drawing.Size(59, 26)
-        Me.tbISOTankWeightLower.TabIndex = 47
+        Me.dtpISOCheck.CustomFormat = """"""
+        Me.dtpISOCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpISOCheck.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpISOCheck.Location = New System.Drawing.Point(200, 66)
+        Me.dtpISOCheck.Name = "dtpISOCheck"
+        Me.dtpISOCheck.Size = New System.Drawing.Size(127, 26)
+        Me.dtpISOCheck.TabIndex = 164
         '
         'SecurityEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
@@ -1423,6 +1448,8 @@ Partial Class SecurityEdit
         Me.tbCargo.PerformLayout()
         Me.tlpISO.ResumeLayout(False)
         Me.tlpISO.PerformLayout()
+        Me.TableLayoutPanel10.ResumeLayout(False)
+        Me.TableLayoutPanel10.PerformLayout()
         Me.TableLayoutPanel8.ResumeLayout(False)
         Me.TableLayoutPanel8.PerformLayout()
         Me.TableLayoutPanel6.ResumeLayout(False)
@@ -1443,8 +1470,6 @@ Partial Class SecurityEdit
         Me.Panel1.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
-        Me.TableLayoutPanel10.ResumeLayout(False)
-        Me.TableLayoutPanel10.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1513,7 +1538,7 @@ Partial Class SecurityEdit
     Friend WithEvents Label6 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lblChecking As Label
     Friend WithEvents cbSecurityPost As CheckBox
     Friend WithEvents Label13 As Label
     Friend WithEvents tlpISO As TableLayoutPanel
@@ -1559,4 +1584,6 @@ Partial Class SecurityEdit
     Friend WithEvents TableLayoutPanel10 As TableLayoutPanel
     Friend WithEvents tbISOTankWeightUpper As TextBox
     Friend WithEvents tbISOTankWeightLower As TextBox
+    Friend WithEvents dtpISOCheck As DateTimePicker
+    Friend WithEvents Label10 As Label
 End Class

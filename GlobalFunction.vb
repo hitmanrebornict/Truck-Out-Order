@@ -119,6 +119,9 @@ Public Class GlobalFunction
         Dim lcd, lct, rtd, rtt, esSealNo, netCargoWeight As String
         Dim driverFullName, pmCode, registrationPlate, netCargoWeightCheckValue, netCargoWeightCheck As String
         Dim checkCargoWeight As Boolean
+        Dim checkISO As Boolean
+        Dim ISOTruckOutDate, ISOTankWeightLower, ISOTankWeightUpper, ISOTankWeightChecking As String
+
 
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
@@ -278,11 +281,34 @@ Public Class GlobalFunction
             netCargoWeight = rd.Item("Net_Cargo_Weight")
         End If
 
+        If IsDBNull(rd.Item("Check_ISO_Tank")) Then
+            checkISO = ""
+        Else
+            checkISO = rd.Item("Check_ISO_Tank")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
+            ISOTruckOutDate = ""
+        Else
+            ISOTruckOutDate = rd.Item("ISO_Truck_Out_Date")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Tank_Weight_Lower")) Then
+            ISOTankWeightLower = ""
+        Else
+            ISOTankWeightLower = rd.Item("ISO_Tank_Weight_Lower")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Tank_Weight_Upper")) Then
+            ISOTankWeightUpper = ""
+        Else
+            ISOTankWeightUpper = rd.Item("ISO_Tank_Weight_Upper")
+        End If
         con.Close()
 
         Dim companyFullName, loadingPortFullName As String
         con.Open()
-        cmd.CommandText = "select distinct(full_name) as companyFullName from details where company_name = @origin and company_name is not null"
+        cmd.CommandText = "select distinct(full_name) as companyFullName from details where company_name = @origin and isnull(company_name,'') <>''"
         cmd.Parameters.AddWithValue("@origin", origin)
         rd = cmd.ExecuteReader
         rd.Read()
@@ -381,6 +407,12 @@ Public Class GlobalFunction
             Else
                 netCargoWeightCheckValue = ""
             End If
+
+            If IsDBNull(rd.Item("Security_Check_ISO_Tank_Weight")) Then
+                ISOTankWeightChecking = ""
+            Else
+                ISOTankWeightChecking = rd.Item("Security_Check_ISO_Tank_Weight")
+            End If
         End If
         con.Close()
 
@@ -404,9 +436,6 @@ Public Class GlobalFunction
 
         'Current User Part
         e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
-        e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 0, 710)
-        e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 0, 740)
-        e.Graphics.DrawString("Net Cargo Weight Checking Value", printFont, Brushes.Black, 0, 770)
         e.Graphics.DrawLine(Pens.Black, 0, 810, 850, 810)
         e.Graphics.DrawString("Driver's Full Name", printFont, Brushes.Black, 0, 830)
         e.Graphics.DrawString("Driver's PM Code ", printFont, Brushes.Black, 0, 860)
@@ -414,9 +443,23 @@ Public Class GlobalFunction
         e.Graphics.DrawLine(Pens.Black, 0, 930, 850, 930)
         e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 950)
 
-        e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 275, 710)
-        e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 275, 740)
-        e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 275, 770)
+
+        If checkISO Then
+            e.Graphics.DrawString("ISO Truck Out Date", printFont, Brushes.Black, 0, 710)
+            e.Graphics.DrawString("ISO Tank Weight Range (mt)", printFont, Brushes.Black, 0, 740)
+            e.Graphics.DrawString("ISO Tank Weight Checking Value", printFont, Brushes.Black, 0, 770)
+            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
+            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
+            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
+        Else
+            e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 0, 710)
+            e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 0, 740)
+            e.Graphics.DrawString("Net Cargo Weight Checking Value", printFont, Brushes.Black, 0, 770)
+            e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 275, 710)
+            e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 275, 740)
+            e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 275, 770)
+        End If
+
         e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
         e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
         e.Graphics.DrawString(": " & registrationPlate, printFont, Brushes.Black, 275, 890)
