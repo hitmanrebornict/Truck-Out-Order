@@ -447,7 +447,7 @@ Public Class GlobalFunction
         If checkISO Then
             e.Graphics.DrawString("ISO Truck Out Date", printFont, Brushes.Black, 0, 710)
             e.Graphics.DrawString("ISO Tank Weight Range (mt)", printFont, Brushes.Black, 0, 740)
-            e.Graphics.DrawString("ISO Tank Weight Checking Value", printFont, Brushes.Black, 0, 770)
+            e.Graphics.DrawString("ISO Tank Weight Checking Value (mt)", printFont, Brushes.Black, 0, 770)
             e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
             e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
             e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)

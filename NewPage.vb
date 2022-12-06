@@ -192,11 +192,17 @@ Public Class NewPage
             cmd.Parameters.AddWithValue("@checkTempSealNo", checkTempSealNo)
             cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
         End If
-        ra = cmd.ExecuteNonQuery
+        Try
+            ra = cmd.ExecuteNonQuery
+            GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
+            MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            con.Close()
+        Catch ex As Exception
+            MessageBox.Show("Please Only Enter Integer In Net Cargo Weight", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
         'btnCancel.PerformClick()
-        GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
-        MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        con.Close()
+
     End Sub
 
 
@@ -226,7 +232,6 @@ Public Class NewPage
         Else
             tlpISO.Enabled = False
             cmbCheckTempSealNo.Enabled = True
-            tbTemporarySealNo.Enabled = True
             tbLinerSealNo.Enabled = True
             tbInternalSealNo.Enabled = True
             tbCargo.Enabled = True

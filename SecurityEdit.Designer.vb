@@ -419,7 +419,7 @@ Partial Class SecurityEdit
         'btnSecurityCheck
         '
         Me.btnSecurityCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSecurityCheck.Location = New System.Drawing.Point(1027, 607)
+        Me.btnSecurityCheck.Location = New System.Drawing.Point(1027, 596)
         Me.btnSecurityCheck.Name = "btnSecurityCheck"
         Me.btnSecurityCheck.Size = New System.Drawing.Size(137, 28)
         Me.btnSecurityCheck.TabIndex = 150
@@ -1337,10 +1337,10 @@ Partial Class SecurityEdit
         '
         Me.lblCompanyNameHeader.AutoSize = True
         Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
-        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 16)
         Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
-        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(191, 24)
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(189, 22)
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '

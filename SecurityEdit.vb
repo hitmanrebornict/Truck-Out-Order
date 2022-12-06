@@ -361,6 +361,10 @@ Public Class SecurityEdit
                 dtpISOCheck.Enabled = False
                 tbISOTankWeightLower.Enabled = False
                 tbISOTankWeightUpper.Enabled = False
+            ElseIf My.Settings.role_id = 3 Or My.Settings.role_id = 4 Then
+                btnSecurityCheck.Enabled = True
+                btnSecurityCheck.Visible = True
+                btnSecurityPost.Enabled = False
             End If
         Else
         End If
@@ -415,8 +419,10 @@ Public Class SecurityEdit
             End If
         End If
 
+        If ISOTODValue <> "" Then
+            dtpISO.Value = ISOTODValue
+        End If
 
-        dtpISO.Value = ISOTODValue
 
 
         If checkSecurityPost = "YES" Then
