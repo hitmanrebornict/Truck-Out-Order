@@ -415,9 +415,9 @@ Public Class Edit
         Dim rd As SqlDataReader
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        'Try
-        con.Open()
-        cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo, Net_Cargo_Weight = @Net_Cargo_Weight, Product_Type = @Product_Type, Check_Iso_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower WHERE ID = @TruckOutNumber"
+        Try
+            con.Open()
+            cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo, Net_Cargo_Weight = @Net_Cargo_Weight, Product_Type = @Product_Type, Check_Iso_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower WHERE ID = @TruckOutNumber"
         cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
             cmd.Parameters.AddWithValue("@checkTempSealNo", checkTempSealNo)
         cmd.Parameters.AddWithValue("@Product_Type", cmbProductType.Text)
@@ -451,9 +451,9 @@ Public Class Edit
 
             MessageBox.Show("Update Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
             btnCancel.PerformClick()
-        'Catch ex As Exception
-        '    MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
+        Catch ex As Exception
+        MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 
