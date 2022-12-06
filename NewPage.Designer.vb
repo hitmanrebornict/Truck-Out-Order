@@ -926,7 +926,7 @@ Partial Class NewPage
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NewPage"
-        Me.Text = "ISO"
+        Me.Text = "TOO System"
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.tlpISO.ResumeLayout(False)
