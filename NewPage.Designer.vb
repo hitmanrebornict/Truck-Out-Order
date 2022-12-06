@@ -25,14 +25,18 @@ Partial Class NewPage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewPage))
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.tlpISO = New System.Windows.Forms.TableLayoutPanel()
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tbISOTankWeightUpper = New System.Windows.Forms.TextBox()
+        Me.tbISOTankWeightLower = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtpISO = New System.Windows.Forms.DateTimePicker()
-        Me.tbISOTankWeightLower = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblPortFullName = New System.Windows.Forms.Label()
         Me.lblLoadingPortFullName = New System.Windows.Forms.Label()
+        Me.cbISO = New System.Windows.Forms.CheckBox()
         Me.lblCompany = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbCompany = New System.Windows.Forms.ComboBox()
         Me.lblLoadingPort = New System.Windows.Forms.Label()
         Me.cmbLoadingPort = New System.Windows.Forms.ComboBox()
@@ -65,8 +69,6 @@ Partial Class NewPage
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.tbCargo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cbISO = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnPost = New System.Windows.Forms.Button()
@@ -92,10 +94,9 @@ Partial Class NewPage
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tbISOTankWeightUpper = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         Me.tlpISO.SuspendLayout()
+        Me.TableLayoutPanel8.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
@@ -104,7 +105,6 @@ Partial Class NewPage
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.TableLayoutPanel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -141,7 +141,38 @@ Partial Class NewPage
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpISO.Size = New System.Drawing.Size(478, 76)
-        Me.tlpISO.TabIndex = 48
+        Me.tlpISO.TabIndex = 80
+        '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.ColumnCount = 2
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightUpper, 1, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightLower, 0, 0)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(247, 41)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 1
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(227, 31)
+        Me.TableLayoutPanel8.TabIndex = 49
+        '
+        'tbISOTankWeightUpper
+        '
+        Me.tbISOTankWeightUpper.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(116, 3)
+        Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
+        Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(106, 26)
+        Me.tbISOTankWeightUpper.TabIndex = 84
+        '
+        'tbISOTankWeightLower
+        '
+        Me.tbISOTankWeightLower.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
+        Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
+        Me.tbISOTankWeightLower.Size = New System.Drawing.Size(106, 26)
+        Me.tbISOTankWeightLower.TabIndex = 83
         '
         'Label4
         '
@@ -169,15 +200,7 @@ Partial Class NewPage
         Me.dtpISO.Location = New System.Drawing.Point(247, 4)
         Me.dtpISO.Name = "dtpISO"
         Me.dtpISO.Size = New System.Drawing.Size(227, 26)
-        Me.dtpISO.TabIndex = 135
-        '
-        'tbISOTankWeightLower
-        '
-        Me.tbISOTankWeightLower.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
-        Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
-        Me.tbISOTankWeightLower.Size = New System.Drawing.Size(106, 26)
-        Me.tbISOTankWeightLower.TabIndex = 47
+        Me.dtpISO.TabIndex = 81
         '
         'TableLayoutPanel3
         '
@@ -231,7 +254,7 @@ Partial Class NewPage
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(1069, 332)
-        Me.TableLayoutPanel3.TabIndex = 44
+        Me.TableLayoutPanel3.TabIndex = 0
         '
         'lblPortFullName
         '
@@ -253,6 +276,17 @@ Partial Class NewPage
         Me.lblLoadingPortFullName.TabIndex = 132
         Me.lblLoadingPortFullName.Text = "Loading Port Full Name"
         '
+        'cbISO
+        '
+        Me.cbISO.AutoSize = True
+        Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
+        Me.cbISO.Location = New System.Drawing.Point(837, 291)
+        Me.cbISO.Name = "cbISO"
+        Me.cbISO.Size = New System.Drawing.Size(55, 23)
+        Me.cbISO.TabIndex = 16
+        Me.cbISO.Text = "ISO"
+        Me.cbISO.UseVisualStyleBackColor = True
+        '
         'lblCompany
         '
         Me.lblCompany.AutoSize = True
@@ -262,6 +296,15 @@ Partial Class NewPage
         Me.lblCompany.Size = New System.Drawing.Size(99, 22)
         Me.lblCompany.TabIndex = 115
         Me.lblCompany.Text = "Company:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(588, 288)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(95, 22)
+        Me.Label1.TabIndex = 63
+        Me.Label1.Text = "ISO Tank:"
         '
         'cmbCompany
         '
@@ -291,7 +334,7 @@ Partial Class NewPage
         Me.cmbLoadingPort.Location = New System.Drawing.Point(837, 4)
         Me.cmbLoadingPort.Name = "cmbLoadingPort"
         Me.cmbLoadingPort.Size = New System.Drawing.Size(207, 27)
-        Me.cmbLoadingPort.TabIndex = 8
+        Me.cmbLoadingPort.TabIndex = 10
         '
         'TableLayoutPanel6
         '
@@ -307,7 +350,7 @@ Partial Class NewPage
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
         Me.TableLayoutPanel6.Size = New System.Drawing.Size(334, 34)
-        Me.TableLayoutPanel6.TabIndex = 43
+        Me.TableLayoutPanel6.TabIndex = 5
         '
         'cmbProductType
         '
@@ -326,7 +369,7 @@ Partial Class NewPage
         Me.tbProduct.Location = New System.Drawing.Point(170, 4)
         Me.tbProduct.Name = "tbProduct"
         Me.tbProduct.Size = New System.Drawing.Size(160, 26)
-        Me.tbProduct.TabIndex = 5
+        Me.tbProduct.TabIndex = 7
         '
         'lblSCD
         '
@@ -358,7 +401,7 @@ Partial Class NewPage
         Me.cmbDDB.MaxDropDownItems = 7
         Me.cmbDDB.Name = "cmbDDB"
         Me.cmbDDB.Size = New System.Drawing.Size(330, 27)
-        Me.cmbDDB.TabIndex = 7
+        Me.cmbDDB.TabIndex = 9
         '
         'lblDDB
         '
@@ -406,7 +449,7 @@ Partial Class NewPage
         Me.tbShippingLine.Location = New System.Drawing.Point(247, 250)
         Me.tbShippingLine.Name = "tbShippingLine"
         Me.tbShippingLine.Size = New System.Drawing.Size(330, 26)
-        Me.tbShippingLine.TabIndex = 6
+        Me.tbShippingLine.TabIndex = 8
         '
         'lblProduct
         '
@@ -475,7 +518,7 @@ Partial Class NewPage
         Me.cmbContainerSize.Location = New System.Drawing.Point(837, 86)
         Me.cmbContainerSize.Name = "cmbContainerSize"
         Me.cmbContainerSize.Size = New System.Drawing.Size(207, 27)
-        Me.cmbContainerSize.TabIndex = 9
+        Me.cmbContainerSize.TabIndex = 11
         '
         'lblHaulier
         '
@@ -493,7 +536,7 @@ Partial Class NewPage
         Me.tbHaulier.Location = New System.Drawing.Point(837, 127)
         Me.tbHaulier.Name = "tbHaulier"
         Me.tbHaulier.Size = New System.Drawing.Size(207, 26)
-        Me.tbHaulier.TabIndex = 10
+        Me.tbHaulier.TabIndex = 12
         '
         'lblWarehouseLocation
         '
@@ -513,7 +556,7 @@ Partial Class NewPage
         Me.cmbWarehouseLocation.Location = New System.Drawing.Point(837, 168)
         Me.cmbWarehouseLocation.Name = "cmbWarehouseLocation"
         Me.cmbWarehouseLocation.Size = New System.Drawing.Size(207, 27)
-        Me.cmbWarehouseLocation.TabIndex = 11
+        Me.cmbWarehouseLocation.TabIndex = 13
         '
         'lblLoadingBay
         '
@@ -531,7 +574,7 @@ Partial Class NewPage
         Me.tbLoadingBay.Location = New System.Drawing.Point(837, 209)
         Me.tbLoadingBay.Name = "tbLoadingBay"
         Me.tbLoadingBay.Size = New System.Drawing.Size(207, 26)
-        Me.tbLoadingBay.TabIndex = 12
+        Me.tbLoadingBay.TabIndex = 14
         '
         'lblSendToCompany
         '
@@ -550,7 +593,7 @@ Partial Class NewPage
         Me.tbSendToCompany.Location = New System.Drawing.Point(837, 250)
         Me.tbSendToCompany.Name = "tbSendToCompany"
         Me.tbSendToCompany.Size = New System.Drawing.Size(207, 26)
-        Me.tbSendToCompany.TabIndex = 13
+        Me.tbSendToCompany.TabIndex = 15
         '
         'TableLayoutPanel7
         '
@@ -564,9 +607,9 @@ Partial Class NewPage
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49.0!))
         Me.TableLayoutPanel7.Size = New System.Drawing.Size(478, 50)
-        Me.TableLayoutPanel7.TabIndex = 43
+        Me.TableLayoutPanel7.TabIndex = 50
         '
         'tbCargo
         '
@@ -574,7 +617,7 @@ Partial Class NewPage
         Me.tbCargo.Location = New System.Drawing.Point(247, 4)
         Me.tbCargo.Name = "tbCargo"
         Me.tbCargo.Size = New System.Drawing.Size(207, 26)
-        Me.tbCargo.TabIndex = 61
+        Me.tbCargo.TabIndex = 51
         '
         'Label2
         '
@@ -585,33 +628,13 @@ Partial Class NewPage
         Me.Label2.TabIndex = 62
         Me.Label2.Text = "Net Cargo Weight (kg):"
         '
-        'cbISO
-        '
-        Me.cbISO.AutoSize = True
-        Me.cbISO.Font = New System.Drawing.Font("Helvetica", 12.0!)
-        Me.cbISO.Location = New System.Drawing.Point(837, 291)
-        Me.cbISO.Name = "cbISO"
-        Me.cbISO.Size = New System.Drawing.Size(55, 23)
-        Me.cbISO.TabIndex = 45
-        Me.cbISO.Text = "ISO"
-        Me.cbISO.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(588, 288)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(95, 22)
-        Me.Label1.TabIndex = 63
-        Me.Label1.Text = "ISO Tank:"
-        '
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Location = New System.Drawing.Point(816, 646)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(78, 28)
-        Me.btnSave.TabIndex = 40
+        Me.btnSave.TabIndex = 100
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -621,7 +644,7 @@ Partial Class NewPage
         Me.btnCancel.Location = New System.Drawing.Point(984, 646)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(78, 28)
-        Me.btnCancel.TabIndex = 42
+        Me.btnCancel.TabIndex = 102
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -631,7 +654,7 @@ Partial Class NewPage
         Me.btnPost.Location = New System.Drawing.Point(900, 646)
         Me.btnPost.Name = "btnPost"
         Me.btnPost.Size = New System.Drawing.Size(78, 28)
-        Me.btnPost.TabIndex = 41
+        Me.btnPost.TabIndex = 101
         Me.btnPost.Text = "Post"
         Me.btnPost.UseVisualStyleBackColor = True
         '
@@ -642,7 +665,7 @@ Partial Class NewPage
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 343.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbInternalSealNo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLinerSealNo, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbContainerNo, 1, 0)
@@ -661,7 +684,7 @@ Partial Class NewPage
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.64706!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.16807!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(588, 239)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(589, 239)
         Me.TableLayoutPanel1.TabIndex = 30
         '
         'tbInternalSealNo
@@ -671,7 +694,7 @@ Partial Class NewPage
         Me.tbInternalSealNo.Location = New System.Drawing.Point(248, 144)
         Me.tbInternalSealNo.Name = "tbInternalSealNo"
         Me.tbInternalSealNo.Size = New System.Drawing.Size(263, 26)
-        Me.tbInternalSealNo.TabIndex = 35
+        Me.tbInternalSealNo.TabIndex = 36
         '
         'tbLinerSealNo
         '
@@ -680,7 +703,7 @@ Partial Class NewPage
         Me.tbLinerSealNo.Location = New System.Drawing.Point(248, 102)
         Me.tbLinerSealNo.Name = "tbLinerSealNo"
         Me.tbLinerSealNo.Size = New System.Drawing.Size(263, 26)
-        Me.tbLinerSealNo.TabIndex = 34
+        Me.tbLinerSealNo.TabIndex = 35
         '
         'tbContainerNo
         '
@@ -750,7 +773,7 @@ Partial Class NewPage
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(263, 40)
-        Me.TableLayoutPanel2.TabIndex = 53
+        Me.TableLayoutPanel2.TabIndex = 32
         '
         'cmbEsSealNo
         '
@@ -761,7 +784,7 @@ Partial Class NewPage
         Me.cmbEsSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbEsSealNo.Name = "cmbEsSealNo"
         Me.cmbEsSealNo.Size = New System.Drawing.Size(122, 27)
-        Me.cmbEsSealNo.TabIndex = 32
+        Me.cmbEsSealNo.TabIndex = 33
         '
         'tbEsSealNo
         '
@@ -770,7 +793,7 @@ Partial Class NewPage
         Me.tbEsSealNo.Location = New System.Drawing.Point(135, 4)
         Me.tbEsSealNo.Name = "tbEsSealNo"
         Me.tbEsSealNo.Size = New System.Drawing.Size(124, 26)
-        Me.tbEsSealNo.TabIndex = 33
+        Me.tbEsSealNo.TabIndex = 34
         '
         'TableLayoutPanel5
         '
@@ -785,7 +808,7 @@ Partial Class NewPage
         Me.TableLayoutPanel5.RowCount = 1
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel5.Size = New System.Drawing.Size(263, 41)
-        Me.TableLayoutPanel5.TabIndex = 137
+        Me.TableLayoutPanel5.TabIndex = 37
         '
         'tbTemporarySealNo
         '
@@ -794,7 +817,7 @@ Partial Class NewPage
         Me.tbTemporarySealNo.Location = New System.Drawing.Point(135, 4)
         Me.tbTemporarySealNo.Name = "tbTemporarySealNo"
         Me.tbTemporarySealNo.Size = New System.Drawing.Size(122, 26)
-        Me.tbTemporarySealNo.TabIndex = 37
+        Me.tbTemporarySealNo.TabIndex = 39
         '
         'cmbCheckTempSealNo
         '
@@ -805,7 +828,7 @@ Partial Class NewPage
         Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbCheckTempSealNo.Name = "cmbCheckTempSealNo"
         Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(122, 27)
-        Me.cmbCheckTempSealNo.TabIndex = 36
+        Me.cmbCheckTempSealNo.TabIndex = 38
         '
         'Panel2
         '
@@ -887,29 +910,6 @@ Partial Class NewPage
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
-        'TableLayoutPanel8
-        '
-        Me.TableLayoutPanel8.ColumnCount = 2
-        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightUpper, 1, 0)
-        Me.TableLayoutPanel8.Controls.Add(Me.tbISOTankWeightLower, 0, 0)
-        Me.TableLayoutPanel8.Location = New System.Drawing.Point(247, 41)
-        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
-        Me.TableLayoutPanel8.RowCount = 1
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(227, 31)
-        Me.TableLayoutPanel8.TabIndex = 49
-        '
-        'tbISOTankWeightUpper
-        '
-        Me.tbISOTankWeightUpper.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(116, 3)
-        Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
-        Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(106, 26)
-        Me.tbISOTankWeightUpper.TabIndex = 48
-        '
         'NewPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -931,6 +931,8 @@ Partial Class NewPage
         Me.Panel3.PerformLayout()
         Me.tlpISO.ResumeLayout(False)
         Me.tlpISO.PerformLayout()
+        Me.TableLayoutPanel8.ResumeLayout(False)
+        Me.TableLayoutPanel8.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         Me.TableLayoutPanel6.ResumeLayout(False)
@@ -947,8 +949,6 @@ Partial Class NewPage
         Me.TableLayoutPanel4.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.TableLayoutPanel8.ResumeLayout(False)
-        Me.TableLayoutPanel8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

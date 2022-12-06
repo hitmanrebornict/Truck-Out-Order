@@ -408,14 +408,6 @@ Public Class Edit
         GlobalFunction.printPage(e, Panel2, checkTempSealNo, Me.TruckOutNumber)
     End Sub
 
-    Private Sub cmbCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub cmbLoadingPort_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub btnAdminSave_Click(sender As Object, e As EventArgs) Handles btnAdminSave.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand

@@ -173,7 +173,7 @@ Partial Class ShippingEdit
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.tlpISO.Size = New System.Drawing.Size(430, 76)
-        Me.tlpISO.TabIndex = 151
+        Me.tlpISO.TabIndex = 90
         '
         'TableLayoutPanel10
         '
@@ -188,7 +188,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel10.Size = New System.Drawing.Size(207, 31)
-        Me.TableLayoutPanel10.TabIndex = 152
+        Me.TableLayoutPanel10.TabIndex = 92
         '
         'tbISOTankWeightUpper
         '
@@ -196,7 +196,7 @@ Partial Class ShippingEdit
         Me.tbISOTankWeightUpper.Location = New System.Drawing.Point(106, 3)
         Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
         Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(98, 26)
-        Me.tbISOTankWeightUpper.TabIndex = 48
+        Me.tbISOTankWeightUpper.TabIndex = 94
         '
         'tbISOTankWeightLower
         '
@@ -204,7 +204,7 @@ Partial Class ShippingEdit
         Me.tbISOTankWeightLower.Location = New System.Drawing.Point(3, 3)
         Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
         Me.tbISOTankWeightLower.Size = New System.Drawing.Size(97, 26)
-        Me.tbISOTankWeightLower.TabIndex = 47
+        Me.tbISOTankWeightLower.TabIndex = 93
         '
         'Label4
         '
@@ -234,7 +234,7 @@ Partial Class ShippingEdit
         Me.dtpISO.Location = New System.Drawing.Point(219, 4)
         Me.dtpISO.Name = "dtpISO"
         Me.dtpISO.Size = New System.Drawing.Size(207, 26)
-        Me.dtpISO.TabIndex = 135
+        Me.dtpISO.TabIndex = 91
         '
         'TableLayoutPanel9
         '
@@ -250,7 +250,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45.0!))
         Me.TableLayoutPanel9.Size = New System.Drawing.Size(430, 46)
-        Me.TableLayoutPanel9.TabIndex = 150
+        Me.TableLayoutPanel9.TabIndex = 70
         '
         'tbCargo
         '
@@ -258,7 +258,7 @@ Partial Class ShippingEdit
         Me.tbCargo.Location = New System.Drawing.Point(219, 4)
         Me.tbCargo.Name = "tbCargo"
         Me.tbCargo.Size = New System.Drawing.Size(207, 26)
-        Me.tbCargo.TabIndex = 61
+        Me.tbCargo.TabIndex = 71
         '
         'Label1
         '
@@ -351,7 +351,7 @@ Partial Class ShippingEdit
         Me.cbISO.Location = New System.Drawing.Point(762, 277)
         Me.cbISO.Name = "cbISO"
         Me.cbISO.Size = New System.Drawing.Size(55, 23)
-        Me.cbISO.TabIndex = 151
+        Me.cbISO.TabIndex = 16
         Me.cbISO.Text = "ISO"
         Me.cbISO.UseVisualStyleBackColor = True
         '
@@ -369,7 +369,7 @@ Partial Class ShippingEdit
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel8.Size = New System.Drawing.Size(303, 32)
-        Me.TableLayoutPanel8.TabIndex = 150
+        Me.TableLayoutPanel8.TabIndex = 5
         '
         'cmbProductType
         '
@@ -388,7 +388,7 @@ Partial Class ShippingEdit
         Me.tbProduct.Location = New System.Drawing.Point(155, 4)
         Me.tbProduct.Name = "tbProduct"
         Me.tbProduct.Size = New System.Drawing.Size(144, 26)
-        Me.tbProduct.TabIndex = 5
+        Me.tbProduct.TabIndex = 7
         '
         'lblPortFullName
         '
@@ -448,7 +448,7 @@ Partial Class ShippingEdit
         Me.cmbLoadingPort.Location = New System.Drawing.Point(762, 4)
         Me.cmbLoadingPort.Name = "cmbLoadingPort"
         Me.cmbLoadingPort.Size = New System.Drawing.Size(207, 27)
-        Me.cmbLoadingPort.TabIndex = 8
+        Me.cmbLoadingPort.TabIndex = 10
         '
         'lblSCD
         '
@@ -480,7 +480,7 @@ Partial Class ShippingEdit
         Me.cmbDDB.MaxDropDownItems = 7
         Me.cmbDDB.Name = "cmbDDB"
         Me.cmbDDB.Size = New System.Drawing.Size(298, 27)
-        Me.cmbDDB.TabIndex = 7
+        Me.cmbDDB.TabIndex = 9
         '
         'lblDDB
         '
@@ -528,7 +528,7 @@ Partial Class ShippingEdit
         Me.tbShippingLine.Location = New System.Drawing.Point(225, 238)
         Me.tbShippingLine.Name = "tbShippingLine"
         Me.tbShippingLine.Size = New System.Drawing.Size(298, 26)
-        Me.tbShippingLine.TabIndex = 6
+        Me.tbShippingLine.TabIndex = 8
         '
         'lblProduct
         '
@@ -597,7 +597,7 @@ Partial Class ShippingEdit
         Me.cmbContainerSize.Location = New System.Drawing.Point(762, 82)
         Me.cmbContainerSize.Name = "cmbContainerSize"
         Me.cmbContainerSize.Size = New System.Drawing.Size(207, 27)
-        Me.cmbContainerSize.TabIndex = 9
+        Me.cmbContainerSize.TabIndex = 11
         '
         'lblHaulier
         '
@@ -615,7 +615,7 @@ Partial Class ShippingEdit
         Me.tbHaulier.Location = New System.Drawing.Point(762, 121)
         Me.tbHaulier.Name = "tbHaulier"
         Me.tbHaulier.Size = New System.Drawing.Size(207, 26)
-        Me.tbHaulier.TabIndex = 10
+        Me.tbHaulier.TabIndex = 12
         '
         'lblWarehouseLocation
         '
@@ -635,7 +635,7 @@ Partial Class ShippingEdit
         Me.cmbWarehouseLocation.Location = New System.Drawing.Point(762, 160)
         Me.cmbWarehouseLocation.Name = "cmbWarehouseLocation"
         Me.cmbWarehouseLocation.Size = New System.Drawing.Size(207, 27)
-        Me.cmbWarehouseLocation.TabIndex = 11
+        Me.cmbWarehouseLocation.TabIndex = 13
         '
         'lblLoadingBay
         '
@@ -653,7 +653,7 @@ Partial Class ShippingEdit
         Me.tbLoadingBay.Location = New System.Drawing.Point(762, 199)
         Me.tbLoadingBay.Name = "tbLoadingBay"
         Me.tbLoadingBay.Size = New System.Drawing.Size(207, 26)
-        Me.tbLoadingBay.TabIndex = 12
+        Me.tbLoadingBay.TabIndex = 14
         '
         'lblSendToCompany
         '
@@ -671,7 +671,7 @@ Partial Class ShippingEdit
         Me.tbSendToCompany.Location = New System.Drawing.Point(762, 238)
         Me.tbSendToCompany.Name = "tbSendToCompany"
         Me.tbSendToCompany.Size = New System.Drawing.Size(207, 26)
-        Me.tbSendToCompany.TabIndex = 13
+        Me.tbSendToCompany.TabIndex = 15
         '
         'btnSave1
         '
