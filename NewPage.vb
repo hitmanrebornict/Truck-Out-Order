@@ -128,6 +128,8 @@ Public Class NewPage
             End If
 
         End While
+
+
         lblCompanyName.Visible = True
         con.Close()
     End Sub

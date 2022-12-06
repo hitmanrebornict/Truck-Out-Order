@@ -12,6 +12,7 @@ Public Class FieldMaintenance
     Dim rd As SqlDataReader
     Private companyNameHeader As String
 
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
@@ -103,13 +104,15 @@ Public Class FieldMaintenance
     End Sub
 
     Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
-        If cbActive.Checked = True Then
+        If cbActive.Checked Then
             cbActive.Text = "Active"
             validationCheck = "YES"
         Else
             cbActive.Text = "Inactive"
             validationCheck = "NO"
         End If
+
+
     End Sub
 
 
