@@ -407,7 +407,6 @@ Public Class SecurityEdit
             End If
             tbSecurityCheckLinerSealNo.Enabled = False
             tbSecurityCheckEsSealNo.Enabled = False
-            tbSecurityCheckInternalSealNo.Enabled = False
             tbSecurityCheckTemporarySealNo.Enabled = False
             tbCheckCargoWeight.Enabled = False
             tlpISO.Enabled = True
@@ -623,7 +622,7 @@ Public Class SecurityEdit
 
             Else
                 Try
-                    If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And String.Compare(dtpISOCheck.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
+                    If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And String.Compare(dtpISOCheck.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 And String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
                         'Check ISO Tank
                         checkAllowToPost = True
                         checkSecurityCheck = "YES"
@@ -647,6 +646,8 @@ Public Class SecurityEdit
                         dtpISO.Visible = True
                     ElseIf Not String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
                         MessageBox.Show("Please Check Container No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ElseIf Not String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
+                        MessageBox.Show("Please Check Internal Seal No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ElseIf Not String.Compare(dtpISOCheck.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
                         checkSecurityCheck = "YES"

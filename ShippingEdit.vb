@@ -272,12 +272,13 @@ Public Class ShippingEdit
 
         If checkShippingPost = "" Then
             If cbISO.Checked Then
-                cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "', Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper WHERE ID = @TruckOutNumber"
+                cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "', Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper,Internal_Seal_No = @Internal_Seal_No WHERE ID = @TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
                 cmd.Parameters.AddWithValue("@ISO_Truck_Out_Date", dtpISO.Value.ToString("yyyy-MM-dd"))
                 cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Lower", tbISOTankWeightLower.Text)
                 cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Upper", tbISOTankWeightUpper.Text)
+                cmd.Parameters.AddWithValue("@Internal_Seal_No", tbInternalSealNo.Text)
             Else
                 cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',LINER_SEA_NO='" + GlobalFunction.TrimSpace(tbLinerSealNo.Text) + "',INTERNAL_SEAL_NO='" + GlobalFunction.TrimSpace(tbInternalSealNo.Text) + "',TEMPORARY_SEAL_NO='" + GlobalFunction.TrimSpace(tbTempSeal.Text) + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo,Product_Type = '" + cmbProductType.Text + "' ,Net_Cargo_Weight ='" + tbCargo.Text + "', Check_ISO_Tank = @Check_ISO_Tank WHERE ID = @TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
@@ -428,24 +429,27 @@ Public Class ShippingEdit
                 ElseIf tbISOTankWeightLower.Text = "" Or tbISOTankWeightUpper.Text = "" Then
                     MessageBox.Show("Please Fill Out The ISO Tank Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf checkShippingPost = "YES" And My.Settings.adminCheck = True Then
-                    cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "' ,Net_Cargo_Weight ='" + tbCargo.Text + "',Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper  WHERE ID = @TruckOutNumber"
+                    cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "' ,Net_Cargo_Weight ='" + tbCargo.Text + "',Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper,Internal_Seal_No = @Internal_Seal_No WHERE ID = @TruckOutNumber"
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                     cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
                     cmd.Parameters.AddWithValue("@ISO_Truck_Out_Date", dtpISO.Value.ToString("yyyy-MM-dd"))
                     cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Lower", tbISOTankWeightLower.Text)
                     cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Upper", tbISOTankWeightUpper.Text)
+                    cmd.Parameters.AddWithValue("@Internal_Seal_No", tbInternalSealNo.Text)
 
                     MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ElseIf checkShippingPost = "YES" And My.Settings.adminCheck = False Then
                     MessageBox.Show("This Number is posted. Please contact admin for modification. ", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "',Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date , ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper, Shipping_Post = 'YES', Shipping_Post_User ='" + My.Settings.username + "',Shipping_Post_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'  WHERE ID = @TruckOutNumber"
+                    cmd.CommandText = "update Shipping set ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "',DDB='" + cmbDDB.Text + "',Product_Type = '" + cmbProductType.Text + "',Check_ISO_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date , ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower, ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper, Shipping_Post = 'YES', Shipping_Post_User ='" + My.Settings.username + "',Shipping_Post_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Internal_Seal_No = @Internal_Seal_No  WHERE ID = @TruckOutNumber"
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                     cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
                     cmd.Parameters.AddWithValue("@ISO_Truck_Out_Date", dtpISO.Value.ToString("yyyy-MM-dd"))
                     cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Lower", tbISOTankWeightLower.Text)
                     cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Upper", tbISOTankWeightUpper.Text)
+                    cmd.Parameters.AddWithValue("@Internal_Seal_No", tbInternalSealNo.Text)
                     MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
 
                 End If
             Else
@@ -492,14 +496,12 @@ Public Class ShippingEdit
             cmbCheckTempSealNo.Enabled = False
             tbTempSeal.Enabled = False
             tbLinerSealNo.Enabled = False
-            tbInternalSealNo.Enabled = False
             tbEsSealNo.Enabled = False
             tbCargo.Enabled = False
             cmbEsSealNo.Text = ""
             cmbCheckTempSealNo.Text = ""
             tbTempSeal.Text = ""
             tbLinerSealNo.Text = ""
-            tbInternalSealNo.Text = ""
             tbEsSealNo.Text = ""
             tbCargo.Text = ""
         Else
@@ -507,7 +509,6 @@ Public Class ShippingEdit
             cmbCheckTempSealNo.Enabled = True
             tbTempSeal.Enabled = True
             tbLinerSealNo.Enabled = True
-            tbInternalSealNo.Enabled = True
             tbCargo.Enabled = True
         End If
     End Sub

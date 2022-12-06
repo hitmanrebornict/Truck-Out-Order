@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Net.Security
 
 Public Class FieldMaintenance
 
@@ -31,29 +32,33 @@ Public Class FieldMaintenance
         con.Open()
         Select Case cmbField.Text
             Case "Company"
-                cmd.CommandText = "SELECT Company_Name from details where company_name = @field"
+                cmd.CommandText = "SELECT Company_Name, Full_Name, ValidationCheck from details where company_name = @field"
                 cmd.Parameters.AddWithValue("@company_name", cmbShortname.Text)
             Case "Loading Port"
-                cmd.CommandText = "SELECT Loading_Port from details where loading_port = @field"
+                cmd.CommandText = "SELECT Loading_Port, Full_Name, ValidationCheck from details where loading_port = @field"
                 cmd.Parameters.AddWithValue("@loading_port", cmbShortname.Text)
             Case "Container Size"
-                cmd.CommandText = "SELECT Container_Size from details where container_size = @field"
+                cmd.CommandText = "SELECT Container_Size, Full_Name, ValidationCheck from details where container_size = @field"
                 cmd.Parameters.AddWithValue("@container_size", cmbShortname.Text)
             Case "Warehouse Location"
-                cmd.CommandText = "SELECT Warehouse_Location from details where warehouse_location = @field"
+                cmd.CommandText = "SELECT Warehouse_Location, Full_Name, ValidationCheck from details where warehouse_location = @field"
                 cmd.Parameters.AddWithValue("@warehouse_location", cmbShortname.Text)
             Case "Product Type"
-                cmd.CommandText = "SELECT Product_Type from details where product_type = @field"
+                cmd.CommandText = "SELECT Product_Type, Full_Name, ValidationCheck from details where product_type = @field"
 
         End Select
         cmd.Parameters.AddWithValue("@field", cmbShortname.Text)
         rd = cmd.ExecuteReader
-        While rd.Read()
+        rd.Read()
+        If rd.HasRows() Then
+
+
             If IsDBNull(rd.Item("full_name")) Then
-                tbLongName.Text = ""
-            Else
-                tbLongName.Text = rd.Item("full_name")
-            End If
+                        tbLongName.Text = ""
+                    Else
+                        tbLongName.Text = rd.Item("full_name")
+                    End If
+
 
             If rd.Item("validationCheck") = "YES" Then
                 cbActive.Checked = True
@@ -62,7 +67,7 @@ Public Class FieldMaintenance
                 cbActive.Checked = False
                 cbActive.Text = "Inactive"
             End If
-        End While
+        End If
         con.Close()
     End Sub
 
