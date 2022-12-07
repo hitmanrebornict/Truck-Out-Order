@@ -17,7 +17,7 @@ Public Class SecurityEdit
     Private checkAllowToPost As Boolean
     Private netCargoWeight As Integer
     Private ISOTankWeight As Integer
-    Private ISOTODValue As String
+    Private ISOTODValue As Date
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
@@ -182,7 +182,7 @@ Public Class SecurityEdit
 
 
             If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
-                ISOTODValue = ""
+                ISOTODValue = Date.Now
             Else
                 ISOTODValue = rd.Item("ISO_Truck_Out_Date")
             End If
@@ -418,9 +418,9 @@ Public Class SecurityEdit
             End If
         End If
 
-        If ISOTODValue <> "" Then
-            dtpISO.Value = ISOTODValue
-        End If
+        'If ISOTODValue <> "" Then
+        dtpISO.Value = ISOTODValue
+        'End If
 
 
 
@@ -488,7 +488,7 @@ Public Class SecurityEdit
         If checkSecurityCheck <> "YES" Then
             MessageBox.Show("Please Check Security Check", "Post Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf checkSecurityCheck = "YES" And checkAllowToPost = True Then
-            If cbISO.Checked = True And dtpISO.Value.ToString("yyyy-MM-dd") <> dtpISOCheck.Value.ToString("yyyy-MM-dd") Then
+            If cbISO.Checked = True And dtpISOCheck.Value < ISOTODValue Then
                 MessageBox.Show("Please Inform Shipping Admin", "Truck Out Date Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
@@ -622,7 +622,7 @@ Public Class SecurityEdit
 
             Else
                 Try
-                    If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And String.Compare(dtpISOCheck.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 And String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
+                    If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And dtpISOCheck.Value >= ISOTODValue And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 And String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
                         'Check ISO Tank
                         checkAllowToPost = True
                         checkSecurityCheck = "YES"
@@ -648,7 +648,7 @@ Public Class SecurityEdit
                         MessageBox.Show("Please Check Container No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ElseIf Not String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
                         MessageBox.Show("Please Check Internal Seal No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    ElseIf Not String.Compare(dtpISOCheck.Value.ToString("d/MM/yyyy"), ISOTODValue) = 0 Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
+                    ElseIf dtpISOCheck.Value < ISOTODValue Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
                         checkSecurityCheck = "YES"
                         btnSecurityCheck.Enabled = False

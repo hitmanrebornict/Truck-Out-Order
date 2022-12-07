@@ -165,6 +165,7 @@ Partial Class NewPage
         Me.tbISOTankWeightUpper.Name = "tbISOTankWeightUpper"
         Me.tbISOTankWeightUpper.Size = New System.Drawing.Size(106, 26)
         Me.tbISOTankWeightUpper.TabIndex = 84
+        Me.tbISOTankWeightUpper.Text = "23"
         '
         'tbISOTankWeightLower
         '
@@ -173,6 +174,7 @@ Partial Class NewPage
         Me.tbISOTankWeightLower.Name = "tbISOTankWeightLower"
         Me.tbISOTankWeightLower.Size = New System.Drawing.Size(106, 26)
         Me.tbISOTankWeightLower.TabIndex = 83
+        Me.tbISOTankWeightLower.Text = "18"
         '
         'Label4
         '

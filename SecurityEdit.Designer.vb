@@ -26,6 +26,8 @@ Partial Class SecurityEdit
         Me.tbCargo = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tlpISO = New System.Windows.Forms.TableLayoutPanel()
+        Me.dtpISOCheck = New System.Windows.Forms.DateTimePicker()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.cbISO = New System.Windows.Forms.CheckBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -133,8 +135,6 @@ Partial Class SecurityEdit
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.dtpISOCheck = New System.Windows.Forms.DateTimePicker()
         Me.tbCargo.SuspendLayout()
         Me.tlpISO.SuspendLayout()
         Me.TableLayoutPanel10.SuspendLayout()
@@ -210,6 +210,25 @@ Partial Class SecurityEdit
         Me.tlpISO.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.tlpISO.Size = New System.Drawing.Size(335, 157)
         Me.tlpISO.TabIndex = 110
+        '
+        'dtpISOCheck
+        '
+        Me.dtpISOCheck.CustomFormat = """"""
+        Me.dtpISOCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpISOCheck.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpISOCheck.Location = New System.Drawing.Point(200, 66)
+        Me.dtpISOCheck.Name = "dtpISOCheck"
+        Me.dtpISOCheck.Size = New System.Drawing.Size(127, 26)
+        Me.dtpISOCheck.TabIndex = 113
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(4, 63)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(169, 19)
+        Me.Label10.TabIndex = 164
+        Me.Label10.Text = "Truck Out Date Check:"
         '
         'Label14
         '
@@ -430,7 +449,7 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -1408,30 +1427,10 @@ Partial Class SecurityEdit
         'PrintDocument1
         '
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(4, 63)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(169, 19)
-        Me.Label10.TabIndex = 164
-        Me.Label10.Text = "Truck Out Date Check:"
-        '
-        'dtpISOCheck
-        '
-        Me.dtpISOCheck.CustomFormat = """"""
-        Me.dtpISOCheck.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpISOCheck.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpISOCheck.Location = New System.Drawing.Point(200, 66)
-        Me.dtpISOCheck.Name = "dtpISOCheck"
-        Me.dtpISOCheck.Size = New System.Drawing.Size(127, 26)
-        Me.dtpISOCheck.TabIndex = 113
-        '
         'SecurityEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.Panel1)
