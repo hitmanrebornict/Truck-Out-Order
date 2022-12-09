@@ -4,6 +4,7 @@ Imports System.Drawing.Printing
 
 Public Class GlobalFunction
 
+
     Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label, companyNameHeader As String)
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -41,7 +42,7 @@ Public Class GlobalFunction
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 'YES' order by company_name"
+        cmd.CommandText = "SELECT distinct(company_name) as r from details where company_name is not null and validationCheck = 1 order by company_name"
         rd = cmd.ExecuteReader
         While rd.Read()
             cmbCompany.Items.Add(rd.Item("r"))
@@ -50,7 +51,7 @@ Public Class GlobalFunction
 
         con.Open()
         'Read Data Into Loading Port Combobox
-        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 'YES' order by loading_port "
+        cmd.CommandText = "SELECT distinct(Loading_Port) as r from details where Loading_Port is not null and validationCheck = 1 order by loading_port "
         rd = cmd.ExecuteReader
         While rd.Read()
             cmbLoadingPort.Items.Add(rd.Item("r"))
@@ -58,7 +59,7 @@ Public Class GlobalFunction
         con.Close()
         con.Open()
         'Read Data Into Warehouse Location Combobox
-        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 'YES'  order by warehouse_location"
+        cmd.CommandText = "SELECT distinct(Warehouse_Location) as r from details where Warehouse_Location is not null and validationCheck = 1  order by warehouse_location"
         rd = cmd.ExecuteReader
         While rd.Read()
             cmbWarehouseLocation.Items.Add(rd.Item("r"))
@@ -66,7 +67,7 @@ Public Class GlobalFunction
         con.Close()
         con.Open()
         'Read Data Into Container Size Combobox
-        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 'YES' order by container_size"
+        cmd.CommandText = "SELECT distinct(Container_Size) as r from details where Container_Size is not null and validationCheck = 1 order by container_size"
         rd = cmd.ExecuteReader
         While rd.Read()
             cmbContainerSize.Items.Add(rd.Item("r"))
@@ -82,7 +83,7 @@ Public Class GlobalFunction
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        cmd.CommandText = "SELECT distinct(Product_Type) as r from details where Product_Type is not null and validationCheck = 'YES' order by Product_Type"
+        cmd.CommandText = "SELECT distinct(Product_Type) as r from details where Product_Type is not null and validationCheck = 1 order by Product_Type"
         rd = cmd.ExecuteReader
         While rd.Read()
             cmbProductType.Items.Add(rd.Item("r"))
@@ -746,7 +747,7 @@ Public Class GlobalFunction
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
-        cmd.CommandText = "SELECT distinct( " & columnName & " ) as Item from Driver_Info  where " & columnName & " is not null and validationCheck = 'YES' order by " & columnName & " "
+        cmd.CommandText = "SELECT distinct( " & columnName & " ) as Item from Driver_Info  where " & columnName & " is not null and validationCheck = 1 order by " & columnName & " "
         rd = cmd.ExecuteReader
         While rd.Read()
             cmb.Items.Add(rd.Item("Item"))

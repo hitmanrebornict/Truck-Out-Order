@@ -17,7 +17,7 @@ Public Class Login
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
         Dim sql As String = "select role_id where username = '" + tbUsername.Text + "'"
-        Dim validationCheck As String
+        Dim validationCheck As Boolean
         Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
@@ -65,7 +65,7 @@ Public Class Login
                 Dim Admin As New Admin
                 Dim User As New NormalUserPage
 
-                If validationCheck = "NO" Then
+                If validationCheck = False Then
                     MessageBox.Show("User is disabled", "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     Select Case My.Settings.adminCheck

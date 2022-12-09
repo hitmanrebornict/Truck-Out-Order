@@ -6,7 +6,7 @@ Public Class FieldMaintenance
     Dim operation As String
     Dim FieldSelection As String
     Dim newCheck As Boolean = True
-    Dim validationCheck As String
+    Dim validationCheck As Boolean
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
     Dim rd As SqlDataReader
@@ -61,7 +61,7 @@ Public Class FieldMaintenance
                     End If
 
 
-            If rd.Item("validationCheck") = "YES" Then
+            If rd.Item("validationCheck") = True Then
                 cbActive.Checked = True
                 cbActive.Text = "Active"
             Else
@@ -106,10 +106,10 @@ Public Class FieldMaintenance
     Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
         If cbActive.Checked Then
             cbActive.Text = "Active"
-            validationCheck = "YES"
+            validationCheck = True
         Else
             cbActive.Text = "Inactive"
-            validationCheck = "NO"
+            validationCheck = False
         End If
 
 

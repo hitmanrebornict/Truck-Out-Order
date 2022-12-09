@@ -3,7 +3,7 @@
 Public Class DriverMaintenance
 
     Dim selection As String
-    Dim validationCheck As String
+    Dim validationCheck As Boolean
     Dim newCheck As Boolean = True
     Private companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -105,12 +105,12 @@ Public Class DriverMaintenance
                 dtpLicenseValidDate.Value = rd.Item("Driving_Licence_Validity")
             End If
 
-            If rd.Item("validationCheck") = "YES" Then
-                validationCheck = "YES"
+            If rd.Item("validationCheck") = True Then
+                validationCheck = True
                 cbActive.Checked = True
                 cbActive.Text = "Active"
             Else
-                validationCheck = "NO"
+                validationCheck = False
                 cbActive.Checked = False
                 cbActive.Text = "Inactive"
             End If
@@ -121,10 +121,10 @@ Public Class DriverMaintenance
     Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
         If cbActive.Checked = True Then
             cbActive.Text = "Active"
-            validationCheck = "YES"
+            validationCheck = True
         Else
             cbActive.Text = "Inactive"
-            validationCheck = "NO"
+            validationCheck = False
         End If
     End Sub
 

@@ -5,7 +5,6 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Public Class CompanyMaintenance
 
     Dim selection As String
-    Dim validationCheck As String
     Dim newCheck As Boolean = True
     Dim maxTOONumber, age As Integer
     Dim companyID As Integer = 1

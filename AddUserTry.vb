@@ -3,7 +3,7 @@
 Public Class AddUserTry
 
     Dim adminCheck As Boolean
-    Dim validationCheck As String
+    Dim validationCheck As Boolean
     Dim selection As String
     Dim newCheck As Boolean = True
     Dim deptToRole As String
@@ -75,7 +75,7 @@ Public Class AddUserTry
             cmbSelectDepartmentID.Text = rd.Item("Department")
             tbPassword.Text = rd.Item("Password")
             cmbRoleID.Text = rd.Item("role_id")
-            If rd.Item("validationCheck") = "YES" Then
+            If rd.Item("validationCheck") = True Then
                 cbActive.Checked = True
                 cbActive.Text = "Active"
             Else
@@ -175,10 +175,10 @@ Public Class AddUserTry
     Private Sub cbActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbActive.CheckedChanged
         If cbActive.Checked = True Then
             cbActive.Text = "Active"
-            validationCheck = "YES"
+            validationCheck = True
         Else
             cbActive.Text = "Inactive"
-            validationCheck = "NO"
+            validationCheck = False
         End If
     End Sub
 
