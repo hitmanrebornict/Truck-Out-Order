@@ -30,12 +30,12 @@ Public Class Search
                     cmd.CommandText = (selectString & " order by id desc")
                 Case 3, 4
                     If (My.Settings.adminCheck) Then
-                        cmd.CommandText = selectString & " WHERE SHIPPING_POST = '" + "YES" + "' and Security_Post is null and Check_ISO_Tank = 0 order by id desc"
+                        cmd.CommandText = selectString & " WHERE SHIPPING_POST = 1 and Security_Post is null and Check_ISO_Tank = 0 order by id desc"
                     Else
-                        cmd.CommandText = (selectString & " where shipping_post = '" + "YES" + "' and warehouse_Post is null and Check_ISO_Tank = 0 order by id desc")
+                        cmd.CommandText = (selectString & " where shipping_post = 1 and warehouse_Post is null and Check_ISO_Tank = 0 order by id desc")
                     End If
                 Case 5
-                    cmd.CommandText = (selectString & " where (shipping_post = '" + "YES" + "' and warehouse_Post  = '" + "YES" + "' and security_post is null) or (shipping_post = '" + "YES" + "' and Check_ISO_Tank = 1 and security_post is null) order by id desc")
+                    cmd.CommandText = (selectString & " where (shipping_post = 1 and warehouse_Post  = 1 and security_post is null) or (shipping_post = 1 and Check_ISO_Tank = 1 and security_post is null) order by id desc")
             End Select
         End If
         rd = cmd.ExecuteReader
@@ -76,11 +76,11 @@ Public Class Search
                         cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
                         cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
+                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
                     Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
                         cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
@@ -92,11 +92,11 @@ Public Class Search
                         cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where  INVOICE = '" + tbInvoice.Text + "'"
                         cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
+                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
                     Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'"
                         cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
@@ -107,11 +107,11 @@ Public Class Search
                         cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping WHERE CONTAINER_NO = '" + tbContainerNo.Text + "'"
                         cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = '" + "YES" + "' or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = '" + "YES" + "' and Warehouse_POST = '" + "YES" + "' and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
                     Case 1
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'"
                         cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"

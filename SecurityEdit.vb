@@ -8,10 +8,10 @@ Public Class SecurityEdit
     Private checkTempSealNo As Boolean
     Private checkDriver As Boolean
     Private checkSecurityCheck As Boolean
-    Private checkWarehouse As String
-    Private checkShippingPost As String
-    Private checkWarehousePost As String
-    Private checkSecurityPost As String
+    Private checkWarehouse As Boolean
+    Private checkShippingPost As Boolean
+    Private checkWarehousePost As Boolean
+    Private checkSecurityPost As Boolean
     Private checkCargoWeight As Boolean
     Private companyNameHeader As String
     Private checkAllowToPost As Boolean
@@ -130,19 +130,19 @@ Public Class SecurityEdit
             End If
 
             If IsDBNull(rd.Item("Shipping_Post")) Then
-                checkShippingPost = ""
+                checkShippingPost = False
             Else
                 checkShippingPost = rd.Item("Shipping_Post")
             End If
 
             If IsDBNull(rd.Item("Warehouse_Post")) Then
-                checkWarehousePost = ""
+                checkWarehousePost = False
             Else
                 checkWarehousePost = rd.Item("Warehouse_Post")
             End If
 
             If IsDBNull(rd.Item("Security_Post")) Then
-                checkSecurityPost = ""
+                checkSecurityPost = False
             Else
                 checkSecurityPost = rd.Item("Security_Post")
             End If
@@ -220,9 +220,9 @@ Public Class SecurityEdit
             dtpRTT.Text = rd.Item("RCT")
 
             If IsDBNull(rd.Item("Shipping_ID")) Then
-                checkWarehouse = ""
+                checkWarehouse = False
             Else
-                checkWarehouse = rd.Item("shipping_id")
+                checkWarehouse = True
             End If
 
 
@@ -425,11 +425,14 @@ Public Class SecurityEdit
 
 
 
-        If checkSecurityPost = "YES" Then
+        If checkSecurityPost = True Then
             btnSecurityCheck.Enabled = False
         End If
 
-
+        If cbISO.Checked Then
+            lblChecking.Text = "ISO Tank Check"
+            cbWarehousePost.Visible = False
+        End If
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click
@@ -494,7 +497,7 @@ Public Class SecurityEdit
             If cbISO.Checked = True And dtpISOCheck.Value < ISOTODValue Then
                 MessageBox.Show("Please Inform Shipping Admin", "Truck Out Date Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-                cmd.CommandText = "update Shipping set Security_Post = '" + "YES" + "',Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
+                cmd.CommandText = "update Shipping set Security_Post = 1,Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
                 MessageBox.Show("Post Complete", "Post Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)

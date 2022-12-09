@@ -9,13 +9,13 @@ Public Class Edit
 
     Private checkSecurityCheck As Boolean
     Private checkDriver As Boolean
-    Private checkTempSealNo As String
-    Private checkWarehouse As String
-    Private checkShippingPost As String
-    Private checkWarehousePost As String
-    Private checkSecurityPost As String
+    Private checkTempSealNo As Boolean
+    Private checkWarehouse As Boolean
+    Private checkShippingPost As Boolean
+    Private checkWarehousePost As Boolean
+    Private checkSecurityPost As Boolean
     Private checkCargoWeight As Boolean
-    Private checkWarehouseCheckpoint As String
+    Private checkWarehouseCheckpoint As Boolean
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private companyNameHeader As String
     Private checkAllowToPost As Boolean
@@ -137,19 +137,19 @@ Public Class Edit
             End If
 
             If IsDBNull(rd.Item("Shipping_Post")) Then
-                checkShippingPost = ""
+                checkShippingPost = False
             Else
                 checkShippingPost = rd.Item("Shipping_Post")
             End If
 
             If IsDBNull(rd.Item("Warehouse_Post")) Then
-                checkWarehousePost = ""
+                checkWarehousePost = False
             Else
                 checkWarehousePost = rd.Item("Warehouse_Post")
             End If
 
             If IsDBNull(rd.Item("Security_Post")) Then
-                checkSecurityPost = ""
+                checkSecurityPost = False
             Else
                 checkSecurityPost = rd.Item("Security_Post")
             End If
@@ -228,7 +228,7 @@ Public Class Edit
             dtpRTT.Text = rd.Item("RCT")
 
             If IsDBNull(rd.Item("Shipping_ID")) Then
-                checkWarehouse = ""
+                checkWarehouse = False
             Else
                 checkWarehouse = rd.Item("shipping_id")
             End If
@@ -244,7 +244,7 @@ Public Class Edit
 
         While rd.Read()
             If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
-                checkWarehouseCheckpoint = ""
+                checkWarehouseCheckpoint = False
             Else
                 checkWarehouseCheckpoint = rd.Item("Warehouse_Checkpoint_Check")
             End If
@@ -370,7 +370,7 @@ Public Class Edit
 
         GlobalFunction.checkPostBoxWithCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight, lblCargoWeight, checkSecurityCheck)
 
-        If checkSecurityPost <> "YES" And checkCargoWeight = False Then
+        If checkSecurityPost = False And checkCargoWeight = False Then
             btnCargoCheck.Enabled = True
         Else
             btnCargoCheck.Enabled = False

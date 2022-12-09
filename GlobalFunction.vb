@@ -255,7 +255,7 @@ Public Class GlobalFunction
         Dim shippingPostUser As String
         Dim warehousePostUser As String
         Dim securityPostUser As String
-        Dim checkWarehouseCheckPoint As String
+        Dim checkWarehouseCheckPoint As Boolean
         Dim warehouseCheckUser As String
 
         If IsDBNull(rd.Item("Shipping_Post_User")) Then
@@ -352,7 +352,7 @@ Public Class GlobalFunction
                 End If
             End If
             If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
-                checkWarehouseCheckPoint = ""
+                checkWarehouseCheckPoint = False
             Else
                 checkWarehouseCheckPoint = rd.Item("Warehouse_Checkpoint_Check")
             End If
@@ -426,7 +426,7 @@ Public Class GlobalFunction
 
         e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
 
-        If checkWarehouseCheckPoint = "YES" Then
+        If checkWarehouseCheckPoint = True Then
             e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 590)
         Else
             e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 590)
@@ -632,12 +632,12 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-    Public Shared Function checkPostBoxWithoutCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String)
+    Public Shared Function checkPostBoxWithoutCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As Boolean, checkWarehousePost As Boolean, checkSecurityPost As Boolean)
         'cbpost checkin
         cbShippingPost.Enabled = False
         cbWarehousePost.Enabled = False
         cbSecurityPost.Enabled = False
-        If checkShippingPost = "" Then
+        If checkShippingPost = False Then
             cbShippingPost.Checked = False
             cbShippingPost.Text = “Unposted"
         Else
@@ -645,7 +645,7 @@ Public Class GlobalFunction
             cbShippingPost.Text = "Posted"
         End If
 
-        If checkWarehousePost = "" Then
+        If checkWarehousePost = False Then
             cbWarehousePost.Checked = False
             cbWarehousePost.Text = "Unposted"
         Else
@@ -653,7 +653,7 @@ Public Class GlobalFunction
             cbWarehousePost.Text = "Posted"
         End If
 
-        If checkSecurityPost = "" Then
+        If checkSecurityPost = False Then
             cbSecurityPost.Checked = False
             cbSecurityPost.Text = "Unposted"
         Else
@@ -664,7 +664,7 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-    Public Shared Function checkPostBoxWithCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean, lblCargoWeight As Label, checkSecurityCheck As Boolean)
+    Public Shared Function checkPostBoxWithCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As Boolean, checkWarehousePost As Boolean, checkSecurityPost As Boolean, checkCargoWeight As Boolean, lblCargoWeight As Label, checkSecurityCheck As Boolean)
 
         checkPostBoxWithoutCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost)
 
