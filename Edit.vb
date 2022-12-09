@@ -7,8 +7,8 @@ Public Class Edit
 
     Public TruckOutNumber As Integer
 
-    Private checkSecurityCheck As String
-    Private checkDriver As String
+    Private checkSecurityCheck As Boolean
+    Private checkDriver As Boolean
     Private checkTempSealNo As String
     Private checkWarehouse As String
     Private checkShippingPost As String
@@ -278,12 +278,12 @@ Public Class Edit
             If Not IsDBNull(rd.Item("Driver_Check")) Then
                 checkDriver = rd.Item("Driver_Check")
             Else
-                checkDriver = ""
+                checkDriver = False
             End If
             If Not IsDBNull(rd.Item("Security_Check")) Then
-                checkSecurityCheck = rd.Item("Driver_Check")
+                checkSecurityCheck = rd.Item("Security_Check")
             Else
-                checkSecurityCheck = ""
+                checkSecurityCheck = False
             End If
 
             If Not IsDBNull(rd.Item("Cargo_Weight_Check")) Then
@@ -440,12 +440,14 @@ Public Class Edit
             rd = cmd.ExecuteReader
             con.Close()
 
+            checkDriver = True
             con.Open()
-            cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = 'YES' ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "', Cargo_Weight_Check_Value = @Cargo_Weight_Check_Value, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight, Security_Check_ISO_Truck_Out_Date = @Security_Check_ISO_Truck_Out_Date where  Shipping_ID= @TruckOutNumber5”
+            cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = @Driver_Check ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "', Cargo_Weight_Check_Value = @Cargo_Weight_Check_Value, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight, Security_Check_ISO_Truck_Out_Date = @Security_Check_ISO_Truck_Out_Date where  Shipping_ID= @TruckOutNumber5”
             cmd.Parameters.AddWithValue("@TruckOutNumber5", Me.TruckOutNumber)
             cmd.Parameters.AddWithValue("@Cargo_Weight_Check_Value", tbCargoChecking.Text)
             cmd.Parameters.AddWithValue("@Security_Check_ISO_Tank_Weight", tbSecurityCheckISOTankWeight.Text)
             cmd.Parameters.AddWithValue("@Security_Check_ISO_Truck_Out_Date", dtpISOCheck.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@Driver_Check", checkDriver)
             rd = cmd.ExecuteReader
             con.Close()
 

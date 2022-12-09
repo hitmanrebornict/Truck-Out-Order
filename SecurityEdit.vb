@@ -6,8 +6,8 @@ Public Class SecurityEdit
     Public TruckOutNumber As Integer
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private checkTempSealNo As Boolean
-    Private checkDriver As String
-    Private checkSecurityCheck As String
+    Private checkDriver As Boolean
+    Private checkSecurityCheck As Boolean
     Private checkWarehouse As String
     Private checkShippingPost As String
     Private checkWarehousePost As String
@@ -258,12 +258,12 @@ Public Class SecurityEdit
             If Not IsDBNull(rd.Item("Driver_Check")) Then
                 checkDriver = rd.Item("Driver_Check")
             Else
-                checkDriver = ""
+                checkDriver = False
             End If
             If Not IsDBNull(rd.Item("Security_Check")) Then
                 checkSecurityCheck = rd.Item("Security_Check")
             Else
-                checkSecurityCheck = ""
+                checkSecurityCheck = False
             End If
 
             If Not IsDBNull(rd.Item("Cargo_Weight_Check")) Then
@@ -301,10 +301,11 @@ Public Class SecurityEdit
         'Read the full_name into lblcompanyfullname and lblLoadingport
         GlobalFunction.loadFullNameIntoLabel(cmbCompany, cmbLoadingPort, lblCompanyFullName, lblLoadingPortFullName)
 
-        GlobalFunction.checkPostBoxWithCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight, lblCargoWeight, checkSecurityCheck)
+        GlobalFunction.checkPostBoxWithCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost, checkCargoWeight, lblCargoWeight, checkSecurityCheck
+                                             )
 
         'Driver Check Button Visible
-        If checkDriver = "YES" Then
+        If checkDriver = True Then
             btnDriverCheck.Visible = False
             btnSecurityCheck.Enabled = True
             cmbFullName.Enabled = False
@@ -325,7 +326,7 @@ Public Class SecurityEdit
 
 
         'Fill in security check field
-        If checkSecurityCheck = "YES" Then
+        If checkSecurityCheck = True Then
             btnSecurityPost.Enabled = True
             btnSecurityCheck.Enabled = False
             tbSecurityCheckContainerNo.Text = tbContainerNo.Text
@@ -451,13 +452,15 @@ Public Class SecurityEdit
             cmd.CommandText = "SELECT * from DRIVER_INFO where FULL_NAME = '" + cmbFullName.Text + "' and  PM_CODE = '" + cmbPmCode.Text + "' and  PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "'"
             rd = cmd.ExecuteReader
             If rd.HasRows Then
+                checkDriver = True
                 checkRow = True
                 cmbFullName.Enabled = False
                 cmbPmCode.Enabled = False
                 cmbPmRegistrationPlate.Enabled = False
                 btnDriverCheck.Visible = False
-                cmd = New SqlCommand("Insert Into Security (Shipping_ID,Driver_Full_Name,PM_CODE,PM_REGISTRATION_PLATE,DRIVER_CHECK,Update_Time,Update_User) values(@TruckOutNumber,'" + cmbFullName.Text + "','" + cmbPmCode.Text + "','" + cmbPmRegistrationPlate.Text + "','YES','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "')", con)
+                cmd = New SqlCommand("Insert Into Security (Shipping_ID,Driver_Full_Name,PM_CODE,PM_REGISTRATION_PLATE,DRIVER_CHECK,Update_Time,Update_User) values(@TruckOutNumber,'" + cmbFullName.Text + "','" + cmbPmCode.Text + "','" + cmbPmRegistrationPlate.Text + "',@Driver_Check,'" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "')", con)
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+                cmd.Parameters.AddWithValue("@Driver_Check", checkDriver)
             Else
                 MessageBox.Show("DRIVER VALIDATION FAIL", "VALIDATION FAIL", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -467,7 +470,7 @@ Public Class SecurityEdit
                 rd = cmd.ExecuteReader
                 con.Close()
                 MessageBox.Show("DRIVER VALIDATION PASS", "VALIDATION PASS", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                checkDriver = "YES"
+                checkDriver = True
                 btnSecurityCheck.Enabled = True
             End If
 
@@ -485,9 +488,9 @@ Public Class SecurityEdit
 
         con.Open()
 
-        If checkSecurityCheck <> "YES" Then
+        If checkSecurityCheck = False Then
             MessageBox.Show("Please Check Security Check", "Post Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf checkSecurityCheck = "YES" And checkAllowToPost = True Then
+        ElseIf checkSecurityCheck = True And checkAllowToPost = True Then
             If cbISO.Checked = True And dtpISOCheck.Value < ISOTODValue Then
                 MessageBox.Show("Please Inform Shipping Admin", "Truck Out Date Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
@@ -499,10 +502,10 @@ Public Class SecurityEdit
             End If
 
             GlobalFunction.backToPage(Search, Me)
-        ElseIf checkSecurityCheck = "YES" And checkAllowToPost = False And cbISO.Checked Then
+        ElseIf checkSecurityCheck = True And checkAllowToPost = False And cbISO.Checked Then
             MessageBox.Show("Please Inform Shipping Admin", "ISO Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-        ElseIf checkSecurityCheck = "YES" And checkAllowToPost = False Then
+        ElseIf checkSecurityCheck = True And checkAllowToPost = False Then
             MessageBox.Show("Please Inform Warehouse Admin", "Net Cargo Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End If
@@ -618,14 +621,14 @@ Public Class SecurityEdit
                 rd = cmd.ExecuteReader
                 con.Close()
                 MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                checkSecurityCheck = "YES"
+                checkSecurityCheck = True
 
             Else
                 Try
                     If Decimal.Parse(tbSecurityCheckISOTankWeight.Text) >= Decimal.Parse(tbISOTankWeightLower.Text) And Decimal.Parse(tbSecurityCheckISOTankWeight.Text) <= Decimal.Parse(tbISOTankWeightUpper.Text) And dtpISOCheck.Value >= ISOTODValue And String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 And String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
                         'Check ISO Tank
                         checkAllowToPost = True
-                        checkSecurityCheck = "YES"
+                        checkSecurityCheck = True
                         btnSecurityCheck.Enabled = False
                         tbSecurityCheckContainerNo.Enabled = False
                         dtpISO.Enabled = False
@@ -634,11 +637,12 @@ Public Class SecurityEdit
                         tbSecurityCheckISOTankWeight.Enabled = False
                         dtpISO.Enabled = False
                         dtpISOCheck.Enabled = False
-                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight, Security_Check_ISO_Truck_Out_Date =  @Security_Check_ISO_Truck_Out_Date  WHERE Shipping_ID = @TruckOutNumber2"
+                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = @Security_Check ,Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight, Security_Check_ISO_Truck_Out_Date =  @Security_Check_ISO_Truck_Out_Date  WHERE Shipping_ID = @TruckOutNumber2"
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
                         cmd.Parameters.AddWithValue("@Security_Check_ISO_Tank_Weight", tbSecurityCheckISOTankWeight.Text)
                         cmd.Parameters.AddWithValue(“@Security_Check_ISO_Truck_Out_Date”， dtpISOCheck.Value.ToString("yyyy-MM-dd"))
+                        cmd.Parameters.AddWithValue("@Security_Check", checkSecurityCheck)
                         rd = cmd.ExecuteReader
                         con.Close()
                         MessageBox.Show("ISO Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -650,7 +654,7 @@ Public Class SecurityEdit
                         MessageBox.Show("Please Check Internal Seal No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ElseIf dtpISOCheck.Value < ISOTODValue Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
-                        checkSecurityCheck = "YES"
+                        checkSecurityCheck = True
                         btnSecurityCheck.Enabled = False
                         tbSecurityCheckContainerNo.Enabled = False
                         dtpISO.Enabled = False
@@ -659,11 +663,12 @@ Public Class SecurityEdit
                         tbSecurityCheckISOTankWeight.Enabled = False
                         dtpISO.Enabled = False
                         dtpISOCheck.Enabled = False
-                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES',Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight,  Security_Check_ISO_Truck_Out_Date =  @Security_Check_ISO_Truck_Out_Date  WHERE Shipping_ID = @TruckOutNumber2"
+                        cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = @Security_Check,Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight,  Security_Check_ISO_Truck_Out_Date =  @Security_Check_ISO_Truck_Out_Date  WHERE Shipping_ID = @TruckOutNumber2"
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
                         cmd.Parameters.AddWithValue("@Security_Check_ISO_Tank_Weight", tbSecurityCheckISOTankWeight.Text)
                         cmd.Parameters.AddWithValue(“@Security_Check_ISO_Truck_Out_Date”， dtpISOCheck.Value.ToString("yyyy-MM-dd"))
+                        cmd.Parameters.AddWithValue("@Security_Check", checkSecurityCheck)
                         rd = cmd.ExecuteReader
                         con.Close()
                         MessageBox.Show("Inform Shipping", "ISO Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -703,16 +708,19 @@ Public Class SecurityEdit
                     If Integer.Parse(tbCheckCargoWeight.Text) >= tbCargo1.Text Then
                         checkCargoWeight = True
                         checkAllowToPost = True
+                        checkSecurityCheck = True
                     Else
                         checkCargoWeight = False
                         checkAllowToPost = False
+                        checkSecurityCheck = True
                     End If
 
-                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = 'YES', Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue,Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
+                    cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = @Security_Check, Cargo_Weight_Check = @checkCargoWeight,Cargo_Weight_Check_Value = @cargoWeightCheckValue,Allow_To_Post = @Allow_To_Post WHERE Shipping_ID = @TruckOutNumber2"
                     cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                     cmd.Parameters.AddWithValue("@checkCargoWeight", checkCargoWeight)
                     cmd.Parameters.AddWithValue("@cargoWeightCheckValue", tbCheckCargoWeight.Text)
                     cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
+                    cmd.Parameters.AddWithValue("@Security_Check", checkSecurityCheck)
                     rd = cmd.ExecuteReader
                     con.Close()
                     If (checkCargoWeight) Then
@@ -720,7 +728,7 @@ Public Class SecurityEdit
                     Else
                         MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-                    checkSecurityCheck = "YES"
+                    checkSecurityCheck = True
                     btnSecurityCheck.Enabled = False
                     tbCheckCargoWeight.Enabled = False
                     tbSecurityCheckContainerNo.Enabled = False

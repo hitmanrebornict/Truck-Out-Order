@@ -664,7 +664,7 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-    Public Shared Function checkPostBoxWithCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean, lblCargoWeight As Label, checkSecurityCheck As String)
+    Public Shared Function checkPostBoxWithCargo(cbShippingPost As CheckBox, cbWarehousePost As CheckBox, cbSecurityPost As CheckBox, checkShippingPost As String, checkWarehousePost As String, checkSecurityPost As String, checkCargoWeight As Boolean, lblCargoWeight As Label, checkSecurityCheck As Boolean)
 
         checkPostBoxWithoutCargo(cbShippingPost, cbWarehousePost, cbSecurityPost, checkShippingPost, checkWarehousePost, checkSecurityPost)
 
@@ -676,7 +676,7 @@ Public Class GlobalFunction
             lblCargoWeight.ForeColor = Color.Black
         End If
 
-        If checkSecurityCheck <> "YES" Then
+        If checkSecurityCheck = False Then
             lblCargoWeight.Text = "Uncompleted"
             lblCargoWeight.ForeColor = Color.Black
         End If
