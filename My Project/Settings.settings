@@ -30,5 +30,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Security = False ; User ID = too ; Password = admin</Value>
     </Setting>
+    <Setting Name="languageSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fr</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

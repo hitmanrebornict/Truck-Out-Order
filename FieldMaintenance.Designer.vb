@@ -29,12 +29,12 @@ Partial Class FieldMaintenance
         Me.btnNew = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.cmbField = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblSelectShortName = New System.Windows.Forms.Label()
         Me.cbActive = New System.Windows.Forms.CheckBox()
         Me.tbLongName = New System.Windows.Forms.TextBox()
         Me.cmbShortname = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblEnterLongName = New System.Windows.Forms.Label()
+        Me.lblActive = New System.Windows.Forms.Label()
         Me.lblSelectField = New System.Windows.Forms.Label()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -61,9 +61,9 @@ Partial Class FieldMaintenance
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(827, 638)
+        Me.btnCancel.Location = New System.Drawing.Point(803, 638)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
+        Me.btnCancel.Size = New System.Drawing.Size(110, 30)
         Me.btnCancel.TabIndex = 15
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -71,9 +71,9 @@ Partial Class FieldMaintenance
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(731, 638)
+        Me.btnSave.Location = New System.Drawing.Point(681, 638)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(90, 30)
+        Me.btnSave.Size = New System.Drawing.Size(110, 30)
         Me.btnSave.TabIndex = 14
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -81,9 +81,9 @@ Partial Class FieldMaintenance
         'btnNew
         '
         Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(635, 638)
+        Me.btnNew.Location = New System.Drawing.Point(559, 638)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(90, 30)
+        Me.btnNew.Size = New System.Drawing.Size(110, 30)
         Me.btnNew.TabIndex = 13
         Me.btnNew.Text = "New"
         Me.btnNew.UseVisualStyleBackColor = True
@@ -95,12 +95,12 @@ Partial Class FieldMaintenance
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.cmbField, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblSelectShortName, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.cbActive, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLongName, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.cmbShortname, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label3, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblEnterLongName, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblActive, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lblSelectField, 0, 0)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 179)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -122,15 +122,15 @@ Partial Class FieldMaintenance
         Me.cmbField.Size = New System.Drawing.Size(352, 27)
         Me.cmbField.TabIndex = 1
         '
-        'Label1
+        'lblSelectShortName
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(4, 71)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(283, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Please Enter The Short Name:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblSelectShortName.AutoSize = True
+        Me.lblSelectShortName.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSelectShortName.Location = New System.Drawing.Point(4, 71)
+        Me.lblSelectShortName.Name = "lblSelectShortName"
+        Me.lblSelectShortName.Size = New System.Drawing.Size(283, 24)
+        Me.lblSelectShortName.TabIndex = 0
+        Me.lblSelectShortName.Text = "Please Enter The Short Name:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'cbActive
         '
@@ -158,25 +158,25 @@ Partial Class FieldMaintenance
         Me.cmbShortname.Size = New System.Drawing.Size(354, 27)
         Me.cmbShortname.TabIndex = 2
         '
-        'Label2
+        'lblEnterLongName
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 141)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(279, 24)
-        Me.Label2.TabIndex = 24
-        Me.Label2.Text = "Please Enter The Long Name:"
+        Me.lblEnterLongName.AutoSize = True
+        Me.lblEnterLongName.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEnterLongName.Location = New System.Drawing.Point(4, 141)
+        Me.lblEnterLongName.Name = "lblEnterLongName"
+        Me.lblEnterLongName.Size = New System.Drawing.Size(279, 24)
+        Me.lblEnterLongName.TabIndex = 24
+        Me.lblEnterLongName.Text = "Please Enter The Long Name:"
         '
-        'Label3
+        'lblActive
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(4, 211)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(70, 24)
-        Me.Label3.TabIndex = 29
-        Me.Label3.Text = "Active:"
+        Me.lblActive.AutoSize = True
+        Me.lblActive.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActive.Location = New System.Drawing.Point(4, 211)
+        Me.lblActive.Name = "lblActive"
+        Me.lblActive.Size = New System.Drawing.Size(70, 24)
+        Me.lblActive.TabIndex = 29
+        Me.lblActive.Text = "Active:"
         '
         'lblSelectField
         '
@@ -268,16 +268,16 @@ Partial Class FieldMaintenance
     End Sub
 
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblSelectShortName As Label
     Friend WithEvents tbLongName As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblEnterLongName As Label
     Friend WithEvents cbActive As CheckBox
     Friend WithEvents cmbShortname As ComboBox
     Friend WithEvents lblSelectField As Label
     Friend WithEvents cmbField As ComboBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents lblTitle As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblActive As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel

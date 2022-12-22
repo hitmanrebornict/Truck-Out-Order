@@ -1,10 +1,21 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
+Imports Truck_Out_Order.My.Resources
 
 Public Class CompanyMaintenance
 
-    Dim selection As String
+    Dim selection,
+    stringCurrentMaxNum,
+    stringFillRequired,
+    stringError,
+    stringComplete,
+    stringAuthentication,
+    stringDelete,
+    stringCheckDelete,
+    stringErrorLessThanExistingNumber,
+    stringUpdateFailed,
+    stringNewTOONumberIs,
+    stringDeleteHeader As String
+
     Dim newCheck As Boolean = True
     Dim maxTOONumber, age As Integer
     Dim companyID As Integer = 1
@@ -12,6 +23,70 @@ Public Class CompanyMaintenance
     Private companyNameHeader As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceCompanyMaintenanceFrench.btnCancel
+            btnDel.Text = ResourceCompanyMaintenanceFrench.btnDel
+            btnNew.Text = ResourceCompanyMaintenanceFrench.btnNew
+            btnSave.Text = ResourceCompanyMaintenanceFrench.btnSave
+            btnTOOSave.Text = ResourceCompanyMaintenanceFrench.btnTOOSave
+            lblAddressLine1.Text = ResourceCompanyMaintenanceFrench.lblAddressLine1
+            lblAddressLine2.Text = ResourceCompanyMaintenanceFrench.lblAddressLine2
+            lblCity.Text = ResourceCompanyMaintenanceFrench.lblCity
+            lblCompanyMaintenance.Text = ResourceCompanyMaintenanceFrench.lblCompanyMaintenance
+            lblCompanyRegistrationNo.Text = ResourceCompanyMaintenanceFrench.lblCompanyRegistrationNo
+            lblCountry.Text = ResourceCompanyMaintenanceFrench.lblCountry
+            lblFax.Text = ResourceCompanyMaintenanceFrench.lblFax
+            lblCompanyFullName.Text = ResourceCompanyMaintenanceFrench.lblCompanyFullName
+            lblNewNumber.Text = ResourceCompanyMaintenanceFrench.lblNewNumber
+            lblPostalCode.Text = ResourceCompanyMaintenanceFrench.lblPostalCode
+            lblState.Text = ResourceCompanyMaintenanceFrench.lblState
+            lblTelephone.Text = ResourceCompanyMaintenanceFrench.lblTelephone
+            stringAuthentication = ResourceCompanyMaintenanceFrench.stringAuthentication
+            stringCheckDelete = ResourceCompanyMaintenanceFrench.stringCheckDelete
+            stringComplete = ResourceCompanyMaintenanceFrench.stringComplete
+            stringCurrentMaxNum = ResourceCompanyMaintenanceFrench.stringCurrentMaxNum
+            stringDelete = ResourceCompanyMaintenanceFrench.stringDelete
+            stringError = ResourceCompanyMaintenanceFrench.stringError
+            stringErrorLessThanExistingNumber = ResourceCompanyMaintenanceFrench.stringErrorLessThanExistingNumber
+            stringFillRequired = ResourceCompanyMaintenanceFrench.stringFillRequired
+            stringNewTOONumberIs = ResourceCompanyMaintenanceFrench.stringNewTOONumberIs
+            stringUpdateFailed = ResourceCompanyMaintenanceFrench.stringUpdateFailed
+            stringDeleteHeader = ResourceCompanyMaintenanceFrench.btnDel
+        Else
+            btnCancel.Text = ResourceCompanyMaintenance.btnCancel
+            btnDel.Text = ResourceCompanyMaintenance.btnDel
+            btnNew.Text = ResourceCompanyMaintenance.btnNew
+            btnSave.Text = ResourceCompanyMaintenance.btnSave
+            btnTOOSave.Text = ResourceCompanyMaintenance.btnTOOSave
+            lblAddressLine1.Text = ResourceCompanyMaintenance.lblAddressLine1
+            lblAddressLine2.Text = ResourceCompanyMaintenance.lblAddressLine2
+            lblCity.Text = ResourceCompanyMaintenance.lblCIty
+            lblCompanyMaintenance.Text = ResourceCompanyMaintenance.lblCompanyMaintenance
+            lblCompanyRegistrationNo.Text = ResourceCompanyMaintenance.lblCompanyRegistrationNo
+            lblCountry.Text = ResourceCompanyMaintenance.lblCountry
+            lblFax.Text = ResourceCompanyMaintenance.lblFax
+            lblCompanyFullName.Text = ResourceCompanyMaintenance.lblCompanyFullName
+            lblNewNumber.Text = ResourceCompanyMaintenance.lblNewNumber
+            lblPostalCode.Text = ResourceCompanyMaintenance.lblPostalCode
+            lblState.Text = ResourceCompanyMaintenance.lblState
+            lblTelephone.Text = ResourceCompanyMaintenance.lblTelephone
+            stringAuthentication = ResourceCompanyMaintenance.stringAuthentication
+            stringCheckDelete = ResourceCompanyMaintenance.stringCheckDelete
+            stringComplete = ResourceCompanyMaintenance.stringComplete
+            stringCurrentMaxNum = ResourceCompanyMaintenance.stringCurrentMaxNum
+            stringDelete = ResourceCompanyMaintenance.stringDelete
+            stringError = ResourceCompanyMaintenance.stringError
+            stringErrorLessThanExistingNumber = ResourceCompanyMaintenance.stringErrorLessThanExistingNumber
+            stringFillRequired = ResourceCompanyMaintenance.stringFillRequired
+            stringNewTOONumberIs = ResourceCompanyMaintenance.stringNewTOONumberIs
+            stringUpdateFailed = ResourceCompanyMaintenance.stringUpdateFailed
+            stringDeleteHeader = ResourceCompanyMaintenance.btnDel
+        End If
+
+
+
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDownList
         Dim con As New SqlConnection
@@ -75,7 +150,7 @@ Public Class CompanyMaintenance
 
 
         'Find Current Max TOO Number
-        lblCurrentMaxNum.Text = "Current Latest TOO Number is " & My.Settings.newTOONumber & "."
+        lblCurrentMaxNum.Text = stringCurrentMaxNum & " " & My.Settings.newTOONumber & "."
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNew.Click
@@ -105,7 +180,7 @@ Public Class CompanyMaintenance
         con.Open()
 
         If tbAddressLine1.Text = "" Or tbState.Text = "" Or tbCity.Text = "" Or cmbCompanyName.Text = "" Or tbFax.Text = "" Or tbPostalCode.Text = "" Or tbRegistrationNo.Text = "" Or tbTelephone.Text = "" Or tbCountry.Text = "" Then
-            MessageBox.Show("Please FIll The Required Field", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillRequired, stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If newCheck = True Then
                 cmd.CommandText = "update Company set CompanyName = @CompanyName, AddressLine1 = @AddressLine1, AddressLine2 = @AddressLine2, City = @City, State = @State, Country = @Country, PostalCode = @PostalCode, Phone = @Phone, Fax = @Fax, RegistrationNum = @RegistrationNum where companyName = @companyName"
@@ -124,7 +199,7 @@ Public Class CompanyMaintenance
             cmd.Parameters.AddWithValue("@RegistrationNum", tbRegistrationNo.Text)
             cmd.Parameters.AddWithValue("@companyID", companyID)
             rd = cmd.ExecuteReader
-            MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringComplete, stringAuthentication, MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)
         End If
 
@@ -163,11 +238,11 @@ Public Class CompanyMaintenance
         cmd.Connection = con
         con.Open()
 
-        If MsgBox("Are you sure you want to delete?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+        If MsgBox(stringCheckDelete, MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, stringDeleteHeader) = Windows.Forms.DialogResult.Yes Then
             cmd.CommandText = "Delete from Company where CompanyName = @CompanyName"
             cmd.Parameters.AddWithValue("@companyName", cmbCompanyName.Text)
             rd = cmd.ExecuteReader
-            MessageBox.Show("Delete Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringDelete, stringAuthentication, MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)
         Else
 
@@ -190,15 +265,15 @@ Public Class CompanyMaintenance
 
         Try
             If Integer.Parse(tbTOO.Text) < maxTOONumber Then
-                MessageBox.Show("The new TOO Number can't less than existing TOO Number", "Update Failed ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringErrorLessThanExistingNumber, stringUpdateFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 cmd.CommandText = "Insert into details(TOO_Number) values (@TOO_Number)"
                 cmd.Parameters.AddWithValue("@TOO_Number", tbTOO.Text)
                 rd = cmd.ExecuteReader
-                MessageBox.Show("The new TOO Number is " & tbTOO.Text, "Update Completed ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringCurrentMaxNum & tbTOO.Text, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, stringUpdateFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

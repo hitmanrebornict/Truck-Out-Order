@@ -34,168 +34,137 @@ Partial Class Login
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.pnlLogin = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.pbGCB = New System.Windows.Forms.PictureBox()
+        Me.cmbLanguage = New System.Windows.Forms.ComboBox()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlLogin.SuspendLayout()
+        Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblTooSystem
         '
-        Me.lblTooSystem.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblTooSystem.AutoSize = True
+        resources.ApplyResources(Me.lblTooSystem, "lblTooSystem")
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
-        Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooSystem.Location = New System.Drawing.Point(95, 122)
         Me.lblTooSystem.Name = "lblTooSystem"
-        Me.lblTooSystem.Size = New System.Drawing.Size(1074, 109)
-        Me.lblTooSystem.TabIndex = 2
-        Me.lblTooSystem.Text = "Truck Out Order System"
-        Me.lblTooSystem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblUsername
         '
-        Me.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblUsername.AutoSize = True
+        resources.ApplyResources(Me.lblUsername, "lblUsername")
         Me.lblUsername.BackColor = System.Drawing.Color.Transparent
-        Me.lblUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUsername.ForeColor = System.Drawing.SystemColors.ScrollBar
-        Me.lblUsername.Location = New System.Drawing.Point(53, 87)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(102, 24)
-        Me.lblUsername.TabIndex = 0
-        Me.lblUsername.Text = "Username"
         '
         'lblLogin
         '
-        Me.lblLogin.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblLogin.AutoSize = True
-        Me.lblLogin.Font = New System.Drawing.Font("Helvetica", 17.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        resources.ApplyResources(Me.lblLogin, "lblLogin")
         Me.lblLogin.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.lblLogin.Location = New System.Drawing.Point(111, 30)
         Me.lblLogin.Name = "lblLogin"
-        Me.lblLogin.Size = New System.Drawing.Size(173, 27)
-        Me.lblLogin.TabIndex = 6
-        Me.lblLogin.Text = "Account Login"
         '
         'btnCancel
         '
-        Me.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(155, 324)
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(85, 31)
-        Me.btnCancel.TabIndex = 5
-        Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnLogin
         '
-        Me.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None
+        resources.ApplyResources(Me.btnLogin, "btnLogin")
         Me.btnLogin.BackColor = System.Drawing.Color.LightSkyBlue
-        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogin.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btnLogin.Location = New System.Drawing.Point(55, 260)
         Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(285, 37)
-        Me.btnLogin.TabIndex = 4
-        Me.btnLogin.Text = "SIGN IN"
         Me.btnLogin.UseVisualStyleBackColor = False
         '
         'tbPassword
         '
-        Me.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.tbPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        resources.ApplyResources(Me.tbPassword, "tbPassword")
         Me.tbPassword.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.tbPassword.Location = New System.Drawing.Point(57, 197)
         Me.tbPassword.Name = "tbPassword"
-        Me.tbPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.tbPassword.Size = New System.Drawing.Size(285, 31)
-        Me.tbPassword.TabIndex = 3
         '
         'tbUsername
         '
-        Me.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.None
+        resources.ApplyResources(Me.tbUsername, "tbUsername")
         Me.tbUsername.BackColor = System.Drawing.Color.White
-        Me.tbUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbUsername.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.tbUsername.Location = New System.Drawing.Point(57, 114)
         Me.tbUsername.Name = "tbUsername"
-        Me.tbUsername.Size = New System.Drawing.Size(285, 31)
-        Me.tbUsername.TabIndex = 2
         '
         'lblPassword
         '
-        Me.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lblPassword.AutoSize = True
+        resources.ApplyResources(Me.lblPassword, "lblPassword")
         Me.lblPassword.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPassword.ForeColor = System.Drawing.SystemColors.ScrollBar
-        Me.lblPassword.Location = New System.Drawing.Point(53, 170)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(97, 24)
-        Me.lblPassword.TabIndex = 1
-        Me.lblPassword.Text = "Password"
         '
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        resources.ApplyResources(Me.ContextMenuStrip1, "ContextMenuStrip1")
         '
         'pnlLogin
         '
-        Me.pnlLogin.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.pnlLogin, "pnlLogin")
         Me.pnlLogin.BackColor = System.Drawing.Color.White
+        Me.pnlLogin.Controls.Add(Me.TableLayoutPanel2)
         Me.pnlLogin.Controls.Add(Me.lblUsername)
         Me.pnlLogin.Controls.Add(Me.btnCancel)
-        Me.pnlLogin.Controls.Add(Me.lblLogin)
         Me.pnlLogin.Controls.Add(Me.lblPassword)
         Me.pnlLogin.Controls.Add(Me.tbUsername)
         Me.pnlLogin.Controls.Add(Me.tbPassword)
         Me.pnlLogin.Controls.Add(Me.btnLogin)
-        Me.pnlLogin.Location = New System.Drawing.Point(435, 249)
         Me.pnlLogin.Name = "pnlLogin"
-        Me.pnlLogin.Size = New System.Drawing.Size(394, 387)
-        Me.pnlLogin.TabIndex = 7
+        '
+        'TableLayoutPanel2
+        '
+        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.TableLayoutPanel2, "TableLayoutPanel2")
+        Me.TableLayoutPanel2.Controls.Add(Me.lblLogin, 0, 0)
+        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         '
         'pbGCB
         '
-        Me.pbGCB.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.pbGCB, "pbGCB")
         Me.pbGCB.BackColor = System.Drawing.Color.Transparent
         Me.pbGCB.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.realGuanChongIcon_removebg_preview
-        Me.pbGCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbGCB.Location = New System.Drawing.Point(458, 3)
         Me.pbGCB.Name = "pbGCB"
-        Me.pbGCB.Size = New System.Drawing.Size(349, 124)
-        Me.pbGCB.TabIndex = 8
         Me.pbGCB.TabStop = False
+        '
+        'cmbLanguage
+        '
+        Me.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbLanguage.FormattingEnabled = True
+        Me.cmbLanguage.Items.AddRange(New Object() {resources.GetString("cmbLanguage.Items"), resources.GetString("cmbLanguage.Items1")})
+        resources.ApplyResources(Me.cmbLanguage, "cmbLanguage")
+        Me.cmbLanguage.Name = "cmbLanguage"
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
+        Me.TableLayoutPanel1.Controls.Add(Me.lblTooSystem, 0, 0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         '
         'Login
         '
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 681)
+        resources.ApplyResources(Me, "$this")
+        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.cmbLanguage)
         Me.Controls.Add(Me.pbGCB)
         Me.Controls.Add(Me.pnlLogin)
-        Me.Controls.Add(Me.lblTooSystem)
         Me.DoubleBuffered = True
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Login"
-        Me.Text = "TOO System"
         Me.pnlLogin.ResumeLayout(False)
         Me.pnlLogin.PerformLayout()
+        Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.TableLayoutPanel2.PerformLayout()
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblTooSystem As Label
@@ -209,4 +178,7 @@ Partial Class Login
     Friend WithEvents lblLogin As Label
     Friend WithEvents pnlLogin As Panel
     Friend WithEvents pbGCB As PictureBox
+    Friend WithEvents cmbLanguage As ComboBox
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
 End Class

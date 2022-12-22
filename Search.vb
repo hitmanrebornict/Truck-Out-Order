@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Runtime.Remoting.Messaging
 Imports Microsoft.Vbe.Interop
+Imports Truck_Out_Order.My.Resources
 
 Public Class Search
 
@@ -8,7 +9,31 @@ Public Class Search
     Private companyNameHeader As String
     Private checkCargoWeight As Boolean
     Private checkISOTank As Boolean
+    Private stringFillRequired,
+            stringSearchError,
+            stringFilterError As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceSearchFrench.btnCancel
+            btnFilter.Text = ResourceSearchFrench.btnFilter
+            btnSearch.Text = ResourceSearchFrench.btnSearch
+            lblContainerNo.Text = ResourceSearchFrench.lblContainerNo
+            lblInvoiceNumber.Text = ResourceSearchFrench.lblInvoiceNumber
+            lblShippingID.Text = ResourceSearchFrench.lblShippingID
+            stringFillRequired = ResourceSearchFrench.stringFillRequired
+            stringSearchError = ResourceSearchFrench.stringSearchError
+            stringFilterError = ResourceSearchFrench.stringFilterError
+        Else
+            btnCancel.Text = ResourceSearch.btnCancel
+            btnFilter.Text = ResourceSearch.btnFilter
+            btnSearch.Text = ResourceSearch.btnSearch
+            lblContainerNo.Text = ResourceSearch.lblContainerNo
+            lblInvoiceNumber.Text = ResourceSearch.lblInvoiceNumber
+            lblShippingID.Text = ResourceSearch.lblShippingID
+            stringFillRequired = ResourceSearch.stringFillRequired
+            stringSearchError = ResourceSearch.stringSearchError
+            stringFilterError = ResourceSearch.stringFilterError
+        End If
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -68,7 +93,7 @@ Public Class Search
         con3.Open()
 
         If tbShippingId.Text = "" And tbInvoice.Text = "" And tbContainerNo.Text = "" Then
-            MessageBox.Show("Please complete the required fields..", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillRequired, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If tbShippingId.Text <> "" And tbInvoice.Text = "" And tbContainerNo.Text = "" Then
                 Select Case My.Settings.role_id
@@ -159,7 +184,7 @@ Public Class Search
                 End If
 
             Catch ex As InvalidOperationException
-                MessageBox.Show("1) Data Not Found!" & vbNewLine & "2) Please only fill one textbox!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(ex.Message, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Try
 
             End Try
@@ -189,7 +214,7 @@ Public Class Search
         con.Open()
 
         If tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
-            MessageBox.Show("Please complete the required fields..", "Filter Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillRequired, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If tbInvoice.Text <> "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
                 cmd.CommandText = ("SELECT * from Shipping where INVOICE like '" + tbInvoice.Text + "%' order by id desc")
@@ -211,7 +236,7 @@ Public Class Search
             sda.Fill(dt)
             dgv.DataSource = dt
         Catch ex As System.InvalidOperationException
-            MessageBox.Show("Please only fill one textbox", "Filter Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Try
         End Try
 
@@ -293,16 +318,12 @@ Public Class Search
                     Me.Close()
             End Select
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
 
-    Private Sub Buttona_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim Obj As New Edit
-        Obj.Show()
-        Me.Close()
-    End Sub
+
 
 
 End Class

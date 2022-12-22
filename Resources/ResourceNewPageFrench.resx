@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="btnPost" xml:space="preserve">
+    <value>Poste</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="lblCompany" xml:space="preserve">
+    <value>Compagnie:</value>
+  </data>
+  <data name="lblContainerNo" xml:space="preserve">
+    <value>Numéro de conteneur</value>
+  </data>
+  <data name="lblContainerSize" xml:space="preserve">
+    <value>Taille du conteneur:</value>
+  </data>
+  <data name="lblDDB" xml:space="preserve">
+    <value>DDB:</value>
+  </data>
+  <data name="lblEsSealNo" xml:space="preserve">
+    <value>Numéro de sceau ES</value>
+  </data>
+  <data name="lblFullName" xml:space="preserve">
+    <value>Nom complet de l'entreprise :</value>
+  </data>
+  <data name="lblHaulier" xml:space="preserve">
+    <value>Transporteur:</value>
+  </data>
+  <data name="lblInternalSealNo" xml:space="preserve">
+    <value>Numéro de joint interne</value>
+  </data>
+  <data name="lblInvoice" xml:space="preserve">
+    <value>Facture d'achat:</value>
+  </data>
+  <data name="lblISOTank" xml:space="preserve">
+    <value>Réservoir ISO :</value>
+  </data>
+  <data name="lblISOTankWeight" xml:space="preserve">
+    <value>Poids du réservoir ISO (mt):</value>
+  </data>
+  <data name="lblISOTruckOutDate" xml:space="preserve">
+    <value>Date de sortie du camion :</value>
+  </data>
+  <data name="lblLinerSealNo" xml:space="preserve">
+    <value>Numéro de joint de revêtement</value>
+  </data>
+  <data name="lblLoadingBay" xml:space="preserve">
+    <value>Quai de chargement:</value>
+  </data>
+  <data name="lblLoadingPort" xml:space="preserve">
+    <value>Port de chargement:</value>
+  </data>
+  <data name="lblNetCargoWeight" xml:space="preserve">
+    <value>Poids net de la cargaison (kg) :</value>
+  </data>
+  <data name="lblPortFullName" xml:space="preserve">
+    <value>Nom complet du port de chargement :</value>
+  </data>
+  <data name="lblProduct" xml:space="preserve">
+    <value>Produit:</value>
+  </data>
+  <data name="lblSCD" xml:space="preserve">
+    <value>Date limite d'expédition :</value>
+  </data>
+  <data name="lblSCT" xml:space="preserve">
+    <value>Heure de clôture de l'expédition :</value>
+  </data>
+  <data name="lblSendToCompany" xml:space="preserve">
+    <value>Envoyer à l'entreprise :</value>
+  </data>
+  <data name="lblShippingLine" xml:space="preserve">
+    <value>Ligne maritime:</value>
+  </data>
+  <data name="lblTemporarySealNo" xml:space="preserve">
+    <value>Numéro de sceau temporaire</value>
+  </data>
+  <data name="lblTruckOutNumber" xml:space="preserve">
+    <value>Numéro de sortie du camion :</value>
+  </data>
+  <data name="lblWarehouseLocation" xml:space="preserve">
+    <value>Emplacement de l'entrepôt :</value>
+  </data>
+  <data name="stringCargoWeightEx" xml:space="preserve">
+    <value>Veuillez ne remplir que des nombres entiers dans le poids net de la cargaison / Veuillez remplir le champ du poids net de la cargaison</value>
+  </data>
+  <data name="stringCloseApplication" xml:space="preserve">
+    <value>Fermer l'application</value>
+  </data>
+  <data name="stringComplete" xml:space="preserve">
+    <value>Complété</value>
+  </data>
+  <data name="stringFillCompany" xml:space="preserve">
+    <value>Veuillez remplir le champ de l'entreprise</value>
+  </data>
+  <data name="stringFillContainerNo" xml:space="preserve">
+    <value>Veuillez remplir le champ du numéro de conteneur</value>
+  </data>
+  <data name="stringFillContainerSize" xml:space="preserve">
+    <value>Veuillez remplir le champ Taille du conteneur</value>
+  </data>
+  <data name="stringFillDDB" xml:space="preserve">
+    <value>Veuillez remplir le champ DDB</value>
+  </data>
+  <data name="stringFillHaulier" xml:space="preserve">
+    <value>Veuillez remplir le champ du transporteur</value>
+  </data>
+  <data name="stringFillInternalSealNo" xml:space="preserve">
+    <value>Veuillez remplir le champ du numéro de sceau interne</value>
+  </data>
+  <data name="stringFillInvoice" xml:space="preserve">
+    <value>Veuillez remplir le champ de la facture</value>
+  </data>
+  <data name="stringFillISOTankWeight" xml:space="preserve">
+    <value>ResourceNewPage</value>
+  </data>
+  <data name="stringFillISOTOD" xml:space="preserve">
+    <value>Veuillez remplir le champ ISO Truck Out Date</value>
+  </data>
+  <data name="stringFillLinerSealNo" xml:space="preserve">
+    <value>Veuillez remplir le champ du numéro de joint de revêtement</value>
+  </data>
+  <data name="stringFillLoadingPort" xml:space="preserve">
+    <value>Veuillez remplir le champ du port de chargement</value>
+  </data>
+  <data name="stringFillProduct" xml:space="preserve">
+    <value>Veuillez remplir le champ du produit</value>
+  </data>
+  <data name="stringFillProductType" xml:space="preserve">
+    <value>Veuillez remplir le champ Type de produit</value>
+  </data>
+  <data name="stringFillSCD" xml:space="preserve">
+    <value>Veuillez remplir le champ Date de clôture de l'envoi</value>
+  </data>
+  <data name="stringFillSCT" xml:space="preserve">
+    <value>Veuillez remplir l'heure de clôture de l'expédition</value>
+  </data>
+  <data name="stringFillShippingLine" xml:space="preserve">
+    <value>Veuillez remplir le champ de la ligne d'expédition</value>
+  </data>
+  <data name="stringFillTempSealNo" xml:space="preserve">
+    <value>Veuillez remplir le champ du numéro de sceau temporaire</value>
+  </data>
+  <data name="stringPostCompleteAs" xml:space="preserve">
+    <value>Post terminé en tant que</value>
+  </data>
+  <data name="stringQuitChecking" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir quitter?</value>
+  </data>
+  <data name="stringSaveCompleteAs" xml:space="preserve">
+    <value>Enregistrer la fin sous</value>
+  </data>
+  <data name="stringUpdateFailure" xml:space="preserve">
+    <value>Échec de la mise à jour</value>
+  </data>
+</root>

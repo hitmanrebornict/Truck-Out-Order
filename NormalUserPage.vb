@@ -1,9 +1,25 @@
 ﻿Imports System.Data.SqlClient
+Imports Truck_Out_Order.My.Resources
 
 Public Class NormalUserPage
     Private companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
+
+        If (My.Settings.languageSetting = "fr") Then
+            lblTooSystem.Text = ResourceNormalUserPageFrench.lblTooSystem
+            lblNew.Text = ResourceNormalUserPageFrench.lblNew
+            lblEdit.Text = ResourceNormalUserPageFrench.lblEdit
+            lblReport.Text = ResourceNormalUserPageFrench.lblReport
+            lblLogout.Text = ResourceNormalUserPageFrench.lblLogout
+        Else
+            lblTooSystem.Text = ResourceNormalUserPage.lblTooSystem
+            lblNew.Text = ResourceNormalUserPage.lblNew
+            lblEdit.Text = ResourceNormalUserPage.lblEdit
+            lblReport.Text = ResourceNormalUserPage.lblReport
+            lblLogout.Text = ResourceNormalUserPage.lblLogout
+        End If
+
         If My.Settings.role_id = 2 Then
             pnlNew.Visible = True
         Else
@@ -139,6 +155,8 @@ Public Class NormalUserPage
         reportPage.Show()
         Me.Close()
     End Sub
+
+
 End Class
 
 

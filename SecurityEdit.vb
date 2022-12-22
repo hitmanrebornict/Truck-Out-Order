@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports Truck_Out_Order.My.Resources
 
 Public Class SecurityEdit
 
@@ -18,7 +19,234 @@ Public Class SecurityEdit
     Private netCargoWeight As Integer
     Private ISOTankWeight As Integer
     Private ISOTODValue As Date
+
+    Private stringCheckDriverFullName,
+            stringCheckPMCode,
+            stringCheckPMRegistrationPlate,
+            stringCheckFailure,
+            stringDriverValidationPass,
+            stringDriverValidationFail,
+            stringValidationFail,
+            stringValidationPass,
+            stringCheckSecurityCheck,
+            stringPostFailed,
+            stringInformShippingAdmin,
+            stringTruckOutDateError,
+            stringPostComplete,
+            stringComplete,
+            stringISOCheckFailed,
+            stringInformWarehouseAdmin,
+            stringNetCargoCheckFailed,
+            stringCheckQuit,
+            stringCloseApplication,
+            stringCanBePosted,
+            stringUpdateComplete,
+            stringISOCheckComplete,
+            stringCheckContainerNo,
+            stringCheckInternalSealNo,
+            stringCheckComplete,
+            stringCheckFail,
+            stringUpdateFailure,
+            stringCheckESSealNo,
+            stringCheckTemporarySealNo,
+            stringFillCargoWeight,
+            stringSecurityCheckComplete,
+            stringStopCTNR,
+            stringCheckLinerSealNo As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceSecurityEditFrench.btnCancel
+            btnSecurityPost.Text = ResourceSecurityEditFrench.btnPost
+            btnPrint.Text = ResourceSecurityEditFrench.btnPrint
+            lblCompany.Text = ResourceSecurityEditFrench.lblCompnay
+            lblContainerNo.Text = ResourceSecurityEditFrench.lblContainerNo
+            lblContainerSize.Text = ResourceSecurityEditFrench.lblContainerSize
+            lblDDB.Text = ResourceSecurityEditFrench.lblDDB
+            lblEsSealNo.Text = ResourceSecurityEditFrench.lblEsSealNo
+            lblFullName.Text = ResourceSecurityEditFrench.lblFullName
+            lblHaulier.Text = ResourceSecurityEditFrench.lblHaulier
+            lblInternalSealNo.Text = ResourceSecurityEditFrench.lblInternalSealNo
+            lblInvoice.Text = ResourceSecurityEditFrench.lblInvoice
+            lblISOTank.Text = ResourceSecurityEditFrench.lblISOTank
+            lblISOTankWeight.Text = ResourceSecurityEditFrench.lblISOTankWeight
+            lblNetCargoWeight.Text = ResourceSecurityEditFrench.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceSecurityEditFrench.lblLinerSealNo
+            lblLoadingBay.Text = ResourceSecurityEditFrench.lblLoadingBay
+            lblLoadingPort.Text = ResourceSecurityEditFrench.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceSecurityEditFrench.lblNetCargoWeight
+            lblPortFullName.Text = ResourceSecurityEditFrench.lblPortFullName
+            lblProduct.Text = ResourceSecurityEditFrench.lblProduct
+            lblSCD.Text = ResourceSecurityEditFrench.lblSCD
+            lblSCT.Text = ResourceSecurityEditFrench.lblSCT
+            lblSendToCompany.Text = ResourceSecurityEditFrench.lblSendToCompany
+            lblShippingLine.Text = ResourceSecurityEditFrench.lblShippingLine
+            lblTemporarySealNo.Text = ResourceSecurityEditFrench.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceSecurityEditFrench.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceSecurityEditFrench.lblWarehouseLocation
+            lblLCD.Text = ResourceSecurityEditFrench.lblLCD
+            lblLCT.Text = ResourceSecurityEditFrench.lblLCT
+            lblRTD.Text = ResourceSecurityEditFrench.lblRTD
+            lblRTT.Text = ResourceSecurityEditFrench.lblRTT
+            lblShippingPost.Text = ResourceSecurityEditFrench.lblShippingPost
+            lblWarehousePost.Text = ResourceSecurityEditFrench.lblWarehousePost
+            lblSecurityPost.Text = ResourceSecurityEditFrench.lblSecurityPost
+            lblSOTruckOutDate.Text = ResourceSecurityEditFrench.lblISOTruckOutDate
+            lblCompanyFullName.Text = ResourceSecurityEditFrench.lblCompanyFullName
+            lblDriverCheck.Text = ResourceSecurityEditFrench.lblDriverCheck
+            lblPmCode.Text = ResourceSecurityEditFrench.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceSecurityEditFrench.lblPMRegistrationPlate
+            lblSecurityCheck.Text = ResourceSecurityEditFrench.lblSecurityCheck
+            lblISOTruckOutDateCheck.Text = ResourceSecurityEditFrench.lblISOTruckOutDateCheck
+            lblISOTankWeightCheck.Text = ResourceSecurityEditFrench.lblISOTankWeightCheck
+            stringCheckDriverFullName = ResourceSecurityEditFrench.stringCheckDriverFullName
+            stringCheckPMRegistrationPlate = ResourceSecurityEditFrench.stringCheckPMRegistrationPlate
+            stringCheckFailure = ResourceSecurityEditFrench.stringCheckFailure
+            stringDriverValidationPass = ResourceSecurityEditFrench.stringDriverValidationPass
+            stringDriverValidationFail = ResourceSecurityEditFrench.stringDriverValidationFail
+            stringValidationFail = ResourceSecurityEditFrench.stringValidationFail
+            stringValidationPass = ResourceSecurityEditFrench.stringValidationPass
+            stringCheckSecurityCheck = ResourceSecurityEditFrench.stringCheckSecurityCheck
+            stringPostFailed = ResourceSecurityEditFrench.stringPostFailed
+            stringInformShippingAdmin = ResourceSecurityEditFrench.stringInformShippingAdmin
+            stringTruckOutDateError = ResourceSecurityEditFrench.stringTruckOutDateError
+            stringPostComplete = ResourceSecurityEditFrench.stringPostComplete
+            stringComplete = ResourceSecurityEditFrench.stringComplete
+            stringISOCheckFailed = ResourceSecurityEditFrench.stringISOCheckFailed
+            stringInformWarehouseAdmin = ResourceSecurityEditFrench.stringInformWarehouseAdmin
+            stringNetCargoCheckFailed = ResourceSecurityEditFrench.stringNetCargoCheckFailed
+            stringCheckQuit = ResourceSecurityEditFrench.stringCheckQuit
+            stringCloseApplication = ResourceSecurityEditFrench.stringCloseApplication
+            stringCanBePosted = ResourceSecurityEditFrench.stringCanBePosted
+            stringUpdateComplete = ResourceSecurityEditFrench.stringUpdateComplete
+            stringISOCheckComplete = ResourceSecurityEditFrench.stringISOCheckComplete
+            stringCheckContainerNo = ResourceSecurityEditFrench.stringCheckContainerNo
+            stringCheckInternalSealNo = ResourceSecurityEditFrench.stringCheckInternalSealNo
+            stringCheckComplete = ResourceSecurityEditFrench.stringCheckComplete
+            stringCheckFail = ResourceSecurityEdit.stringCheckFail
+            stringUpdateFailure = ResourceSecurityEditFrench.stringUpdateFailure
+            stringCheckESSealNo = ResourceSecurityEditFrench.stringCheckESSealNo
+            stringCheckTemporarySealNo = ResourceSecurityEditFrench.stringCheckTemporarySealNo
+            stringFillCargoWeight = ResourceSecurityEditFrench.stringFillCargoWeight
+            stringSecurityCheckComplete = ResourceSecurityEditFrench.stringSecurityCheckComplete
+            stringStopCTNR = ResourceSecurityEditFrench.stringStopCTNR
+            stringCheckLinerSealNo = ResourceSecurityEditFrench.stringCheckLinerSealNo
+            GlobalFunction.ChangeFont(lblCompany, 10)
+            GlobalFunction.ChangeFont(lblContainerSize, 10)
+            GlobalFunction.ChangeFont(lblContainerNo, 10)
+            GlobalFunction.ChangeFont(lblDDB, 10)
+            GlobalFunction.ChangeFont(lblEsSealNo, 10)
+            GlobalFunction.ChangeFont(lblFullName, 10)
+            GlobalFunction.ChangeFont(lblHaulier, 10)
+            GlobalFunction.ChangeFont(lblInternalSealNo, 10)
+            GlobalFunction.ChangeFont(lblInvoice, 10)
+            GlobalFunction.ChangeFont(lblISOTank, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblLinerSealNo, 9)
+            GlobalFunction.ChangeFont(lblLoadingBay, 10)
+            GlobalFunction.ChangeFont(lblLoadingPort, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblISOTankWeight, 10)
+            GlobalFunction.ChangeFont(lblPortFullName, 10)
+            GlobalFunction.ChangeFont(lblProduct, 10)
+            GlobalFunction.ChangeFont(lblSCD, 10)
+            GlobalFunction.ChangeFont(lblSCT, 10)
+            GlobalFunction.ChangeFont(lblSendToCompany, 10)
+            GlobalFunction.ChangeFont(lblShippingLine, 10)
+            GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
+            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
+            GlobalFunction.ChangeFont(lblLCD, 10)
+            GlobalFunction.ChangeFont(lblLCT, 10)
+            GlobalFunction.ChangeFont(lblRTD, 10)
+            GlobalFunction.ChangeFont(lblRTT, 10)
+            GlobalFunction.ChangeFont(lblShippingPost, 10)
+            GlobalFunction.ChangeFont(lblWarehousePost, 10)
+            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFont(lblSOTruckOutDate, 10)
+            GlobalFunction.ChangeFont(lblCompanyFullName, 10)
+            GlobalFunction.ChangeFont(lblDriverCheck, 10)
+            GlobalFunction.ChangeFont(lblPmCode, 10)
+            GlobalFunction.ChangeFont(lblPmRegistrationPlate, 10)
+            GlobalFunction.ChangeFont(lblSecurityCheck, 10)
+            GlobalFunction.ChangeFont(lblISOTruckOutDateCheck, 10)
+            GlobalFunction.ChangeFont(lblISOTankWeightCheck, 10)
+        Else
+            btnCancel.Text = ResourceSecurityEdit.btnCancel
+            btnSecurityPost.Text = ResourceSecurityEdit.btnPost
+            btnPrint.Text = ResourceSecurityEdit.btnPrint
+            lblCompany.Text = ResourceSecurityEdit.lblCompnay
+            lblContainerNo.Text = ResourceSecurityEdit.lblContainerNo
+            lblContainerSize.Text = ResourceSecurityEdit.lblContainerSize
+            lblDDB.Text = ResourceSecurityEdit.lblDDB
+            lblEsSealNo.Text = ResourceSecurityEdit.lblEsSealNo
+            lblFullName.Text = ResourceSecurityEdit.lblFullName
+            lblHaulier.Text = ResourceSecurityEdit.lblHaulier
+            lblInternalSealNo.Text = ResourceSecurityEdit.lblInternalSealNo
+            lblInvoice.Text = ResourceSecurityEdit.lblInvoice
+            lblISOTank.Text = ResourceSecurityEdit.lblISOTank
+            lblISOTankWeight.Text = ResourceSecurityEdit.lblISOTankWeight
+            lblNetCargoWeight.Text = ResourceSecurityEdit.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceSecurityEdit.lblLinerSealNo
+            lblLoadingBay.Text = ResourceSecurityEdit.lblLoadingBay
+            lblLoadingPort.Text = ResourceSecurityEdit.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceSecurityEdit.lblNetCargoWeight
+            lblPortFullName.Text = ResourceSecurityEdit.lblPortFullName
+            lblProduct.Text = ResourceSecurityEdit.lblProduct
+            lblSCD.Text = ResourceSecurityEdit.lblSCD
+            lblSCT.Text = ResourceSecurityEdit.lblSCT
+            lblSendToCompany.Text = ResourceSecurityEdit.lblSendToCompany
+            lblShippingLine.Text = ResourceSecurityEdit.lblShippingLine
+            lblTemporarySealNo.Text = ResourceSecurityEdit.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceSecurityEdit.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceSecurityEdit.lblWarehouseLocation
+            lblLCD.Text = ResourceSecurityEdit.lblLCD
+            lblLCT.Text = ResourceSecurityEdit.lblLCT
+            lblRTD.Text = ResourceSecurityEdit.lblRTD
+            lblRTT.Text = ResourceSecurityEdit.lblRTT
+            lblShippingPost.Text = ResourceSecurityEdit.lblShippingPost
+            lblWarehousePost.Text = ResourceSecurityEdit.lblWarehousePost
+            lblSecurityPost.Text = ResourceSecurityEdit.lblSecurityPost
+            lblSOTruckOutDate.Text = ResourceSecurityEdit.lblISOTruckOutDate
+            lblCompanyFullName.Text = ResourceSecurityEdit.lblCompanyFullName
+            lblDriverCheck.Text = ResourceSecurityEdit.lblDriverCheck
+            lblPmCode.Text = ResourceSecurityEdit.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceSecurityEdit.lblPMRegistrationPlate
+            lblSecurityCheck.Text = ResourceSecurityEdit.lblSecurityCheck
+            lblISOTruckOutDateCheck.Text = ResourceSecurityEdit.lblISOTruckOutDateCheck
+            lblISOTankWeightCheck.Text = ResourceSecurityEdit.lblISOTankWeightCheck
+            stringCheckDriverFullName = ResourceSecurityEdit.stringCheckDriverFullName
+            stringCheckPMRegistrationPlate = ResourceSecurityEdit.stringCheckPMRegistrationPlate
+            stringCheckFailure = ResourceSecurityEdit.stringCheckFailure
+            stringDriverValidationPass = ResourceSecurityEdit.stringDriverValidationPass
+            stringDriverValidationFail = ResourceSecurityEdit.stringDriverValidationFail
+            stringValidationFail = ResourceSecurityEdit.stringValidationFail
+            stringValidationPass = ResourceSecurityEdit.stringValidationPass
+            stringCheckSecurityCheck = ResourceSecurityEdit.stringCheckSecurityCheck
+            stringPostFailed = ResourceSecurityEdit.stringPostFailed
+            stringInformShippingAdmin = ResourceSecurityEdit.stringInformShippingAdmin
+            stringTruckOutDateError = ResourceSecurityEdit.stringTruckOutDateError
+            stringPostComplete = ResourceSecurityEdit.stringPostComplete
+            stringComplete = ResourceSecurityEdit.stringComplete
+            stringISOCheckFailed = ResourceSecurityEdit.stringISOCheckFailed
+            stringInformWarehouseAdmin = ResourceSecurityEdit.stringInformWarehouseAdmin
+            stringNetCargoCheckFailed = ResourceSecurityEdit.stringNetCargoCheckFailed
+            stringCheckQuit = ResourceSecurityEdit.stringCheckQuit
+            stringCloseApplication = ResourceSecurityEdit.stringCloseApplication
+            stringCanBePosted = ResourceSecurityEdit.stringCanBePosted
+            stringUpdateComplete = ResourceSecurityEdit.stringUpdateComplete
+            stringISOCheckComplete = ResourceSecurityEdit.stringISOCheckComplete
+            stringCheckContainerNo = ResourceSecurityEdit.stringCheckContainerNo
+            stringCheckInternalSealNo = ResourceSecurityEdit.stringCheckInternalSealNo
+            stringCheckComplete = ResourceSecurityEdit.stringCheckComplete
+            stringCheckFail = ResourceSecurityEdit.stringCheckFail
+            stringUpdateFailure = ResourceSecurityEdit.stringUpdateFailure
+            stringCheckESSealNo = ResourceSecurityEdit.stringCheckESSealNo
+            stringCheckTemporarySealNo = ResourceSecurityEdit.stringCheckTemporarySealNo
+            stringFillCargoWeight = ResourceSecurityEdit.stringFillCargoWeight
+            stringSecurityCheckComplete = ResourceSecurityEdit.stringSecurityCheckComplete
+            stringStopCTNR = ResourceSecurityEdit.stringStopCTNR
+            stringCheckLinerSealNo = ResourceSecurityEdit.stringCheckLinerSealNo
+        End If
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
@@ -446,11 +674,11 @@ Public Class SecurityEdit
         con.Open()
 
         If cmbFullName.Text = "" Then
-            MessageBox.Show("Please Check Driver Full Name..", "Check Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckDriverFullName, stringCheckFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbPmCode.Text = "" Then
-            MessageBox.Show("Please Check PM Code..", "Check Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckPMCode, stringCheckFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbPmRegistrationPlate.Text = "" Then
-            MessageBox.Show("Please Check PM Registration Plate ..", "Check Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckPMRegistrationPlate, stringCheckFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             cmd.CommandText = "SELECT * from DRIVER_INFO where FULL_NAME = '" + cmbFullName.Text + "' and  PM_CODE = '" + cmbPmCode.Text + "' and  PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "'"
             rd = cmd.ExecuteReader
@@ -465,14 +693,14 @@ Public Class SecurityEdit
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 cmd.Parameters.AddWithValue("@Driver_Check", checkDriver)
             Else
-                MessageBox.Show("DRIVER VALIDATION FAIL", "VALIDATION FAIL", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringDriverValidationFail, stringValidationFail, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
             con.Close()
             If checkRow Then
                 con.Open()
                 rd = cmd.ExecuteReader
                 con.Close()
-                MessageBox.Show("DRIVER VALIDATION PASS", "VALIDATION PASS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringDriverValidationPass, stringValidationPass, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 checkDriver = True
                 btnSecurityCheck.Enabled = True
             End If
@@ -492,24 +720,24 @@ Public Class SecurityEdit
         con.Open()
 
         If checkSecurityCheck = False Then
-            MessageBox.Show("Please Check Security Check", "Post Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckSecurityCheck, stringPostFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf checkSecurityCheck = True And checkAllowToPost = True Then
             If cbISO.Checked = True And dtpISOCheck.Value < ISOTODValue Then
-                MessageBox.Show("Please Inform Shipping Admin", "Truck Out Date Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringInformShippingAdmin, stringTruckOutDateError, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 cmd.CommandText = "update Shipping set Security_Post = 1,Security_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Security_Post_User = '" + My.Settings.username + "' WHERE ID = @TruckOutNumber"
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
-                MessageBox.Show("Post Complete", "Post Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringPostComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 btnPrint.PerformClick()
             End If
 
             GlobalFunction.backToPage(Search, Me)
         ElseIf checkSecurityCheck = True And checkAllowToPost = False And cbISO.Checked Then
-            MessageBox.Show("Please Inform Shipping Admin", "ISO Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringInformShippingAdmin, stringISOCheckFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         ElseIf checkSecurityCheck = True And checkAllowToPost = False Then
-            MessageBox.Show("Please Inform Warehouse Admin", "Net Cargo Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringInformWarehouseAdmin, stringNetCargoCheckFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End If
     End Sub
@@ -591,7 +819,7 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+        If MsgBox(stringCheckQuit, MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, stringCloseApplication) = Windows.Forms.DialogResult.Yes Then
             Dim obj As New Search
             obj.Show()
             Me.Close()
@@ -623,7 +851,7 @@ Public Class SecurityEdit
                 cmd.Parameters.AddWithValue("@Update_Time", Date.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                 rd = cmd.ExecuteReader
                 con.Close()
-                MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringCanBePosted, stringUpdateComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 checkSecurityCheck = True
 
             Else
@@ -648,13 +876,13 @@ Public Class SecurityEdit
                         cmd.Parameters.AddWithValue("@Security_Check", checkSecurityCheck)
                         rd = cmd.ExecuteReader
                         con.Close()
-                        MessageBox.Show("ISO Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(stringISOCheckComplete, stringCheckComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
                         btnSecurityCheck.Enabled = False
                         dtpISO.Visible = True
                     ElseIf Not String.Compare(tbSecurityCheckContainerNo.Text, tbContainerNo.Text) = 0 Then
-                        MessageBox.Show("Please Check Container No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show(stringCheckContainerNo, stringCheckFail, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ElseIf Not String.Compare(tbSecurityCheckInternalSealNo.Text, tbInternalSealNo.Text) = 0 Then
-                        MessageBox.Show("Please Check Internal Seal No.", "Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show(stringCheckInternalSealNo, stringCheckFail, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ElseIf dtpISOCheck.Value < ISOTODValue Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
                         checkSecurityCheck = True
@@ -674,12 +902,12 @@ Public Class SecurityEdit
                         cmd.Parameters.AddWithValue("@Security_Check", checkSecurityCheck)
                         rd = cmd.ExecuteReader
                         con.Close()
-                        MessageBox.Show("Inform Shipping", "ISO Check Fail", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show(stringInformShippingAdmin, stringISOCheckFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
                         btnSecurityCheck.Enabled = False
                         dtpISO.Visible = True
                     End If
                 Catch ex As Exception
-                    MessageBox.Show(ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(ex.Message, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         Else
@@ -689,22 +917,22 @@ Public Class SecurityEdit
                 cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
                 con.Close()
-                MessageBox.Show("This Number Can Be Posted By Security Now", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringCanBePosted, stringUpdateComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             ElseIf cmbEsSealNo.Text = "YES" And tbSecurityCheckEsSealNo.Text = "" Then
-                MessageBox.Show("Please Check ES_SEAL_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringCheckESSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbSecurityCheckEsSealNo.Text <> tbEsSealNo.Text Then
                 tbSecurityCheckEsSealNo.Enabled = False
 
             ElseIf tbSecurityCheckContainerNo.Text <> tbContainerNo.Text Then
-                MessageBox.Show("Please Check CONTAINER_NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringCheckContainerNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbSecurityCheckLinerSealNo.Text <> tbLinerSealNo.Text Then
-                MessageBox.Show("Please Check LINER'S SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringCheckLinerSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbSecurityCheckInternalSealNo.Text <> tbInternalSealNo.Text Then
-                MessageBox.Show("Please Check INTERNAL SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringCheckInternalSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbSecurityCheckTemporarySealNo.Text <> tbTempSeal.Text Then
-                MessageBox.Show("Please Check TEMPORARY SEAL NO..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringCheckTemporarySealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbCheckCargoWeight.Text = " " Then
-                MessageBox.Show("Please enter Cargo Weight Field", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringFillCargoWeight, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 'Security Check Cargo Weight
                 Try
@@ -727,9 +955,9 @@ Public Class SecurityEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     If (checkCargoWeight) Then
-                        MessageBox.Show("Security Check Complete", "Check Action", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(stringSecurityCheckComplete, stringCheckComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Else
-                        MessageBox.Show("Stop CTNR /Inform Warehouse", "Fail Case", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show(stringStopCTNR, stringCheckFail, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                     checkSecurityCheck = True
                     btnSecurityCheck.Enabled = False
@@ -740,7 +968,7 @@ Public Class SecurityEdit
                     tbSecurityCheckLinerSealNo.Enabled = False
                     tbSecurityCheckTemporarySealNo.Enabled = False
                 Catch ex As Exception
-                    MessageBox.Show("Please only enter integer value in net cargo weight!", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(ex.Message, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End If

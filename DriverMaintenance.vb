@@ -1,12 +1,61 @@
 ﻿Imports System.Data.SqlClient
+Imports Truck_Out_Order.My.Resources
 
 Public Class DriverMaintenance
 
-    Dim selection As String
+    Dim selection,
+    stringFillRequired,
+    stringAuthentification,
+    stringComplete,
+    stringError,
+    stringExist As String
+
     Dim validationCheck As Boolean
     Dim newCheck As Boolean = True
     Private companyNameHeader As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceDriverMaintenanceFrench.btnCancel
+            btnNew.Text = ResourceDriverMaintenanceFrench.btnNew
+            btnUpdate.Text = ResourceDriverMaintenanceFrench.btnUpdate
+            lblActive.Text = ResourceDriverMaintenanceFrench.lblActive
+            lblDriverID.Text = ResourceDriverMaintenanceFrench.lblDriverID
+            lblDriverMaintenance.Text = ResourceDriverMaintenanceFrench.lblDriverMaintenance
+            lblDrivingLicenceValid.Text = ResourceDriverMaintenanceFrench.lblDrivingLicenceValid
+            lblDrivingLicense.Text = ResourceDriverMaintenanceFrench.lblDrivingLicense
+            lblFullName.Text = ResourceDriverMaintenanceFrench.lblFullName
+            lblIcNumber.Text = ResourceDriverMaintenanceFrench.lblICNumber
+            lblLegalWorker.Text = ResourceDriverMaintenanceFrench.lblLegalWorker
+            lblPmCode.Text = ResourceDriverMaintenanceFrench.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceDriverMaintenanceFrench.lblPMRegistrationPlate
+            stringAuthentification = ResourceDriverMaintenanceFrench.stringAuthentification
+            stringComplete = ResourceDriverMaintenanceFrench.stringComplete
+            stringError = ResourceDriverMaintenanceFrench.stringError
+            stringExist = ResourceDriverMaintenanceFrench.stringExist
+            stringFillRequired = ResourceDriverMaintenanceFrench.stringFillRequired
+        Else
+            btnCancel.Text = ResourceDriverMaintenance.btnCancel
+            btnNew.Text = ResourceDriverMaintenance.btnNew
+            btnUpdate.Text = ResourceDriverMaintenance.btnUpdate
+            lblActive.Text = ResourceDriverMaintenance.lblActive
+            lblDriverID.Text = ResourceDriverMaintenance.lblDriverID
+            lblDriverMaintenance.Text = ResourceDriverMaintenance.lblDriverMaintenance
+            lblDrivingLicenceValid.Text = ResourceDriverMaintenance.lblDrivingLicenceValid
+            lblDrivingLicense.Text = ResourceDriverMaintenance.lblDrivingLicense
+            lblFullName.Text = ResourceDriverMaintenance.lblFullName
+            lblIcNumber.Text = ResourceDriverMaintenance.lblICNumber
+            lblLegalWorker.Text = ResourceDriverMaintenance.lblLegalWorker
+            lblPmCode.Text = ResourceDriverMaintenance.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceDriverMaintenance.lblPMRegistrationPlate
+            stringAuthentification = ResourceDriverMaintenance.stringAuthentification
+            stringComplete = ResourceDriverMaintenance.stringComplete
+            stringError = ResourceDriverMaintenance.stringError
+            stringExist = ResourceDriverMaintenance.stringExist
+            stringFillRequired = ResourceDriverMaintenance.stringFillRequired
+        End If
+
+
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
@@ -57,7 +106,7 @@ Public Class DriverMaintenance
         con.Open()
 
         If tbIcNumber.Text = "" Or tbDriverID.Text = "" Or tbDrivingLicense.Text = "" Or tbLegalWorker.Text = "" Or tbPmCode.Text = "" Or tbRegistrationPlate.Text = "" Or cmbFullName.Text = "" Or dtpLicenseValidDate.Text = "" Then
-            MessageBox.Show("Please FIll The Required Field", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillRequired, stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If newCheck = True Then
                 cmd.CommandText = "update driver_info set ic_number = @ic_number, pm_code = @pm_code, pm_registration_plate = @pm_registration_plate, driver_id = @driver_id, driving_licence = @driving_licence, legal_worker = @legal_worker, driving_licence_validity = @driving_licence_validity, validationCheck = @validationCheck where full_name = @full_name"
@@ -75,7 +124,7 @@ Public Class DriverMaintenance
             cmd.Parameters.AddWithValue("@full_name", cmbFullName.Text)
             cmd.Parameters.AddWithValue("@full_name_tb", cmbFullName.Text)
             rd = cmd.ExecuteReader
-            MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)
         End If
 

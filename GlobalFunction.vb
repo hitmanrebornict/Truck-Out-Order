@@ -30,7 +30,12 @@ Public Class GlobalFunction
         End While
 
         con.Close()
-        lblWelcome.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        If My.Settings.languageSetting = "fr" Then
+            lblWelcome.Text = ("Bienvenu, " & My.Settings.fullName & vbNewLine & "Département de " & My.Settings.departmentName)
+        Else
+            lblWelcome.Text = ("Welcome, " & My.Settings.fullName & vbNewLine & "Department of " & My.Settings.departmentName)
+        End If
+
         lblCompanyNameHeader.Text = companyNameHeader
         Return ""
     End Function
@@ -756,6 +761,9 @@ Public Class GlobalFunction
         Return ""
     End Function
 
-
+    Public Shared Function ChangeFont(lbl As Label, size As Integer)
+        lbl.Font = New Font("Helvetica", size)
+        Return ""
+    End Function
 
 End Class

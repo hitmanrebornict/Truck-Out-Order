@@ -1,15 +1,187 @@
 ﻿Imports System.Data.SqlClient
-
+Imports Truck_Out_Order.My.Resources
 
 Public Class NewPage
 
     Dim checkTempSealNo As Boolean
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private companyNameHeader As String
-
+    Private stringUpdateFailure,
+    stringFillSCD,
+    stringFillCompany,
+    stringFillSCT,
+    stringFillInvoice,
+    stringFillProduct,
+    stringFillShippingLine,
+    stringFillHaulier,
+    stringFillLoadingPort,
+    stringFillContainerSize,
+    stringFillContainerNo,
+    stringFillDDB,
+    stringFillProductType,
+    stringFillISOTOD,
+    stringFillISOTankWeight,
+    stringFillInternalSealNo,
+    stringFillTempSealNo,
+    stringFillLinerSealNo,
+    stringPostCompleteAs,
+    stringComplete,
+    stringCargoWeightEx,
+    stringQuitChecking,
+    stringCloseApplication,
+    stringSaveCompleteAs As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+
+        'TableLayoutPanel3.Font = New Font("Microsoft Sans Serif", 1, FontStyle.Regular)
+
+        'For Each ctl As Control In Me.Controls
+        '    ctl.Font = New Font("Microsoft Sans Serif", 1, FontStyle.Regular)
+        'Next
+
+        'For Each ctl As Control In Me.Controls
+        '    If TypeOf ctl Is Label Then
+        '        Dim lbl As Label = DirectCast(ctl, Label)
+        '        MessageBox.Show(lbl.Name)
+        '        tbCargo.Text = tbCargo.Text & lbl.Name
+        '    End If
+        'Next
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceNewPageFrench.btnCancel
+            btnPost.Text = ResourceNewPageFrench.btnPost
+            btnSave.Text = ResourceNewPageFrench.btnSave
+            lblCompany.Text = ResourceNewPageFrench.lblCompany
+            lblContainerNo.Text = ResourceNewPageFrench.lblContainerNo
+            lblContainerSize.Text = ResourceNewPageFrench.lblContainerSize
+            lblDDB.Text = ResourceNewPageFrench.lblDDB
+            lblEsSealNo.Text = ResourceNewPageFrench.lblEsSealNo
+            lblFullName.Text = ResourceNewPageFrench.lblFullName
+            lblHaulier.Text = ResourceNewPageFrench.lblHaulier
+            lblInternalSealNo.Text = ResourceNewPageFrench.lblInternalSealNo
+            lblInvoice.Text = ResourceNewPageFrench.lblInvoice
+            lblISOTank.Text = ResourceNewPageFrench.lblISOTank
+            lblISOTankWeight.Text = ResourceNewPageFrench.lblISOTankWeight
+            lblISOTruckOutDate.Text = ResourceNewPageFrench.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceNewPageFrench.lblLinerSealNo
+            lblLoadingBay.Text = ResourceNewPageFrench.lblLoadingBay
+            lblLoadingPort.Text = ResourceNewPageFrench.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceNewPageFrench.lblNetCargoWeight
+            lblPortFullName.Text = ResourceNewPageFrench.lblPortFullName
+            lblProduct.Text = ResourceNewPageFrench.lblProduct
+            lblSCD.Text = ResourceNewPageFrench.lblSCD
+            lblSCT.Text = ResourceNewPageFrench.lblSCT
+            lblSendToCompany.Text = ResourceNewPageFrench.lblSendToCompany
+            lblShippingLine.Text = ResourceNewPageFrench.lblShippingLine
+            lblTemporarySealNo.Text = ResourceNewPageFrench.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceNewPageFrench.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceNewPageFrench.lblWarehouseLocation
+            stringUpdateFailure = ResourceNewPageFrench.stringUpdateFailure
+            stringFillSCD = ResourceNewPageFrench.stringFillSCD
+            stringFillCompany = ResourceNewPageFrench.stringFillCompany
+            stringFillSCT = ResourceNewPageFrench.stringFillSCT
+            stringFillInvoice = ResourceNewPageFrench.stringFillInvoice
+            stringFillProduct = ResourceNewPageFrench.stringFillProduct
+            stringFillShippingLine = ResourceNewPageFrench.stringFillShippingLine
+            stringFillHaulier = ResourceNewPageFrench.stringFillHaulier
+            stringFillLoadingPort = ResourceNewPageFrench.stringFillLoadingPort
+            stringFillContainerSize = ResourceNewPageFrench.stringFillContainerSize
+            stringFillContainerNo = ResourceNewPageFrench.stringFillContainerNo
+            stringFillDDB = ResourceNewPageFrench.stringFillDDB
+            stringFillProductType = ResourceNewPageFrench.stringFillProductType
+            stringFillISOTOD = ResourceNewPageFrench.stringFillISOTOD
+            stringFillISOTankWeight = ResourceNewPageFrench.stringFillISOTankWeight
+            stringFillInternalSealNo = ResourceNewPageFrench.stringFillInternalSealNo
+            stringFillTempSealNo = ResourceNewPageFrench.stringFillTempSealNo
+            stringFillLinerSealNo = ResourceNewPageFrench.stringFillLinerSealNo
+            stringPostCompleteAs = ResourceNewPageFrench.stringPostCompleteAs
+            stringComplete = ResourceNewPageFrench.stringComplete
+            stringCargoWeightEx = ResourceNewPageFrench.stringCargoWeightEx
+            stringQuitChecking = ResourceNewPageFrench.stringQuitChecking
+            stringCloseApplication = ResourceNewPageFrench.stringCloseApplication
+            stringSaveCompleteAs = ResourceNewPageFrench.stringSaveCompleteAs
+            GlobalFunction.ChangeFont(lblCompany, 10)
+            GlobalFunction.ChangeFont(lblContainerSize, 10)
+            GlobalFunction.ChangeFont(lblContainerNo, 10)
+            GlobalFunction.ChangeFont(lblDDB, 10)
+            GlobalFunction.ChangeFont(lblEsSealNo, 10)
+            GlobalFunction.ChangeFont(lblFullName, 10)
+            GlobalFunction.ChangeFont(lblHaulier, 10)
+            GlobalFunction.ChangeFont(lblInternalSealNo, 10)
+            GlobalFunction.ChangeFont(lblInvoice, 10)
+            GlobalFunction.ChangeFont(lblISOTank, 10)
+            GlobalFunction.ChangeFont(lblISOTruckOutDate, 10)
+            GlobalFunction.ChangeFont(lblLinerSealNo, 9)
+            GlobalFunction.ChangeFont(lblLoadingBay, 10)
+            GlobalFunction.ChangeFont(lblLoadingPort, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblISOTankWeight, 10)
+            GlobalFunction.ChangeFont(lblPortFullName, 10)
+            GlobalFunction.ChangeFont(lblProduct, 10)
+            GlobalFunction.ChangeFont(lblSCD, 10)
+            GlobalFunction.ChangeFont(lblSCT, 10)
+            GlobalFunction.ChangeFont(lblSendToCompany, 10)
+            GlobalFunction.ChangeFont(lblShippingLine, 10)
+            GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
+            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
+        Else
+            btnCancel.Text = ResourceNewPage.btnCancel
+            btnPost.Text = ResourceNewPage.btnPost
+            btnSave.Text = ResourceNewPage.btnSave
+            lblCompany.Text = ResourceNewPage.lblCompany
+            lblContainerNo.Text = ResourceNewPage.lblContainerNo
+            lblContainerSize.Text = ResourceNewPage.lblContainerSize
+            lblDDB.Text = ResourceNewPage.lblDDB
+            lblEsSealNo.Text = ResourceNewPage.lblEsSealNo
+            lblFullName.Text = ResourceNewPage.lblFullName
+            lblHaulier.Text = ResourceNewPage.lblHaulier
+            lblInternalSealNo.Text = ResourceNewPage.lblInternalSealNo
+            lblInvoice.Text = ResourceNewPage.lblInvoice
+            lblISOTank.Text = ResourceNewPage.lblISOTank
+            lblISOTankWeight.Text = ResourceNewPage.lblISOTankWeight
+            lblISOTruckOutDate.Text = ResourceNewPage.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceNewPage.lblLinerSealNo
+            lblLoadingBay.Text = ResourceNewPage.lblLoadingBay
+            lblLoadingPort.Text = ResourceNewPage.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceNewPage.lblNetCargoWeight
+            lblPortFullName.Text = ResourceNewPage.lblPortFullName
+            lblProduct.Text = ResourceNewPage.lblProduct
+            lblSCD.Text = ResourceNewPage.lblSCD
+            lblSCT.Text = ResourceNewPage.lblSCT
+            lblSendToCompany.Text = ResourceNewPage.lblSendToCompany
+            lblShippingLine.Text = ResourceNewPage.lblShippingLine
+            lblTemporarySealNo.Text = ResourceNewPage.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceNewPage.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceNewPage.lblWarehouseLocation
+            stringUpdateFailure = ResourceNewPage.stringUpdateFailure
+            stringFillSCD = ResourceNewPage.stringFillSCD
+            stringFillCompany = ResourceNewPage.stringFillCompany
+            stringFillSCT = ResourceNewPage.stringFillSCT
+            stringFillInvoice = ResourceNewPage.stringFillInvoice
+            stringFillProduct = ResourceNewPage.stringFillProduct
+            stringFillShippingLine = ResourceNewPage.stringFillShippingLine
+            stringFillHaulier = ResourceNewPage.stringFillHaulier
+            stringFillLoadingPort = ResourceNewPage.stringFillLoadingPort
+            stringFillContainerSize = ResourceNewPage.stringFillContainerSize
+            stringFillContainerNo = ResourceNewPage.stringFillContainerNo
+            stringFillDDB = ResourceNewPage.stringFillDDB
+            stringFillProductType = ResourceNewPage.stringFillProductType
+            stringFillISOTOD = ResourceNewPage.stringFillISOTOD
+            stringFillISOTankWeight = ResourceNewPage.stringFillISOTankWeight
+            stringFillInternalSealNo = ResourceNewPage.stringFillInternalSealNo
+            stringFillTempSealNo = ResourceNewPage.stringFillTempSealNo
+            stringFillLinerSealNo = ResourceNewPage.stringFillLinerSealNo
+            stringPostCompleteAs = ResourceNewPage.stringPostCompleteAs
+            stringComplete = ResourceNewPage.stringComplete
+            stringCargoWeightEx = ResourceNewPage.stringCargoWeightEx
+            stringQuitChecking = ResourceNewPage.stringQuitChecking
+            stringCloseApplication = ResourceNewPage.stringCloseApplication
+            stringSaveCompleteAs = ResourceNewPage.stringSaveCompleteAs
+        End If
+
+
         lblTooNumber.Text = My.Settings.newTOONumber
         tbTemporarySealNo.Enabled = False
         cmbCheckTempSealNo.DropDownStyle = ComboBoxStyle.DropDownList
@@ -41,35 +213,35 @@ Public Class NewPage
         Dim check As String
 
         If dtpSCD.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPMENT CLOSING DATE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillSCD, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbCompany.Text = "" Then
-            MessageBox.Show("Please Fill Out The COMPANY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillCompany, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf dtpSCT.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPPING CLOSING TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillSCT, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbInvoice.Text = "" Then
-            MessageBox.Show("Please Fill Out The INVOICE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillInvoice, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbProduct.Text = "" Then
-            MessageBox.Show("Please Fill Out The PRODUCT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillProduct, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbShippingLine.Text = "" Then
-            MessageBox.Show("Please Fill Out The SHIPPING_LINE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillShippingLine, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbHaulier.Text = "" Then
-            MessageBox.Show("Please Fill Out The HAULIER Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillHaulier, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbLoadingPort.Text = "" Then
-            MessageBox.Show("Please Fill Out The LOADING_PORT Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillLoadingPort, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbContainerSize.Text = "" Then
-            MessageBox.Show("Please Fill Out The Container_Size Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillContainerSize, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbContainerNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The CONTAINER NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillContainerNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbDDB.Text = "" Then
-            MessageBox.Show("Please Fill Out The DDB Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillDDB, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbProductType.Text = "" Then
-            MessageBox.Show("Please Fill Out The PRODUCT TYPE Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillProductType, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If cbISO.Checked Then
                 If dtpISO.Text = "" Then
-                    MessageBox.Show("Please Fill Out The Truck Out Date Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillISOTOD, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf tbISOTankWeightLower.Text = "" Then
-                    MessageBox.Show("Please Fill Out The ISO Tank Weight Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillISOTankWeight, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,DDB,Product_Type,Check_ISO_Tank,ISO_Truck_Out_Date,ISO_Tank_Weight_Lower,ISO_Tank_Weight_Upper,Internal_Seal_No,Shipping_Post,Shipping_Post_User,Shipping_POST_Time) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "','" + cmbDDB.Text + "','" + cmbProductType.Text + "',@Check_ISO_Tank,@ISO_Truck_Out_Date,@ISO_Tank_Weight_Lower,@ISO_Tank_Weight_Upper, @Internal_Seal_No,1,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')", con)
                     ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
@@ -82,13 +254,13 @@ Public Class NewPage
                 End If
             Else
                 If tbInternalSealNo.Text = "" Then
-                    MessageBox.Show("Please Fill Out The INTERNAL SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillInternalSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf cmbCheckTempSealNo.Text = "" Then
                     MessageBox.Show("Please Fill Out The TEMPORARY SEAL NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf cmbCheckTempSealNo.Text = "YES" And tbContainerNo.Text = "" Then
                     MessageBox.Show("Please Fill Out The Temorary Seal No Field", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf tbLinerSealNo.Text = "" Then
-                    MessageBox.Show("Please Fill Out The Liner Seal No Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillLinerSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     cmd = New SqlCommand("INSERT INTO Shipping (ID,ORIGIN,SHIPMENT_CLOSING_DATE,SHIPMENT_CLOSING_TIME,INVOICE,PRODUCT,SHIPPING_LINE,Container_Size,HAULIER,LOADING_PORT,CONTAINER_NO,LINER_SEA_NO,INTERNAL_SEAL_NO,TEMPORARY_SEAL_NO,Shipping_Post,Shipping_Post_User,Shipping_POST_Time,DDB,checkTempSealNo,Product_Type,Net_Cargo_Weight,Check_ISO_Tank) values (@TruckOutNumber ,'" + cmbCompany.Text + "','" + dtpSCD.Value.ToString("yyyy-MM-dd") + "','" + dtpSCT.Value.ToString("HH:mm:ss") + "','" + tbInvoice.Text + "','" + tbProduct.Text + "','" + tbShippingLine.Text + "','" + cmbContainerSize.Text + "','" + tbHaulier.Text + "','" + cmbLoadingPort.Text + "','" + GlobalFunction.TrimSpace(tbContainerNo.Text) + "','" + GlobalFunction.TrimSpace(tbLinerSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbInternalSealNo.Text) + "','" + GlobalFunction.TrimSpace(tbTemporarySealNo.Text) + "',1,'" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + cmbDDB.Text + "', @checkTempSealNo,'" + cmbProductType.Text + "','" + tbCargo.Text + "',@Check_ISO_Tank)", con)
                     ''" + My.Settings.username + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',
@@ -101,7 +273,7 @@ Public Class NewPage
             ra = cmd.ExecuteNonQuery
             'btnCancel.PerformClick()
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
-            MessageBox.Show("Post Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringPostCompleteAs & " " & +My.Settings.newTOONumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
         con.Close()
@@ -199,10 +371,10 @@ Public Class NewPage
         Try
             ra = cmd.ExecuteNonQuery
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
-            MessageBox.Show("Save Complete as " + My.Settings.newTOONumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringSaveCompleteAs & " " & My.Settings.newTOONumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             con.Close()
         Catch ex As Exception
-            MessageBox.Show("Please Only Enter Integer In Net Cargo Weight", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCargoWeightEx, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         'btnCancel.PerformClick()
@@ -211,7 +383,7 @@ Public Class NewPage
 
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+        If MsgBox(stringQuitChecking, MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, stringCloseApplication) = Windows.Forms.DialogResult.Yes Then
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
         End If
     End Sub
@@ -236,6 +408,7 @@ Public Class NewPage
             cmbCheckTempSealNo.Enabled = True
             tbLinerSealNo.Enabled = True
             tbCargo.Enabled = True
+
         End If
     End Sub
 

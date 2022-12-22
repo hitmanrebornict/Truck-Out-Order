@@ -30,7 +30,7 @@ Partial Class Admin
         Me.lblEdit = New System.Windows.Forms.Label()
         Me.lblDriverSetting = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblLogout = New System.Windows.Forms.Label()
         Me.lblNew = New System.Windows.Forms.Label()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.pnlNew = New System.Windows.Forms.Panel()
@@ -52,6 +52,8 @@ Partial Class Admin
         Me.lblCompany = New System.Windows.Forms.Label()
         Me.pbCompany = New System.Windows.Forms.PictureBox()
         Me.lblCompanyHeader = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlNew.SuspendLayout()
         CType(Me.pbNew, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlReport.SuspendLayout()
@@ -67,6 +69,8 @@ Partial Class Admin
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCompany.SuspendLayout()
         CType(Me.pbCompany, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel1.SuspendLayout()
+        Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblTooSystem
@@ -74,9 +78,9 @@ Partial Class Admin
         Me.lblTooSystem.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTooSystem.BackColor = System.Drawing.Color.Transparent
         Me.lblTooSystem.Font = New System.Drawing.Font("Times New Roman", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTooSystem.Location = New System.Drawing.Point(0, 139)
+        Me.lblTooSystem.Location = New System.Drawing.Point(3, 4)
         Me.lblTooSystem.Name = "lblTooSystem"
-        Me.lblTooSystem.Size = New System.Drawing.Size(1262, 109)
+        Me.lblTooSystem.Size = New System.Drawing.Size(1259, 109)
         Me.lblTooSystem.TabIndex = 3
         Me.lblTooSystem.Text = "Truck Out Order System"
         Me.lblTooSystem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -91,7 +95,7 @@ Partial Class Admin
         Me.lblUserSetting.Size = New System.Drawing.Size(162, 61)
         Me.lblUserSetting.TabIndex = 13
         Me.lblUserSetting.Text = "USER " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SETTING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.lblUserSetting.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblUserSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblEdit
         '
@@ -122,22 +126,22 @@ Partial Class Admin
         Me.Button1.BackColor = System.Drawing.Color.Azure
         Me.Button1.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.icons8_logout_rounded_down_100
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.Location = New System.Drawing.Point(1117, 5)
+        Me.Button1.Location = New System.Drawing.Point(1086, 3)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(121, 92)
         Me.Button1.TabIndex = 18
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'Label8
+        'lblLogout
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(1138, 100)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(82, 20)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "LOGOUT"
+        Me.lblLogout.AutoSize = True
+        Me.lblLogout.BackColor = System.Drawing.Color.Transparent
+        Me.lblLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLogout.Location = New System.Drawing.Point(3, 0)
+        Me.lblLogout.Name = "lblLogout"
+        Me.lblLogout.Size = New System.Drawing.Size(82, 20)
+        Me.lblLogout.TabIndex = 19
+        Me.lblLogout.Text = "LOGOUT"
         '
         'lblNew
         '
@@ -368,6 +372,37 @@ Partial Class Admin
         Me.lblCompanyHeader.TabIndex = 27
         Me.lblCompanyHeader.Text = "lblCompanyHeader"
         '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.lblTooSystem, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 169)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1265, 117)
+        Me.TableLayoutPanel1.TabIndex = 28
+        '
+        'TableLayoutPanel2
+        '
+        Me.TableLayoutPanel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Transparent
+        Me.TableLayoutPanel2.ColumnCount = 1
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel2.Controls.Add(Me.lblLogout, 0, 0)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(1086, 101)
+        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
+        Me.TableLayoutPanel2.RowCount = 1
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(200, 33)
+        Me.TableLayoutPanel2.TabIndex = 29
+        '
         'Admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -376,17 +411,17 @@ Partial Class Admin
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.TableLayoutPanel2)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.lblCompanyHeader)
         Me.Controls.Add(Me.pnlCompany)
         Me.Controls.Add(Me.pbGCB)
         Me.Controls.Add(Me.pnlDriverSetting)
-        Me.Controls.Add(Me.lblTooSystem)
         Me.Controls.Add(Me.pnlFrieldSetting)
         Me.Controls.Add(Me.pnlUser)
         Me.Controls.Add(Me.pnlReport)
         Me.Controls.Add(Me.pnlEdit)
         Me.Controls.Add(Me.lblUserDetails)
-        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.pnlNew)
         Me.DoubleBuffered = True
@@ -412,6 +447,9 @@ Partial Class Admin
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCompany.ResumeLayout(False)
         CType(Me.pbCompany, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.TableLayoutPanel2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -424,7 +462,7 @@ Partial Class Admin
     Friend WithEvents lblEdit As Label
     Friend WithEvents lblDriverSetting As Label
     Public WithEvents Button1 As Button
-    Friend WithEvents Label8 As Label
+    Friend WithEvents lblLogout As Label
     Friend WithEvents lblNew As Label
     Friend WithEvents lblUserDetails As Label
     Friend WithEvents pnlNew As Panel
@@ -446,4 +484,6 @@ Partial Class Admin
     Friend WithEvents pbCompany As PictureBox
     Friend WithEvents lblCompanyHeader As Label
     Friend WithEvents lblFieldSetting As Label
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
 End Class

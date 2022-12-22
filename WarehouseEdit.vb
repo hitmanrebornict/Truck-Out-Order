@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports Truck_Out_Order.My.Resources
 
 Public Class WarehouseEdit
 
@@ -14,10 +15,171 @@ Public Class WarehouseEdit
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
     Dim rd As SqlDataReader
-    Private companyNameHeader As String
+    Private companyNameHeader,
+           stringUpdateFailure,
+           stringFillWarehouseLocation,
+           stringFillLoadingBay,
+           stringFillSendToCompany,
+           stringFillLoadingCompletedTime,
+           stringFillReadyTruckOutTime,
+           stringFillESSealNo,
+           stringSaveComplete,
+           stringComplete,
+           stringPosted,
+           stringSaveCompleteAs,
+           stringCheckCheckpoint,
+           stringPostComplete,
+           stringDataPosted,
+           stringCheckLinerSealNo,
+           stringCheckInternalSealNo,
+           stringFourDigit,
+           stringCheckQuit,
+           stringCloseApplication As String
 
     ReadOnly TimeNow As String = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceWarehouseEditFrench.btnCancel
+            btnPost.Text = ResourceWarehouseEditFrench.btnPost
+            btnSave.Text = ResourceWarehouseEditFrench.btnSave
+            btnPrint.Text = ResourceWarehouseEditFrench.btnPrint
+            lblCompany.Text = ResourceWarehouseEditFrench.lblCompnay
+            lblContainerNo.Text = ResourceWarehouseEditFrench.lblContainerNo
+            lblContainerSize.Text = ResourceWarehouseEditFrench.lblContainerSize
+            lblDDB.Text = ResourceWarehouseEditFrench.lblDDB
+            lblEsSealNo.Text = ResourceWarehouseEditFrench.lblEsSealNo
+            lblFullName.Text = ResourceWarehouseEditFrench.lblFullName
+            lblHaulier.Text = ResourceWarehouseEditFrench.lblHaulier
+            lblInternalSealNo.Text = ResourceWarehouseEditFrench.lblInternalSealNo
+            lblInvoice.Text = ResourceWarehouseEditFrench.lblInvoice
+            lblLinerSealNo.Text = ResourceWarehouseEditFrench.lblLinerSealNo
+            lblLoadingBay.Text = ResourceWarehouseEditFrench.lblLoadingBay
+            lblLoadingPort.Text = ResourceWarehouseEditFrench.lblLoadingPort
+            lblPortFullName.Text = ResourceWarehouseEditFrench.lblPortFullName
+            lblProduct.Text = ResourceWarehouseEditFrench.lblProduct
+            lblSCD.Text = ResourceWarehouseEditFrench.lblSCD
+            lblSCT.Text = ResourceWarehouseEditFrench.lblSCT
+            lblSendToCompany.Text = ResourceWarehouseEditFrench.lblSendToCompany
+            lblShippingLine.Text = ResourceWarehouseEditFrench.lblShippingLine
+            lblTemporarySealNo.Text = ResourceWarehouseEditFrench.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceWarehouseEditFrench.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceWarehouseEditFrench.lblWarehouseLocation
+            lblLCD.Text = ResourceWarehouseEditFrench.lblLCD
+            lblLCT.Text = ResourceWarehouseEditFrench.lblLCT
+            lblRTD.Text = ResourceWarehouseEditFrench.lblRTD
+            lblRTT.Text = ResourceWarehouseEditFrench.lblRTT
+            lblShippingPost.Text = ResourceWarehouseEditFrench.lblShippingPost
+            lblWarehousePost.Text = ResourceWarehouseEditFrench.lblWarehousePost
+            lblSecurityPost.Text = ResourceWarehouseEditFrench.lblSecurityPost
+            lblNetCargoWeight.Text = ResourceWarehouseEditFrench.lblNetCargoWeight
+            lblWarehouseChecking.Text = ResourceWarehouseEditFrench.lblWarehouseChecking
+            btnCheck.Text = ResourceWarehouseEditFrench.btnCheck
+            stringUpdateFailure = ResourceWarehouseEditFrench.stringUpdateFailure
+            stringFillWarehouseLocation = ResourceWarehouseEditFrench.stringFillWarehouseLocation
+            stringFillLoadingBay = ResourceWarehouseEditFrench.stringFillLoadingBay
+            stringFillSendToCompany = ResourceWarehouseEditFrench.stringFillSendToCompany
+            stringFillLoadingCompletedTime = ResourceWarehouseEditFrench.stringFillLoadingCompletedTime
+            stringFillReadyTruckOutTime = ResourceWarehouseEditFrench.stringFillReadyTruckOutTime
+            stringFillESSealNo = ResourceWarehouseEditFrench.stringFillESSealNo
+            stringSaveComplete = ResourceWarehouseEditFrench.stringSaveComplete
+            stringComplete = ResourceWarehouseEditFrench.stringComplete
+            stringPosted = ResourceWarehouseEditFrench.stringPosted
+            stringSaveCompleteAs = ResourceWarehouseEditFrench.stringSaveCompleteAs
+            stringCheckCheckpoint = ResourceWarehouseEditFrench.stringCheckCheckpoint
+            stringPostComplete = ResourceWarehouseEditFrench.stringPostComplete
+            stringDataPosted = ResourceWarehouseEditFrench.stringDataPosted
+            stringCheckLinerSealNo = ResourceWarehouseEditFrench.stringCheckLinerSealNo
+            stringCheckInternalSealNo = ResourceWarehouseEditFrench.stringCheckInternalSealNo
+            stringFourDigit = ResourceWarehouseEditFrench.stringFourDigit
+            stringCheckQuit = ResourceWarehouseEditFrench.stringCheckQuit
+            stringCloseApplication = ResourceWarehouseEditFrench.stringCloseApplication
+            GlobalFunction.ChangeFont(lblCompany, 10)
+            GlobalFunction.ChangeFont(lblContainerSize, 10)
+            GlobalFunction.ChangeFont(lblContainerNo, 10)
+            GlobalFunction.ChangeFont(lblDDB, 10)
+            GlobalFunction.ChangeFont(lblEsSealNo, 10)
+            GlobalFunction.ChangeFont(lblFullName, 10)
+            GlobalFunction.ChangeFont(lblHaulier, 10)
+            GlobalFunction.ChangeFont(lblInternalSealNo, 10)
+            GlobalFunction.ChangeFont(lblInvoice, 10)
+            GlobalFunction.ChangeFont(lblLinerSealNo, 9)
+            GlobalFunction.ChangeFont(lblLoadingBay, 10)
+            GlobalFunction.ChangeFont(lblLoadingPort, 10)
+            GlobalFunction.ChangeFont(lblPortFullName, 10)
+            GlobalFunction.ChangeFont(lblProduct, 10)
+            GlobalFunction.ChangeFont(lblSCD, 10)
+            GlobalFunction.ChangeFont(lblSCT, 10)
+            GlobalFunction.ChangeFont(lblSendToCompany, 10)
+            GlobalFunction.ChangeFont(lblShippingLine, 10)
+            GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
+            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
+            GlobalFunction.ChangeFont(lblLCD, 10)
+            GlobalFunction.ChangeFont(lblLCT, 10)
+            GlobalFunction.ChangeFont(lblRTD, 10)
+            GlobalFunction.ChangeFont(lblRTT, 10)
+            GlobalFunction.ChangeFont(lblShippingPost, 10)
+            GlobalFunction.ChangeFont(lblWarehousePost, 10)
+            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblWarehouseChecking, 10)
+        Else
+            btnCancel.Text = ResourceWarehouseEdit.btnCancel
+            btnPost.Text = ResourceWarehouseEdit.btnPost
+            btnSave.Text = ResourceWarehouseEdit.btnSave
+            btnPrint.Text = ResourceWarehouseEdit.btnPrint
+            lblCompany.Text = ResourceWarehouseEdit.lblCompnay
+            lblContainerNo.Text = ResourceWarehouseEdit.lblContainerNo
+            lblContainerSize.Text = ResourceWarehouseEdit.lblContainerSize
+            lblDDB.Text = ResourceWarehouseEdit.lblDDB
+            lblEsSealNo.Text = ResourceWarehouseEdit.lblEsSealNo
+            lblFullName.Text = ResourceWarehouseEdit.lblFullName
+            lblHaulier.Text = ResourceWarehouseEdit.lblHaulier
+            lblInternalSealNo.Text = ResourceWarehouseEdit.lblInternalSealNo
+            lblInvoice.Text = ResourceWarehouseEdit.lblInvoice
+            lblLinerSealNo.Text = ResourceWarehouseEdit.lblLinerSealNo
+            lblLoadingBay.Text = ResourceWarehouseEdit.lblLoadingBay
+            lblLoadingPort.Text = ResourceWarehouseEdit.lblLoadingPort
+            lblPortFullName.Text = ResourceWarehouseEdit.lblPortFullName
+            lblProduct.Text = ResourceWarehouseEdit.lblProduct
+            lblSCD.Text = ResourceWarehouseEdit.lblSCD
+            lblSCT.Text = ResourceWarehouseEdit.lblSCT
+            lblSendToCompany.Text = ResourceWarehouseEdit.lblSendToCompany
+            lblShippingLine.Text = ResourceWarehouseEdit.lblShippingLine
+            lblTemporarySealNo.Text = ResourceWarehouseEdit.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceWarehouseEdit.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceWarehouseEdit.lblWarehouseLocation
+            lblLCD.Text = ResourceWarehouseEdit.lblLCD
+            lblLCT.Text = ResourceWarehouseEdit.lblLCT
+            lblRTD.Text = ResourceWarehouseEdit.lblRTD
+            lblRTT.Text = ResourceWarehouseEdit.lblRTT
+            lblShippingPost.Text = ResourceWarehouseEdit.lblShippingPost
+            lblWarehousePost.Text = ResourceWarehouseEdit.lblWarehousePost
+            lblSecurityPost.Text = ResourceWarehouseEdit.lblSecurityPost
+            lblNetCargoWeight.Text = ResourceWarehouseEdit.lblNetCargoWeight
+            lblWarehouseChecking.Text = ResourceWarehouseEdit.lblWarehouseChecking
+            btnCheck.Text = ResourceWarehouseEdit.btnCheck
+            stringUpdateFailure = ResourceWarehouseEdit.stringUpdateFailure
+            stringFillWarehouseLocation = ResourceWarehouseEdit.stringFillWarehouseLocation
+            stringFillLoadingBay = ResourceWarehouseEdit.stringFillLoadingBay
+            stringFillSendToCompany = ResourceWarehouseEdit.stringFillSendToCompany
+            stringFillLoadingCompletedTime = ResourceWarehouseEdit.stringFillLoadingCompletedTime
+            stringFillReadyTruckOutTime = ResourceWarehouseEdit.stringFillReadyTruckOutTime
+            stringFillESSealNo = ResourceWarehouseEdit.stringFillESSealNo
+            stringSaveComplete = ResourceWarehouseEdit.stringSaveComplete
+            stringComplete = ResourceWarehouseEdit.stringComplete
+            stringPosted = ResourceWarehouseEdit.stringPosted
+            stringSaveCompleteAs = ResourceWarehouseEdit.stringSaveCompleteAs
+            stringCheckCheckpoint = ResourceWarehouseEdit.stringCheckCheckpoint
+            stringPostComplete = ResourceWarehouseEdit.stringPostComplete
+            stringDataPosted = ResourceWarehouseEdit.stringDataPosted
+            stringCheckLinerSealNo = ResourceWarehouseEdit.stringCheckLinerSealNo
+            stringCheckInternalSealNo = ResourceWarehouseEdit.stringCheckInternalSealNo
+            stringFourDigit = ResourceWarehouseEdit.stringFourDigit
+            stringCheckQuit = ResourceWarehouseEdit.stringCheckQuit
+            stringCloseApplication = ResourceWarehouseEdit.stringCloseApplication
+        End If
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         Dim con As New SqlConnection
@@ -310,17 +472,17 @@ Public Class WarehouseEdit
         If My.Settings.role_id = 3 Or ((My.Settings.role_id = 3 Or My.Settings.role_id = 4) And My.Settings.adminCheck = True) Then
             If checkWarehousePost = True And My.Settings.adminCheck = True Then
                 If cmbWarehouseLocation.Text = "" Then
-                    MessageBox.Show("Please Fill Out The WAREHOUSE_LOCATION Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillWarehouseLocation, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf tbLoadingBay.Text = "" Then
-                    MessageBox.Show("Please Fill Out The LOADING_BAY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillLoadingBay, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf tbSendToCompany.Text = "" Then
-                    MessageBox.Show("Please Fill Out The SEND TO COMPANY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillSendToCompany, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf dtpLCT.Text = "" Then
-                    MessageBox.Show("Please Fill Out The LOADING_COMPLETED_TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillLoadingCompletedTime, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf dtpRTT.Text = "" Then
-                    MessageBox.Show("Please Fill Out The READY_TRUCK_OUT_TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillReadyTruckOutTime, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ElseIf cmbEsSealNo.Text = "YES" And tbEsSealNo.Text = "" Then
-                    MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringFillESSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
 
                     cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "'  where  Shipping_ID= @TruckOutNumber"
@@ -333,12 +495,12 @@ Public Class WarehouseEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     GlobalFunction.backToPage(Search, Me)
-                    MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show(stringSaveComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
                 End If
             ElseIf checkWarehousePost = True And My.Settings.adminCheck = False Then
-                MessageBox.Show("This number is posted, Please contact admin to modify", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringPosted, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 con.Close()
             Else
                 cmd.CommandText = "select shipping_id from warehouse where shipping_id = @shipping_id"
@@ -360,7 +522,7 @@ Public Class WarehouseEdit
                     rd = cmd.ExecuteReader
                     con.Close()
                     GlobalFunction.backToPage(Search, Me)
-                    MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show(stringSaveComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
                 Else
@@ -369,15 +531,15 @@ Public Class WarehouseEdit
 
                     cmd = New SqlCommand("INSERT INTO Warehouse (Shipping_ID,WAREHOUSE_LOCATION,LOADING_BAY,ES_SEAL_NO,Update_Time,Update_User,LOADING_COMPLETED_TIME,LOADING_COMPLETED_DATE,READY_TRUCK_OUT_TIME,READY_TRUCK_OUT_DATE,COMPANY)values (@TruckOutNumber,'" + cmbWarehouseLocation.Text + "','" + tbLoadingBay.Text + "','" + tbEsSealNo.Text + "','" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + My.Settings.username + "','" + dtpLCT.Value.ToString("HH:mm:ss") + "','" + dtpLCD.Value.ToString("yyyy-MM-dd") + "','" + dtpRTT.Value.ToString("HH:mm:ss") + "','" + dtpRTD.Value.ToString("yyyy-MM-dd") + "','" + tbSendToCompany.Text + "')", con)
                     cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                        rd = cmd.ExecuteReader
-                        con.Close()
-                        con.Open()
-                        cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
-                        cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
-                        rd = cmd.ExecuteReader
-                        con.Close()
-                        GlobalFunction.backToPage(Search, Me)
-                        MessageBox.Show("Save Complete as " + Me.TruckOutNumber.ToString, "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    rd = cmd.ExecuteReader
+                    con.Close()
+                    con.Open()
+                    cmd.CommandText = "Update Shipping set COMPANY = '" + tbSendToCompany.Text + "', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID=@TruckOutNumber2 "
+                    cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+                    rd = cmd.ExecuteReader
+                    con.Close()
+                    GlobalFunction.backToPage(Search, Me)
+                    MessageBox.Show(stringSaveCompleteAs & " " & Me.TruckOutNumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
                 End If
@@ -395,19 +557,19 @@ Public Class WarehouseEdit
         con.Open()
 
         If checkWarehouseCheckpoint = False Then
-            MessageBox.Show("Please Check The Checkpoint First", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckCheckpoint, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbWarehouseLocation.Text = "" Then
-            MessageBox.Show("Please Fill Out The WAREHOUSE_LOCATION Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillWarehouseLocation, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbLoadingBay.Text = "" Then
-            MessageBox.Show("Please Fill Out The LOADING_BAY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillLoadingBay, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbSendToCompany.Text = "" Then
-            MessageBox.Show("Please Fill Out The SEND TO COMPANY Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillSendToCompany, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf dtpLCT.Text = "" Then
-            MessageBox.Show("Please Fill Out The LOADING_COMPLETED_TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillLoadingCompletedTime, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf dtpRTT.Text = "" Then
-            MessageBox.Show("Please Fill Out The READY_TRUCK_OUT_TIME Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillReadyTruckOutTime, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf cmbEsSealNo.Text = "YES" And tbEsSealNo.Text = "" Then
-            MessageBox.Show("Please Fill Out The ES_SEAL_NO Field..", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillESSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If checkWarehousePost = "" Then
                 cmd.CommandText = "update Shipping set Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Post = 1 where ID= @TruckOutNumber6"
@@ -415,10 +577,10 @@ Public Class WarehouseEdit
                 rd = cmd.ExecuteReader
                 con.Close()
                 GlobalFunction.backToPage(Search, Me)
-                MessageBox.Show("Post Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(stringPostComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             Else
-                MessageBox.Show("Data Already Post. Please use 'Save' button to modify.", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringDataPosted, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End If
         End If
@@ -499,9 +661,9 @@ Public Class WarehouseEdit
         '    cbTemporarySealNo.Text = "NO"
         'End If
         If tbWarehouseCheckLinerSealNo.Text <> Microsoft.VisualBasic.Right(tbLinerSealNo.Text, 4) Then
-            MessageBox.Show("Please Check LINER'S SEAL NO.." + Environment.NewLine + "The number should be last 4 digit only.", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckLinerSealNo + Environment.NewLine + stringFourDigit, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf tbWarehouseCheckInternalSealNo.Text <> Microsoft.VisualBasic.Right(tbInternalSealNo.Text, 4) Then
-            MessageBox.Show("Please Check INTERNAL SEAL NO.." + Environment.NewLine + "The number should be last 4 digit only.", "Update Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringCheckInternalSealNo + Environment.NewLine + stringFourDigit, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf checkWarehouseCheckpoint = False Then
             cmd.CommandText = "select shipping_id from warehouse where shipping_id = @shipping_id"
             cmd.Parameters.AddWithValue("@shipping_id", Me.TruckOutNumber)
@@ -510,16 +672,16 @@ Public Class WarehouseEdit
 
             'If rd.HasRows() Then
             con.Close()
-                con.Open()
+            con.Open()
             cmd.CommandText = "Update warehouse set Warehouse_Checkpoint_Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Checkpoint_Update_User = '" + My.Settings.username + "',Container_No_Check = 1, Es_Seal_No_Check = 1,Liner_Seal_No_Check = '" + tbWarehouseCheckLinerSealNo.Text + "', Internal_Seal_No_Check = '" + tbWarehouseCheckInternalSealNo.Text + "',Temporary_Seal_No_Check= 1,warehouse_Checkpoint_Check = 1 Where Shipping_ID = @TruckOutNumber"
             cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-                rd = cmd.ExecuteReader
-                MessageBox.Show("Save Complete", "Complete ", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                cbContainerNo.Enabled = False
-                cbEsSealNo.Enabled = False
-                cbTemporarySealNo.Enabled = False
-                tbWarehouseCheckInternalSealNo.Enabled = False
-                tbWarehouseCheckLinerSealNo.Enabled = False
+            rd = cmd.ExecuteReader
+            MessageBox.Show(stringSaveComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            cbContainerNo.Enabled = False
+            cbEsSealNo.Enabled = False
+            cbTemporarySealNo.Enabled = False
+            tbWarehouseCheckInternalSealNo.Enabled = False
+            tbWarehouseCheckLinerSealNo.Enabled = False
             btnCheck.Visible = False
             checkWarehouseCheckpoint = True
             'Else
@@ -547,7 +709,7 @@ Public Class WarehouseEdit
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        If MsgBox("Are you sure you want to quit?", MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, "Close application") = Windows.Forms.DialogResult.Yes Then
+        If MsgBox(stringCheckQuit, MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2, stringCloseApplication) = Windows.Forms.DialogResult.Yes Then
             GlobalFunction.backToPage(Search, Me)
         End If
     End Sub

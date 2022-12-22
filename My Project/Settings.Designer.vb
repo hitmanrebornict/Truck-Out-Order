@@ -148,6 +148,18 @@ Namespace My
                 Return CType(Me("connstr"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("fr")>  _
+        Public Property languageSetting() As String
+            Get
+                Return CType(Me("languageSetting"),String)
+            End Get
+            Set
+                Me("languageSetting") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

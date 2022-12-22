@@ -1,5 +1,9 @@
 ﻿
 Imports System.Data.SqlClient
+Imports System.Globalization
+
+Imports System.Threading
+Imports Truck_Out_Order.My.Resources
 
 Public Class Login
 
@@ -12,6 +16,14 @@ Public Class Login
     '    End If
     '    Return MyBase.ProcessCmdKey(msg, keyData)
     'End Function
+
+    Dim stringRequired,
+        stringAuthentificationError,
+        stringUserDisabled,
+    stringDoNotMatch As String
+
+
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -21,28 +33,10 @@ Public Class Login
         Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        'con.Open()
-        'cmd.CommandText = "SELECT CompanyName From Company WHERE companyID = 1"
-        'rd = cmd.ExecuteReader
-        ''If rd.HasRows() Then
-        ''    My.Settings.companyNameHeader = rd.Item("CompanyName")
-        ''Else
-        ''    My.Settings.companyNameHeader = "Guan Chong Cocoa Manufacturer Sdn Bhd"
-        ''End If
 
-        'While rd.Read()
-        '    If IsDBNull(rd.Item("CompanyName")) Then
-        '        My.Settings.companyNameHeader = rd.Item("CompanyName")
-        '    Else
-        '        My.Settings.companyNameHeader = "Guan Chong Cocoa Manufacturer Sdn Bhd"
-        '    End If
-
-        'End While
-
-        'con.Close()
         con.Open()
         If tbUsername.Text = "" Or tbPassword.Text = "" Then
-            MessageBox.Show("Please complete the required fields..", "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringRequired, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Else
             'cmd.CommandText = "SELECT Role_id,Username,Password,validationCheck from Login where Username = '" + tbUsername.Text + "' and Password ='" + tbPassword.Text + "'"
@@ -66,7 +60,7 @@ Public Class Login
                 Dim User As New NormalUserPage
 
                 If validationCheck = False Then
-                    MessageBox.Show("User is disabled", "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringUserDisabled, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     Select Case My.Settings.adminCheck
                         Case True
@@ -82,7 +76,7 @@ Public Class Login
                 tbUsername.Focus()
 
             Else
-                MessageBox.Show("Username and Password do not match..", "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(stringDoNotMatch, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 tbUsername.Text = ""
                 tbPassword.Text = ""
             End If
@@ -90,16 +84,29 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        lblTooSystem.Left = (Me.Width - lblTooSystem.Width) / 2
-        lblLogin.Location = New Point(pnlLogin.Width \ 2 - lblLogin.Width \ 2, lblLogin.Location.Y)
-        tbUsername.Location = New Point(pnlLogin.Width \ 2 - tbUsername.Width \ 2, tbUsername.Location.Y)
-        btnLogin.Location = New Point(pnlLogin.Width \ 2 - btnLogin.Width \ 2, btnLogin.Location.Y)
-        pbGCB.Location = New Point(Me.Width \ 2 - pbGCB.Width \ 2, pbGCB.Location.Y)
-        pnlLogin.Left = (pnlLogin.Parent.Width \ 2) - (pnlLogin.Width \ 2)
-        pbGCB.Left = (pbGCB.Parent.Width \ 2) - (pbGCB.Width \ 2)
-
-
+        If (My.Settings.languageSetting = "fr") Then
+            lblTooSystem.Text = ResourceLoginFrench.lblTOOSystem
+            lblLogin.Text = ResourceLoginFrench.lblLogin
+            lblUsername.Text = ResourceLoginFrench.lblUsername
+            lblPassword.Text = ResourceLoginFrench.lblPassword
+            btnLogin.Text = ResourceLoginFrench.btnLogin
+            btnCancel.Text = ResourceLoginFrench.btnCancel
+            stringRequired = ResourceLoginFrench.stringRequired
+            stringAuthentificationError = ResourceLoginFrench.stringAuthentificationError
+            stringUserDisabled = ResourceLoginFrench.stringUserDisabled
+            stringDoNotMatch = ResourceLoginFrench.stringDoNotMatch
+        Else
+            lblTooSystem.Text = ResourceLogin.lblTOOSystem
+            lblLogin.Text = ResourceLogin.lblLogin
+            lblUsername.Text = ResourceLogin.lblUsername
+            lblPassword.Text = ResourceLogin.lblPassword
+            btnLogin.Text = ResourceLogin.btnLogin
+            btnCancel.Text = ResourceLogin.btnCancel
+            stringRequired = ResourceLogin.stringRequired
+            stringAuthentificationError = ResourceLogin.stringAuthentificationError
+            stringUserDisabled = ResourceLogin.stringUserDisabled
+            stringDoNotMatch = ResourceLogin.stringDoNotMatch
+        End If
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -111,6 +118,45 @@ Public Class Login
         If e.KeyCode = Keys.Enter Then
             tbPassword.Focus()
         End If
+    End Sub
+
+    Private Sub cmbLanguage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbLanguage.SelectedIndexChanged
+        Select Case cmbLanguage.SelectedItem
+            Case "English"
+                Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-MY")
+                My.Settings.languageSetting = "en"
+            Case "French"
+                Thread.CurrentThread.CurrentUICulture = New CultureInfo("fr-FR")
+                My.Settings.languageSetting = "fr"
+        End Select
+        Dim currentUICulture As CultureInfo = Thread.CurrentThread.CurrentUICulture
+
+
+        If (currentUICulture.ToString() = "fr-FR") Then
+            lblTooSystem.Text = ResourceLoginFrench.lblTOOSystem
+            lblLogin.Text = ResourceLoginFrench.lblLogin
+            lblUsername.Text = ResourceLoginFrench.lblUsername
+            lblPassword.Text = ResourceLoginFrench.lblPassword
+            btnLogin.Text = ResourceLoginFrench.btnLogin
+            btnCancel.Text = ResourceLoginFrench.btnCancel
+            stringRequired = ResourceLoginFrench.stringRequired
+            stringAuthentificationError = ResourceLoginFrench.stringAuthentificationError
+            stringUserDisabled = ResourceLoginFrench.stringUserDisabled
+            stringDoNotMatch = ResourceLoginFrench.stringDoNotMatch
+        Else
+            lblTooSystem.Text = ResourceLogin.lblTOOSystem
+            lblLogin.Text = ResourceLogin.lblLogin
+            lblUsername.Text = ResourceLogin.lblUsername
+            lblPassword.Text = ResourceLogin.lblPassword
+            btnLogin.Text = ResourceLogin.btnLogin
+            btnCancel.Text = ResourceLogin.btnCancel
+            stringRequired = ResourceLogin.stringRequired
+            stringAuthentificationError = ResourceLogin.stringAuthentificationError
+            stringUserDisabled = ResourceLogin.stringUserDisabled
+            stringDoNotMatch = ResourceLogin.stringDoNotMatch
+        End If
+
+
     End Sub
 
 

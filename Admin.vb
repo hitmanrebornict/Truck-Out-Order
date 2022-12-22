@@ -1,4 +1,7 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
+Imports System.Threading
+Imports Truck_Out_Order.My.Resources
 
 Public Class Admin
 
@@ -6,6 +9,28 @@ Public Class Admin
     Private companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
+
+        If (My.Settings.languageSetting = "fr") Then
+            lblTooSystem.Text = ResourceAdminFrench.lblTooSystem
+            lblNew.Text = ResourceAdminFrench.lblNew
+            lblEdit.Text = ResourceAdminFrench.lblEdit
+            lblReport.Text = ResourceAdminFrench.lblReport
+            lblUserSetting.Text = ResourceAdminFrench.lblUserSetting
+            lblFieldSetting.Text = ResourceAdminFrench.lblFieldSetting
+            lblDriverSetting.Text = ResourceAdminFrench.lblDriverSetting
+            lblCompany.Text = ResourceAdminFrench.lblCompany
+            lblLogout.Text = ResourceAdminFrench.lblLogout
+        Else
+            lblTooSystem.Text = ResourceAdmin.lblTooSystem
+            lblNew.Text = ResourceAdmin.lblNew
+            lblEdit.Text = ResourceAdmin.lblEdit
+            lblReport.Text = ResourceAdmin.lblReport
+            lblUserSetting.Text = ResourceAdmin.lblUserSetting
+            lblFieldSetting.Text = ResourceAdmin.lblFieldSetting
+            lblDriverSetting.Text = ResourceAdmin.lblDriverSetting
+            lblCompany.Text = ResourceAdmin.lblCompany
+            lblLogout.Text = ResourceAdmin.lblLogout
+        End If
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         GlobalFunction.backToPage(login, Me)

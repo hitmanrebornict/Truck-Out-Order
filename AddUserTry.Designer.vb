@@ -28,17 +28,17 @@ Partial Class AddUserTry
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnAddUser = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblUserID = New System.Windows.Forms.Label()
+        Me.lblUsername = New System.Windows.Forms.Label()
+        Me.lblDepartment = New System.Windows.Forms.Label()
         Me.cmbSelectUserID = New System.Windows.Forms.ComboBox()
         Me.cmbSelectDepartmentID = New System.Windows.Forms.ComboBox()
         Me.tbSelectUsername = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblPassword = New System.Windows.Forms.Label()
         Me.tbPassword = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblAdmin = New System.Windows.Forms.Label()
         Me.cbAdmin = New System.Windows.Forms.CheckBox()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblActive = New System.Windows.Forms.Label()
         Me.cbActive = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbRoleID = New System.Windows.Forms.ComboBox()
@@ -68,9 +68,9 @@ Partial Class AddUserTry
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(813, 627)
+        Me.btnCancel.Location = New System.Drawing.Point(790, 627)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
+        Me.btnCancel.Size = New System.Drawing.Size(110, 30)
         Me.btnCancel.TabIndex = 15
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -78,9 +78,9 @@ Partial Class AddUserTry
         'btnUpdate
         '
         Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Location = New System.Drawing.Point(717, 627)
+        Me.btnUpdate.Location = New System.Drawing.Point(671, 627)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
+        Me.btnUpdate.Size = New System.Drawing.Size(110, 30)
         Me.btnUpdate.TabIndex = 14
         Me.btnUpdate.Text = "Save"
         Me.btnUpdate.UseVisualStyleBackColor = True
@@ -88,9 +88,9 @@ Partial Class AddUserTry
         'btnAddUser
         '
         Me.btnAddUser.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddUser.Location = New System.Drawing.Point(621, 627)
+        Me.btnAddUser.Location = New System.Drawing.Point(552, 627)
         Me.btnAddUser.Name = "btnAddUser"
-        Me.btnAddUser.Size = New System.Drawing.Size(90, 30)
+        Me.btnAddUser.Size = New System.Drawing.Size(110, 30)
         Me.btnAddUser.TabIndex = 13
         Me.btnAddUser.Text = "New"
         Me.btnAddUser.UseVisualStyleBackColor = True
@@ -101,17 +101,17 @@ Partial Class AddUserTry
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label3, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblUserID, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblUsername, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblDepartment, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.cmbSelectUserID, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.cmbSelectDepartmentID, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbSelectUsername, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label9, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblPassword, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbPassword, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label10, 0, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblAdmin, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.cbAdmin, 1, 4)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label11, 0, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblActive, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.cbActive, 1, 5)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 126)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -125,35 +125,35 @@ Partial Class AddUserTry
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(904, 330)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'Label2
+        'lblUserID
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 1)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 24)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "User ID:"
+        Me.lblUserID.AutoSize = True
+        Me.lblUserID.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserID.Location = New System.Drawing.Point(4, 1)
+        Me.lblUserID.Name = "lblUserID"
+        Me.lblUserID.Size = New System.Drawing.Size(84, 24)
+        Me.lblUserID.TabIndex = 1
+        Me.lblUserID.Text = "User ID:"
         '
-        'Label3
+        'lblUsername
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(4, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(108, 24)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Username:"
+        Me.lblUsername.AutoSize = True
+        Me.lblUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsername.Location = New System.Drawing.Point(4, 55)
+        Me.lblUsername.Name = "lblUsername"
+        Me.lblUsername.Size = New System.Drawing.Size(108, 24)
+        Me.lblUsername.TabIndex = 2
+        Me.lblUsername.Text = "Username:"
         '
-        'Label5
+        'lblDepartment
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(4, 109)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(121, 24)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "Department:"
+        Me.lblDepartment.AutoSize = True
+        Me.lblDepartment.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDepartment.Location = New System.Drawing.Point(4, 109)
+        Me.lblDepartment.Name = "lblDepartment"
+        Me.lblDepartment.Size = New System.Drawing.Size(121, 24)
+        Me.lblDepartment.TabIndex = 7
+        Me.lblDepartment.Text = "Department:"
         '
         'cmbSelectUserID
         '
@@ -182,15 +182,15 @@ Partial Class AddUserTry
         Me.tbSelectUsername.Size = New System.Drawing.Size(325, 26)
         Me.tbSelectUsername.TabIndex = 2
         '
-        'Label9
+        'lblPassword
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(4, 163)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(103, 24)
-        Me.Label9.TabIndex = 15
-        Me.Label9.Text = "Password:"
+        Me.lblPassword.AutoSize = True
+        Me.lblPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPassword.Location = New System.Drawing.Point(4, 163)
+        Me.lblPassword.Name = "lblPassword"
+        Me.lblPassword.Size = New System.Drawing.Size(103, 24)
+        Me.lblPassword.TabIndex = 15
+        Me.lblPassword.Text = "Password:"
         '
         'tbPassword
         '
@@ -201,15 +201,15 @@ Partial Class AddUserTry
         Me.tbPassword.Size = New System.Drawing.Size(325, 26)
         Me.tbPassword.TabIndex = 4
         '
-        'Label10
+        'lblAdmin
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(4, 217)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(72, 24)
-        Me.Label10.TabIndex = 18
-        Me.Label10.Text = "Admin:"
+        Me.lblAdmin.AutoSize = True
+        Me.lblAdmin.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAdmin.Location = New System.Drawing.Point(4, 217)
+        Me.lblAdmin.Name = "lblAdmin"
+        Me.lblAdmin.Size = New System.Drawing.Size(72, 24)
+        Me.lblAdmin.TabIndex = 18
+        Me.lblAdmin.Text = "Admin:"
         '
         'cbAdmin
         '
@@ -220,15 +220,15 @@ Partial Class AddUserTry
         Me.cbAdmin.TabIndex = 5
         Me.cbAdmin.UseVisualStyleBackColor = True
         '
-        'Label11
+        'lblActive
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(4, 271)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(70, 24)
-        Me.Label11.TabIndex = 21
-        Me.Label11.Text = "Active:"
+        Me.lblActive.AutoSize = True
+        Me.lblActive.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActive.Location = New System.Drawing.Point(4, 271)
+        Me.lblActive.Name = "lblActive"
+        Me.lblActive.Size = New System.Drawing.Size(70, 24)
+        Me.lblActive.TabIndex = 21
+        Me.lblActive.Text = "Active:"
         '
         'cbActive
         '
@@ -264,7 +264,7 @@ Partial Class AddUserTry
         '
         Me.lblUserMaintenance.AutoSize = True
         Me.lblUserMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserMaintenance.Location = New System.Drawing.Point(718, 51)
+        Me.lblUserMaintenance.Location = New System.Drawing.Point(667, 51)
         Me.lblUserMaintenance.Name = "lblUserMaintenance"
         Me.lblUserMaintenance.Size = New System.Drawing.Size(186, 24)
         Me.lblUserMaintenance.TabIndex = 0
@@ -347,16 +347,16 @@ Partial Class AddUserTry
     Friend WithEvents lblUserMaintenance As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblUserID As Label
+    Friend WithEvents lblUsername As Label
+    Friend WithEvents lblDepartment As Label
     Friend WithEvents cbActive As CheckBox
     Friend WithEvents cmbSelectUserID As ComboBox
-    Friend WithEvents Label9 As Label
+    Friend WithEvents lblPassword As Label
     Friend WithEvents tbPassword As TextBox
-    Friend WithEvents Label11 As Label
+    Friend WithEvents lblActive As Label
     Friend WithEvents cmbSelectDepartmentID As ComboBox
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lblAdmin As Label
     Friend WithEvents tbSelectUsername As TextBox
     Friend WithEvents cbAdmin As CheckBox
     Friend WithEvents Panel1 As Panel

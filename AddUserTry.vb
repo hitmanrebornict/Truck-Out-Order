@@ -1,15 +1,56 @@
 ﻿Imports System.Data.SqlClient
+Imports Truck_Out_Order.My.Resources
 
 Public Class AddUserTry
 
     Dim adminCheck As Boolean
     Dim validationCheck As Boolean
-    Dim selection As String
     Dim newCheck As Boolean = True
-    Dim deptToRole As String
     Private companyNameHeader As String
 
+    Dim selection,
+        deptToRole,
+        stringError,
+        stringFillRequired,
+        stringExist,
+        stringComplete,
+        stringAuthentification As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnAddUser.Text = ResourceAddUserTryFrench.btnAddUser
+            btnCancel.Text = ResourceAddUserTryFrench.btnCancel
+            btnUpdate.Text = ResourceAddUserTryFrench.btnUpdate
+            lblActive.Text = ResourceAddUserTryFrench.lblActive
+            lblAdmin.Text = ResourceAddUserTryFrench.lblAdmin
+            lblDepartment.Text = ResourceAddUserTryFrench.lblDepartment
+            lblPassword.Text = ResourceAddUserTryFrench.lblPassword
+            lblUserID.Text = ResourceAddUserTryFrench.lblUserID
+            lblUserMaintenance.Text = ResourceAddUserTryFrench.lblUserMaintenance
+            lblUsername.Text = ResourceAddUserTryFrench.lblUsername
+            stringAuthentification = ResourceAddUserTryFrench.stringAuthentification
+            stringComplete = ResourceAddUserTryFrench.stringComplete
+            stringError = ResourceAddUserTryFrench.stringError
+            stringExist = ResourceAddUserTryFrench.stringError
+            stringFillRequired = ResourceAddUserTryFrench.stringFillRequired
+        Else
+            btnAddUser.Text = ResourceAddUserTry.btnAddUser
+            btnCancel.Text = ResourceAddUserTry.btnCancel
+            btnUpdate.Text = ResourceAddUserTry.btnUpdate
+            lblActive.Text = ResourceAddUserTry.lblActive
+            lblAdmin.Text = ResourceAddUserTry.lblAdmin
+            lblDepartment.Text = ResourceAddUserTry.lblDepartment
+            lblPassword.Text = ResourceAddUserTry.lblPassword
+            lblUserID.Text = ResourceAddUserTry.lblUserID
+            lblUserMaintenance.Text = ResourceAddUserTry.lblUserMaintenance
+            lblUsername.Text = ResourceAddUserTry.lblUsername
+            stringAuthentification = ResourceAddUserTry.stringAuthentification
+            stringComplete = ResourceAddUserTry.stringComplete
+            stringError = ResourceAddUserTry.stringError
+            stringExist = ResourceAddUserTry.stringError
+            stringFillRequired = ResourceAddUserTry.stringFillRequired
+        End If
+
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         cbAdmin.Appearance = Appearance.Button
@@ -51,6 +92,9 @@ Public Class AddUserTry
         'con.Close()
 
     End Sub
+
+
+
     Private Sub cmbSelectUserID_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSelectUserID.SelectedIndexChanged
 
         Dim con As New SqlConnection
@@ -104,7 +148,7 @@ Public Class AddUserTry
         con.Open()
 
         If cmbSelectUserID.Text = "" Or tbPassword.Text = "" Or cmbSelectDepartmentID.Text = "" Then
-            MessageBox.Show("Please Fill The Required Field", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringFillRequired, stringError, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             Select Case cmbSelectDepartmentID.SelectedItem
                 Case "IT"
@@ -139,7 +183,7 @@ Public Class AddUserTry
                 rd = cmd.ExecuteReader
                 rd.Read()
                 If rd.HasRows() Then
-                    MessageBox.Show("The user is already exist, please use different username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(stringExist, stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                 Else
                     cmd.CommandText = ("Insert into Login(username,fullUsername,password,department,role_id,validationCheck,adminCheck) values(@username1,@fullUsername,@password,@department,@role_id,@validationCheck,@adminCheck)")
@@ -157,7 +201,7 @@ Public Class AddUserTry
             End If
 
 
-            MessageBox.Show("Update Complete", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)
         End If
     End Sub

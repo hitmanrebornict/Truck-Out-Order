@@ -25,7 +25,6 @@ Partial Class Search
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Search))
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblShippingID = New System.Windows.Forms.Label()
         Me.tbContainerNo = New System.Windows.Forms.TextBox()
@@ -51,7 +50,6 @@ Partial Class Search
         '
         Me.Panel3.AutoSize = True
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Controls.Add(Me.btnCancel)
         Me.Panel3.Controls.Add(Me.btnFilter)
@@ -62,16 +60,6 @@ Partial Class Search
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(940, 684)
         Me.Panel3.TabIndex = 3
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(798, 143)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 41
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'TableLayoutPanel1
         '
@@ -284,7 +272,6 @@ Partial Class Search
     Friend WithEvents lblInvoiceNumber As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents dgv As DataGridView
-    Friend WithEvents Button1 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel

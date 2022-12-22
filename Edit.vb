@@ -2,6 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Drawing.Printing
 Imports System.Drawing.Text
+Imports Truck_Out_Order.My.Resources
 
 Public Class Edit
 
@@ -25,6 +26,200 @@ Public Class Edit
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
 
+        If (My.Settings.languageSetting = "fr") Then
+
+            btnCancel.Text = ResourceSecurityEditFrench.btnCancel
+            'btnSecurityPost.Text = ResourceSecurityEditFrench.btnPost
+            btnPrint.Text = ResourceSecurityEditFrench.btnPrint
+            lblCompany.Text = ResourceSecurityEditFrench.lblCompnay
+            lblContainerNo.Text = ResourceSecurityEditFrench.lblContainerNo
+            lblContainerSize.Text = ResourceSecurityEditFrench.lblContainerSize
+            lblDDB.Text = ResourceSecurityEditFrench.lblDDB
+            lblEsSealNo.Text = ResourceSecurityEditFrench.lblEsSealNo
+            lblFullName.Text = ResourceSecurityEditFrench.lblFullName
+            lblHaulier.Text = ResourceSecurityEditFrench.lblHaulier
+            lblInternalSealNo.Text = ResourceSecurityEditFrench.lblInternalSealNo
+            lblInvoice.Text = ResourceSecurityEditFrench.lblInvoice
+            lblISOTank.Text = ResourceSecurityEditFrench.lblISOTank
+            lblISOTankWeight.Text = ResourceSecurityEditFrench.lblISOTankWeight
+            lblNetCargoWeight.Text = ResourceSecurityEditFrench.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceSecurityEditFrench.lblLinerSealNo
+            lblLoadingBay.Text = ResourceSecurityEditFrench.lblLoadingBay
+            lblLoadingPort.Text = ResourceSecurityEditFrench.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceSecurityEditFrench.lblNetCargoWeight
+            lblPortFullName.Text = ResourceSecurityEditFrench.lblPortFullName
+            lblProduct.Text = ResourceSecurityEditFrench.lblProduct
+            lblSCD.Text = ResourceSecurityEditFrench.lblSCD
+            lblSCT.Text = ResourceSecurityEditFrench.lblSCT
+            lblSendToCompany.Text = ResourceSecurityEditFrench.lblSendToCompany
+            lblShippingLine.Text = ResourceSecurityEditFrench.lblShippingLine
+            lblTemporarySealNo.Text = ResourceSecurityEditFrench.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceSecurityEditFrench.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceSecurityEditFrench.lblWarehouseLocation
+            lblLCD.Text = ResourceSecurityEditFrench.lblLCD
+            lblLCT.Text = ResourceSecurityEditFrench.lblLCT
+            lblRTD.Text = ResourceSecurityEditFrench.lblRTD
+            lblRTT.Text = ResourceSecurityEditFrench.lblRTT
+            lblShippingPost.Text = ResourceSecurityEditFrench.lblShippingPost
+            lblWarehousePost.Text = ResourceSecurityEditFrench.lblWarehousePost
+            lblSecurityPost.Text = ResourceSecurityEditFrench.lblSecurityPost
+            lblISOTruckOutDate.Text = ResourceSecurityEditFrench.lblISOTruckOutDate
+            lblCompanyFullName.Text = ResourceSecurityEditFrench.lblCompanyFullName
+            lblDriverCheck.Text = ResourceSecurityEditFrench.lblDriverCheck
+            lblPmCode.Text = ResourceSecurityEditFrench.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceSecurityEditFrench.lblPMRegistrationPlate
+            lblSecurityCheck.Text = ResourceSecurityEditFrench.lblSecurityCheck
+            lblISOTruckOutDateCheck.Text = ResourceSecurityEditFrench.lblISOTruckOutDateCheck
+            lblISOTankWeightCheck.Text = ResourceSecurityEditFrench.lblISOTankWeightCheck
+            'stringCheckDriverFullName = ResourceSecurityEditFrench.stringCheckDriverFullName
+            'stringCheckPMRegistrationPlate = ResourceSecurityEditFrench.stringCheckPMRegistrationPlate
+            'stringCheckFailure = ResourceSecurityEditFrench.stringCheckFailure
+            'stringDriverValidationPass = ResourceSecurityEditFrench.stringDriverValidationPass
+            'stringDriverValidationFail = ResourceSecurityEditFrench.stringDriverValidationFail
+            'stringValidationFail = ResourceSecurityEditFrench.stringValidationFail
+            'stringValidationPass = ResourceSecurityEditFrench.stringValidationPass
+            'stringCheckSecurityCheck = ResourceSecurityEditFrench.stringCheckSecurityCheck
+            'stringPostFailed = ResourceSecurityEditFrench.stringPostFailed
+            'stringInformShippingAdmin = ResourceSecurityEditFrench.stringInformShippingAdmin
+            'stringTruckOutDateError = ResourceSecurityEditFrench.stringTruckOutDateError
+            'stringPostComplete = ResourceSecurityEditFrench.stringPostComplete
+            'stringComplete = ResourceSecurityEditFrench.stringComplete
+            'stringISOCheckFailed = ResourceSecurityEditFrench.stringISOCheckFailed
+            'stringInformWarehouseAdmin = ResourceSecurityEditFrench.stringInformWarehouseAdmin
+            'stringNetCargoCheckFailed = ResourceSecurityEditFrench.stringNetCargoCheckFailed
+            'stringCheckQuit = ResourceSecurityEditFrench.stringCheckQuit
+            'stringCloseApplication = ResourceSecurityEditFrench.stringCloseApplication
+            'stringCanBePosted = ResourceSecurityEditFrench.stringCanBePosted
+            'stringUpdateComplete = ResourceSecurityEditFrench.stringUpdateComplete
+            'stringISOCheckComplete = ResourceSecurityEditFrench.stringISOCheckComplete
+            'stringCheckContainerNo = ResourceSecurityEditFrench.stringCheckContainerNo
+            'stringCheckInternalSealNo = ResourceSecurityEditFrench.stringCheckInternalSealNo
+            'stringCheckComplete = ResourceSecurityEditFrench.stringCheckComplete
+            'stringCheckFail = ResourceSecurityEdit.stringCheckFail
+            'stringUpdateFailure = ResourceSecurityEditFrench.stringUpdateFailure
+            'stringCheckESSealNo = ResourceSecurityEditFrench.stringCheckESSealNo
+            'stringCheckTemporarySealNo = ResourceSecurityEditFrench.stringCheckTemporarySealNo
+            'stringFillCargoWeight = ResourceSecurityEditFrench.stringFillCargoWeight
+            'stringSecurityCheckComplete = ResourceSecurityEditFrench.stringSecurityCheckComplete
+            'stringStopCTNR = ResourceSecurityEditFrench.stringStopCTNR
+            'stringCheckLinerSealNo = ResourceSecurityEditFrench.stringCheckLinerSealNo
+            GlobalFunction.ChangeFont(lblCompany, 10)
+            GlobalFunction.ChangeFont(lblContainerSize, 10)
+            GlobalFunction.ChangeFont(lblContainerNo, 10)
+            GlobalFunction.ChangeFont(lblDDB, 10)
+            GlobalFunction.ChangeFont(lblEsSealNo, 10)
+            GlobalFunction.ChangeFont(lblFullName, 10)
+            GlobalFunction.ChangeFont(lblHaulier, 10)
+            GlobalFunction.ChangeFont(lblInternalSealNo, 10)
+            GlobalFunction.ChangeFont(lblInvoice, 10)
+            GlobalFunction.ChangeFont(lblISOTank, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblLinerSealNo, 9)
+            GlobalFunction.ChangeFont(lblLoadingBay, 10)
+            GlobalFunction.ChangeFont(lblLoadingPort, 10)
+            GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
+            GlobalFunction.ChangeFont(lblISOTankWeight, 10)
+            GlobalFunction.ChangeFont(lblPortFullName, 10)
+            GlobalFunction.ChangeFont(lblProduct, 10)
+            GlobalFunction.ChangeFont(lblSCD, 10)
+            GlobalFunction.ChangeFont(lblSCT, 10)
+            GlobalFunction.ChangeFont(lblSendToCompany, 10)
+            GlobalFunction.ChangeFont(lblShippingLine, 10)
+            GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
+            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
+            GlobalFunction.ChangeFont(lblLCD, 10)
+            GlobalFunction.ChangeFont(lblLCT, 10)
+            GlobalFunction.ChangeFont(lblRTD, 10)
+            GlobalFunction.ChangeFont(lblRTT, 10)
+            GlobalFunction.ChangeFont(lblShippingPost, 10)
+            GlobalFunction.ChangeFont(lblWarehousePost, 10)
+            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFont(lblISOTruckOutDate, 10)
+            GlobalFunction.ChangeFont(lblCompanyFullName, 10)
+            GlobalFunction.ChangeFont(lblDriverCheck, 10)
+            GlobalFunction.ChangeFont(lblPmCode, 10)
+            GlobalFunction.ChangeFont(lblPmRegistrationPlate, 10)
+            GlobalFunction.ChangeFont(lblSecurityCheck, 10)
+            GlobalFunction.ChangeFont(lblISOTruckOutDateCheck, 10)
+            GlobalFunction.ChangeFont(lblISOTankWeightCheck, 10)
+        Else
+            btnCancel.Text = ResourceSecurityEdit.btnCancel
+            'btnSecurityPost.Text = ResourceSecurityEdit.btnPost
+            btnPrint.Text = ResourceSecurityEdit.btnPrint
+            lblCompany.Text = ResourceSecurityEdit.lblCompnay
+            lblContainerNo.Text = ResourceSecurityEdit.lblContainerNo
+            lblContainerSize.Text = ResourceSecurityEdit.lblContainerSize
+            lblDDB.Text = ResourceSecurityEdit.lblDDB
+            lblEsSealNo.Text = ResourceSecurityEdit.lblEsSealNo
+            lblFullName.Text = ResourceSecurityEdit.lblFullName
+            lblHaulier.Text = ResourceSecurityEdit.lblHaulier
+            lblInternalSealNo.Text = ResourceSecurityEdit.lblInternalSealNo
+            lblInvoice.Text = ResourceSecurityEdit.lblInvoice
+            lblISOTank.Text = ResourceSecurityEdit.lblISOTank
+            lblISOTankWeight.Text = ResourceSecurityEdit.lblISOTankWeight
+            lblNetCargoWeight.Text = ResourceSecurityEdit.lblISOTruckOutDate
+            lblLinerSealNo.Text = ResourceSecurityEdit.lblLinerSealNo
+            lblLoadingBay.Text = ResourceSecurityEdit.lblLoadingBay
+            lblLoadingPort.Text = ResourceSecurityEdit.lblLoadingPort
+            lblNetCargoWeight.Text = ResourceSecurityEdit.lblNetCargoWeight
+            lblPortFullName.Text = ResourceSecurityEdit.lblPortFullName
+            lblProduct.Text = ResourceSecurityEdit.lblProduct
+            lblSCD.Text = ResourceSecurityEdit.lblSCD
+            lblSCT.Text = ResourceSecurityEdit.lblSCT
+            lblSendToCompany.Text = ResourceSecurityEdit.lblSendToCompany
+            lblShippingLine.Text = ResourceSecurityEdit.lblShippingLine
+            lblTemporarySealNo.Text = ResourceSecurityEdit.lblTemporarySealNo
+            lblTruckOutNumber.Text = ResourceSecurityEdit.lblTruckOutNumber
+            lblWarehouseLocation.Text = ResourceSecurityEdit.lblWarehouseLocation
+            lblLCD.Text = ResourceSecurityEdit.lblLCD
+            lblLCT.Text = ResourceSecurityEdit.lblLCT
+            lblRTD.Text = ResourceSecurityEdit.lblRTD
+            lblRTT.Text = ResourceSecurityEdit.lblRTT
+            lblShippingPost.Text = ResourceSecurityEdit.lblShippingPost
+            lblWarehousePost.Text = ResourceSecurityEdit.lblWarehousePost
+            lblSecurityPost.Text = ResourceSecurityEdit.lblSecurityPost
+            lblISOTruckOutDate.Text = ResourceSecurityEdit.lblISOTruckOutDate
+            lblCompanyFullName.Text = ResourceSecurityEdit.lblCompanyFullName
+            lblDriverCheck.Text = ResourceSecurityEdit.lblDriverCheck
+            lblPmCode.Text = ResourceSecurityEdit.lblPMCode
+            lblPmRegistrationPlate.Text = ResourceSecurityEdit.lblPMRegistrationPlate
+            lblSecurityCheck.Text = ResourceSecurityEdit.lblSecurityCheck
+            lblISOTruckOutDateCheck.Text = ResourceSecurityEdit.lblISOTruckOutDateCheck
+            lblISOTankWeightCheck.Text = ResourceSecurityEdit.lblISOTankWeightCheck
+            'stringCheckDriverFullName = ResourceSecurityEdit.stringCheckDriverFullName
+            'stringCheckPMRegistrationPlate = ResourceSecurityEdit.stringCheckPMRegistrationPlate
+            'stringCheckFailure = ResourceSecurityEdit.stringCheckFailure
+            'stringDriverValidationPass = ResourceSecurityEdit.stringDriverValidationPass
+            'stringDriverValidationFail = ResourceSecurityEdit.stringDriverValidationFail
+            'stringValidationFail = ResourceSecurityEdit.stringValidationFail
+            'stringValidationPass = ResourceSecurityEdit.stringValidationPass
+            'stringCheckSecurityCheck = ResourceSecurityEdit.stringCheckSecurityCheck
+            'stringPostFailed = ResourceSecurityEdit.stringPostFailed
+            'stringInformShippingAdmin = ResourceSecurityEdit.stringInformShippingAdmin
+            'stringTruckOutDateError = ResourceSecurityEdit.stringTruckOutDateError
+            'stringPostComplete = ResourceSecurityEdit.stringPostComplete
+            'stringComplete = ResourceSecurityEdit.stringComplete
+            'stringISOCheckFailed = ResourceSecurityEdit.stringISOCheckFailed
+            'stringInformWarehouseAdmin = ResourceSecurityEdit.stringInformWarehouseAdmin
+            'stringNetCargoCheckFailed = ResourceSecurityEdit.stringNetCargoCheckFailed
+            'stringCheckQuit = ResourceSecurityEdit.stringCheckQuit
+            'stringCloseApplication = ResourceSecurityEdit.stringCloseApplication
+            'stringCanBePosted = ResourceSecurityEdit.stringCanBePosted
+            'stringUpdateComplete = ResourceSecurityEdit.stringUpdateComplete
+            'stringISOCheckComplete = ResourceSecurityEdit.stringISOCheckComplete
+            'stringCheckContainerNo = ResourceSecurityEdit.stringCheckContainerNo
+            'stringCheckInternalSealNo = ResourceSecurityEdit.stringCheckInternalSealNo
+            'stringCheckComplete = ResourceSecurityEdit.stringCheckComplete
+            'stringCheckFail = ResourceSecurityEdit.stringCheckFail
+            'stringUpdateFailure = ResourceSecurityEdit.stringUpdateFailure
+            'stringCheckESSealNo = ResourceSecurityEdit.stringCheckESSealNo
+            'stringCheckTemporarySealNo = ResourceSecurityEdit.stringCheckTemporarySealNo
+            'stringFillCargoWeight = ResourceSecurityEdit.stringFillCargoWeight
+            'stringSecurityCheckComplete = ResourceSecurityEdit.stringSecurityCheckComplete
+            'stringStopCTNR = ResourceSecurityEdit.stringStopCTNR
+            'stringCheckLinerSealNo = ResourceSecurityEdit.stringCheckLinerSealNo
+        End If
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
 

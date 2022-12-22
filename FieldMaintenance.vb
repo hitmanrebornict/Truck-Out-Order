@@ -1,10 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Net.Security
+Imports Truck_Out_Order.My.Resources
 
 Public Class FieldMaintenance
 
-    Dim operation As String
-    Dim FieldSelection As String
+    Dim operation,
+        FieldSelection,
+        stringFillRequired,
+        stringError,
+        stringAuthentification,
+        stringComplete As String
     Dim newCheck As Boolean = True
     Dim validationCheck As Boolean
     Dim con As New SqlConnection
@@ -14,6 +19,35 @@ Public Class FieldMaintenance
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If (My.Settings.languageSetting = "fr") Then
+            btnCancel.Text = ResourceFieldMaintenanceFrench.btnCancel
+            btnNew.Text = ResourceFieldMaintenanceFrench.btnNew
+            btnSave.Text = ResourceFieldMaintenanceFrench.btnSave
+            lblActive.Text = ResourceFieldMaintenanceFrench.lblActive
+            lblSelectField.Text = ResourceFieldMaintenanceFrench.lblSelectField
+            lblSelectShortName.Text = ResourceFieldMaintenanceFrench.lblEnterShortName
+            lblEnterLongName.Text = ResourceFieldMaintenanceFrench.lblEnterLongName
+            stringAuthentification = ResourceFieldMaintenanceFrench.stringAuthentification
+            stringComplete = ResourceFieldMaintenanceFrench.stringComplete
+            stringError = ResourceFieldMaintenanceFrench.stringError
+            stringFillRequired = ResourceFieldMaintenanceFrench.stringFillRequired
+            lblTitle.Text = ResourceFieldMaintenanceFrench.lblTitle
+        Else
+            btnCancel.Text = ResourceFieldMaintenance.btnCancel
+            btnNew.Text = ResourceFieldMaintenance.btnNew
+            btnSave.Text = ResourceFieldMaintenance.btnSave
+            lblActive.Text = ResourceFieldMaintenance.lblActive
+            lblSelectField.Text = ResourceFieldMaintenance.lblSelectField
+            lblSelectShortName.Text = ResourceFieldMaintenance.lblEnterShortName
+            lblEnterLongName.Text = ResourceFieldMaintenance.lblEnterLongName
+            stringAuthentification = ResourceFieldMaintenance.stringAuthentification
+            stringComplete = ResourceFieldMaintenance.stringComplete
+            stringError = ResourceFieldMaintenance.stringError
+            stringFillRequired = ResourceFieldMaintenance.stringFillRequired
+            lblTitle.Text = ResourceFieldMaintenance.lblTitle
+        End If
+
         GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDownList
@@ -55,9 +89,9 @@ Public Class FieldMaintenance
 
 
             If IsDBNull(rd.Item("full_name")) Then
-                        tbLongName.Text = ""
-                    Else
-                        tbLongName.Text = rd.Item("full_name")
+                tbLongName.Text = ""
+            Else
+                tbLongName.Text = rd.Item("full_name")
                     End If
 
 
@@ -126,7 +160,7 @@ Public Class FieldMaintenance
         con.Open()
 
         If cmbField.Text = "" Or cmbShortname.Text = "" Then
-            MessageBox.Show("Please Fill All The Required Field", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringFillRequired, stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             Select Case cmbField.Text
                 Case "Company"
@@ -187,7 +221,7 @@ Public Class FieldMaintenance
                     End If
             End Select
             rd = cmd.ExecuteReader
-            MessageBox.Show("Update Complete", "Authentication ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
             GlobalFunction.backToPage(Admin, Me)
 
         End If

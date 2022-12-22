@@ -37,10 +37,10 @@ Partial Class DriverMaintenance
         Me.tbDrivingLicense = New System.Windows.Forms.TextBox()
         Me.lblDrivingLicenceValid = New System.Windows.Forms.Label()
         Me.dtpLicenseValidDate = New System.Windows.Forms.DateTimePicker()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblLegalWorker = New System.Windows.Forms.Label()
         Me.tbLegalWorker = New System.Windows.Forms.TextBox()
         Me.cbActive = New System.Windows.Forms.CheckBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblActive = New System.Windows.Forms.Label()
         Me.tbRegistrationPlate = New System.Windows.Forms.TextBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
@@ -48,7 +48,7 @@ Partial Class DriverMaintenance
         Me.lblFullName = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
-        Me.lblUserMaintenance = New System.Windows.Forms.Label()
+        Me.lblDriverMaintenance = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
@@ -75,7 +75,7 @@ Partial Class DriverMaintenance
         '
         Me.cmbFullName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFullName.FormattingEnabled = True
-        Me.cmbFullName.Location = New System.Drawing.Point(122, 160)
+        Me.cmbFullName.Location = New System.Drawing.Point(265, 161)
         Me.cmbFullName.Name = "cmbFullName"
         Me.cmbFullName.Size = New System.Drawing.Size(660, 27)
         Me.cmbFullName.TabIndex = 0
@@ -99,10 +99,10 @@ Partial Class DriverMaintenance
         Me.TableLayoutPanel1.Controls.Add(Me.tbDrivingLicense, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblDrivingLicenceValid, 2, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.dtpLicenseValidDate, 3, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label12, 2, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblLegalWorker, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.tbLegalWorker, 3, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.cbActive, 3, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 2, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblActive, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.tbRegistrationPlate, 1, 2)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(6, 203)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -215,15 +215,15 @@ Partial Class DriverMaintenance
         Me.dtpLicenseValidDate.Size = New System.Drawing.Size(249, 26)
         Me.dtpLicenseValidDate.TabIndex = 7
         '
-        'Label12
+        'lblLegalWorker
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(514, 115)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(193, 24)
-        Me.Label12.TabIndex = 12
-        Me.Label12.Text = "Legal Worker? (Y/N)"
+        Me.lblLegalWorker.AutoSize = True
+        Me.lblLegalWorker.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLegalWorker.Location = New System.Drawing.Point(514, 115)
+        Me.lblLegalWorker.Name = "lblLegalWorker"
+        Me.lblLegalWorker.Size = New System.Drawing.Size(193, 24)
+        Me.lblLegalWorker.TabIndex = 12
+        Me.lblLegalWorker.Text = "Legal Worker? (Y/N)"
         '
         'tbLegalWorker
         '
@@ -243,15 +243,15 @@ Partial Class DriverMaintenance
         Me.cbActive.TabIndex = 9
         Me.cbActive.UseVisualStyleBackColor = True
         '
-        'Label2
+        'lblActive
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(514, 172)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(70, 24)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Active:"
+        Me.lblActive.AutoSize = True
+        Me.lblActive.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActive.Location = New System.Drawing.Point(514, 172)
+        Me.lblActive.Name = "lblActive"
+        Me.lblActive.Size = New System.Drawing.Size(70, 24)
+        Me.lblActive.TabIndex = 20
+        Me.lblActive.Text = "Active:"
         '
         'tbRegistrationPlate
         '
@@ -264,9 +264,9 @@ Partial Class DriverMaintenance
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(938, 638)
+        Me.btnCancel.Location = New System.Drawing.Point(918, 638)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(90, 30)
+        Me.btnCancel.Size = New System.Drawing.Size(110, 30)
         Me.btnCancel.TabIndex = 12
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -274,9 +274,9 @@ Partial Class DriverMaintenance
         'btnUpdate
         '
         Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Location = New System.Drawing.Point(842, 638)
+        Me.btnUpdate.Location = New System.Drawing.Point(799, 638)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(90, 30)
+        Me.btnUpdate.Size = New System.Drawing.Size(110, 30)
         Me.btnUpdate.TabIndex = 11
         Me.btnUpdate.Text = "Save"
         Me.btnUpdate.UseVisualStyleBackColor = True
@@ -284,9 +284,9 @@ Partial Class DriverMaintenance
         'btnNew
         '
         Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(746, 638)
+        Me.btnNew.Location = New System.Drawing.Point(680, 638)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(90, 30)
+        Me.btnNew.Size = New System.Drawing.Size(110, 30)
         Me.btnNew.TabIndex = 10
         Me.btnNew.Text = "New"
         Me.btnNew.UseVisualStyleBackColor = True
@@ -305,7 +305,7 @@ Partial Class DriverMaintenance
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
         Me.Panel1.Controls.Add(Me.lblCompanyNameHeader)
-        Me.Panel1.Controls.Add(Me.lblUserMaintenance)
+        Me.Panel1.Controls.Add(Me.lblDriverMaintenance)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.lblUserDetails)
         Me.Panel1.Location = New System.Drawing.Point(113, 3)
@@ -324,15 +324,15 @@ Partial Class DriverMaintenance
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
-        'lblUserMaintenance
+        'lblDriverMaintenance
         '
-        Me.lblUserMaintenance.AutoSize = True
-        Me.lblUserMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserMaintenance.Location = New System.Drawing.Point(838, 51)
-        Me.lblUserMaintenance.Name = "lblUserMaintenance"
-        Me.lblUserMaintenance.Size = New System.Drawing.Size(198, 24)
-        Me.lblUserMaintenance.TabIndex = 0
-        Me.lblUserMaintenance.Text = "Driver Maintenance"
+        Me.lblDriverMaintenance.AutoSize = True
+        Me.lblDriverMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDriverMaintenance.Location = New System.Drawing.Point(757, 51)
+        Me.lblDriverMaintenance.Name = "lblDriverMaintenance"
+        Me.lblDriverMaintenance.Size = New System.Drawing.Size(198, 24)
+        Me.lblDriverMaintenance.TabIndex = 0
+        Me.lblDriverMaintenance.Text = "Driver Maintenance"
         '
         'Panel2
         '
@@ -396,17 +396,17 @@ Partial Class DriverMaintenance
     Friend WithEvents lblDriverID As Label
     Friend WithEvents lblDrivingLicense As Label
     Friend WithEvents lblDrivingLicenceValid As Label
-    Friend WithEvents Label12 As Label
+    Friend WithEvents lblLegalWorker As Label
     Friend WithEvents tbDriverID As TextBox
     Friend WithEvents tbDrivingLicense As TextBox
     Friend WithEvents tbLegalWorker As TextBox
     Friend WithEvents dtpLicenseValidDate As DateTimePicker
     Friend WithEvents cmbFullName As ComboBox
     Friend WithEvents cbActive As CheckBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblActive As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblCompanyNameHeader As Label
-    Friend WithEvents lblUserMaintenance As Label
+    Friend WithEvents lblDriverMaintenance As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblUserDetails As Label
 End Class
