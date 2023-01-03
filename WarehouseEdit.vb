@@ -113,17 +113,21 @@ Public Class WarehouseEdit
             GlobalFunction.ChangeFont(lblSendToCompany, 10)
             GlobalFunction.ChangeFont(lblShippingLine, 10)
             GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
-            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFontBold(lblTruckOutNumber, 12)
             GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
             GlobalFunction.ChangeFont(lblLCD, 10)
             GlobalFunction.ChangeFont(lblLCT, 10)
             GlobalFunction.ChangeFont(lblRTD, 10)
             GlobalFunction.ChangeFont(lblRTT, 10)
-            GlobalFunction.ChangeFont(lblShippingPost, 10)
-            GlobalFunction.ChangeFont(lblWarehousePost, 10)
-            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFontBold(lblShippingPost, 10)
+            GlobalFunction.ChangeFontBold(lblWarehousePost, 10)
+            GlobalFunction.ChangeFontBold(lblSecurityPost, 10)
             GlobalFunction.ChangeFont(lblNetCargoWeight, 10)
-            GlobalFunction.ChangeFont(lblWarehouseChecking, 10)
+            GlobalFunction.ChangeFontBold(lblWarehouseChecking, 12)
+            btnCancel.Font = New Font("Helvetica", 9)
+            btnPrint.Font = New Font("Helvetica", 9)
+            btnSave.Font = New Font("Helvetica", 9)
+            btnPost.Font = New Font("Helvetica", 9)
         Else
             btnCancel.Text = ResourceWarehouseEdit.btnCancel
             btnPost.Text = ResourceWarehouseEdit.btnPost
@@ -180,7 +184,7 @@ Public Class WarehouseEdit
             stringCheckQuit = ResourceWarehouseEdit.stringCheckQuit
             stringCloseApplication = ResourceWarehouseEdit.stringCloseApplication
         End If
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand

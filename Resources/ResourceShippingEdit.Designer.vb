@@ -353,7 +353,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Temporary Seal No,.
+        '''  Looks up a localized string similar to Temporary Seal No..
         '''</summary>
         Public Shared ReadOnly Property lblTemporarySealNo() As String
             Get

@@ -137,16 +137,20 @@ Public Class ShippingEdit
             GlobalFunction.ChangeFont(lblSendToCompany, 10)
             GlobalFunction.ChangeFont(lblShippingLine, 10)
             GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
-            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFontBold(lblTruckOutNumber, 14)
             GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
             GlobalFunction.ChangeFont(lblLCD, 10)
             GlobalFunction.ChangeFont(lblLCT, 10)
             GlobalFunction.ChangeFont(lblRTD, 10)
             GlobalFunction.ChangeFont(lblRTT, 10)
-            GlobalFunction.ChangeFont(lblShippingPost, 10)
-            GlobalFunction.ChangeFont(lblWarehousePost, 10)
-            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFontBold(lblShippingPost, 10)
+            GlobalFunction.ChangeFontBold(lblWarehousePost, 10)
+            GlobalFunction.ChangeFontBold(lblSecurityPost, 10)
             GlobalFunction.ChangeFont(lblSOTruckOutDate, 10)
+            btnCancel1.Font = New Font("Helvetica", 9)
+            btnPrint1.Font = New Font("Helvetica", 9)
+            btnSave1.Font = New Font("Helvetica", 9)
+            btnPost1.Font = New Font("Helvetica", 9)
         Else
             btnCancel1.Text = ResourceShippingEdit.btnCancel
             btnPost1.Text = ResourceShippingEdit.btnPost
@@ -213,7 +217,7 @@ Public Class ShippingEdit
         End If
 
         lblTooNumber.Text = Me.TruckOutNumber
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
 
         'Disable for shipping

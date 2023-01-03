@@ -120,130 +120,52 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="btnPost" xml:space="preserve">
-    <value>Poste</value>
+  <data name="btnExport" xml:space="preserve">
+    <value>Exporter vers Excel</value>
   </data>
-  <data name="btnPrint" xml:space="preserve">
-    <value>Imprimer</value>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Chercher</value>
   </data>
-  <data name="btnSave" xml:space="preserve">
-    <value>Sauvegarder</value>
+  <data name="itemCargo" xml:space="preserve">
+    <value>Vérification du poids de la cargaison</value>
   </data>
-  <data name="lblCompanyFullName" xml:space="preserve">
-    <value>Nom complet de l'entreprise :</value>
+  <data name="itemISO" xml:space="preserve">
+    <value>Réservoir ISO</value>
   </data>
-  <data name="lblCompnay" xml:space="preserve">
-    <value>Compagnie:</value>
+  <data name="itemSecurity" xml:space="preserve">
+    <value>Poste de sécurité terminé</value>
   </data>
-  <data name="lblContainerNo" xml:space="preserve">
-    <value>Numéro de conteneur</value>
+  <data name="itemShipping" xml:space="preserve">
+    <value>Poste d'expédition terminée</value>
   </data>
-  <data name="lblContainerSize" xml:space="preserve">
-    <value>Taille du conteneur:</value>
+  <data name="itemWarehouse" xml:space="preserve">
+    <value>Poste d'entrepôt terminé</value>
   </data>
-  <data name="lblDDB" xml:space="preserve">
-    <value>DDB:</value>
+  <data name="stringCompletedPostBetween" xml:space="preserve">
+    <value>Message terminé entre</value>
   </data>
-  <data name="lblDriverCheck" xml:space="preserve">
-    <value>Vérification du conducteur</value>
+  <data name="stringNetCargoBetween" xml:space="preserve">
+    <value>Poste de contrôle du poids net de la cargaison entre</value>
   </data>
-  <data name="lblEsSealNo" xml:space="preserve">
-    <value>Numéro de sceau ES</value>
+  <data name="stringPleaseSelect" xml:space="preserve">
+    <value>Veuillez sélectionner l'option de publication</value>
   </data>
-  <data name="lblFullName" xml:space="preserve">
-    <value>Nom complet du conducteur</value>
+  <data name="stringPrivilege" xml:space="preserve">
+    <value>Vous n'avez aucun privilège pour voir ce numéro</value>
   </data>
-  <data name="lblHaulier" xml:space="preserve">
-    <value>Transporteur</value>
+  <data name="stringSearchError" xml:space="preserve">
+    <value>Erreur de recherche</value>
   </data>
-  <data name="lblInternalSealNo" xml:space="preserve">
-    <value>Numéro de joint interne</value>
+  <data name="stringSelectString" xml:space="preserve">
+    <value>SELECT ID as 'ID d''expédition',ORIGIN as 'Compagnie',INVOICE as 'Facture',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Numéro de sceau ES',LINER_SEA_NO as 'Numéro de joint de revêtement', INTERNAL_SEAL_NO as 'Numéro de joint interne', TEMPORARY_SEAL_NO as 'Numéro de sceau temporaire', shipping.COMPANY as 'Envoyer à l''entreprise',Container_Size as 'Taille du conteneur',Shipping.Net_Cargo_Weight as 'Poids net de la cargaison' , Security.Cargo_Weight_Check_Value as 'Valeur de vérification du poids net de la cargaison', CASE WHEN Cargo_Weight_Check = 1 Then 'Passe' else 'Manqué' END AS 'Vérification du poids de la cargaison', LOADING_PORT as 'Port de chargement',HAULIER as 'Transporteur',PRODUCT as 'Produit',SHIPMENT_CLOSING_DATE as 'Date de clôture de l''expédition',SHIPMENT_CLOSING_TIME as 'Heure de clôture de l''expédition',DDB,</value>
   </data>
-  <data name="lblInvoice" xml:space="preserve">
-    <value>Facture d'achat:</value>
+  <data name="stringSelectStringNormal" xml:space="preserve">
+    <value>SELECT ID as 'ID d''expédition',ORIGIN as 'Compagnie',INVOICE as 'Facture',CONTAINER_NO as 'Numéro de conteneur', warehouse.ES_SEAL_NO as 'Numéro de sceau ES',LINER_SEA_NO as 'Numéro de joint de revêtement', INTERNAL_SEAL_NO as 'Numéro de joint interne', TEMPORARY_SEAL_NO as 'Numéro de sceau temporaire', shipping.COMPANY as 'Envoyer à l''entreprise',Container_Size as 'Taille du conteneur', LOADING_PORT as 'Port de chargement',HAULIER as 'Transporteur',PRODUCT as 'Produit',SHIPMENT_CLOSING_DATE as 'Date de clôture de l''expédition',SHIPMENT_CLOSING_TIME as 'Heure de clôture de l''expédition',DDB,</value>
   </data>
-  <data name="lblISOTank" xml:space="preserve">
-    <value>Réservoir ISO :</value>
+  <data name="stringSuccess" xml:space="preserve">
+    <value>Enregistrer le fichier avec succès</value>
   </data>
-  <data name="lblISOTankWeight" xml:space="preserve">
-    <value>Poids du réservoir ISO (mt):</value>
-  </data>
-  <data name="lblISOTankWeightCheck" xml:space="preserve">
-    <value>Vérification du poids du réservoir ISO</value>
-  </data>
-  <data name="lblISOTruckOutDate" xml:space="preserve">
-    <value>Date de sortie du camion :</value>
-  </data>
-  <data name="lblISOTruckOutDateCheck" xml:space="preserve">
-    <value>Vérification de la date ISO</value>
-  </data>
-  <data name="lblLCD" xml:space="preserve">
-    <value>Chargement de la date de fin</value>
-  </data>
-  <data name="lblLCT" xml:space="preserve">
-    <value>Temps de chargement terminé</value>
-  </data>
-  <data name="lblLinerSealNo" xml:space="preserve">
-    <value>Numéro de joint de revêtement</value>
-  </data>
-  <data name="lblLoadingBay" xml:space="preserve">
-    <value>Quai de chargement:</value>
-  </data>
-  <data name="lblLoadingPort" xml:space="preserve">
-    <value>Port de chargement:</value>
-  </data>
-  <data name="lblNetCargoWeight" xml:space="preserve">
-    <value>Poids net de la cargaison (kg) :</value>
-  </data>
-  <data name="lblPMCode" xml:space="preserve">
-    <value>Code PM</value>
-  </data>
-  <data name="lblPMRegistrationPlate" xml:space="preserve">
-    <value>Plaque d'immatriculation PM</value>
-  </data>
-  <data name="lblPortFullName" xml:space="preserve">
-    <value>Nom complet du port de chargement :</value>
-  </data>
-  <data name="lblProduct" xml:space="preserve">
-    <value>Produit:</value>
-  </data>
-  <data name="lblRTD" xml:space="preserve">
-    <value>Date de sortie du camion prêt</value>
-  </data>
-  <data name="lblRTT" xml:space="preserve">
-    <value>Temps de sortie du camion prêt</value>
-  </data>
-  <data name="lblSCD" xml:space="preserve">
-    <value>Date limite d'expédition :</value>
-  </data>
-  <data name="lblSCT" xml:space="preserve">
-    <value>Heure de clôture de l'expédition :</value>
-  </data>
-  <data name="lblSecurityCheck" xml:space="preserve">
-    <value>Vérification de sécurité</value>
-  </data>
-  <data name="lblSecurityPost" xml:space="preserve">
-    <value>Poste de sécurité</value>
-  </data>
-  <data name="lblSendToCompany" xml:space="preserve">
-    <value>Envoyer à l'entreprise :</value>
-  </data>
-  <data name="lblShippingLine" xml:space="preserve">
-    <value>Ligne maritime:</value>
-  </data>
-  <data name="lblShippingPost" xml:space="preserve">
-    <value>Poste d'expédition</value>
-  </data>
-  <data name="lblTemporarySealNo" xml:space="preserve">
-    <value>Numéro de sceau temporaire</value>
-  </data>
-  <data name="lblTruckOutNumber" xml:space="preserve">
-    <value>Numéro de sortie du camion :</value>
-  </data>
-  <data name="lblWarehouseLocation" xml:space="preserve">
-    <value>Emplacement de l'entrepôt :</value>
-  </data>
-  <data name="lblWarehousePost" xml:space="preserve">
-    <value>Poste d'entrepôt</value>
+  <data name="stringThereAre" xml:space="preserve">
+    <value>Il y a</value>
   </data>
 </root>

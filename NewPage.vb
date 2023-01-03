@@ -32,7 +32,7 @@ Public Class NewPage
     stringSaveCompleteAs As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         'TableLayoutPanel3.Font = New Font("Microsoft Sans Serif", 1, FontStyle.Regular)
 
@@ -124,7 +124,7 @@ Public Class NewPage
             GlobalFunction.ChangeFont(lblSendToCompany, 10)
             GlobalFunction.ChangeFont(lblShippingLine, 10)
             GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
-            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFontBold(lblTruckOutNumber, 10)
             GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
         Else
             btnCancel.Text = ResourceNewPage.btnCancel
@@ -210,7 +210,7 @@ Public Class NewPage
         con3.ConnectionString = My.Settings.connstr
         cmd3.Connection = con3
         con3.Open()
-        Dim check As String
+
 
         If dtpSCD.Text = "" Then
             MessageBox.Show(stringFillSCD, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -22,8 +22,10 @@ Partial Class WarehouseEdit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim Panel3 As System.Windows.Forms.Panel
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WarehouseEdit))
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblWarehouseChecking = New System.Windows.Forms.Label()
         Me.btnCheck = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
@@ -60,7 +62,6 @@ Partial Class WarehouseEdit
         Me.tbLoadingBay = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.lblWarehouseChecking = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -113,7 +114,9 @@ Partial Class WarehouseEdit
         Me.lblNetCargoWeight = New System.Windows.Forms.Label()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.Panel3.SuspendLayout()
+        Panel3 = New System.Windows.Forms.Panel()
+        Panel3.SuspendLayout()
+        Me.TableLayoutPanel10.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -128,26 +131,54 @@ Partial Class WarehouseEdit
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel3.Controls.Add(Me.btnCheck)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel3)
-        Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Controls.Add(Me.Label7)
-        Me.Panel3.Controls.Add(Me.lblWarehouseChecking)
-        Me.Panel3.Controls.Add(Me.Panel1)
-        Me.Panel3.Controls.Add(Me.btnPost)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel8)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel5)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel6)
-        Me.Panel3.Controls.Add(Me.btnSave)
-        Me.Panel3.Controls.Add(Me.btnPrint)
-        Me.Panel3.Controls.Add(Me.btnCancel)
-        Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(8, 1)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1249, 703)
-        Me.Panel3.TabIndex = 3
+        Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Panel3.Controls.Add(Me.TableLayoutPanel10)
+        Panel3.Controls.Add(Me.btnCheck)
+        Panel3.Controls.Add(Me.TableLayoutPanel3)
+        Panel3.Controls.Add(Me.Label8)
+        Panel3.Controls.Add(Me.Label7)
+        Panel3.Controls.Add(Me.Panel1)
+        Panel3.Controls.Add(Me.btnPost)
+        Panel3.Controls.Add(Me.TableLayoutPanel8)
+        Panel3.Controls.Add(Me.TableLayoutPanel5)
+        Panel3.Controls.Add(Me.TableLayoutPanel6)
+        Panel3.Controls.Add(Me.btnSave)
+        Panel3.Controls.Add(Me.btnPrint)
+        Panel3.Controls.Add(Me.btnCancel)
+        Panel3.Controls.Add(Me.TableLayoutPanel1)
+        Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Panel3.Location = New System.Drawing.Point(8, 1)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New System.Drawing.Size(1249, 703)
+        Panel3.TabIndex = 3
+        '
+        'TableLayoutPanel10
+        '
+        Me.TableLayoutPanel10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel10.ColumnCount = 1
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel10.Controls.Add(Me.lblWarehouseChecking, 0, 0)
+        Me.TableLayoutPanel10.Location = New System.Drawing.Point(483, 426)
+        Me.TableLayoutPanel10.Name = "TableLayoutPanel10"
+        Me.TableLayoutPanel10.RowCount = 1
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
+        Me.TableLayoutPanel10.Size = New System.Drawing.Size(343, 26)
+        Me.TableLayoutPanel10.TabIndex = 157
+        '
+        'lblWarehouseChecking
+        '
+        Me.lblWarehouseChecking.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lblWarehouseChecking.AutoSize = True
+        Me.lblWarehouseChecking.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWarehouseChecking.Location = New System.Drawing.Point(71, 2)
+        Me.lblWarehouseChecking.Name = "lblWarehouseChecking"
+        Me.lblWarehouseChecking.Size = New System.Drawing.Size(201, 22)
+        Me.lblWarehouseChecking.TabIndex = 154
+        Me.lblWarehouseChecking.Text = "Warehouse Checking:"
+        Me.lblWarehouseChecking.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnCheck
         '
@@ -549,16 +580,6 @@ Partial Class WarehouseEdit
         Me.Label7.TabIndex = 155
         Me.Label7.Text = "(Last 4 Digit)"
         '
-        'lblWarehouseChecking
-        '
-        Me.lblWarehouseChecking.AutoSize = True
-        Me.lblWarehouseChecking.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWarehouseChecking.Location = New System.Drawing.Point(554, 426)
-        Me.lblWarehouseChecking.Name = "lblWarehouseChecking"
-        Me.lblWarehouseChecking.Size = New System.Drawing.Size(201, 22)
-        Me.lblWarehouseChecking.TabIndex = 154
-        Me.lblWarehouseChecking.Text = "Warehouse Checking:"
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
@@ -817,7 +838,7 @@ Partial Class WarehouseEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 334.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
@@ -1097,8 +1118,8 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(245, 39)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(281, 28)
         Me.TableLayoutPanel2.TabIndex = 52
         '
@@ -1172,17 +1193,18 @@ Partial Class WarehouseEdit
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
-        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Panel3)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "WarehouseEdit"
         Me.Text = "TOO System"
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
+        Me.TableLayoutPanel10.ResumeLayout(False)
+        Me.TableLayoutPanel10.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         Me.TableLayoutPanel9.ResumeLayout(False)
@@ -1206,8 +1228,6 @@ Partial Class WarehouseEdit
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Panel3 As Panel
     Friend WithEvents btnPrint As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
@@ -1297,4 +1317,5 @@ Partial Class WarehouseEdit
     Friend WithEvents tbProduct As TextBox
     Friend WithEvents lblNetCargoWeight As Label
     Friend WithEvents cmbEsSealNo As ComboBox
+    Friend WithEvents TableLayoutPanel10 As TableLayoutPanel
 End Class

@@ -75,10 +75,11 @@ Partial Class ViewPage
         '
         'cmbPostSelect
         '
+        Me.cmbPostSelect.BackColor = System.Drawing.SystemColors.Window
         Me.cmbPostSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbPostSelect.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPostSelect.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.cmbPostSelect.FormattingEnabled = True
-        Me.cmbPostSelect.Items.AddRange(New Object() {"Shipping Post Completed", "Warehouse Post Completed", "Security Post Completed", "Cargo Weight Checking", "ISO Tank"})
         Me.cmbPostSelect.Location = New System.Drawing.Point(264, 110)
         Me.cmbPostSelect.Name = "cmbPostSelect"
         Me.cmbPostSelect.Size = New System.Drawing.Size(255, 27)
@@ -217,9 +218,9 @@ Partial Class ViewPage
         Me.lblTo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTo.Location = New System.Drawing.Point(123, 110)
         Me.lblTo.Name = "lblTo"
-        Me.lblTo.Size = New System.Drawing.Size(26, 19)
+        Me.lblTo.Size = New System.Drawing.Size(23, 19)
         Me.lblTo.TabIndex = 0
-        Me.lblTo.Text = "To"
+        Me.lblTo.Text = "->"
         '
         'ViewPage
         '
@@ -233,7 +234,6 @@ Partial Class ViewPage
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "ViewPage"
         Me.Text = "TOO System"

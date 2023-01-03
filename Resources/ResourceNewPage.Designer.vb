@@ -290,7 +290,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Temporary Seal No,.
+        '''  Looks up a localized string similar to Temporary Seal No..
         '''</summary>
         Friend Shared ReadOnly Property lblTemporarySealNo() As String
             Get
@@ -317,7 +317,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Only Enter Integer In Net Cargo Weight.
+        '''  Looks up a localized string similar to Please Only Enter Integer in Net Cargo Weight.
         '''</summary>
         Friend Shared ReadOnly Property stringCargoWeightEx() As String
             Get

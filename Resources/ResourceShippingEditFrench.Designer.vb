@@ -146,7 +146,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Nom complet de l&apos;entreprise :.
+        '''  Looks up a localized string similar to Nom complet de l&apos;entreprise:.
         '''</summary>
         Friend Shared ReadOnly Property lblFullName() As String
             Get
@@ -155,7 +155,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Transporteur.
+        '''  Looks up a localized string similar to Transporteur:.
         '''</summary>
         Friend Shared ReadOnly Property lblHaulier() As String
             Get
@@ -182,7 +182,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Réservoir ISO :.
+        '''  Looks up a localized string similar to Réservoir ISO:.
         '''</summary>
         Friend Shared ReadOnly Property lblISOTank() As String
             Get
@@ -200,7 +200,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Date de sortie du camion :.
+        '''  Looks up a localized string similar to Date de sortie du camion:.
         '''</summary>
         Friend Shared ReadOnly Property lblISOTruckOutDate() As String
             Get
@@ -254,7 +254,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Poids net de la cargaison (kg) :.
+        '''  Looks up a localized string similar to Poids net de la cargaison (kg):.
         '''</summary>
         Friend Shared ReadOnly Property lblNetCargoWeight() As String
             Get
@@ -263,7 +263,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Nom complet du port de chargement :.
+        '''  Looks up a localized string similar to Nom complet du port de chargement:.
         '''</summary>
         Friend Shared ReadOnly Property lblPortFullName() As String
             Get
@@ -299,7 +299,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Date limite d&apos;expédition :.
+        '''  Looks up a localized string similar to Date limite d&apos;expédition:.
         '''</summary>
         Friend Shared ReadOnly Property lblSCD() As String
             Get
@@ -308,7 +308,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Heure de clôture de l&apos;expédition :.
+        '''  Looks up a localized string similar to Heure de clôture de l&apos;expédition:.
         '''</summary>
         Friend Shared ReadOnly Property lblSCT() As String
             Get
@@ -326,7 +326,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Envoyer à l&apos;entreprise :.
+        '''  Looks up a localized string similar to Envoyer à l&apos;entreprise:.
         '''</summary>
         Friend Shared ReadOnly Property lblSendToCompany() As String
             Get
@@ -362,7 +362,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Numéro de sortie du camion :.
+        '''  Looks up a localized string similar to Numéro de sortie du camion:.
         '''</summary>
         Friend Shared ReadOnly Property lblTruckOutNumber() As String
             Get
@@ -371,7 +371,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Emplacement de l&apos;entrepôt :.
+        '''  Looks up a localized string similar to Emplacement de l&apos;entrepôt:.
         '''</summary>
         Friend Shared ReadOnly Property lblWarehouseLocation() As String
             Get

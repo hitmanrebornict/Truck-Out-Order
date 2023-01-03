@@ -38,10 +38,12 @@ Partial Class Login
         Me.pbGCB = New System.Windows.Forms.PictureBox()
         Me.cmbLanguage = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pnlLogin.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTooSystem
@@ -132,10 +134,11 @@ Partial Class Login
         '
         'cmbLanguage
         '
+        Me.cmbLanguage.BackColor = System.Drawing.SystemColors.Window
         Me.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cmbLanguage, "cmbLanguage")
         Me.cmbLanguage.FormattingEnabled = True
         Me.cmbLanguage.Items.AddRange(New Object() {resources.GetString("cmbLanguage.Items"), resources.GetString("cmbLanguage.Items1")})
-        resources.ApplyResources(Me.cmbLanguage, "cmbLanguage")
         Me.cmbLanguage.Name = "cmbLanguage"
         '
         'TableLayoutPanel1
@@ -145,17 +148,25 @@ Partial Class Login
         Me.TableLayoutPanel1.Controls.Add(Me.lblTooSystem, 0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.belgium_removebg_preview
+        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.TabStop = False
+        '
         'Login
         '
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         resources.ApplyResources(Me, "$this")
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.cmbLanguage)
         Me.Controls.Add(Me.pbGCB)
         Me.Controls.Add(Me.pnlLogin)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "Login"
         Me.pnlLogin.ResumeLayout(False)
         Me.pnlLogin.PerformLayout()
@@ -164,6 +175,7 @@ Partial Class Login
         CType(Me.pbGCB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -181,4 +193,5 @@ Partial Class Login
     Friend WithEvents cmbLanguage As ComboBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

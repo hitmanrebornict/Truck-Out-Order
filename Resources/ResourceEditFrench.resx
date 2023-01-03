@@ -123,8 +123,14 @@
   <data name="btnPost" xml:space="preserve">
     <value>Poste</value>
   </data>
+  <data name="btnPrint" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
   <data name="btnSave" xml:space="preserve">
     <value>Sauvegarder</value>
+  </data>
+  <data name="lblCompanyFullName" xml:space="preserve">
+    <value>Nom complet de l'entreprise:</value>
   </data>
   <data name="lblCompnay" xml:space="preserve">
     <value>Compagnie:</value>
@@ -138,11 +144,14 @@
   <data name="lblDDB" xml:space="preserve">
     <value>DDB:</value>
   </data>
+  <data name="lblDriverCheck" xml:space="preserve">
+    <value>Vérification du conducteur</value>
+  </data>
   <data name="lblEsSealNo" xml:space="preserve">
     <value>Numéro de sceau ES</value>
   </data>
   <data name="lblFullName" xml:space="preserve">
-    <value>Nom complet de l'entreprise :</value>
+    <value>Nom complet du conducteur</value>
   </data>
   <data name="lblHaulier" xml:space="preserve">
     <value>Transporteur</value>
@@ -154,13 +163,25 @@
     <value>Facture d'achat:</value>
   </data>
   <data name="lblISOTank" xml:space="preserve">
-    <value>Réservoir ISO :</value>
+    <value>Réservoir ISO:</value>
   </data>
   <data name="lblISOTankWeight" xml:space="preserve">
     <value>Poids du réservoir ISO (mt):</value>
   </data>
+  <data name="lblISOTankWeightCheck" xml:space="preserve">
+    <value>Vérification du poids du réservoir ISO</value>
+  </data>
   <data name="lblISOTruckOutDate" xml:space="preserve">
-    <value>Date de sortie du camion :</value>
+    <value>Date de sortie du camion:</value>
+  </data>
+  <data name="lblISOTruckOutDateCheck" xml:space="preserve">
+    <value>Vérification de la date ISO</value>
+  </data>
+  <data name="lblLCD" xml:space="preserve">
+    <value>Chargement de la date de fin</value>
+  </data>
+  <data name="lblLCT" xml:space="preserve">
+    <value>Temps de chargement terminé</value>
   </data>
   <data name="lblLinerSealNo" xml:space="preserve">
     <value>Numéro de joint de revêtement</value>
@@ -172,33 +193,66 @@
     <value>Port de chargement:</value>
   </data>
   <data name="lblNetCargoWeight" xml:space="preserve">
-    <value>Poids net de la cargaison (kg) :</value>
+    <value>Poids net de la cargaison (kg)</value>
+  </data>
+  <data name="lblPMCode" xml:space="preserve">
+    <value>Code PM</value>
+  </data>
+  <data name="lblPMRegistrationPlate" xml:space="preserve">
+    <value>Plaque d'immatriculation PM</value>
   </data>
   <data name="lblPortFullName" xml:space="preserve">
-    <value>Nom complet du port de chargement :</value>
+    <value>Nom complet du port de chargement:</value>
   </data>
   <data name="lblProduct" xml:space="preserve">
     <value>Produit:</value>
+  </data>
+  <data name="lblRTD" xml:space="preserve">
+    <value>Date de sortie du camion prêt</value>
+  </data>
+  <data name="lblRTT" xml:space="preserve">
+    <value>Temps de sortie du camion prêt</value>
   </data>
   <data name="lblSCD" xml:space="preserve">
     <value>Date limite d'expédition :</value>
   </data>
   <data name="lblSCT" xml:space="preserve">
-    <value>Heure de clôture de l'expédition :</value>
+    <value>Heure de clôture de l'expédition:</value>
+  </data>
+  <data name="lblSecurityCheck" xml:space="preserve">
+    <value>Vérification de sécurité</value>
+  </data>
+  <data name="lblSecurityPost" xml:space="preserve">
+    <value>Poste de sécurité</value>
   </data>
   <data name="lblSendToCompany" xml:space="preserve">
-    <value>Envoyer à l'entreprise :</value>
+    <value>Envoyer à l'entreprise:</value>
   </data>
   <data name="lblShippingLine" xml:space="preserve">
     <value>Ligne maritime:</value>
+  </data>
+  <data name="lblShippingPost" xml:space="preserve">
+    <value>Poste d'expédition</value>
   </data>
   <data name="lblTemporarySealNo" xml:space="preserve">
     <value>Numéro de sceau temporaire</value>
   </data>
   <data name="lblTruckOutNumber" xml:space="preserve">
-    <value>Numéro de sortie du camion :</value>
+    <value>Numéro de sortie du camion:</value>
   </data>
   <data name="lblWarehouseLocation" xml:space="preserve">
-    <value>Emplacement de l'entrepôt :</value>
+    <value>Emplacement de l'entrepôt:</value>
+  </data>
+  <data name="lblWarehousePost" xml:space="preserve">
+    <value>Poste d'entrepôt</value>
+  </data>
+  <data name="stringComplete" xml:space="preserve">
+    <value>Compléter</value>
+  </data>
+  <data name="stringUpdateComplete" xml:space="preserve">
+    <value>Mise à jour terminée</value>
+  </data>
+  <data name="stringUpdateFailed" xml:space="preserve">
+    <value>Mise à jour a échoué</value>
   </data>
 </root>

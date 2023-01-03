@@ -87,7 +87,7 @@ Public Class CompanyMaintenance
 
 
 
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbCompanyName.DropDownStyle = ComboBoxStyle.DropDownList
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -109,21 +109,7 @@ Public Class CompanyMaintenance
         End While
         con.Close()
 
-        con.Open()
 
-
-
-        cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
-        rd = cmd.ExecuteReader
-        While rd.Read()
-            If IsDBNull(rd.Item("maxID")) Then
-                age = 0
-            Else
-                age = rd.Item("maxID")
-            End If
-        End While
-
-        con.Close()
         con.Open()
         cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
         rd = cmd.ExecuteReader
@@ -134,20 +120,7 @@ Public Class CompanyMaintenance
             maxTOONumber = rd.Item("maxTOONumber")
         End If
 
-
-        If age = 0 Then
-            My.Settings.newTOONumber = 10000
-        Else
-            If age >= maxTOONumber Then
-                My.Settings.newTOONumber = age + 1
-            Else
-                My.Settings.newTOONumber = maxTOONumber
-            End If
-
-        End If
-
-
-
+        My.Settings.newTOONumber = maxTOONumber
 
         'Find Current Max TOO Number
         lblCurrentMaxNum.Text = stringCurrentMaxNum & " " & My.Settings.newTOONumber & "."

@@ -30,7 +30,6 @@ Partial Class Admin
         Me.lblEdit = New System.Windows.Forms.Label()
         Me.lblDriverSetting = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.lblLogout = New System.Windows.Forms.Label()
         Me.lblNew = New System.Windows.Forms.Label()
         Me.lblUserDetails = New System.Windows.Forms.Label()
         Me.pnlNew = New System.Windows.Forms.Panel()
@@ -54,6 +53,7 @@ Partial Class Admin
         Me.lblCompanyHeader = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblLogout = New System.Windows.Forms.Label()
         Me.pnlNew.SuspendLayout()
         CType(Me.pbNew, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlReport.SuspendLayout()
@@ -126,22 +126,11 @@ Partial Class Admin
         Me.Button1.BackColor = System.Drawing.Color.Azure
         Me.Button1.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.icons8_logout_rounded_down_100
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.Location = New System.Drawing.Point(1086, 3)
+        Me.Button1.Location = New System.Drawing.Point(1093, 3)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(121, 92)
         Me.Button1.TabIndex = 18
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'lblLogout
-        '
-        Me.lblLogout.AutoSize = True
-        Me.lblLogout.BackColor = System.Drawing.Color.Transparent
-        Me.lblLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLogout.Location = New System.Drawing.Point(3, 0)
-        Me.lblLogout.Name = "lblLogout"
-        Me.lblLogout.Size = New System.Drawing.Size(82, 20)
-        Me.lblLogout.TabIndex = 19
-        Me.lblLogout.Text = "LOGOUT"
         '
         'lblNew
         '
@@ -383,25 +372,39 @@ Partial Class Admin
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1265, 117)
         Me.TableLayoutPanel1.TabIndex = 28
         '
         'TableLayoutPanel2
         '
-        Me.TableLayoutPanel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel2.ColumnCount = 1
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.lblLogout, 0, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(1086, 101)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(1044, 101)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(200, 33)
-        Me.TableLayoutPanel2.TabIndex = 29
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(221, 29)
+        Me.TableLayoutPanel2.TabIndex = 37
+        '
+        'lblLogout
+        '
+        Me.lblLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblLogout.AutoSize = True
+        Me.lblLogout.BackColor = System.Drawing.Color.Transparent
+        Me.lblLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLogout.Location = New System.Drawing.Point(3, 4)
+        Me.lblLogout.Name = "lblLogout"
+        Me.lblLogout.Size = New System.Drawing.Size(215, 20)
+        Me.lblLogout.TabIndex = 28
+        Me.lblLogout.Text = "LOGOUT"
+        Me.lblLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Admin
         '
@@ -428,7 +431,6 @@ Partial Class Admin
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "Admin"
         Me.Text = "TOO System"
@@ -462,7 +464,6 @@ Partial Class Admin
     Friend WithEvents lblEdit As Label
     Friend WithEvents lblDriverSetting As Label
     Public WithEvents Button1 As Button
-    Friend WithEvents lblLogout As Label
     Friend WithEvents lblNew As Label
     Friend WithEvents lblUserDetails As Label
     Friend WithEvents pnlNew As Panel
@@ -486,4 +487,5 @@ Partial Class Admin
     Friend WithEvents lblFieldSetting As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents lblLogout As Label
 End Class

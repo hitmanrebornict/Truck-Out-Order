@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Runtime.Serialization.Formatters
 Imports System.Security.Permissions
+Imports Truck_Out_Order.My.Resources
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class ViewPage
@@ -9,8 +10,55 @@ Public Class ViewPage
     Public Shared reportCheck As Boolean = "False"
     Public Shared reportSelected As String
     Private companyNameHeader As String
+    Private stringPleaseSelect,
+            stringSearchError,
+            stringNetCargoBetween,
+            stringCompletedPostBetween,
+            stringSuccess,
+            stringPrivilege,
+            stringThereAre,
+            selectString,
+            selectStringNormal As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        If (My.Settings.languageSetting = "fr") Then
+            btnSearch.Text = ResourceViewPageFrench.btnSearch
+            btnExport.Text = ResourceViewPageFrench.btnExport
+            btnCancel.Text = ResourceViewPageFrench.btnCancel
+            cmbPostSelect.Items.Add(ResourceViewPageFrench.itemShipping)
+            cmbPostSelect.Items.Add(ResourceViewPageFrench.itemWarehouse)
+            cmbPostSelect.Items.Add(ResourceViewPageFrench.itemSecurity)
+            cmbPostSelect.Items.Add(ResourceViewPageFrench.itemCargo)
+            cmbPostSelect.Items.Add(ResourceViewPageFrench.itemISO)
+            stringPleaseSelect = ResourceViewPageFrench.stringPleaseSelect
+            stringSearchError = ResourceViewPageFrench.stringSearchError
+            stringNetCargoBetween = ResourceViewPageFrench.stringNetCargoBetween
+            stringCompletedPostBetween = ResourceViewPageFrench.stringCompletedPostBetween
+            stringSuccess = ResourceViewPageFrench.stringSuccess
+            stringPrivilege = ResourceViewPageFrench.stringPrivilege
+            stringThereAre = ResourceViewPageFrench.stringThereAre
+            selectString = ResourceViewPageFrench.stringSelectString
+            selectStringNormal = ResourceViewPageFrench.stringSelectStringNormal
+
+        Else
+            btnSearch.Text = ResourceViewPage.btnSearch
+            btnExport.Text = ResourceViewPage.btnExport
+            btnCancel.Text = ResourceViewPage.btnCancel
+            cmbPostSelect.Items.Add(ResourceViewPage.itemShipping)
+            cmbPostSelect.Items.Add(ResourceViewPage.itemWarehouse)
+            cmbPostSelect.Items.Add(ResourceViewPage.itemSecurity)
+            cmbPostSelect.Items.Add(ResourceViewPage.itemCargo)
+            cmbPostSelect.Items.Add(ResourceViewPage.itemISO)
+            stringPleaseSelect = ResourceViewPage.stringPleaseSelect
+            stringSearchError = ResourceViewPage.stringSearchError
+            stringNetCargoBetween = ResourceViewPage.stringNetCargoBetween
+            stringCompletedPostBetween = ResourceViewPage.stringCompletedPostBetween
+            stringSuccess = ResourceViewPage.stringSuccess
+            stringPrivilege = ResourceViewPage.stringPrivilege
+            stringThereAre = ResourceViewPage.stringThereAre
+            selectString = ResourceViewPage.stringSelectString
+            selectStringNormal = ResourceViewPage.stringSelectStringNormal
+        End If
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         lblReport.Visible = False
         dgvView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
@@ -28,11 +76,9 @@ Public Class ViewPage
         Dim dt As New DataTable()
         Dim postOption As String
         Dim selectOption As String
-        Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size',Shipping.Net_Cargo_Weight as 'Net Cargo Weight' , Security.Cargo_Weight_Check_Value as 'Net Cargo Weight Checking Value', CASE WHEN Cargo_Weight_Check = 1 Then 'Pass' else 'Failed' END AS 'Cargo Weight Checking', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
-        Dim selectStringNormal As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, "
+
         Dim numOfReport As String
         Dim startDate, endDate As String
-        Dim departmentOption As String
         startDate = dtpFrom.Value.ToString("yyyy-MM-dd")
         endDate = dtpTo.Value.ToString("yyyy-MM-dd")
 
@@ -41,26 +87,26 @@ Public Class ViewPage
         con.Open()
 
         If cmbPostSelect.Text = "" Then
-            MessageBox.Show("Please Select The Post Option", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringPleaseSelect, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            Select Case cmbPostSelect.Text
-                Case "Shipping Post Completed"
+            Select Case cmbPostSelect.SelectedIndex
+                Case 0
                     postOption = "Shipping_POST_Time"
                     selectOption = selectStringNormal & " Shipping_POST_User as 'Shipping Post User',Shipping_Post_Time as 'Shipping Post Time',Last_Modified_User as 'Last Modified User', Shipping.Update_Time as 'Last Modified Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
-                Case "Warehouse Post Completed"
+                Case 1
                     postOption = "Warehouse_Post_Time"
                     selectOption = selectStringNormal & " Warehouse_Post_User as 'Warehouse Post User',Warehouse_Post_Time as 'Warehouse Post Time', warehouse.Update_User as 'Last Modified User', warehouse.Update_Time as 'Last Modified Time' from Shipping join warehouse on shipping.id = warehouse.shipping_id"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
-                Case "Security Post Completed"
+                Case 2
                     postOption = "Security_Post_Time"
                     selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id inner join security on shipping.id = security.shipping_id "
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') Order by id ")
-                Case "Cargo Weight Checking"
+                Case 3
                     postOption = "Security_Post_Time"
                     selectOption = selectString & "Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping  join Security  on Shipping.ID = Security.Shipping_ID join warehouse on shipping.ID = warehouse.shipping_ID"
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and shipping.Net_Cargo_Weight is not null  Order by security.cargo_weight_check,shipping.container_size, id")
-                Case "ISO Tank"
+                Case 4
                     postOption = "Security_Post_Time"
                     selectOption = selectStringNormal & " Security_Post_User as 'Security Post User',Security_Post_Time as 'Security Post Time' from Shipping left join warehouse on shipping.id = warehouse.shipping_id join security on shipping.id = security.shipping_id "
                     cmd.CommandText = (selectOption & " where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and Shipping.Check_ISO_Tank = 1 Order by id ")
@@ -78,14 +124,14 @@ Public Class ViewPage
             con.Open()
             Dim postString As String
             Select Case cmbPostSelect.Text
-                Case "Cargo Weight Checking"
-                    postString = " Net Cargo Weight Checking Post Between "
+                Case 3
+                    postString = " " & stringNetCargoBetween & " "
                     cmd.CommandText = "SELECT COUNT(ID) as numofReport from shipping inner join security on shipping.id = security.shipping_id where  " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  and Cargo_Weight_Check_Value is not null"
-                Case "ISO Tank"
-                    postString = " Completed Post Between "
+                Case 4
+                    postString = " " & stringCompletedPostBetween & " "
                     cmd.CommandText = "Select COUNT(ID) As numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "') and Check_ISO_Tank = 1 "
                 Case Else
-                    postString = " Completed Post Between "
+                    postString = " " & stringCompletedPostBetween & " "
                     cmd.CommandText = "SELECT COUNT(ID) as numOfReport from Shipping where " & postOption & " > '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and " & postOption & " < dateadd(day,1,'" + dtpTo.Value.ToString("yyyy-MM-dd") + "')  "
             End Select
             rd = cmd.ExecuteReader
@@ -93,7 +139,7 @@ Public Class ViewPage
             numOfReport = rd.Item("numOfReport")
             lblReport.Visible = True
 
-            lblReport.Text = "There are " & numOfReport & postString & startDate & " To " & endDate & ""
+            lblReport.Text = stringThereAre & " " & numOfReport & postString & startDate & " - " & endDate & ""
         End If
 
 
@@ -130,7 +176,7 @@ Public Class ViewPage
         SaveFileDialog1.RestoreDirectory = True
         If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
             xlWorkSheet.SaveAs(SaveFileDialog1.FileName)
-            MsgBox("Save file success")
+            MsgBox(stringSuccess)
         Else
             Return
         End If
@@ -140,7 +186,7 @@ Public Class ViewPage
     End Sub
 
 
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
     End Sub
 
@@ -151,7 +197,7 @@ Public Class ViewPage
         Dim rd2 As SqlDataReader
         Dim selected As String
 
-        Me.reportCheck = True
+        reportCheck = True
         selected = dgvView.CurrentCell.Value
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2
@@ -177,7 +223,7 @@ Public Class ViewPage
             Me.Close()
 
         Else
-            MessageBox.Show("You have no privilege to view this number.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(stringPrivilege, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         Search.selected = selected
     End Sub

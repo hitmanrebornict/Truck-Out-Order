@@ -95,6 +95,7 @@ Public Class Login
             stringAuthentificationError = ResourceLoginFrench.stringAuthentificationError
             stringUserDisabled = ResourceLoginFrench.stringUserDisabled
             stringDoNotMatch = ResourceLoginFrench.stringDoNotMatch
+            cmbLanguage.SelectedIndex = 1
         Else
             lblTooSystem.Text = ResourceLogin.lblTOOSystem
             lblLogin.Text = ResourceLogin.lblLogin
@@ -106,6 +107,7 @@ Public Class Login
             stringAuthentificationError = ResourceLogin.stringAuthentificationError
             stringUserDisabled = ResourceLogin.stringUserDisabled
             stringDoNotMatch = ResourceLogin.stringDoNotMatch
+            cmbLanguage.SelectedIndex = 0
         End If
     End Sub
 

@@ -193,7 +193,7 @@
     <value>Shipping Line:</value>
   </data>
   <data name="lblTemporarySealNo" xml:space="preserve">
-    <value>Temporary Seal No,</value>
+    <value>Temporary Seal No.</value>
   </data>
   <data name="lblTruckOutNumber" xml:space="preserve">
     <value>Truck Out Number:</value>
@@ -202,7 +202,7 @@
     <value>Warehouse Location:</value>
   </data>
   <data name="stringCargoWeightEx" xml:space="preserve">
-    <value>Please Only Enter Integer In Net Cargo Weight</value>
+    <value>Please Only Enter Integer in Net Cargo Weight</value>
   </data>
   <data name="stringCloseApplication" xml:space="preserve">
     <value>Close Application</value>

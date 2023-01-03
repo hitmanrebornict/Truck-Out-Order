@@ -127,12 +127,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResourceEdit.Designer.vb">
+    <Compile Include="Resources\ResourceEdit.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceEdit.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResourceEditFrench.Designer.vb">
+    <Compile Include="Resources\ResourceEditFrench.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceEditFrench.resx</DependentUpon>
@@ -147,7 +147,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceAddUserTry.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResourceSecurityEdit.Designer.vb">
+    <Compile Include="Resources\ResourceSecurityEdit.Designer.vb">
       <DependentUpon>ResourceSecurityEdit.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,13 +207,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ResourceSecurityEditFrench.Designer.vb">
+    <Compile Include="Resources\ResourceSecurityEditFrench.Designer.vb">
       <DependentUpon>ResourceSecurityEditFrench.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="ResourceCommonFrench.Designer.vb">
-      <DependentUpon>ResourceCommonFrench.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -222,20 +217,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ResourceCommonEnglish.Designer.vb">
-      <DependentUpon>ResourceCommonEnglish.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Resources\ResourceNewPage.Designer.vb">
       <DependentUpon>ResourceNewPage.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="ResourceCommonBlank.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResourceCommonBlank.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ResourceSearchFrench.Designer.vb">
       <DependentUpon>ResourceSearchFrench.resx</DependentUpon>
@@ -272,6 +257,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Resources\ResourceViewPageFrench.Designer.vb">
+      <DependentUpon>ResourceViewPageFrench.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceViewPage.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceViewPage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Search.Designer.vb">
+      <DependentUpon>Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SecurityEdit.Designer.vb">
       <DependentUpon>SecurityEdit.vb</DependentUpon>
     </Compile>
@@ -306,12 +307,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Search.Designer.vb">
-      <DependentUpon>Search.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Search.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewPage.Designer.vb">
       <DependentUpon>ViewPage.vb</DependentUpon>
@@ -375,12 +370,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResourceEdit.resx">
+    <EmbeddedResource Include="Resources\ResourceEdit.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEdit.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResourceEditFrench.resx">
+    <EmbeddedResource Include="Resources\ResourceEditFrench.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEditFrench.Designer.vb</LastGenOutput>
@@ -395,7 +390,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceAddUserTry.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResourceSecurityEdit.resx">
+    <EmbeddedResource Include="Resources\ResourceSecurityEdit.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceSecurityEdit.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -450,14 +445,9 @@
       <LastGenOutput>ResourceWarehouseEditFrench.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResourceSecurityEditFrench.resx">
+    <EmbeddedResource Include="Resources\ResourceSecurityEditFrench.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceSecurityEditFrench.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResourceCommonFrench.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceCommonFrench.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ResourceNewPageFrench.resx">
@@ -465,20 +455,10 @@
       <LastGenOutput>ResourceNewPageFrench.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResourceCommonEnglish.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceCommonEnglish.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\ResourceNewPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceNewPage.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResourceCommonBlank.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceCommonBlank.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ResourceSearchFrench.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -520,6 +500,19 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceLogin.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceViewPageFrench.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceViewPageFrench.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceViewPage.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceViewPage.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search.resx">
+      <DependentUpon>Search.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SecurityEdit.resx">
       <DependentUpon>SecurityEdit.vb</DependentUpon>
     </EmbeddedResource>
@@ -534,9 +527,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Search.resx">
-      <DependentUpon>Search.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage.resx">
       <DependentUpon>ViewPage.vb</DependentUpon>
@@ -646,6 +636,8 @@
     <None Include="Resources\icons8-business-building-100.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\belgium-removebg-preview.png" />
+    <None Include="Resources\belgium-removebg-preview1.png" />
     <Content Include="TOO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -25,7 +25,7 @@ Namespace My.Resources
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-    Friend Class ResourceCommonBlank
+    Friend Class ResourceEditFrench
         
         Private Shared resourceMan As Global.System.Resources.ResourceManager
         
@@ -43,7 +43,7 @@ Namespace My.Resources
         Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Truck_Out_Order.ResourceCommonBlank", GetType(ResourceCommonBlank).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Truck_Out_Order.ResourceEditFrench", GetType(ResourceEditFrench).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -65,7 +65,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Annuler.
         '''</summary>
         Friend Shared ReadOnly Property btnCancel() As String
             Get
@@ -74,7 +74,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Poste.
         '''</summary>
         Friend Shared ReadOnly Property btnPost() As String
             Get
@@ -83,7 +83,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Imprimer.
+        '''</summary>
+        Friend Shared ReadOnly Property btnPrint() As String
+            Get
+                Return ResourceManager.GetString("btnPrint", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Sauvegarder.
         '''</summary>
         Friend Shared ReadOnly Property btnSave() As String
             Get
@@ -92,7 +101,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Nom complet de l&apos;entreprise:.
+        '''</summary>
+        Friend Shared ReadOnly Property lblCompanyFullName() As String
+            Get
+                Return ResourceManager.GetString("lblCompanyFullName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compagnie:.
         '''</summary>
         Friend Shared ReadOnly Property lblCompnay() As String
             Get
@@ -101,7 +119,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Numéro de conteneur.
         '''</summary>
         Friend Shared ReadOnly Property lblContainerNo() As String
             Get
@@ -110,7 +128,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Taille du conteneur:.
         '''</summary>
         Friend Shared ReadOnly Property lblContainerSize() As String
             Get
@@ -119,7 +137,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to DDB:.
         '''</summary>
         Friend Shared ReadOnly Property lblDDB() As String
             Get
@@ -128,7 +146,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Vérification du conducteur.
+        '''</summary>
+        Friend Shared ReadOnly Property lblDriverCheck() As String
+            Get
+                Return ResourceManager.GetString("lblDriverCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Numéro de sceau ES.
         '''</summary>
         Friend Shared ReadOnly Property lblEsSealNo() As String
             Get
@@ -137,7 +164,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Nom complet du conducteur.
         '''</summary>
         Friend Shared ReadOnly Property lblFullName() As String
             Get
@@ -146,7 +173,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Transporteur.
         '''</summary>
         Friend Shared ReadOnly Property lblHaulier() As String
             Get
@@ -155,7 +182,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Numéro de joint interne.
         '''</summary>
         Friend Shared ReadOnly Property lblInternalSealNo() As String
             Get
@@ -164,7 +191,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Facture d&apos;achat:.
         '''</summary>
         Friend Shared ReadOnly Property lblInvoice() As String
             Get
@@ -173,7 +200,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Réservoir ISO:.
         '''</summary>
         Friend Shared ReadOnly Property lblISOTank() As String
             Get
@@ -182,7 +209,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Poids du réservoir ISO (mt):.
         '''</summary>
         Friend Shared ReadOnly Property lblISOTankWeight() As String
             Get
@@ -191,7 +218,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Vérification du poids du réservoir ISO.
+        '''</summary>
+        Friend Shared ReadOnly Property lblISOTankWeightCheck() As String
+            Get
+                Return ResourceManager.GetString("lblISOTankWeightCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Date de sortie du camion:.
         '''</summary>
         Friend Shared ReadOnly Property lblISOTruckOutDate() As String
             Get
@@ -200,7 +236,34 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Vérification de la date ISO.
+        '''</summary>
+        Friend Shared ReadOnly Property lblISOTruckOutDateCheck() As String
+            Get
+                Return ResourceManager.GetString("lblISOTruckOutDateCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Chargement de la date de fin.
+        '''</summary>
+        Friend Shared ReadOnly Property lblLCD() As String
+            Get
+                Return ResourceManager.GetString("lblLCD", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Temps de chargement terminé.
+        '''</summary>
+        Friend Shared ReadOnly Property lblLCT() As String
+            Get
+                Return ResourceManager.GetString("lblLCT", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Numéro de joint de revêtement.
         '''</summary>
         Friend Shared ReadOnly Property lblLinerSealNo() As String
             Get
@@ -209,7 +272,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Quai de chargement:.
         '''</summary>
         Friend Shared ReadOnly Property lblLoadingBay() As String
             Get
@@ -218,7 +281,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Port de chargement:.
         '''</summary>
         Friend Shared ReadOnly Property lblLoadingPort() As String
             Get
@@ -227,7 +290,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Poids net de la cargaison (kg).
         '''</summary>
         Friend Shared ReadOnly Property lblNetCargoWeight() As String
             Get
@@ -236,7 +299,25 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Code PM.
+        '''</summary>
+        Friend Shared ReadOnly Property lblPMCode() As String
+            Get
+                Return ResourceManager.GetString("lblPMCode", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Plaque d&apos;immatriculation PM.
+        '''</summary>
+        Friend Shared ReadOnly Property lblPMRegistrationPlate() As String
+            Get
+                Return ResourceManager.GetString("lblPMRegistrationPlate", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Nom complet du port de chargement:.
         '''</summary>
         Friend Shared ReadOnly Property lblPortFullName() As String
             Get
@@ -245,7 +326,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Produit:.
         '''</summary>
         Friend Shared ReadOnly Property lblProduct() As String
             Get
@@ -254,7 +335,25 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Date de sortie du camion prêt.
+        '''</summary>
+        Friend Shared ReadOnly Property lblRTD() As String
+            Get
+                Return ResourceManager.GetString("lblRTD", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Temps de sortie du camion prêt.
+        '''</summary>
+        Friend Shared ReadOnly Property lblRTT() As String
+            Get
+                Return ResourceManager.GetString("lblRTT", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Date limite d&apos;expédition :.
         '''</summary>
         Friend Shared ReadOnly Property lblSCD() As String
             Get
@@ -263,7 +362,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Heure de clôture de l&apos;expédition:.
         '''</summary>
         Friend Shared ReadOnly Property lblSCT() As String
             Get
@@ -272,7 +371,25 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Vérification de sécurité.
+        '''</summary>
+        Friend Shared ReadOnly Property lblSecurityCheck() As String
+            Get
+                Return ResourceManager.GetString("lblSecurityCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Poste de sécurité.
+        '''</summary>
+        Friend Shared ReadOnly Property lblSecurityPost() As String
+            Get
+                Return ResourceManager.GetString("lblSecurityPost", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Envoyer à l&apos;entreprise:.
         '''</summary>
         Friend Shared ReadOnly Property lblSendToCompany() As String
             Get
@@ -281,7 +398,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Ligne maritime:.
         '''</summary>
         Friend Shared ReadOnly Property lblShippingLine() As String
             Get
@@ -290,7 +407,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Poste d&apos;expédition.
+        '''</summary>
+        Friend Shared ReadOnly Property lblShippingPost() As String
+            Get
+                Return ResourceManager.GetString("lblShippingPost", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Numéro de sceau temporaire.
         '''</summary>
         Friend Shared ReadOnly Property lblTemporarySealNo() As String
             Get
@@ -299,7 +425,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Numéro de sortie du camion:.
         '''</summary>
         Friend Shared ReadOnly Property lblTruckOutNumber() As String
             Get
@@ -308,11 +434,47 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to Emplacement de l&apos;entrepôt:.
         '''</summary>
         Friend Shared ReadOnly Property lblWarehouseLocation() As String
             Get
                 Return ResourceManager.GetString("lblWarehouseLocation", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Poste d&apos;entrepôt.
+        '''</summary>
+        Friend Shared ReadOnly Property lblWarehousePost() As String
+            Get
+                Return ResourceManager.GetString("lblWarehousePost", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compléter.
+        '''</summary>
+        Friend Shared ReadOnly Property stringComplete() As String
+            Get
+                Return ResourceManager.GetString("stringComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Mise à jour terminée.
+        '''</summary>
+        Friend Shared ReadOnly Property stringUpdateComplete() As String
+            Get
+                Return ResourceManager.GetString("stringUpdateComplete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Mise à jour a échoué.
+        '''</summary>
+        Friend Shared ReadOnly Property stringUpdateFailed() As String
+            Get
+                Return ResourceManager.GetString("stringUpdateFailed", resourceCulture)
             End Get
         End Property
     End Class

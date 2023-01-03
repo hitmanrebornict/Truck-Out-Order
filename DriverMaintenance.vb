@@ -56,7 +56,7 @@ Public Class DriverMaintenance
         End If
 
 
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cbActive.Appearance = Appearance.Button
         cbActive.AutoSize = False
         cbActive.Size = New Size(100, 40)

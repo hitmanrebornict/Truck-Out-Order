@@ -214,7 +214,7 @@
     <value>Shipping Post</value>
   </data>
   <data name="lblTemporarySealNo" xml:space="preserve">
-    <value>Temporary Seal No,</value>
+    <value>Temporary Seal No.</value>
   </data>
   <data name="lblTruckOutNumber" xml:space="preserve">
     <value>Truck Out Number:</value>

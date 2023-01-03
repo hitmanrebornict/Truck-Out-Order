@@ -120,85 +120,52 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="btnPost" xml:space="preserve">
-    <value>Post</value>
+  <data name="btnExport" xml:space="preserve">
+    <value>Export To Excel</value>
   </data>
-  <data name="btnSave" xml:space="preserve">
-    <value>Save</value>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
-  <data name="lblCompnay" xml:space="preserve">
-    <value>Company:</value>
+  <data name="itemCargo" xml:space="preserve">
+    <value>Cargo Weight Checking</value>
   </data>
-  <data name="lblContainerNo" xml:space="preserve">
-    <value>Container No.</value>
+  <data name="itemISO" xml:space="preserve">
+    <value>ISO Tank</value>
   </data>
-  <data name="lblContainerSize" xml:space="preserve">
-    <value>Container Size:</value>
+  <data name="itemSecurity" xml:space="preserve">
+    <value>Security Post Completed</value>
   </data>
-  <data name="lblDDB" xml:space="preserve">
-    <value>DDB:</value>
+  <data name="itemShipping" xml:space="preserve">
+    <value>Shipping Post Completed</value>
   </data>
-  <data name="lblEsSealNo" xml:space="preserve">
-    <value>ES Seal No.</value>
+  <data name="itemWarehouse" xml:space="preserve">
+    <value>Warehouse Post Completed</value>
   </data>
-  <data name="lblFullName" xml:space="preserve">
-    <value>Company Full Name:</value>
+  <data name="stringCompletedPostBetween" xml:space="preserve">
+    <value>Completed Post Between</value>
   </data>
-  <data name="lblHaulier" xml:space="preserve">
-    <value>Haulier:</value>
+  <data name="stringNetCargoBetween" xml:space="preserve">
+    <value>Net Cargo Weight Checking Post Between</value>
   </data>
-  <data name="lblInternalSealNo" xml:space="preserve">
-    <value>Internal Seal No.</value>
+  <data name="stringPleaseSelect" xml:space="preserve">
+    <value>Please Select The Post Option</value>
   </data>
-  <data name="lblInvoice" xml:space="preserve">
-    <value>Invoice:</value>
+  <data name="stringPrivilege" xml:space="preserve">
+    <value>You Have No Privilege To View This Number</value>
   </data>
-  <data name="lblISOTank" xml:space="preserve">
-    <value>ISO Tank:</value>
+  <data name="stringSearchError" xml:space="preserve">
+    <value>Search Error</value>
   </data>
-  <data name="lblISOTankWeight" xml:space="preserve">
-    <value>ISO Tank Weight (mt):</value>
+  <data name="stringSelectString" xml:space="preserve">
+    <value>SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size',Shipping.Net_Cargo_Weight as 'Net Cargo Weight' , Security.Cargo_Weight_Check_Value as 'Net Cargo Weight Checking Value', CASE WHEN Cargo_Weight_Check = 1 Then 'Pass' else 'Failed' END AS 'Cargo Weight Checking', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB,</value>
   </data>
-  <data name="lblISOTruckOutDate" xml:space="preserve">
-    <value>Truck Out Date:</value>
+  <data name="stringSelectStringNormal" xml:space="preserve">
+    <value>SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No', warehouse.ES_SEAL_NO as 'Es Seal No',LINER_SEA_NO as 'Liner Seal No', INTERNAL_SEAL_NO as 'Internal Seal No', TEMPORARY_SEAL_NO as 'Temporary Seal No', shipping.COMPANY as 'Send To Company',Container_Size as 'Container Size', LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB,</value>
   </data>
-  <data name="lblLinerSealNo" xml:space="preserve">
-    <value>Liner's Seal No.</value>
+  <data name="stringSuccess" xml:space="preserve">
+    <value>Save File Successfully</value>
   </data>
-  <data name="lblLoadingBay" xml:space="preserve">
-    <value>Loading Bay:</value>
-  </data>
-  <data name="lblLoadingPort" xml:space="preserve">
-    <value>Loading Port:</value>
-  </data>
-  <data name="lblNetCargoWeight" xml:space="preserve">
-    <value>Net Cargo Weight (kg):</value>
-  </data>
-  <data name="lblPortFullName" xml:space="preserve">
-    <value>Loading Port Full Name:</value>
-  </data>
-  <data name="lblProduct" xml:space="preserve">
-    <value>Product:</value>
-  </data>
-  <data name="lblSCD" xml:space="preserve">
-    <value>Shipment Closing Date:</value>
-  </data>
-  <data name="lblSCT" xml:space="preserve">
-    <value>Shipment Closing Time:</value>
-  </data>
-  <data name="lblSendToCompany" xml:space="preserve">
-    <value>Send To Company:</value>
-  </data>
-  <data name="lblShippingLine" xml:space="preserve">
-    <value>Shipping Line:</value>
-  </data>
-  <data name="lblTemporarySealNo" xml:space="preserve">
-    <value>Temporary Seal No,</value>
-  </data>
-  <data name="lblTruckOutNumber" xml:space="preserve">
-    <value>Truck Out Number:</value>
-  </data>
-  <data name="lblWarehouseLocation" xml:space="preserve">
-    <value>Warehouse Location:</value>
+  <data name="stringThereAre" xml:space="preserve">
+    <value>There Are</value>
   </data>
 </root>

@@ -148,10 +148,10 @@
     <value>Numéro de sceau ES</value>
   </data>
   <data name="lblFullName" xml:space="preserve">
-    <value>Nom complet de l'entreprise :</value>
+    <value>Nom complet de l'entreprise:</value>
   </data>
   <data name="lblHaulier" xml:space="preserve">
-    <value>Transporteur</value>
+    <value>Transporteur:</value>
   </data>
   <data name="lblInternalSealNo" xml:space="preserve">
     <value>Numéro de joint interne</value>
@@ -160,13 +160,13 @@
     <value>Facture d'achat:</value>
   </data>
   <data name="lblISOTank" xml:space="preserve">
-    <value>Réservoir ISO :</value>
+    <value>Réservoir ISO:</value>
   </data>
   <data name="lblISOTankWeight" xml:space="preserve">
     <value>Poids du réservoir ISO (mt):</value>
   </data>
   <data name="lblISOTruckOutDate" xml:space="preserve">
-    <value>Date de sortie du camion :</value>
+    <value>Date de sortie du camion:</value>
   </data>
   <data name="lblLCD" xml:space="preserve">
     <value>Chargement de la date de fin</value>
@@ -184,10 +184,10 @@
     <value>Port de chargement:</value>
   </data>
   <data name="lblNetCargoWeight" xml:space="preserve">
-    <value>Poids net de la cargaison (kg) :</value>
+    <value>Poids net de la cargaison (kg)</value>
   </data>
   <data name="lblPortFullName" xml:space="preserve">
-    <value>Nom complet du port de chargement :</value>
+    <value>Nom complet du port de chargement:</value>
   </data>
   <data name="lblProduct" xml:space="preserve">
     <value>Produit:</value>
@@ -199,16 +199,16 @@
     <value>Temps de sortie du camion prêt</value>
   </data>
   <data name="lblSCD" xml:space="preserve">
-    <value>Date limite d'expédition :</value>
+    <value>Date limite d'expédition:</value>
   </data>
   <data name="lblSCT" xml:space="preserve">
-    <value>Heure de clôture de l'expédition :</value>
+    <value>Heure de clôture de l'expédition:</value>
   </data>
   <data name="lblSecurityPost" xml:space="preserve">
     <value>Poste de sécurité</value>
   </data>
   <data name="lblSendToCompany" xml:space="preserve">
-    <value>Envoyer à l'entreprise :</value>
+    <value>Envoyer à l'entreprise:</value>
   </data>
   <data name="lblShippingLine" xml:space="preserve">
     <value>Ligne maritime:</value>
@@ -220,13 +220,13 @@
     <value>Numéro de sceau temporaire</value>
   </data>
   <data name="lblTruckOutNumber" xml:space="preserve">
-    <value>Numéro de sortie du camion :</value>
+    <value>Numéro de sortie du camion:</value>
   </data>
   <data name="lblWarehouseChecking" xml:space="preserve">
     <value>Vérification d'entrepôt</value>
   </data>
   <data name="lblWarehouseLocation" xml:space="preserve">
-    <value>Emplacement de l'entrepôt :</value>
+    <value>Emplacement de l'entrepôt:</value>
   </data>
   <data name="lblWarehousePost" xml:space="preserve">
     <value>Poste d'entrepôt</value>

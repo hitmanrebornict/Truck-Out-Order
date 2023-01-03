@@ -203,6 +203,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Font similar to [Font: Name=Microsoft Sans Serif, Size=9.75, Units=3, GdiCharSet=1, GdiVerticalFont=False].
+        '''</summary>
+        Friend Shared ReadOnly Property cmbLanguage_Font() As System.Drawing.Font
+            Get
+                Dim obj As Object = ResourceManager.GetObject("cmbLanguage.Font", resourceCulture)
+                Return CType(obj,System.Drawing.Font)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to English.
         '''</summary>
         Friend Shared ReadOnly Property cmbLanguage_Items() As String
@@ -221,7 +231,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Point similar to {X=1105,Y=27}.
+        '''  Looks up a localized resource of type System.Drawing.Point similar to {X=1157,Y=15}.
         '''</summary>
         Friend Shared ReadOnly Property cmbLanguage_Location() As System.Drawing.Point
             Get
@@ -231,7 +241,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Size similar to {Width=121, Height=21}.
+        '''  Looks up a localized resource of type System.Drawing.Size similar to {Width=95, Height=24}.
         '''</summary>
         Friend Shared ReadOnly Property cmbLanguage_Size() As System.Drawing.Size
             Get
@@ -602,6 +612,46 @@ Namespace My.Resources
         Friend Shared ReadOnly Property pbGCB_TabIndex() As Integer
             Get
                 Dim obj As Object = ResourceManager.GetObject("pbGCB.TabIndex", resourceCulture)
+                Return CType(obj,Integer)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Windows.Forms.ImageLayout similar to Stretch.
+        '''</summary>
+        Friend Shared ReadOnly Property PictureBox1_BackgroundImageLayout() As System.Windows.Forms.ImageLayout
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PictureBox1.BackgroundImageLayout", resourceCulture)
+                Return CType(obj,System.Windows.Forms.ImageLayout)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Point similar to {X=1090,Y=3}.
+        '''</summary>
+        Friend Shared ReadOnly Property PictureBox1_Location() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PictureBox1.Location", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Size similar to {Width=61, Height=36}.
+        '''</summary>
+        Friend Shared ReadOnly Property PictureBox1_Size() As System.Drawing.Size
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PictureBox1.Size", resourceCulture)
+                Return CType(obj,System.Drawing.Size)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Int32 similar to 1.
+        '''</summary>
+        Friend Shared ReadOnly Property PictureBox1_TabIndex() As Integer
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PictureBox1.TabIndex", resourceCulture)
                 Return CType(obj,Integer)
             End Get
         End Property

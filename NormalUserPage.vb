@@ -4,7 +4,7 @@ Imports Truck_Out_Order.My.Resources
 Public Class NormalUserPage
     Private companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
 
         If (My.Settings.languageSetting = "fr") Then
             lblTooSystem.Text = ResourceNormalUserPageFrench.lblTooSystem

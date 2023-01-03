@@ -24,7 +24,12 @@ Partial Class SecurityEdit
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SecurityEdit))
         Me.tbCargo = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblISOCheck = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblSecurityCheck = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel11 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblDriverCheck = New System.Windows.Forms.Label()
         Me.tlpISO = New System.Windows.Forms.TableLayoutPanel()
         Me.dtpISOCheck = New System.Windows.Forms.DateTimePicker()
         Me.lblISOTruckOutDateCheck = New System.Windows.Forms.Label()
@@ -57,7 +62,6 @@ Partial Class SecurityEdit
         Me.lblLCD = New System.Windows.Forms.Label()
         Me.lblRTT = New System.Windows.Forms.Label()
         Me.dtpRTT = New System.Windows.Forms.DateTimePicker()
-        Me.lblDriverCheck = New System.Windows.Forms.Label()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.cmbProductType = New System.Windows.Forms.ComboBox()
@@ -71,7 +75,7 @@ Partial Class SecurityEdit
         Me.cmbLoadingPort = New System.Windows.Forms.ComboBox()
         Me.lblSCD = New System.Windows.Forms.Label()
         Me.dtpSCD = New System.Windows.Forms.DateTimePicker()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblCompanyFullName1 = New System.Windows.Forms.Label()
         Me.cmbDDB = New System.Windows.Forms.ComboBox()
         Me.tbSendToCompany = New System.Windows.Forms.TextBox()
         Me.lblSendToCompany = New System.Windows.Forms.Label()
@@ -91,7 +95,6 @@ Partial Class SecurityEdit
         Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
         Me.lblLoadingBay = New System.Windows.Forms.Label()
         Me.tbLoadingBay = New System.Windows.Forms.TextBox()
-        Me.lblSecurityCheck = New System.Windows.Forms.Label()
         Me.btnSecurityPost = New System.Windows.Forms.Button()
         Me.btnDriverCheck = New System.Windows.Forms.Button()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
@@ -136,6 +139,9 @@ Partial Class SecurityEdit
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.tbCargo.SuspendLayout()
+        Me.TableLayoutPanel12.SuspendLayout()
+        Me.TableLayoutPanel13.SuspendLayout()
+        Me.TableLayoutPanel11.SuspendLayout()
         Me.tlpISO.SuspendLayout()
         Me.TableLayoutPanel10.SuspendLayout()
         Me.TableLayoutPanel8.SuspendLayout()
@@ -153,14 +159,14 @@ Partial Class SecurityEdit
         'tbCargo
         '
         Me.tbCargo.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.tbCargo.Controls.Add(Me.lblISOCheck)
+        Me.tbCargo.Controls.Add(Me.TableLayoutPanel12)
+        Me.tbCargo.Controls.Add(Me.TableLayoutPanel13)
+        Me.tbCargo.Controls.Add(Me.TableLayoutPanel11)
         Me.tbCargo.Controls.Add(Me.tlpISO)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel8)
         Me.tbCargo.Controls.Add(Me.btnSecurityCheck)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel6)
-        Me.tbCargo.Controls.Add(Me.lblDriverCheck)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel3)
-        Me.tbCargo.Controls.Add(Me.lblSecurityCheck)
         Me.tbCargo.Controls.Add(Me.btnSecurityPost)
         Me.tbCargo.Controls.Add(Me.btnDriverCheck)
         Me.tbCargo.Controls.Add(Me.TableLayoutPanel5)
@@ -173,15 +179,80 @@ Partial Class SecurityEdit
         Me.tbCargo.Size = New System.Drawing.Size(1245, 703)
         Me.tbCargo.TabIndex = 11
         '
+        'TableLayoutPanel12
+        '
+        Me.TableLayoutPanel12.ColumnCount = 1
+        Me.TableLayoutPanel12.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel12.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel12.Controls.Add(Me.lblISOCheck, 0, 0)
+        Me.TableLayoutPanel12.Location = New System.Drawing.Point(902, 399)
+        Me.TableLayoutPanel12.Name = "TableLayoutPanel12"
+        Me.TableLayoutPanel12.RowCount = 1
+        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel12.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.TableLayoutPanel12.Size = New System.Drawing.Size(335, 24)
+        Me.TableLayoutPanel12.TabIndex = 702
+        '
         'lblISOCheck
         '
+        Me.lblISOCheck.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblISOCheck.AutoSize = True
         Me.lblISOCheck.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblISOCheck.Location = New System.Drawing.Point(1024, 399)
+        Me.lblISOCheck.Location = New System.Drawing.Point(115, 1)
         Me.lblISOCheck.Name = "lblISOCheck"
         Me.lblISOCheck.Size = New System.Drawing.Size(104, 22)
         Me.lblISOCheck.TabIndex = 163
         Me.lblISOCheck.Text = "ISO Check"
+        '
+        'TableLayoutPanel13
+        '
+        Me.TableLayoutPanel13.ColumnCount = 1
+        Me.TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel13.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel13.Controls.Add(Me.lblSecurityCheck, 0, 0)
+        Me.TableLayoutPanel13.Location = New System.Drawing.Point(382, 398)
+        Me.TableLayoutPanel13.Name = "TableLayoutPanel13"
+        Me.TableLayoutPanel13.RowCount = 1
+        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel13.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
+        Me.TableLayoutPanel13.Size = New System.Drawing.Size(513, 25)
+        Me.TableLayoutPanel13.TabIndex = 703
+        '
+        'lblSecurityCheck
+        '
+        Me.lblSecurityCheck.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lblSecurityCheck.AutoSize = True
+        Me.lblSecurityCheck.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSecurityCheck.Location = New System.Drawing.Point(186, 1)
+        Me.lblSecurityCheck.Name = "lblSecurityCheck"
+        Me.lblSecurityCheck.Size = New System.Drawing.Size(141, 22)
+        Me.lblSecurityCheck.TabIndex = 146
+        Me.lblSecurityCheck.Text = "Security Check"
+        '
+        'TableLayoutPanel11
+        '
+        Me.TableLayoutPanel11.ColumnCount = 1
+        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel11.Controls.Add(Me.lblDriverCheck, 0, 0)
+        Me.TableLayoutPanel11.Location = New System.Drawing.Point(3, 396)
+        Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
+        Me.TableLayoutPanel11.RowCount = 1
+        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
+        Me.TableLayoutPanel11.Size = New System.Drawing.Size(372, 27)
+        Me.TableLayoutPanel11.TabIndex = 701
+        '
+        'lblDriverCheck
+        '
+        Me.lblDriverCheck.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lblDriverCheck.AutoSize = True
+        Me.lblDriverCheck.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDriverCheck.Location = New System.Drawing.Point(125, 2)
+        Me.lblDriverCheck.Name = "lblDriverCheck"
+        Me.lblDriverCheck.Size = New System.Drawing.Size(122, 22)
+        Me.lblDriverCheck.TabIndex = 151
+        Me.lblDriverCheck.Text = "Driver Check"
         '
         'tlpISO
         '
@@ -449,7 +520,7 @@ Partial Class SecurityEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 370.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 378.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCD, 0, 1)
@@ -564,16 +635,6 @@ Partial Class SecurityEdit
         Me.dtpRTT.Size = New System.Drawing.Size(187, 26)
         Me.dtpRTT.TabIndex = 34
         '
-        'lblDriverCheck
-        '
-        Me.lblDriverCheck.AutoSize = True
-        Me.lblDriverCheck.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDriverCheck.Location = New System.Drawing.Point(134, 399)
-        Me.lblDriverCheck.Name = "lblDriverCheck"
-        Me.lblDriverCheck.Size = New System.Drawing.Size(122, 22)
-        Me.lblDriverCheck.TabIndex = 151
-        Me.lblDriverCheck.Text = "Driver Check"
-        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
@@ -592,7 +653,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel3.Controls.Add(Me.cmbLoadingPort, 3, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.lblSCD, 0, 2)
         Me.TableLayoutPanel3.Controls.Add(Me.dtpSCD, 1, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.Label4, 0, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.lblCompanyFullName1, 0, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.cmbDDB, 1, 7)
         Me.TableLayoutPanel3.Controls.Add(Me.tbSendToCompany, 3, 6)
         Me.TableLayoutPanel3.Controls.Add(Me.lblSendToCompany, 2, 6)
@@ -753,15 +814,15 @@ Partial Class SecurityEdit
         Me.dtpSCD.Size = New System.Drawing.Size(246, 26)
         Me.dtpSCD.TabIndex = 2
         '
-        'Label4
+        'lblCompanyFullName1
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(4, 36)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(160, 19)
-        Me.Label4.TabIndex = 133
-        Me.Label4.Text = "Company Full Name:"
+        Me.lblCompanyFullName1.AutoSize = True
+        Me.lblCompanyFullName1.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyFullName1.Location = New System.Drawing.Point(4, 36)
+        Me.lblCompanyFullName1.Name = "lblCompanyFullName1"
+        Me.lblCompanyFullName1.Size = New System.Drawing.Size(160, 19)
+        Me.lblCompanyFullName1.TabIndex = 133
+        Me.lblCompanyFullName1.Text = "Company Full Name:"
         '
         'cmbDDB
         '
@@ -945,16 +1006,6 @@ Partial Class SecurityEdit
         Me.tbLoadingBay.Size = New System.Drawing.Size(211, 26)
         Me.tbLoadingBay.TabIndex = 13
         '
-        'lblSecurityCheck
-        '
-        Me.lblSecurityCheck.AutoSize = True
-        Me.lblSecurityCheck.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSecurityCheck.Location = New System.Drawing.Point(545, 399)
-        Me.lblSecurityCheck.Name = "lblSecurityCheck"
-        Me.lblSecurityCheck.Size = New System.Drawing.Size(141, 22)
-        Me.lblSecurityCheck.TabIndex = 146
-        Me.lblSecurityCheck.Text = "Security Check"
-        '
         'btnSecurityPost
         '
         Me.btnSecurityPost.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -987,7 +1038,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel5.Controls.Add(Me.cmbPmCode, 0, 3)
         Me.TableLayoutPanel5.Controls.Add(Me.cmbPmRegistrationPlate, 0, 5)
         Me.TableLayoutPanel5.Controls.Add(Me.lblPmRegistrationPlate, 0, 4)
-        Me.TableLayoutPanel5.Location = New System.Drawing.Point(6, 425)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(3, 425)
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
         Me.TableLayoutPanel5.RowCount = 6
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
@@ -996,7 +1047,7 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(369, 199)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(372, 199)
         Me.TableLayoutPanel5.TabIndex = 50
         '
         'lblFullName
@@ -1085,8 +1136,8 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.05469!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.42188!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.96875!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.3125!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.52344!))
         Me.TableLayoutPanel1.Controls.Add(Me.tbCargo1, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.tbCheckCargoWeight, 2, 5)
@@ -1123,15 +1174,15 @@ Partial Class SecurityEdit
         '
         Me.tbCargo1.Enabled = False
         Me.tbCargo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCargo1.Location = New System.Drawing.Point(163, 204)
+        Me.tbCargo1.Location = New System.Drawing.Point(224, 204)
         Me.tbCargo1.Name = "tbCargo1"
-        Me.tbCargo1.Size = New System.Drawing.Size(157, 26)
+        Me.tbCargo1.Size = New System.Drawing.Size(97, 26)
         Me.tbCargo1.TabIndex = 154
         '
         'tbCheckCargoWeight
         '
         Me.tbCheckCargoWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCheckCargoWeight.Location = New System.Drawing.Point(329, 204)
+        Me.tbCheckCargoWeight.Location = New System.Drawing.Point(328, 204)
         Me.tbCheckCargoWeight.Name = "tbCheckCargoWeight"
         Me.tbCheckCargoWeight.Size = New System.Drawing.Size(172, 26)
         Me.tbCheckCargoWeight.TabIndex = 86
@@ -1141,9 +1192,9 @@ Partial Class SecurityEdit
         Me.tbInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbInternalSealNo.Enabled = False
         Me.tbInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInternalSealNo.Location = New System.Drawing.Point(163, 124)
+        Me.tbInternalSealNo.Location = New System.Drawing.Point(224, 124)
         Me.tbInternalSealNo.Name = "tbInternalSealNo"
-        Me.tbInternalSealNo.Size = New System.Drawing.Size(157, 26)
+        Me.tbInternalSealNo.Size = New System.Drawing.Size(97, 26)
         Me.tbInternalSealNo.TabIndex = 56
         '
         'TableLayoutPanel7
@@ -1155,12 +1206,12 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel7.Controls.Add(Me.cmbCheckTempSealNo, 0, 0)
         Me.TableLayoutPanel7.Controls.Add(Me.tbTempSeal, 1, 0)
         Me.TableLayoutPanel7.Enabled = False
-        Me.TableLayoutPanel7.Location = New System.Drawing.Point(163, 164)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(224, 164)
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 1
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
-        Me.TableLayoutPanel7.Size = New System.Drawing.Size(157, 33)
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(97, 33)
         Me.TableLayoutPanel7.TabIndex = 57
         '
         'cmbCheckTempSealNo
@@ -1171,16 +1222,16 @@ Partial Class SecurityEdit
         Me.cmbCheckTempSealNo.Items.AddRange(New Object() {"YES", "NO"})
         Me.cmbCheckTempSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbCheckTempSealNo.Name = "cmbCheckTempSealNo"
-        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(71, 27)
+        Me.cmbCheckTempSealNo.Size = New System.Drawing.Size(41, 27)
         Me.cmbCheckTempSealNo.TabIndex = 58
         '
         'tbTempSeal
         '
         Me.tbTempSeal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbTempSeal.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTempSeal.Location = New System.Drawing.Point(82, 4)
+        Me.tbTempSeal.Location = New System.Drawing.Point(52, 4)
         Me.tbTempSeal.Name = "tbTempSeal"
-        Me.tbTempSeal.Size = New System.Drawing.Size(71, 26)
+        Me.tbTempSeal.Size = New System.Drawing.Size(41, 26)
         Me.tbTempSeal.TabIndex = 59
         '
         'tbLinerSealNo
@@ -1188,9 +1239,9 @@ Partial Class SecurityEdit
         Me.tbLinerSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbLinerSealNo.Enabled = False
         Me.tbLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbLinerSealNo.Location = New System.Drawing.Point(163, 84)
+        Me.tbLinerSealNo.Location = New System.Drawing.Point(224, 84)
         Me.tbLinerSealNo.Name = "tbLinerSealNo"
-        Me.tbLinerSealNo.Size = New System.Drawing.Size(157, 26)
+        Me.tbLinerSealNo.Size = New System.Drawing.Size(97, 26)
         Me.tbLinerSealNo.TabIndex = 55
         '
         'tbContainerNo
@@ -1198,9 +1249,9 @@ Partial Class SecurityEdit
         Me.tbContainerNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbContainerNo.Enabled = False
         Me.tbContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbContainerNo.Location = New System.Drawing.Point(163, 4)
+        Me.tbContainerNo.Location = New System.Drawing.Point(224, 4)
         Me.tbContainerNo.Name = "tbContainerNo"
-        Me.tbContainerNo.Size = New System.Drawing.Size(157, 26)
+        Me.tbContainerNo.Size = New System.Drawing.Size(97, 26)
         Me.tbContainerNo.TabIndex = 51
         '
         'lblContainerNo
@@ -1208,7 +1259,7 @@ Partial Class SecurityEdit
         Me.lblContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblContainerNo.Location = New System.Drawing.Point(4, 1)
         Me.lblContainerNo.Name = "lblContainerNo"
-        Me.lblContainerNo.Size = New System.Drawing.Size(114, 29)
+        Me.lblContainerNo.Size = New System.Drawing.Size(204, 29)
         Me.lblContainerNo.TabIndex = 27
         Me.lblContainerNo.Text = "Container No."
         '
@@ -1217,7 +1268,7 @@ Partial Class SecurityEdit
         Me.lblEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEsSealNo.Location = New System.Drawing.Point(4, 41)
         Me.lblEsSealNo.Name = "lblEsSealNo"
-        Me.lblEsSealNo.Size = New System.Drawing.Size(114, 36)
+        Me.lblEsSealNo.Size = New System.Drawing.Size(204, 36)
         Me.lblEsSealNo.TabIndex = 28
         Me.lblEsSealNo.Text = "Es Seal No."
         '
@@ -1226,7 +1277,7 @@ Partial Class SecurityEdit
         Me.lblLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLinerSealNo.Location = New System.Drawing.Point(4, 81)
         Me.lblLinerSealNo.Name = "lblLinerSealNo"
-        Me.lblLinerSealNo.Size = New System.Drawing.Size(133, 29)
+        Me.lblLinerSealNo.Size = New System.Drawing.Size(204, 29)
         Me.lblLinerSealNo.TabIndex = 29
         Me.lblLinerSealNo.Text = "Liner's Seal No."
         '
@@ -1239,21 +1290,21 @@ Partial Class SecurityEdit
         Me.TableLayoutPanel2.Controls.Add(Me.tbEsSealNo, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.cmbEsSealNo, 0, 0)
         Me.TableLayoutPanel2.Enabled = False
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(163, 44)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(224, 44)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(157, 33)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(97, 33)
         Me.TableLayoutPanel2.TabIndex = 52
         '
         'tbEsSealNo
         '
         Me.tbEsSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbEsSealNo.Location = New System.Drawing.Point(82, 4)
+        Me.tbEsSealNo.Location = New System.Drawing.Point(52, 4)
         Me.tbEsSealNo.Name = "tbEsSealNo"
-        Me.tbEsSealNo.Size = New System.Drawing.Size(71, 26)
+        Me.tbEsSealNo.Size = New System.Drawing.Size(41, 26)
         Me.tbEsSealNo.TabIndex = 54
         '
         'cmbEsSealNo
@@ -1264,14 +1315,14 @@ Partial Class SecurityEdit
         Me.cmbEsSealNo.Items.AddRange(New Object() {"YES", "NO"})
         Me.cmbEsSealNo.Location = New System.Drawing.Point(4, 4)
         Me.cmbEsSealNo.Name = "cmbEsSealNo"
-        Me.cmbEsSealNo.Size = New System.Drawing.Size(71, 27)
+        Me.cmbEsSealNo.Size = New System.Drawing.Size(41, 27)
         Me.cmbEsSealNo.TabIndex = 53
         '
         'tbSecurityCheckContainerNo
         '
         Me.tbSecurityCheckContainerNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbSecurityCheckContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSecurityCheckContainerNo.Location = New System.Drawing.Point(329, 4)
+        Me.tbSecurityCheckContainerNo.Location = New System.Drawing.Point(328, 4)
         Me.tbSecurityCheckContainerNo.Name = "tbSecurityCheckContainerNo"
         Me.tbSecurityCheckContainerNo.Size = New System.Drawing.Size(172, 26)
         Me.tbSecurityCheckContainerNo.TabIndex = 81
@@ -1280,7 +1331,7 @@ Partial Class SecurityEdit
         '
         Me.tbSecurityCheckEsSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbSecurityCheckEsSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSecurityCheckEsSealNo.Location = New System.Drawing.Point(329, 44)
+        Me.tbSecurityCheckEsSealNo.Location = New System.Drawing.Point(328, 44)
         Me.tbSecurityCheckEsSealNo.Name = "tbSecurityCheckEsSealNo"
         Me.tbSecurityCheckEsSealNo.Size = New System.Drawing.Size(172, 26)
         Me.tbSecurityCheckEsSealNo.TabIndex = 82
@@ -1289,7 +1340,7 @@ Partial Class SecurityEdit
         '
         Me.tbSecurityCheckLinerSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbSecurityCheckLinerSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSecurityCheckLinerSealNo.Location = New System.Drawing.Point(329, 84)
+        Me.tbSecurityCheckLinerSealNo.Location = New System.Drawing.Point(328, 84)
         Me.tbSecurityCheckLinerSealNo.Name = "tbSecurityCheckLinerSealNo"
         Me.tbSecurityCheckLinerSealNo.Size = New System.Drawing.Size(172, 26)
         Me.tbSecurityCheckLinerSealNo.TabIndex = 83
@@ -1298,7 +1349,7 @@ Partial Class SecurityEdit
         '
         Me.tbSecurityCheckInternalSealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbSecurityCheckInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSecurityCheckInternalSealNo.Location = New System.Drawing.Point(329, 124)
+        Me.tbSecurityCheckInternalSealNo.Location = New System.Drawing.Point(328, 124)
         Me.tbSecurityCheckInternalSealNo.Name = "tbSecurityCheckInternalSealNo"
         Me.tbSecurityCheckInternalSealNo.Size = New System.Drawing.Size(172, 26)
         Me.tbSecurityCheckInternalSealNo.TabIndex = 84
@@ -1307,7 +1358,7 @@ Partial Class SecurityEdit
         '
         Me.tbSecurityCheckTemporarySealNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbSecurityCheckTemporarySealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSecurityCheckTemporarySealNo.Location = New System.Drawing.Point(329, 164)
+        Me.tbSecurityCheckTemporarySealNo.Location = New System.Drawing.Point(328, 164)
         Me.tbSecurityCheckTemporarySealNo.Name = "tbSecurityCheckTemporarySealNo"
         Me.tbSecurityCheckTemporarySealNo.Size = New System.Drawing.Size(172, 26)
         Me.tbSecurityCheckTemporarySealNo.TabIndex = 85
@@ -1317,7 +1368,7 @@ Partial Class SecurityEdit
         Me.lblTemporarySealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTemporarySealNo.Location = New System.Drawing.Point(4, 161)
         Me.lblTemporarySealNo.Name = "lblTemporarySealNo"
-        Me.lblTemporarySealNo.Size = New System.Drawing.Size(152, 29)
+        Me.lblTemporarySealNo.Size = New System.Drawing.Size(204, 29)
         Me.lblTemporarySealNo.TabIndex = 31
         Me.lblTemporarySealNo.Text = "Temporary Seal No."
         '
@@ -1327,7 +1378,7 @@ Partial Class SecurityEdit
         Me.lblNetCargoWeight.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNetCargoWeight.Location = New System.Drawing.Point(4, 201)
         Me.lblNetCargoWeight.Name = "lblNetCargoWeight"
-        Me.lblNetCargoWeight.Size = New System.Drawing.Size(140, 38)
+        Me.lblNetCargoWeight.Size = New System.Drawing.Size(167, 19)
         Me.lblNetCargoWeight.TabIndex = 154
         Me.lblNetCargoWeight.Text = "Net Cargo Weight (kg)"
         '
@@ -1336,7 +1387,7 @@ Partial Class SecurityEdit
         Me.lblInternalSealNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInternalSealNo.Location = New System.Drawing.Point(4, 121)
         Me.lblInternalSealNo.Name = "lblInternalSealNo"
-        Me.lblInternalSealNo.Size = New System.Drawing.Size(136, 37)
+        Me.lblInternalSealNo.Size = New System.Drawing.Size(204, 37)
         Me.lblInternalSealNo.TabIndex = 30
         Me.lblInternalSealNo.Text = "Internal Seal No."
         '
@@ -1439,12 +1490,17 @@ Partial Class SecurityEdit
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "SecurityEdit"
         Me.Text = "TOO System"
         Me.tbCargo.ResumeLayout(False)
         Me.tbCargo.PerformLayout()
+        Me.TableLayoutPanel12.ResumeLayout(False)
+        Me.TableLayoutPanel12.PerformLayout()
+        Me.TableLayoutPanel13.ResumeLayout(False)
+        Me.TableLayoutPanel13.PerformLayout()
+        Me.TableLayoutPanel11.ResumeLayout(False)
+        Me.TableLayoutPanel11.PerformLayout()
         Me.tlpISO.ResumeLayout(False)
         Me.tlpISO.PerformLayout()
         Me.TableLayoutPanel10.ResumeLayout(False)
@@ -1506,7 +1562,7 @@ Partial Class SecurityEdit
     Friend WithEvents btnSecurityPost As Button
     Friend WithEvents lblLoadingPortFullName As Label
     Friend WithEvents lblCompanyFullName As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblCompanyFullName1 As Label
     Friend WithEvents lblPortFullName As Label
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
     Friend WithEvents dtpLCD As DateTimePicker
@@ -1585,4 +1641,7 @@ Partial Class SecurityEdit
     Friend WithEvents tbISOTankWeightLower As TextBox
     Friend WithEvents dtpISOCheck As DateTimePicker
     Friend WithEvents lblISOTruckOutDateCheck As Label
+    Friend WithEvents TableLayoutPanel12 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel13 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel11 As TableLayoutPanel
 End Class

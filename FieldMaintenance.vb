@@ -48,7 +48,7 @@ Public Class FieldMaintenance
             lblTitle.Text = ResourceFieldMaintenance.lblTitle
         End If
 
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         cmbField.DropDownStyle = ComboBoxStyle.DropDownList
         cmbShortname.DropDownStyle = ComboBoxStyle.DropDownList
         cbActive.Appearance = Appearance.Button

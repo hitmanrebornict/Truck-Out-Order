@@ -51,7 +51,7 @@ Public Class AddUserTry
             stringFillRequired = ResourceAddUserTry.stringFillRequired
         End If
 
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
 
         cbAdmin.Appearance = Appearance.Button
         cbAdmin.AutoSize = False

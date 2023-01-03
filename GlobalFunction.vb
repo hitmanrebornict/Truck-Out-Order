@@ -5,7 +5,7 @@ Imports System.Drawing.Printing
 Public Class GlobalFunction
 
 
-    Public Shared Function topHeader(lblWelcome As Label, lblCompanyNameHeader As Label, companyNameHeader As String)
+    Public Shared Function TopHeader(lblWelcome As Label, lblCompanyNameHeader As Label, companyNameHeader As String)
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -101,6 +101,379 @@ Public Class GlobalFunction
         self.Close()
         Return ""
     End Function
+
+    Public Shared Function printPageFrench(e As PrintPageEventArgs, panel2 As Panel, checkTempSealNo As Boolean, TruckOutNumber As Integer)
+        Dim printFont As Font
+        Dim tooNumberFont As Font
+        printFont = New Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+        tooNumberFont = New Font("Microsoft Sans Serif", 10)
+        Dim bit As Bitmap
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 0, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 50, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 100, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 150, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 200, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 300, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 400, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 500, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 600, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 800, 0)
+        'e.Graphics.DrawString("1", printfont, Brushes.Black, 850, 0)
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        Dim lcd, lct, rtd, rtt, esSealNo, netCargoWeight As String
+        Dim driverFullName, pmCode, registrationPlate, netCargoWeightCheckValue, netCargoWeightCheck As String
+        Dim checkCargoWeight As Boolean
+        Dim checkISO As Boolean
+        Dim ISOTruckOutDate, ISOTankWeightLower, ISOTankWeightUpper, ISOTankWeightChecking As String
+
+
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT * FROM COMPANY WHERE companyID = 1"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        'Read the company details
+        Dim companyName As String = rd.Item("CompanyName")
+        Dim addressLine1 As String = rd.Item("AddressLine1")
+        Dim addressline2 As String
+        If IsDBNull(rd.Item("AddressLine2")) Then
+            addressline2 = ""
+        Else
+            addressline2 = rd.Item("AddressLine2")
+        End If
+        Dim city As String = rd.Item("City")
+        Dim state As String = rd.Item("State")
+        Dim country As String = rd.Item("Country")
+        Dim PostalCode As Integer = rd.Item("PostalCode")
+        Dim phone As String = rd.Item("Phone")
+        Dim fax As String = rd.Item("Fax")
+        Dim registrationNum As String = rd.Item("RegistrationNum")
+        con.Close()
+        ' Logo Image
+        bit = New Bitmap(panel2.BackgroundImage, New Size(160, 64))
+        e.Graphics.DrawImage(bit, 0, 0)
+
+        'Font Style
+        printFont = New Font("Microsoft Sans Serif", 10)
+        tooNumberFont = New Font("Microsoft Sans Setif", 14, FontStyle.Bold)
+
+        'Truck Out Number
+        'e.Graphics.DrawString("Truck Out Number : " & Search.selected, tooNumberFont, Brushes.Black, 550, 0)
+        e.Graphics.DrawString("Numéro de sortie du camion : " & TruckOutNumber.ToString, tooNumberFont, Brushes.Black, 450, 0)
+
+        ''Company Details
+        e.Graphics.DrawString(companyName, tooNumberFont, Brushes.Black, 0, 70)
+        e.Graphics.DrawString(addressLine1 & " " & addressline2, printFont, Brushes.Black, 0, 90)
+        e.Graphics.DrawString(PostalCode & " " & city & ", " & state & ", " & country, printFont, Brushes.Black, 0, 105)
+        e.Graphics.DrawString("Tel: " & phone & "  Fax: " & fax, printFont, Brushes.Black, 0, 120)
+
+        'First Section (Shipping Details)
+        e.Graphics.DrawString("Compagnie", printFont, Brushes.Black, 0, 170)
+        e.Graphics.DrawString("Nom complet de l'entreprise", printFont, Brushes.Black, 0, 200)
+        e.Graphics.DrawString("Port de chargement", printFont, Brushes.Black, 0, 230)
+        e.Graphics.DrawString("Port de chargement", printFont, Brushes.Black, 0, 260)
+        e.Graphics.DrawString("Produit", printFont, Brushes.Black, 0, 290)
+        e.Graphics.DrawString("Envoyer à l'entreprise", printFont, Brushes.Black, 0, 320)
+
+        'First Section Parellel Part
+        e.Graphics.DrawString("Facture", printFont, Brushes.Black, 500, 170)
+        e.Graphics.DrawString("Date de clôture de l'expédition", printFont, Brushes.Black, 500, 200)
+        e.Graphics.DrawString("Heure de clôture de l'expédition", printFont, Brushes.Black, 500, 230)
+        e.Graphics.DrawString("Transporteur", printFont, Brushes.Black, 500, 260)
+        e.Graphics.DrawString("Taille du conteneur", printFont, Brushes.Black, 500, 290)
+        e.Graphics.DrawString("Ligne maritime", printFont, Brushes.Black, 500, 320)
+
+        'Line between First and Second Section
+        e.Graphics.DrawLine(Pens.Black, 0, 360, 850, 360)
+
+        'Second Section (Container No.)
+        e.Graphics.DrawString("Numéro de conteneur", printFont, Brushes.Black, 0, 380)
+        e.Graphics.DrawString("Numéro de sceau ES", printFont, Brushes.Black, 0, 410)
+        e.Graphics.DrawString("Numéro de joint de revêtement", printFont, Brushes.Black, 0, 440)
+        e.Graphics.DrawString("Numéro de joint interne", printFont, Brushes.Black, 0, 470)
+        e.Graphics.DrawString("Numéro de sceau temporaire", printFont, Brushes.Black, 0, 500)
+
+        'Second Section parallel part
+        e.Graphics.DrawString("Chargement de la date de fin", printFont, Brushes.Black, 500, 380)
+        e.Graphics.DrawString("Temps de chargement terminé", printFont, Brushes.Black, 500, 410)
+        e.Graphics.DrawString("Date de sortie du camion prêt", printFont, Brushes.Black, 500, 440)
+        e.Graphics.DrawString("Heure de sortie du camion prêt", printFont, Brushes.Black, 500, 470)
+
+        'Line between Second and Third Section
+        e.Graphics.DrawLine(Pens.Black, 0, 540, 850, 540)
+
+        'Third Section (Post User)
+        e.Graphics.DrawString("Problème d'expédition par", printFont, Brushes.Black, 0, 560)
+        e.Graphics.DrawString("Sceau d'entrepôt", printFont, Brushes.Black, 0, 590)
+        e.Graphics.DrawString("Entrepôt vérifié par", printFont, Brushes.Black, 0, 620)
+        e.Graphics.DrawString("Sécurité vérifiée par", printFont, Brushes.Black, 0, 650)
+
+        con.Open()
+        cmd.CommandText = "SELECT * from shipping where ID = @TruckOutNumber"
+        'cmd.Parameters.AddWithValue("@TruckOutNumber", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumber", TruckOutNumber.ToString)
+        rd = cmd.ExecuteReader
+        rd.Read()
+
+        Dim origin As String = rd.Item("origin")
+        Dim loadingPort As String = rd.Item("Loading_Port")
+
+        e.Graphics.DrawString(": " & origin, printFont, Brushes.Black, 175, 170)
+
+        e.Graphics.DrawString(": " & loadingPort, printFont, Brushes.Black, 175, 230)
+
+        e.Graphics.DrawString(": " & rd.Item("Product"), printFont, Brushes.Black, 175, 290)
+        e.Graphics.DrawString(": " & rd.Item("Company"), printFont, Brushes.Black, 175, 320)
+
+        Dim scd As String = Date.Parse(rd.Item("Shipment_Closing_Date").ToString()).ToString("yyyy-MM-dd")
+        Dim sct As String = DateTime.Parse(rd.Item("Shipment_Closing_Time").ToString()).ToString("HH:mm:ss")
+        'First Section Content Parallel
+        e.Graphics.DrawString(": " & rd.Item("Invoice"), printFont, Brushes.Black, 700, 170)
+        e.Graphics.DrawString(": " & scd, printFont, Brushes.Black, 700, 200)
+        e.Graphics.DrawString(": " & sct, printFont, Brushes.Black, 700, 230)
+        e.Graphics.DrawString(": " & rd.Item("Haulier"), printFont, Brushes.Black, 700, 260)
+        e.Graphics.DrawString(": " & rd.Item("Container_Size"), printFont, Brushes.Black, 700, 290)
+        e.Graphics.DrawString(": " & rd.Item("Shipping_Line"), printFont, Brushes.Black, 700, 320)
+
+        'Second Section Content
+        e.Graphics.DrawString(": " & rd.Item("Container_No"), printFont, Brushes.Black, 200, 380)
+
+        e.Graphics.DrawString(": " & rd.Item("Liner_SEA_NO"), printFont, Brushes.Black, 200, 440)
+        e.Graphics.DrawString(": " & rd.Item("INTERNAL_SEAL_NO"), printFont, Brushes.Black, 200, 470)
+        Dim tempSealNo As String
+        If checkTempSealNo = True Then
+            tempSealNo = rd.Item("TEMPORARY_SEAL_NO")
+            If Len(tempSealNo) >= 1 Then
+            Else
+                tempSealNo = ""
+            End If
+            e.Graphics.DrawString(": " & tempSealNo, printFont, Brushes.Black, 200, 500)
+        Else
+            e.Graphics.DrawString(": " & "", printFont, Brushes.Black, 200, 500)
+        End If
+
+
+        'Check shipping, warehouse, security post statement
+        Dim shippingPostUser As String
+        Dim warehousePostUser As String
+        Dim securityPostUser As String
+        Dim checkWarehouseCheckPoint As Boolean
+        Dim warehouseCheckUser As String
+
+        If IsDBNull(rd.Item("Shipping_Post_User")) Then
+            shippingPostUser = "inachevé"
+        Else
+            shippingPostUser = rd.Item("Shipping_Post_User")
+        End If
+
+        If IsDBNull(rd.Item("Warehouse_Post_User")) Then
+            warehousePostUser = "inachevé"
+        Else
+            warehousePostUser = rd.Item("Warehouse_Post_User")
+        End If
+
+        If IsDBNull(rd.Item("Security_Post_User")) Then
+            securityPostUser = "inachevé"
+        Else
+            securityPostUser = rd.Item("Security_Post_User")
+        End If
+
+        If IsDBNull(rd.Item("Net_Cargo_Weight")) Then
+            netCargoWeight = ""
+        Else
+            netCargoWeight = rd.Item("Net_Cargo_Weight")
+        End If
+
+        If IsDBNull(rd.Item("Check_ISO_Tank")) Then
+            checkISO = ""
+        Else
+            checkISO = rd.Item("Check_ISO_Tank")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Truck_Out_Date")) Then
+            ISOTruckOutDate = ""
+        Else
+            ISOTruckOutDate = rd.Item("ISO_Truck_Out_Date")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Tank_Weight_Lower")) Then
+            ISOTankWeightLower = ""
+        Else
+            ISOTankWeightLower = rd.Item("ISO_Tank_Weight_Lower")
+        End If
+
+        If IsDBNull(rd.Item("ISO_Tank_Weight_Upper")) Then
+            ISOTankWeightUpper = ""
+        Else
+            ISOTankWeightUpper = rd.Item("ISO_Tank_Weight_Upper")
+        End If
+        con.Close()
+
+        Dim companyFullName, loadingPortFullName As String
+        con.Open()
+        cmd.CommandText = "select distinct(full_name) as companyFullName from details where company_name = @origin and isnull(company_name,'') <>''"
+        cmd.Parameters.AddWithValue("@origin", origin)
+        rd = cmd.ExecuteReader
+        rd.Read()
+        companyFullName = rd.Item("companyFullName")
+        con.Close()
+        con.Open()
+        cmd.CommandText = "select distinct(full_name) as loadingPortFullName from details where loading_port = @loadingPort and loading_port is not null"
+        cmd.Parameters.AddWithValue("@loadingPort", loadingPort)
+        rd = cmd.ExecuteReader
+        rd.Read()
+        loadingPortFullName = rd.Item("loadingPortFullName")
+        con.Close()
+
+        e.Graphics.DrawString(": " & companyFullName, printFont, Brushes.Black, 175, 200)
+        e.Graphics.DrawString(": " & loadingPortFullName, printFont, Brushes.Black, 175, 260)
+
+        'Post User Section Detail
+
+
+        con.Open()
+        cmd.CommandText = "SELECT * from Warehouse Where Shipping_ID = @TruckOutNumberWarehouse"
+        'cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumberWarehouse", TruckOutNumber.ToString)
+        rd = cmd.ExecuteReader
+        rd.Read()
+
+
+        If rd.HasRows() Then
+            lcd = Date.Parse(rd.Item("Loading_Completed_Date").ToString()).ToString("yyyy-MM-dd")
+            lct = DateTime.Parse(rd.Item("Loading_Completed_Time").ToString()).ToString("HH:mm:ss")
+            rtd = Date.Parse(rd.Item("Ready_Truck_Out_Date").ToString()).ToString("yyyy-MM-dd")
+            rtt = DateTime.Parse(rd.Item("Ready_Truck_Out_Time").ToString()).ToString("HH:mm:ss")
+            If IsDBNull(rd.Item("Es_Seal_No")) Then
+                esSealNo = ""
+            Else
+                esSealNo = rd.Item("Es_Seal_No")
+                If Len(esSealNo) >= 1 Then
+                Else
+                    esSealNo = ""
+                End If
+            End If
+            If IsDBNull(rd.Item("Warehouse_Checkpoint_Check")) Then
+                checkWarehouseCheckPoint = False
+            Else
+                checkWarehouseCheckPoint = rd.Item("Warehouse_Checkpoint_Check")
+            End If
+
+            If IsDBNull(rd.Item("Warehouse_CheckPoint_Update_User")) Then
+                warehouseCheckUser = ""
+            Else
+                warehouseCheckUser = rd.Item("Warehouse_CheckPoint_Update_User")
+            End If
+
+        End If
+
+        con.Close()
+        con.Open()
+        cmd.CommandText = "Select * from Security where Shipping_ID = @TruckOutNumber4"
+        'cmd.Parameters.AddWithValue("@TruckOutNumber4", Search.selected)
+        cmd.Parameters.AddWithValue("@TruckOutNumber4", TruckOutNumber.ToString)
+        rd = cmd.ExecuteReader()
+        If rd.HasRows() Then
+            rd.Read()
+            If Not IsDBNull(rd.Item("DRIVER_FULL_NAME")) Then
+                driverFullName = rd.Item("DRIVER_FULL_NAME")
+            Else
+                driverFullName = ""
+            End If
+
+            If Not IsDBNull(rd.Item("PM_CODE")) Then
+                pmCode = rd.Item("PM_CODE")
+            Else
+                pmCode = ""
+            End If
+
+            If Not IsDBNull(rd.Item("PM_REGISTRATION_PLATE")) Then
+                registrationPlate = rd.Item("PM_REGISTRATION_PLATE")
+            Else
+                registrationPlate = ""
+            End If
+
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check")) Then
+                checkCargoWeight = rd.Item("Cargo_Weight_Check")
+                If checkCargoWeight = True Then
+                    netCargoWeightCheck = "Passed"
+                Else
+                    netCargoWeightCheck = "Failed"
+                End If
+            Else
+                netCargoWeight = ""
+            End If
+
+
+            If Not IsDBNull(rd.Item("Cargo_Weight_Check_Value")) Then
+                netCargoWeightCheckValue = rd.Item("Cargo_Weight_Check_Value")
+            Else
+                netCargoWeightCheckValue = ""
+            End If
+
+            If IsDBNull(rd.Item("Security_Check_ISO_Tank_Weight")) Then
+                ISOTankWeightChecking = ""
+            Else
+                ISOTankWeightChecking = rd.Item("Security_Check_ISO_Tank_Weight")
+            End If
+        End If
+        con.Close()
+
+        e.Graphics.DrawString(": " & esSealNo, printFont, Brushes.Black, 200, 410)
+        'Second Section Content Parallel
+        e.Graphics.DrawString(": " & lcd, printFont, Brushes.Black, 700, 380)
+        e.Graphics.DrawString(": " & lct, printFont, Brushes.Black, 700, 410)
+        e.Graphics.DrawString(": " & rtd, printFont, Brushes.Black, 700, 440)
+        e.Graphics.DrawString(": " & rtt, printFont, Brushes.Black, 700, 470)
+
+        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
+
+        If checkWarehouseCheckPoint = True Then
+            e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 590)
+        Else
+            e.Graphics.DrawString(": " & "inachevé", printFont, Brushes.Black, 175, 590)
+        End If
+        e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 620)
+        e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 650)
+
+
+        'Current User Part
+        e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
+        e.Graphics.DrawLine(Pens.Black, 0, 810, 850, 810)
+        e.Graphics.DrawString("Nom complet du conducteur", printFont, Brushes.Black, 0, 830)
+        e.Graphics.DrawString("Code PM du conducteur", printFont, Brushes.Black, 0, 860)
+        e.Graphics.DrawString("Plaque d'immatriculation PM du conducteur", printFont, Brushes.Black, 0, 890)
+        e.Graphics.DrawLine(Pens.Black, 0, 930, 850, 930)
+        e.Graphics.DrawString("Utilisateur actuel", printFont, Brushes.Black, 0, 950)
+
+
+        If checkISO Then
+            e.Graphics.DrawString("Date de sortie du camion ISO", printFont, Brushes.Black, 0, 710)
+            e.Graphics.DrawString("Plage de poids du réservoir ISO (mt)", printFont, Brushes.Black, 0, 740)
+            e.Graphics.DrawString("Valeur de vérification du poids du réservoir ISO", printFont, Brushes.Black, 0, 770)
+            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
+            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
+            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
+        Else
+            e.Graphics.DrawString("Vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 710)
+            e.Graphics.DrawString("Poids net de la cargaison", printFont, Brushes.Black, 0, 740)
+            e.Graphics.DrawString("Valeur de vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 770)
+            e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 375, 710)
+            e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 375, 740)
+            e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 375, 770)
+        End If
+
+        e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
+        e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
+        e.Graphics.DrawString(": " & registrationPlate, printFont, Brushes.Black, 275, 890)
+        e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 275, 950)
+        con.Close()
+        Return ""
+    End Function
+
 
     Public Shared Function printPage(e As PrintPageEventArgs, panel2 As Panel, checkTempSealNo As Boolean, TruckOutNumber As Integer)
         Dim printFont As Font
@@ -454,9 +827,9 @@ Public Class GlobalFunction
             e.Graphics.DrawString("ISO Truck Out Date", printFont, Brushes.Black, 0, 710)
             e.Graphics.DrawString("ISO Tank Weight Range (mt)", printFont, Brushes.Black, 0, 740)
             e.Graphics.DrawString("ISO Tank Weight Checking Value (mt)", printFont, Brushes.Black, 0, 770)
-            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
-            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
-            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
+            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 400, 710)
+            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 400, 740)
+            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 400, 770)
         Else
             e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 0, 710)
             e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 0, 740)
@@ -473,7 +846,6 @@ Public Class GlobalFunction
         con.Close()
         Return ""
     End Function
-
     Public Shared Function backToPageAdminCheck(admin As Form, nonAdmin As Form, self As Form)
         Select Case My.Settings.adminCheck
             Case True
@@ -735,7 +1107,6 @@ Public Class GlobalFunction
     Public Shared Function GetValueForCmb(content As String, database As String, TruckOutNumber As Integer, cmb As ComboBox)
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
-        Dim rd As SqlDataReader
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
         con.Open()
@@ -766,4 +1137,8 @@ Public Class GlobalFunction
         Return ""
     End Function
 
+    Public Shared Function ChangeFontBold(lbl As Label, size As Integer)
+        lbl.Font = New Font("Helvetica", size, style:=FontStyle.Bold)
+        Return ""
+    End Function
 End Class

@@ -25,7 +25,7 @@ Namespace My.Resources
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-    Public Class ResourceSecurityEdit
+    Friend Class ResourceSecurityEditFrench
         
         Private Shared resourceMan As Global.System.Resources.ResourceManager
         
@@ -40,10 +40,10 @@ Namespace My.Resources
         '''  Returns the cached ResourceManager instance used by this class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Public Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Truck_Out_Order.ResourceSecurityEdit", GetType(ResourceSecurityEdit).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Truck_Out_Order.ResourceSecurityEditFrench", GetType(ResourceSecurityEditFrench).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -55,7 +55,7 @@ Namespace My.Resources
         '''  resource lookups using this strongly typed resource class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Public Shared Property Culture() As Global.System.Globalization.CultureInfo
+        Friend Shared Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -65,72 +65,72 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Cancel.
+        '''  Looks up a localized string similar to Annuler.
         '''</summary>
-        Public Shared ReadOnly Property btnCancel() As String
+        Friend Shared ReadOnly Property btnCancel() As String
             Get
                 Return ResourceManager.GetString("btnCancel", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Post.
+        '''  Looks up a localized string similar to Poste.
         '''</summary>
-        Public Shared ReadOnly Property btnPost() As String
+        Friend Shared ReadOnly Property btnPost() As String
             Get
                 Return ResourceManager.GetString("btnPost", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Print.
+        '''  Looks up a localized string similar to Imprimer.
         '''</summary>
-        Public Shared ReadOnly Property btnPrint() As String
+        Friend Shared ReadOnly Property btnPrint() As String
             Get
                 Return ResourceManager.GetString("btnPrint", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Save.
+        '''  Looks up a localized string similar to Sauvegarder.
         '''</summary>
-        Public Shared ReadOnly Property btnSave() As String
+        Friend Shared ReadOnly Property btnSave() As String
             Get
                 Return ResourceManager.GetString("btnSave", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Company Full Name:.
+        '''  Looks up a localized string similar to Nom complet de l&apos;entreprise:.
         '''</summary>
-        Public Shared ReadOnly Property lblCompanyFullName() As String
+        Friend Shared ReadOnly Property lblCompanyFullName1() As String
             Get
-                Return ResourceManager.GetString("lblCompanyFullName", resourceCulture)
+                Return ResourceManager.GetString("lblCompanyFullName1", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Company:.
+        '''  Looks up a localized string similar to Compagnie:.
         '''</summary>
-        Public Shared ReadOnly Property lblCompnay() As String
+        Friend Shared ReadOnly Property lblCompnay() As String
             Get
                 Return ResourceManager.GetString("lblCompnay", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Container No..
+        '''  Looks up a localized string similar to Numéro de conteneur.
         '''</summary>
-        Public Shared ReadOnly Property lblContainerNo() As String
+        Friend Shared ReadOnly Property lblContainerNo() As String
             Get
                 Return ResourceManager.GetString("lblContainerNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Container Size:.
+        '''  Looks up a localized string similar to Taille du conteneur:.
         '''</summary>
-        Public Shared ReadOnly Property lblContainerSize() As String
+        Friend Shared ReadOnly Property lblContainerSize() As String
             Get
                 Return ResourceManager.GetString("lblContainerSize", resourceCulture)
             End Get
@@ -139,619 +139,655 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to DDB:.
         '''</summary>
-        Public Shared ReadOnly Property lblDDB() As String
+        Friend Shared ReadOnly Property lblDDB() As String
             Get
                 Return ResourceManager.GetString("lblDDB", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Driver Check.
+        '''  Looks up a localized string similar to Vérification du conducteur.
         '''</summary>
-        Public Shared ReadOnly Property lblDriverCheck() As String
+        Friend Shared ReadOnly Property lblDriverCheck() As String
             Get
                 Return ResourceManager.GetString("lblDriverCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ES Seal No..
+        '''  Looks up a localized string similar to Numéro de sceau ES.
         '''</summary>
-        Public Shared ReadOnly Property lblEsSealNo() As String
+        Friend Shared ReadOnly Property lblEsSealNo() As String
             Get
                 Return ResourceManager.GetString("lblEsSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Driver Full Name:.
+        '''  Looks up a localized string similar to Nom complet du conducteur.
         '''</summary>
-        Public Shared ReadOnly Property lblFullName() As String
+        Friend Shared ReadOnly Property lblFullName() As String
             Get
                 Return ResourceManager.GetString("lblFullName", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Haulier:.
+        '''  Looks up a localized string similar to Transporteur:.
         '''</summary>
-        Public Shared ReadOnly Property lblHaulier() As String
+        Friend Shared ReadOnly Property lblHaulier() As String
             Get
                 Return ResourceManager.GetString("lblHaulier", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Internal Seal No..
+        '''  Looks up a localized string similar to Numéro de joint interne.
         '''</summary>
-        Public Shared ReadOnly Property lblInternalSealNo() As String
+        Friend Shared ReadOnly Property lblInternalSealNo() As String
             Get
                 Return ResourceManager.GetString("lblInternalSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Invoice:.
+        '''  Looks up a localized string similar to Facture d&apos;achat:.
         '''</summary>
-        Public Shared ReadOnly Property lblInvoice() As String
+        Friend Shared ReadOnly Property lblInvoice() As String
             Get
                 Return ResourceManager.GetString("lblInvoice", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Check.
+        '''  Looks up a localized string similar to Vérification ISO.
         '''</summary>
-        Public Shared ReadOnly Property lblISOCheck() As String
+        Friend Shared ReadOnly Property lblISOCheck() As String
             Get
                 Return ResourceManager.GetString("lblISOCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Tank:.
+        '''  Looks up a localized string similar to Réservoir ISO:.
         '''</summary>
-        Public Shared ReadOnly Property lblISOTank() As String
+        Friend Shared ReadOnly Property lblISOTank() As String
             Get
                 Return ResourceManager.GetString("lblISOTank", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Tank Weight (mt):.
+        '''  Looks up a localized string similar to Poids du réservoir ISO (mt):.
         '''</summary>
-        Public Shared ReadOnly Property lblISOTankWeight() As String
+        Friend Shared ReadOnly Property lblISOTankWeight() As String
             Get
                 Return ResourceManager.GetString("lblISOTankWeight", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Tank Weight Check:.
+        '''  Looks up a localized string similar to Vérification du poids du réservoir ISO.
         '''</summary>
-        Public Shared ReadOnly Property lblISOTankWeightCheck() As String
+        Friend Shared ReadOnly Property lblISOTankWeightCheck() As String
             Get
                 Return ResourceManager.GetString("lblISOTankWeightCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Truck Out Date:.
+        '''  Looks up a localized string similar to Date de sortie du camion:.
         '''</summary>
-        Public Shared ReadOnly Property lblISOTruckOutDate() As String
+        Friend Shared ReadOnly Property lblISOTruckOutDate() As String
             Get
                 Return ResourceManager.GetString("lblISOTruckOutDate", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Truck Out Date Check:.
+        '''  Looks up a localized string similar to Vérification de la date ISO.
         '''</summary>
-        Public Shared ReadOnly Property lblISOTruckOutDateCheck() As String
+        Friend Shared ReadOnly Property lblISOTruckOutDateCheck() As String
             Get
                 Return ResourceManager.GetString("lblISOTruckOutDateCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Loading Completed Date.
+        '''  Looks up a localized string similar to Chargement de la date de fin.
         '''</summary>
-        Public Shared ReadOnly Property lblLCD() As String
+        Friend Shared ReadOnly Property lblLCD() As String
             Get
                 Return ResourceManager.GetString("lblLCD", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Loading Completed Time.
+        '''  Looks up a localized string similar to Temps de chargement terminé.
         '''</summary>
-        Public Shared ReadOnly Property lblLCT() As String
+        Friend Shared ReadOnly Property lblLCT() As String
             Get
                 Return ResourceManager.GetString("lblLCT", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Liner&apos;s Seal No..
+        '''  Looks up a localized string similar to Numéro de joint de revêtement.
         '''</summary>
-        Public Shared ReadOnly Property lblLinerSealNo() As String
+        Friend Shared ReadOnly Property lblLinerSealNo() As String
             Get
                 Return ResourceManager.GetString("lblLinerSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Loading Bay:.
+        '''  Looks up a localized string similar to Quai de chargement:.
         '''</summary>
-        Public Shared ReadOnly Property lblLoadingBay() As String
+        Friend Shared ReadOnly Property lblLoadingBay() As String
             Get
                 Return ResourceManager.GetString("lblLoadingBay", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Loading Port:.
+        '''  Looks up a localized string similar to Port de chargement:.
         '''</summary>
-        Public Shared ReadOnly Property lblLoadingPort() As String
+        Friend Shared ReadOnly Property lblLoadingPort() As String
             Get
                 Return ResourceManager.GetString("lblLoadingPort", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Net Cargo Weight (kg):.
+        '''  Looks up a localized string similar to Poids net de la cargaison (kg) :.
         '''</summary>
-        Public Shared ReadOnly Property lblNetCargoWeight() As String
+        Friend Shared ReadOnly Property lblNetCargoWeight() As String
             Get
                 Return ResourceManager.GetString("lblNetCargoWeight", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to PM Code.
+        '''  Looks up a localized string similar to Code PM.
         '''</summary>
-        Public Shared ReadOnly Property lblPMCode() As String
+        Friend Shared ReadOnly Property lblPMCode() As String
             Get
                 Return ResourceManager.GetString("lblPMCode", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to PM Registration Plate.
+        '''  Looks up a localized string similar to Plaque d&apos;immatriculation PM.
         '''</summary>
-        Public Shared ReadOnly Property lblPMRegistrationPlate() As String
+        Friend Shared ReadOnly Property lblPMRegistrationPlate() As String
             Get
                 Return ResourceManager.GetString("lblPMRegistrationPlate", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Loading Port Full Name:.
+        '''  Looks up a localized string similar to Nom complet du port de chargement:.
         '''</summary>
-        Public Shared ReadOnly Property lblPortFullName() As String
+        Friend Shared ReadOnly Property lblPortFullName() As String
             Get
                 Return ResourceManager.GetString("lblPortFullName", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Product:.
+        '''  Looks up a localized string similar to Produit:.
         '''</summary>
-        Public Shared ReadOnly Property lblProduct() As String
+        Friend Shared ReadOnly Property lblProduct() As String
             Get
                 Return ResourceManager.GetString("lblProduct", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Ready Truck Out Date.
+        '''  Looks up a localized string similar to Date de sortie du camion prêt.
         '''</summary>
-        Public Shared ReadOnly Property lblRTD() As String
+        Friend Shared ReadOnly Property lblRTD() As String
             Get
                 Return ResourceManager.GetString("lblRTD", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Ready Truck Out TIme.
+        '''  Looks up a localized string similar to Temps de sortie du camion prêt.
         '''</summary>
-        Public Shared ReadOnly Property lblRTT() As String
+        Friend Shared ReadOnly Property lblRTT() As String
             Get
                 Return ResourceManager.GetString("lblRTT", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Shipment Closing Date:.
+        '''  Looks up a localized string similar to Date limite d&apos;expédition:.
         '''</summary>
-        Public Shared ReadOnly Property lblSCD() As String
+        Friend Shared ReadOnly Property lblSCD() As String
             Get
                 Return ResourceManager.GetString("lblSCD", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Shipment Closing Time:.
+        '''  Looks up a localized string similar to Heure de clôture de l&apos;expédition:.
         '''</summary>
-        Public Shared ReadOnly Property lblSCT() As String
+        Friend Shared ReadOnly Property lblSCT() As String
             Get
                 Return ResourceManager.GetString("lblSCT", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Security Check.
+        '''  Looks up a localized string similar to Vérification de sécurité.
         '''</summary>
-        Public Shared ReadOnly Property lblSecurityCheck() As String
+        Friend Shared ReadOnly Property lblSecurityCheck() As String
             Get
                 Return ResourceManager.GetString("lblSecurityCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Security Post.
+        '''  Looks up a localized string similar to Poste de sécurité.
         '''</summary>
-        Public Shared ReadOnly Property lblSecurityPost() As String
+        Friend Shared ReadOnly Property lblSecurityPost() As String
             Get
                 Return ResourceManager.GetString("lblSecurityPost", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Send To Company:.
+        '''  Looks up a localized string similar to Envoyer à l&apos;entreprise:.
         '''</summary>
-        Public Shared ReadOnly Property lblSendToCompany() As String
+        Friend Shared ReadOnly Property lblSendToCompany() As String
             Get
                 Return ResourceManager.GetString("lblSendToCompany", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Shipping Line:.
+        '''  Looks up a localized string similar to Ligne maritime:.
         '''</summary>
-        Public Shared ReadOnly Property lblShippingLine() As String
+        Friend Shared ReadOnly Property lblShippingLine() As String
             Get
                 Return ResourceManager.GetString("lblShippingLine", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Shipping Post.
+        '''  Looks up a localized string similar to Poste d&apos;expédition.
         '''</summary>
-        Public Shared ReadOnly Property lblShippingPost() As String
+        Friend Shared ReadOnly Property lblShippingPost() As String
             Get
                 Return ResourceManager.GetString("lblShippingPost", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Temporary Seal No,.
+        '''  Looks up a localized string similar to Numéro de sceau temporaire.
         '''</summary>
-        Public Shared ReadOnly Property lblTemporarySealNo() As String
+        Friend Shared ReadOnly Property lblTemporarySealNo() As String
             Get
                 Return ResourceManager.GetString("lblTemporarySealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Truck Out Number:.
+        '''  Looks up a localized string similar to Numéro de sortie du camion:.
         '''</summary>
-        Public Shared ReadOnly Property lblTruckOutNumber() As String
+        Friend Shared ReadOnly Property lblTruckOutNumber() As String
             Get
                 Return ResourceManager.GetString("lblTruckOutNumber", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Warehouse Location:.
+        '''  Looks up a localized string similar to Emplacement de l&apos;entrepôt:.
         '''</summary>
-        Public Shared ReadOnly Property lblWarehouseLocation() As String
+        Friend Shared ReadOnly Property lblWarehouseLocation() As String
             Get
                 Return ResourceManager.GetString("lblWarehouseLocation", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Warehouse Post.
+        '''  Looks up a localized string similar to Poste d&apos;entrepôt.
         '''</summary>
-        Public Shared ReadOnly Property lblWarehousePost() As String
+        Friend Shared ReadOnly Property lblWarehousePost() As String
             Get
                 Return ResourceManager.GetString("lblWarehousePost", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to This Number Can Be Posted By Security Now.
+        '''  Looks up a localized string similar to Ce numéro peut être affiché par la sécurité maintenant.
         '''</summary>
-        Public Shared ReadOnly Property stringCanBePosted() As String
+        Friend Shared ReadOnly Property stringCanBePosted() As String
             Get
                 Return ResourceManager.GetString("stringCanBePosted", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Check Complete.
+        '''  Looks up a localized string similar to Approuver le fret.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckComplete() As String
+        Friend Shared ReadOnly Property stringCargoApprove() As String
+            Get
+                Return ResourceManager.GetString("stringCargoApprove", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Vérification terminée.
+        '''</summary>
+        Friend Shared ReadOnly Property stringCheckComplete() As String
             Get
                 Return ResourceManager.GetString("stringCheckComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Container No..
+        '''  Looks up a localized string similar to Veuillez vérifier le numéro du conteneur.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckContainerNo() As String
+        Friend Shared ReadOnly Property stringCheckContainerNo() As String
             Get
                 Return ResourceManager.GetString("stringCheckContainerNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Driver Full Name.
+        '''  Looks up a localized string similar to Veuillez vérifier le nom complet du conducteur.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckDriverFullName() As String
+        Friend Shared ReadOnly Property stringCheckDriverFullName() As String
             Get
                 Return ResourceManager.GetString("stringCheckDriverFullName", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check ES Seal No..
+        '''  Looks up a localized string similar to Veuillez vérifier le numéro de sceau ES.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckESSealNo() As String
+        Friend Shared ReadOnly Property stringCheckESSealNo() As String
             Get
                 Return ResourceManager.GetString("stringCheckESSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Check Fail.
+        '''  Looks up a localized string similar to Échec de la vérification.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckFail() As String
+        Friend Shared ReadOnly Property stringCheckFail() As String
             Get
                 Return ResourceManager.GetString("stringCheckFail", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Check Failure .
+        '''  Looks up a localized string similar to Vérifier l&apos;échec.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckFailure() As String
+        Friend Shared ReadOnly Property stringCheckFailure() As String
             Get
                 Return ResourceManager.GetString("stringCheckFailure", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Internal Seal No..
+        '''  Looks up a localized string similar to Veuillez vérifier le numéro de sceau interne..
         '''</summary>
-        Public Shared ReadOnly Property stringCheckInternalSealNo() As String
+        Friend Shared ReadOnly Property stringCheckInternalSealNo() As String
             Get
                 Return ResourceManager.GetString("stringCheckInternalSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Liner&apos;s Seal No..
+        '''  Looks up a localized string similar to Veuillez vérifier le numéro de sceau de la doublure.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckLinerSealNo() As String
+        Friend Shared ReadOnly Property stringCheckLinerSealNo() As String
             Get
                 Return ResourceManager.GetString("stringCheckLinerSealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check PM Code.
+        '''  Looks up a localized string similar to Veuillez vérifier le code PM.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckPMCode() As String
+        Friend Shared ReadOnly Property stringCheckPMCode() As String
             Get
                 Return ResourceManager.GetString("stringCheckPMCode", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check PM Registration Plate.
+        '''  Looks up a localized string similar to Veuillez vérifier la plaque d&apos;immatriculation PM.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckPMRegistrationPlate() As String
+        Friend Shared ReadOnly Property stringCheckPMRegistrationPlate() As String
             Get
                 Return ResourceManager.GetString("stringCheckPMRegistrationPlate", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Are you sure you watn to exit?.
+        '''  Looks up a localized string similar to Voulez-vous vraiment quitter ?.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckQuit() As String
+        Friend Shared ReadOnly Property stringCheckQuit() As String
             Get
                 Return ResourceManager.GetString("stringCheckQuit", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Security Check.
+        '''  Looks up a localized string similar to Veuillez vérifier le contrôle de sécurité.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckSecurityCheck() As String
+        Friend Shared ReadOnly Property stringCheckSecurityCheck() As String
             Get
                 Return ResourceManager.GetString("stringCheckSecurityCheck", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Check Temporary Seal No..
+        '''  Looks up a localized string similar to Veuillez vérifier le numéro du sceau temporaire.
         '''</summary>
-        Public Shared ReadOnly Property stringCheckTemporarySealNo() As String
+        Friend Shared ReadOnly Property stringCheckTemporarySealNo() As String
             Get
                 Return ResourceManager.GetString("stringCheckTemporarySealNo", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Close Application.
+        '''  Looks up a localized string similar to Fermer l&apos;application.
         '''</summary>
-        Public Shared ReadOnly Property stringCloseApplication() As String
+        Friend Shared ReadOnly Property stringCloseApplication() As String
             Get
                 Return ResourceManager.GetString("stringCloseApplication", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Complete.
+        '''  Looks up a localized string similar to Compléter.
         '''</summary>
-        Public Shared ReadOnly Property stringComplete() As String
+        Friend Shared ReadOnly Property stringComplete() As String
             Get
                 Return ResourceManager.GetString("stringComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Driver Validation Fail.
+        '''  Looks up a localized string similar to Échec de la validation du pilote.
         '''</summary>
-        Public Shared ReadOnly Property stringDriverValidationFail() As String
+        Friend Shared ReadOnly Property stringDriverValidationFail() As String
             Get
                 Return ResourceManager.GetString("stringDriverValidationFail", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Driver Validation Pass.
+        '''  Looks up a localized string similar to Laissez-passer de validation du conducteur.
         '''</summary>
-        Public Shared ReadOnly Property stringDriverValidationPass() As String
+        Friend Shared ReadOnly Property stringDriverValidationPass() As String
             Get
                 Return ResourceManager.GetString("stringDriverValidationPass", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Fill In Net Cargo Weight Field .
+        '''  Looks up a localized string similar to Veuillez remplir le champ du poids net de la cargaison.
         '''</summary>
-        Public Shared ReadOnly Property stringFillCargoWeight() As String
+        Friend Shared ReadOnly Property stringFillCargoWeight() As String
             Get
                 Return ResourceManager.GetString("stringFillCargoWeight", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Imform Shipping Admin.
+        '''  Looks up a localized string similar to Veuillez informer l&apos;administrateur de l&apos;expédition.
         '''</summary>
-        Public Shared ReadOnly Property stringInformShippingAdmin() As String
+        Friend Shared ReadOnly Property stringInformShippingAdmin() As String
             Get
                 Return ResourceManager.GetString("stringInformShippingAdmin", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Please Inform Warehouse Admin.
+        '''  Looks up a localized string similar to Veuillez informer l&apos;administrateur de l&apos;entrepôt.
         '''</summary>
-        Public Shared ReadOnly Property stringInformWarehouseAdmin() As String
+        Friend Shared ReadOnly Property stringInformWarehouseAdmin() As String
             Get
                 Return ResourceManager.GetString("stringInformWarehouseAdmin", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Security Check Complete.
+        '''  Looks up a localized string similar to ISO Approuver.
         '''</summary>
-        Public Shared ReadOnly Property stringISOCheckComplete() As String
+        Friend Shared ReadOnly Property stringISOApprove() As String
+            Get
+                Return ResourceManager.GetString("stringISOApprove", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Vérification ISO.
+        '''</summary>
+        Friend Shared ReadOnly Property stringISOCheck() As String
+            Get
+                Return ResourceManager.GetString("stringISOCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Vérification de sécurité ISO terminée.
+        '''</summary>
+        Friend Shared ReadOnly Property stringISOCheckComplete() As String
             Get
                 Return ResourceManager.GetString("stringISOCheckComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ISO Check Failed.
+        '''  Looks up a localized string similar to Échec de la vérification ISO.
         '''</summary>
-        Public Shared ReadOnly Property stringISOCheckFailed() As String
+        Friend Shared ReadOnly Property stringISOCheckFailed() As String
             Get
                 Return ResourceManager.GetString("stringISOCheckFailed", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Net Cargo Weight Check Failed.
+        '''  Looks up a localized string similar to Échec de la vérification du poids net de la cargaison.
         '''</summary>
-        Public Shared ReadOnly Property stringNetCargoCheckFailed() As String
+        Friend Shared ReadOnly Property stringNetCargoCheckFailed() As String
             Get
                 Return ResourceManager.GetString("stringNetCargoCheckFailed", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Post Complete.
+        '''  Looks up a localized string similar to Publication terminée.
         '''</summary>
-        Public Shared ReadOnly Property stringPostComplete() As String
+        Friend Shared ReadOnly Property stringPostComplete() As String
             Get
                 Return ResourceManager.GetString("stringPostComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Post Failed.
+        '''  Looks up a localized string similar to Échec de la publication.
         '''</summary>
-        Public Shared ReadOnly Property stringPostFailed() As String
+        Friend Shared ReadOnly Property stringPostFailed() As String
             Get
                 Return ResourceManager.GetString("stringPostFailed", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Security Check Complete.
+        '''  Looks up a localized string similar to Vérification de sécurité.
         '''</summary>
-        Public Shared ReadOnly Property stringSecurityCheckComplete() As String
+        Friend Shared ReadOnly Property stringSecurityCheck() As String
+            Get
+                Return ResourceManager.GetString("stringSecurityCheck", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Vérification de sécurité terminée.
+        '''</summary>
+        Friend Shared ReadOnly Property stringSecurityCheckComplete() As String
             Get
                 Return ResourceManager.GetString("stringSecurityCheckComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Stop CTNR / Inform Warehouse.
+        '''  Looks up a localized string similar to Arrêter CTNR / Informer Entrepôt.
         '''</summary>
-        Public Shared ReadOnly Property stringStopCTNR() As String
+        Friend Shared ReadOnly Property stringStopCTNR() As String
             Get
                 Return ResourceManager.GetString("stringStopCTNR", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Truck Out Date Error.
+        '''  Looks up a localized string similar to Erreur de date de sortie du camion.
         '''</summary>
-        Public Shared ReadOnly Property stringTruckOutDateError() As String
+        Friend Shared ReadOnly Property stringTruckOutDateError() As String
             Get
                 Return ResourceManager.GetString("stringTruckOutDateError", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Update Complete.
+        '''  Looks up a localized string similar to Mise à jour terminée.
         '''</summary>
-        Public Shared ReadOnly Property stringUpdateComplete() As String
+        Friend Shared ReadOnly Property stringUpdateComplete() As String
             Get
                 Return ResourceManager.GetString("stringUpdateComplete", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Update Failure.
+        '''  Looks up a localized string similar to Échec de la mise à jour.
         '''</summary>
-        Public Shared ReadOnly Property stringUpdateFailure() As String
+        Friend Shared ReadOnly Property stringUpdateFailure() As String
             Get
                 Return ResourceManager.GetString("stringUpdateFailure", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Validation Fail.
+        '''  Looks up a localized string similar to Échec de la validation.
         '''</summary>
-        Public Shared ReadOnly Property stringValidationFail() As String
+        Friend Shared ReadOnly Property stringValidationFail() As String
             Get
                 Return ResourceManager.GetString("stringValidationFail", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Validation Pass.
+        '''  Looks up a localized string similar to Laissez-passer de validation.
         '''</summary>
-        Public Shared ReadOnly Property stringValidationPass() As String
+        Friend Shared ReadOnly Property stringValidationPass() As String
             Get
                 Return ResourceManager.GetString("stringValidationPass", resourceCulture)
             End Get

@@ -52,7 +52,11 @@ Public Class SecurityEdit
             stringFillCargoWeight,
             stringSecurityCheckComplete,
             stringStopCTNR,
-            stringCheckLinerSealNo As String
+            stringCheckLinerSealNo,
+            stringISOApprove,
+            stringISOCheck,
+            stringCargoApprove,
+            stringSecurityCheck As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If (My.Settings.languageSetting = "fr") Then
             btnCancel.Text = ResourceSecurityEditFrench.btnCancel
@@ -91,13 +95,14 @@ Public Class SecurityEdit
             lblWarehousePost.Text = ResourceSecurityEditFrench.lblWarehousePost
             lblSecurityPost.Text = ResourceSecurityEditFrench.lblSecurityPost
             lblSOTruckOutDate.Text = ResourceSecurityEditFrench.lblISOTruckOutDate
-            lblCompanyFullName.Text = ResourceSecurityEditFrench.lblCompanyFullName
+            lblCompanyFullName1.Text = ResourceSecurityEditFrench.lblCompanyFullName1
             lblDriverCheck.Text = ResourceSecurityEditFrench.lblDriverCheck
             lblPmCode.Text = ResourceSecurityEditFrench.lblPMCode
             lblPmRegistrationPlate.Text = ResourceSecurityEditFrench.lblPMRegistrationPlate
             lblSecurityCheck.Text = ResourceSecurityEditFrench.lblSecurityCheck
             lblISOTruckOutDateCheck.Text = ResourceSecurityEditFrench.lblISOTruckOutDateCheck
             lblISOTankWeightCheck.Text = ResourceSecurityEditFrench.lblISOTankWeightCheck
+            lblISOCheck.Text = ResourceSecurityEditFrench.lblISOCheck
             stringCheckDriverFullName = ResourceSecurityEditFrench.stringCheckDriverFullName
             stringCheckPMRegistrationPlate = ResourceSecurityEditFrench.stringCheckPMRegistrationPlate
             stringCheckFailure = ResourceSecurityEditFrench.stringCheckFailure
@@ -130,6 +135,10 @@ Public Class SecurityEdit
             stringSecurityCheckComplete = ResourceSecurityEditFrench.stringSecurityCheckComplete
             stringStopCTNR = ResourceSecurityEditFrench.stringStopCTNR
             stringCheckLinerSealNo = ResourceSecurityEditFrench.stringCheckLinerSealNo
+            stringISOApprove = ResourceSecurityEditFrench.stringISOApprove
+            stringISOCheck = ResourceSecurityEditFrench.stringISOCheck
+            stringCargoApprove = ResourceSecurityEditFrench.stringISOApprove
+            stringSecurityCheck = ResourceSecurityEditFrench.stringSecurityCheck
             GlobalFunction.ChangeFont(lblCompany, 10)
             GlobalFunction.ChangeFont(lblContainerSize, 10)
             GlobalFunction.ChangeFont(lblContainerNo, 10)
@@ -153,23 +162,29 @@ Public Class SecurityEdit
             GlobalFunction.ChangeFont(lblSendToCompany, 10)
             GlobalFunction.ChangeFont(lblShippingLine, 10)
             GlobalFunction.ChangeFont(lblTemporarySealNo, 10)
-            GlobalFunction.ChangeFont(lblTruckOutNumber, 10)
+            GlobalFunction.ChangeFontBold(lblTruckOutNumber, 12)
             GlobalFunction.ChangeFont(lblWarehouseLocation, 10)
-            GlobalFunction.ChangeFont(lblLCD, 10)
-            GlobalFunction.ChangeFont(lblLCT, 10)
-            GlobalFunction.ChangeFont(lblRTD, 10)
-            GlobalFunction.ChangeFont(lblRTT, 10)
-            GlobalFunction.ChangeFont(lblShippingPost, 10)
-            GlobalFunction.ChangeFont(lblWarehousePost, 10)
-            GlobalFunction.ChangeFont(lblSecurityPost, 10)
+            GlobalFunction.ChangeFont(lblLCD, 9)
+            GlobalFunction.ChangeFont(lblLCT, 9)
+            GlobalFunction.ChangeFont(lblRTD, 9)
+            GlobalFunction.ChangeFont(lblRTT, 9)
+            GlobalFunction.ChangeFont(lblShippingPost, 12)
+            GlobalFunction.ChangeFont(lblWarehousePost, 12)
+            GlobalFunction.ChangeFont(lblSecurityPost, 12)
             GlobalFunction.ChangeFont(lblSOTruckOutDate, 10)
-            GlobalFunction.ChangeFont(lblCompanyFullName, 10)
-            GlobalFunction.ChangeFont(lblDriverCheck, 10)
+            GlobalFunction.ChangeFont(lblCompanyFullName1, 10)
+            GlobalFunction.ChangeFontBold(lblDriverCheck, 12)
             GlobalFunction.ChangeFont(lblPmCode, 10)
             GlobalFunction.ChangeFont(lblPmRegistrationPlate, 10)
-            GlobalFunction.ChangeFont(lblSecurityCheck, 10)
+            GlobalFunction.ChangeFontBold(lblSecurityCheck, 12)
+            GlobalFunction.ChangeFontBold(lblISOCheck, 12)
             GlobalFunction.ChangeFont(lblISOTruckOutDateCheck, 10)
             GlobalFunction.ChangeFont(lblISOTankWeightCheck, 10)
+            btnCancel.Font = New Font("Helvetica", 9)
+            btnPrint.Font = New Font("Helvetica", 9)
+            btnSecurityPost.Font = New Font("Helvetica", 9)
+            btnDriverCheck.Font = New Font("Helvetica", 9)
+            btnSecurityCheck.Font = New Font("Helvetica", 8)
         Else
             btnCancel.Text = ResourceSecurityEdit.btnCancel
             btnSecurityPost.Text = ResourceSecurityEdit.btnPost
@@ -207,7 +222,7 @@ Public Class SecurityEdit
             lblWarehousePost.Text = ResourceSecurityEdit.lblWarehousePost
             lblSecurityPost.Text = ResourceSecurityEdit.lblSecurityPost
             lblSOTruckOutDate.Text = ResourceSecurityEdit.lblISOTruckOutDate
-            lblCompanyFullName.Text = ResourceSecurityEdit.lblCompanyFullName
+            lblCompanyFullName.Text = ResourceSecurityEdit.lblCompanyFullName1
             lblDriverCheck.Text = ResourceSecurityEdit.lblDriverCheck
             lblPmCode.Text = ResourceSecurityEdit.lblPMCode
             lblPmRegistrationPlate.Text = ResourceSecurityEdit.lblPMRegistrationPlate
@@ -246,8 +261,13 @@ Public Class SecurityEdit
             stringSecurityCheckComplete = ResourceSecurityEdit.stringSecurityCheckComplete
             stringStopCTNR = ResourceSecurityEdit.stringStopCTNR
             stringCheckLinerSealNo = ResourceSecurityEdit.stringCheckLinerSealNo
+            lblISOCheck.Text = ResourceSecurityEdit.lblISOCheck
+            stringISOApprove = ResourceSecurityEdit.stringISOApprove
+            stringISOCheck = ResourceSecurityEdit.stringISOCheck
+            stringCargoApprove = ResourceSecurityEdit.stringISOApprove
+            stringSecurityCheck = ResourceSecurityEdit.stringSecurityCheck
         End If
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         lblTooNumber.Text = Me.TruckOutNumber
         cmbFullName.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPmCode.DropDownStyle = ComboBoxStyle.DropDownList
@@ -629,10 +649,11 @@ Public Class SecurityEdit
         cbISO.Enabled = False
         If cbISO.Checked Then
             lblChecking.Text = "ISO Tank Check"
+            cbWarehousePost.Visible = False
             If My.Settings.role_id <> 5 Then
-                btnSecurityCheck.Text = "ISO Approve"
+                btnSecurityCheck.Text = stringISOApprove
             Else
-                btnSecurityCheck.Text = "ISO Check"
+                btnSecurityCheck.Text = stringISOCheck
             End If
             tbSecurityCheckLinerSealNo.Enabled = False
             tbSecurityCheckEsSealNo.Enabled = False
@@ -641,9 +662,9 @@ Public Class SecurityEdit
             tlpISO.Enabled = True
         Else
             If My.Settings.role_id <> 5 Then
-                btnSecurityCheck.Text = "Cargo Approve"
+                btnSecurityCheck.Text = stringCargoApprove
             Else
-                btnSecurityCheck.Text = "Security Check"
+                btnSecurityCheck.Text = stringSecurityCheck
             End If
         End If
 
@@ -657,10 +678,6 @@ Public Class SecurityEdit
             btnSecurityCheck.Enabled = False
         End If
 
-        If cbISO.Checked Then
-            lblChecking.Text = "ISO Tank Check"
-            cbWarehousePost.Visible = False
-        End If
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnDriverCheck.Click

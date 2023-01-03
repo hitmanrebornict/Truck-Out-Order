@@ -81,11 +81,12 @@ Partial Class NormalUserPage
         Me.lblLogout.AutoSize = True
         Me.lblLogout.BackColor = System.Drawing.Color.Transparent
         Me.lblLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLogout.Location = New System.Drawing.Point(3, 14)
+        Me.lblLogout.Location = New System.Drawing.Point(3, 4)
         Me.lblLogout.Name = "lblLogout"
-        Me.lblLogout.Size = New System.Drawing.Size(172, 20)
+        Me.lblLogout.Size = New System.Drawing.Size(215, 20)
         Me.lblLogout.TabIndex = 28
         Me.lblLogout.Text = "LOGOUT"
+        Me.lblLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblUserDetails
         '
@@ -245,12 +246,12 @@ Partial Class NormalUserPage
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.lblLogout, 0, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(1084, 113)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(1041, 113)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(178, 49)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(221, 29)
         Me.TableLayoutPanel2.TabIndex = 36
         '
         'NormalUserPage
@@ -273,7 +274,6 @@ Partial Class NormalUserPage
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NormalUserPage"
         Me.Text = "TOO System"

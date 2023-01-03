@@ -8,7 +8,7 @@ Public Class Admin
     Public TruckOutNumber As Integer
     Private companyNameHeader As String
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyHeader, companyNameHeader)
 
         If (My.Settings.languageSetting = "fr") Then
             lblTooSystem.Text = ResourceAdminFrench.lblTooSystem
@@ -140,7 +140,7 @@ Public Class Admin
 
 
         If age = 0 Then
-            My.Settings.newTOONumber = 10000
+            My.Settings.newTOONumber = maxDetailsTOONumber
         Else
             If age >= maxDetailsTOONumber Then
                 My.Settings.newTOONumber = age + 1

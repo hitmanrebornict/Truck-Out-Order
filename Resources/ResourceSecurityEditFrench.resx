@@ -118,234 +118,246 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuler</value>
   </data>
   <data name="btnPost" xml:space="preserve">
-    <value>Post</value>
+    <value>Poste</value>
   </data>
   <data name="btnPrint" xml:space="preserve">
-    <value>Print</value>
+    <value>Imprimer</value>
   </data>
   <data name="btnSave" xml:space="preserve">
-    <value>Save</value>
+    <value>Sauvegarder</value>
   </data>
-  <data name="lblCompanyFullName" xml:space="preserve">
-    <value>Company Full Name:</value>
+  <data name="lblCompanyFullName1" xml:space="preserve">
+    <value>Nom complet de l'entreprise:</value>
   </data>
   <data name="lblCompnay" xml:space="preserve">
-    <value>Company:</value>
+    <value>Compagnie:</value>
   </data>
   <data name="lblContainerNo" xml:space="preserve">
-    <value>Container No.</value>
+    <value>Numéro de conteneur</value>
   </data>
   <data name="lblContainerSize" xml:space="preserve">
-    <value>Container Size:</value>
+    <value>Taille du conteneur:</value>
   </data>
   <data name="lblDDB" xml:space="preserve">
     <value>DDB:</value>
   </data>
   <data name="lblDriverCheck" xml:space="preserve">
-    <value>Driver Check</value>
+    <value>Vérification du conducteur</value>
   </data>
   <data name="lblEsSealNo" xml:space="preserve">
-    <value>ES Seal No.</value>
+    <value>Numéro de sceau ES</value>
   </data>
   <data name="lblFullName" xml:space="preserve">
-    <value>Driver Full Name:</value>
+    <value>Nom complet du conducteur</value>
   </data>
   <data name="lblHaulier" xml:space="preserve">
-    <value>Haulier:</value>
+    <value>Transporteur:</value>
   </data>
   <data name="lblInternalSealNo" xml:space="preserve">
-    <value>Internal Seal No.</value>
+    <value>Numéro de joint interne</value>
   </data>
   <data name="lblInvoice" xml:space="preserve">
-    <value>Invoice:</value>
+    <value>Facture d'achat:</value>
   </data>
   <data name="lblISOCheck" xml:space="preserve">
-    <value>ISO Check</value>
+    <value>Vérification ISO</value>
   </data>
   <data name="lblISOTank" xml:space="preserve">
-    <value>ISO Tank:</value>
+    <value>Réservoir ISO:</value>
   </data>
   <data name="lblISOTankWeight" xml:space="preserve">
-    <value>ISO Tank Weight (mt):</value>
+    <value>Poids du réservoir ISO (mt):</value>
   </data>
   <data name="lblISOTankWeightCheck" xml:space="preserve">
-    <value>ISO Tank Weight Check:</value>
+    <value>Vérification du poids du réservoir ISO</value>
   </data>
   <data name="lblISOTruckOutDate" xml:space="preserve">
-    <value>Truck Out Date:</value>
+    <value>Date de sortie du camion:</value>
   </data>
   <data name="lblISOTruckOutDateCheck" xml:space="preserve">
-    <value>Truck Out Date Check:</value>
+    <value>Vérification de la date ISO</value>
   </data>
   <data name="lblLCD" xml:space="preserve">
-    <value>Loading Completed Date</value>
+    <value>Chargement de la date de fin</value>
   </data>
   <data name="lblLCT" xml:space="preserve">
-    <value>Loading Completed Time</value>
+    <value>Temps de chargement terminé</value>
   </data>
   <data name="lblLinerSealNo" xml:space="preserve">
-    <value>Liner's Seal No.</value>
+    <value>Numéro de joint de revêtement</value>
   </data>
   <data name="lblLoadingBay" xml:space="preserve">
-    <value>Loading Bay:</value>
+    <value>Quai de chargement:</value>
   </data>
   <data name="lblLoadingPort" xml:space="preserve">
-    <value>Loading Port:</value>
+    <value>Port de chargement:</value>
   </data>
   <data name="lblNetCargoWeight" xml:space="preserve">
-    <value>Net Cargo Weight (kg):</value>
+    <value>Poids net de la cargaison (kg) :</value>
   </data>
   <data name="lblPMCode" xml:space="preserve">
-    <value>PM Code</value>
+    <value>Code PM</value>
   </data>
   <data name="lblPMRegistrationPlate" xml:space="preserve">
-    <value>PM Registration Plate</value>
+    <value>Plaque d'immatriculation PM</value>
   </data>
   <data name="lblPortFullName" xml:space="preserve">
-    <value>Loading Port Full Name:</value>
+    <value>Nom complet du port de chargement:</value>
   </data>
   <data name="lblProduct" xml:space="preserve">
-    <value>Product:</value>
+    <value>Produit:</value>
   </data>
   <data name="lblRTD" xml:space="preserve">
-    <value>Ready Truck Out Date</value>
+    <value>Date de sortie du camion prêt</value>
   </data>
   <data name="lblRTT" xml:space="preserve">
-    <value>Ready Truck Out TIme</value>
+    <value>Temps de sortie du camion prêt</value>
   </data>
   <data name="lblSCD" xml:space="preserve">
-    <value>Shipment Closing Date:</value>
+    <value>Date limite d'expédition:</value>
   </data>
   <data name="lblSCT" xml:space="preserve">
-    <value>Shipment Closing Time:</value>
+    <value>Heure de clôture de l'expédition:</value>
   </data>
   <data name="lblSecurityCheck" xml:space="preserve">
-    <value>Security Check</value>
+    <value>Vérification de sécurité</value>
   </data>
   <data name="lblSecurityPost" xml:space="preserve">
-    <value>Security Post</value>
+    <value>Poste de sécurité</value>
   </data>
   <data name="lblSendToCompany" xml:space="preserve">
-    <value>Send To Company:</value>
+    <value>Envoyer à l'entreprise:</value>
   </data>
   <data name="lblShippingLine" xml:space="preserve">
-    <value>Shipping Line:</value>
+    <value>Ligne maritime:</value>
   </data>
   <data name="lblShippingPost" xml:space="preserve">
-    <value>Shipping Post</value>
+    <value>Poste d'expédition</value>
   </data>
   <data name="lblTemporarySealNo" xml:space="preserve">
-    <value>Temporary Seal No,</value>
+    <value>Numéro de sceau temporaire</value>
   </data>
   <data name="lblTruckOutNumber" xml:space="preserve">
-    <value>Truck Out Number:</value>
+    <value>Numéro de sortie du camion:</value>
   </data>
   <data name="lblWarehouseLocation" xml:space="preserve">
-    <value>Warehouse Location:</value>
+    <value>Emplacement de l'entrepôt:</value>
   </data>
   <data name="lblWarehousePost" xml:space="preserve">
-    <value>Warehouse Post</value>
+    <value>Poste d'entrepôt</value>
   </data>
   <data name="stringCanBePosted" xml:space="preserve">
-    <value>This Number Can Be Posted By Security Now</value>
+    <value>Ce numéro peut être affiché par la sécurité maintenant</value>
+  </data>
+  <data name="stringCargoApprove" xml:space="preserve">
+    <value>Approuver le fret</value>
   </data>
   <data name="stringCheckComplete" xml:space="preserve">
-    <value>Check Complete</value>
+    <value>Vérification terminée</value>
   </data>
   <data name="stringCheckContainerNo" xml:space="preserve">
-    <value>Please Check Container No.</value>
+    <value>Veuillez vérifier le numéro du conteneur</value>
   </data>
   <data name="stringCheckDriverFullName" xml:space="preserve">
-    <value>Please Check Driver Full Name</value>
+    <value>Veuillez vérifier le nom complet du conducteur</value>
   </data>
   <data name="stringCheckESSealNo" xml:space="preserve">
-    <value>Please Check ES Seal No.</value>
+    <value>Veuillez vérifier le numéro de sceau ES</value>
   </data>
   <data name="stringCheckFail" xml:space="preserve">
-    <value>Check Fail</value>
+    <value>Échec de la vérification</value>
   </data>
   <data name="stringCheckFailure" xml:space="preserve">
-    <value>Check Failure </value>
+    <value>Vérifier l'échec</value>
   </data>
   <data name="stringCheckInternalSealNo" xml:space="preserve">
-    <value>Please Check Internal Seal No.</value>
+    <value>Veuillez vérifier le numéro de sceau interne.</value>
   </data>
   <data name="stringCheckLinerSealNo" xml:space="preserve">
-    <value>Please Check Liner's Seal No.</value>
+    <value>Veuillez vérifier le numéro de sceau de la doublure</value>
   </data>
   <data name="stringCheckPMCode" xml:space="preserve">
-    <value>Please Check PM Code</value>
+    <value>Veuillez vérifier le code PM</value>
   </data>
   <data name="stringCheckPMRegistrationPlate" xml:space="preserve">
-    <value>Please Check PM Registration Plate</value>
+    <value>Veuillez vérifier la plaque d'immatriculation PM</value>
   </data>
   <data name="stringCheckQuit" xml:space="preserve">
-    <value>Are you sure you watn to exit?</value>
+    <value>Voulez-vous vraiment quitter ?</value>
   </data>
   <data name="stringCheckSecurityCheck" xml:space="preserve">
-    <value>Please Check Security Check</value>
+    <value>Veuillez vérifier le contrôle de sécurité</value>
   </data>
   <data name="stringCheckTemporarySealNo" xml:space="preserve">
-    <value>Please Check Temporary Seal No.</value>
+    <value>Veuillez vérifier le numéro du sceau temporaire</value>
   </data>
   <data name="stringCloseApplication" xml:space="preserve">
-    <value>Close Application</value>
+    <value>Fermer l'application</value>
   </data>
   <data name="stringComplete" xml:space="preserve">
-    <value>Complete</value>
+    <value>Compléter</value>
   </data>
   <data name="stringDriverValidationFail" xml:space="preserve">
-    <value>Driver Validation Fail</value>
+    <value>Échec de la validation du pilote</value>
   </data>
   <data name="stringDriverValidationPass" xml:space="preserve">
-    <value>Driver Validation Pass</value>
+    <value>Laissez-passer de validation du conducteur</value>
   </data>
   <data name="stringFillCargoWeight" xml:space="preserve">
-    <value>Please Fill In Net Cargo Weight Field </value>
+    <value>Veuillez remplir le champ du poids net de la cargaison</value>
   </data>
   <data name="stringInformShippingAdmin" xml:space="preserve">
-    <value>Please Imform Shipping Admin</value>
+    <value>Veuillez informer l'administrateur de l'expédition</value>
   </data>
   <data name="stringInformWarehouseAdmin" xml:space="preserve">
-    <value>Please Inform Warehouse Admin</value>
+    <value>Veuillez informer l'administrateur de l'entrepôt</value>
+  </data>
+  <data name="stringISOApprove" xml:space="preserve">
+    <value>ISO Approuver</value>
+  </data>
+  <data name="stringISOCheck" xml:space="preserve">
+    <value>Vérification ISO</value>
   </data>
   <data name="stringISOCheckComplete" xml:space="preserve">
-    <value>ISO Security Check Complete</value>
+    <value>Vérification de sécurité ISO terminée</value>
   </data>
   <data name="stringISOCheckFailed" xml:space="preserve">
-    <value>ISO Check Failed</value>
+    <value>Échec de la vérification ISO</value>
   </data>
   <data name="stringNetCargoCheckFailed" xml:space="preserve">
-    <value>Net Cargo Weight Check Failed</value>
+    <value>Échec de la vérification du poids net de la cargaison</value>
   </data>
   <data name="stringPostComplete" xml:space="preserve">
-    <value>Post Complete</value>
+    <value>Publication terminée</value>
   </data>
   <data name="stringPostFailed" xml:space="preserve">
-    <value>Post Failed</value>
+    <value>Échec de la publication</value>
+  </data>
+  <data name="stringSecurityCheck" xml:space="preserve">
+    <value>Vérification de sécurité</value>
   </data>
   <data name="stringSecurityCheckComplete" xml:space="preserve">
-    <value>Security Check Complete</value>
+    <value>Vérification de sécurité terminée</value>
   </data>
   <data name="stringStopCTNR" xml:space="preserve">
-    <value>Stop CTNR / Inform Warehouse</value>
+    <value>Arrêter CTNR / Informer Entrepôt</value>
   </data>
   <data name="stringTruckOutDateError" xml:space="preserve">
-    <value>Truck Out Date Error</value>
+    <value>Erreur de date de sortie du camion</value>
   </data>
   <data name="stringUpdateComplete" xml:space="preserve">
-    <value>Update Complete</value>
+    <value>Mise à jour terminée</value>
   </data>
   <data name="stringUpdateFailure" xml:space="preserve">
-    <value>Update Failure</value>
+    <value>Échec de la mise à jour</value>
   </data>
   <data name="stringValidationFail" xml:space="preserve">
-    <value>Validation Fail</value>
+    <value>Échec de la validation</value>
   </data>
   <data name="stringValidationPass" xml:space="preserve">
-    <value>Validation Pass</value>
+    <value>Laissez-passer de validation</value>
   </data>
 </root>
