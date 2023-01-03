@@ -11,7 +11,6 @@ Public Class WarehouseEdit
     Private checkSecurityPost As Boolean
     Private checkWarehouseCheckpoint As Boolean
     Private checkWarehouse As Boolean
-    Private checkCargoWeight As Boolean
     Dim con As New SqlConnection
     Dim cmd As New SqlCommand
     Dim rd As SqlDataReader
@@ -575,17 +574,17 @@ Public Class WarehouseEdit
         ElseIf cmbEsSealNo.Text = "YES" And tbEsSealNo.Text = "" Then
             MessageBox.Show(stringFillESSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            If checkWarehousePost = "" Then
-                cmd.CommandText = "update Shipping set Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Post = 1 where ID= @TruckOutNumber6"
-                cmd.Parameters.AddWithValue("@TruckOutNumber6", Me.TruckOutNumber)
+            If checkWarehousePost = False Then
+                cmd.CommandText = "update Shipping set Warehouse_Post_User = '" + My.Settings.username + "', Warehouse_Post_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Warehouse_Post = 1 where ID= @TruckOutNumber7"
+                cmd.Parameters.AddWithValue("@TruckOutNumber7", Me.TruckOutNumber)
                 rd = cmd.ExecuteReader
+
                 con.Close()
                 GlobalFunction.backToPage(Search, Me)
                 MessageBox.Show(stringPostComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             Else
                 MessageBox.Show(stringDataPosted, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             End If
         End If
     End Sub
