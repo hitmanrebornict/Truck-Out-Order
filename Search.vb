@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Runtime.Remoting.Messaging
+Imports System.Security.Cryptography
 Imports Microsoft.Vbe.Interop
 Imports Truck_Out_Order.My.Resources
 
@@ -34,7 +35,7 @@ Public Class Search
             stringSearchError = ResourceSearch.stringSearchError
             stringFilterError = ResourceSearch.stringFilterError
         End If
-        GlobalFunction.topHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
+        GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
         dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank' from Shipping"
@@ -84,7 +85,7 @@ Public Class Search
         Dim selected As String = tbShippingId.Text
         Dim checkDuplicate As Integer
         Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User' from Shipping"
-        Dim fieldValue As String
+
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2
         con2.Open()
@@ -190,9 +191,8 @@ Public Class Search
             End Try
 
         End If
-
         tbContainerNo.Text = ""
-            tbInvoice.Text = ""
+        tbInvoice.Text = ""
         tbShippingId.Text = ""
 
     End Sub
@@ -201,58 +201,14 @@ Public Class Search
         GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
-        'Filter
-
-        Dim con As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim rd As SqlDataReader
-        Dim sda As New SqlDataAdapter(cmd)
-        Dim dt As New DataTable()
-        con.ConnectionString = My.Settings.connstr
-        cmd.Connection = con
-        con.Open()
-
-        If tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
-            MessageBox.Show(stringFillRequired, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            If tbInvoice.Text <> "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
-                cmd.CommandText = ("SELECT * from Shipping where INVOICE like '" + tbInvoice.Text + "%' order by id desc")
-            ElseIf tbInvoice.Text = "" And tbContainerNo.Text <> "" And tbShippingId.Text = "" Then
-                cmd.CommandText = ("SELECT * from Shipping where CONTAINER_NO like '" + tbContainerNo.Text + "%' order by id desc")
-            ElseIf tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text <> "" Then
-                'cmd.CommandText = ("SELECT * from Shipping where INVOICE = '" + tbInvoice.Text + "' and CONTAINER_NO = '" + tbContainerNo.Text + "'")
-                cmd.CommandText = ("SELECT * from Shipping where id like '" + tbShippingId.Text + "%' order by id desc")
-            End If
-        End If
-        Try
-            rd = cmd.ExecuteReader
-
-            If rd.HasRows Then
-            Else
-
-            End If
-            con.Close()
-            sda.Fill(dt)
-            dgv.DataSource = dt
-        Catch ex As System.InvalidOperationException
-            MessageBox.Show(ex.Message, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Try
-        End Try
-
-
-
-        tbContainerNo.Text = ""
-        tbInvoice.Text = ""
-        tbShippingId.Text = ""
-    End Sub
-
-    Public Sub DataGridView1_Celldbclick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgv.CellDoubleClick
+    Private Sub dgv_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellContentClick
         Dim con2 As New SqlConnection
         Dim cmd2 As New SqlCommand
         Dim rd2 As SqlDataReader
-        Dim selected As String
-        selected = dgv.CurrentCell.Value
+        Dim row As DataGridViewRow = dgv.Rows(e.RowIndex)
+
+        Dim selected As String = row.Cells(0).Value.ToString
+
         con2.ConnectionString = My.Settings.connstr
         cmd2.Connection = con2
         con2.Open()
@@ -320,7 +276,129 @@ Public Class Search
         Catch ex As Exception
             MessageBox.Show(ex.Message, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
+        'Filter
+
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        Dim sda As New SqlDataAdapter(cmd)
+        Dim dt As New DataTable()
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        If tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
+            MessageBox.Show(stringFillRequired, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            If tbInvoice.Text <> "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
+                cmd.CommandText = ("SELECT * from Shipping where INVOICE like '" + tbInvoice.Text + "%' order by id desc")
+            ElseIf tbInvoice.Text = "" And tbContainerNo.Text <> "" And tbShippingId.Text = "" Then
+                cmd.CommandText = ("SELECT * from Shipping where CONTAINER_NO like '" + tbContainerNo.Text + "%' order by id desc")
+            ElseIf tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text <> "" Then
+                'cmd.CommandText = ("SELECT * from Shipping where INVOICE = '" + tbInvoice.Text + "' and CONTAINER_NO = '" + tbContainerNo.Text + "'")
+                cmd.CommandText = ("SELECT * from Shipping where id like '" + tbShippingId.Text + "%' order by id desc")
+            End If
+        End If
+        Try
+            rd = cmd.ExecuteReader
+
+            If rd.HasRows Then
+            Else
+
+            End If
+            con.Close()
+            sda.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As System.InvalidOperationException
+            MessageBox.Show(ex.Message, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Try
+        End Try
+
+
+
+        tbContainerNo.Text = ""
+        tbInvoice.Text = ""
+        tbShippingId.Text = ""
+    End Sub
+
+    'Public Sub DataGridView1_Celldbclick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgv.CellDoubleClick
+    '    Dim con2 As New SqlConnection
+    '    Dim cmd2 As New SqlCommand
+    '    Dim rd2 As SqlDataReader
+    '    Dim selected As String
+    '    selected = dgv.CurrentCell.Value
+    '    con2.ConnectionString = My.Settings.connstr
+    '    cmd2.Connection = con2
+    '    con2.Open()
+
+    '    Try
+    '        Select Case My.Settings.role_id
+    '            Case 1
+    '                Dim obj As New Edit
+    '                Edit.TruckOutNumber = selected
+    '                Edit.Show()
+    '                Me.Close()
+    '            Case 2
+    '                If (My.Settings.adminCheck) Then
+    '                    cmd2.CommandText = "SELECT id from shipping join security on shipping.id = security.shipping_id where shipping_id = @shippingID and Check_ISO_Tank = 1 and Allow_To_Post is not null"
+    '                    cmd2.Parameters.AddWithValue("@shippingID", selected)
+    '                    rd2 = cmd2.ExecuteReader
+    '                    If (rd2.HasRows()) Then
+    '                        Dim Security As New SecurityEdit
+    '                        Security.TruckOutNumber = selected
+    '                        Security.Show()
+    '                        Me.Close()
+    '                    Else
+    '                        Dim se As New ShippingEdit
+    '                        se.TruckOutNumber = selected
+    '                        se.Show()
+    '                        Me.Close()
+    '                    End If
+    '                Else
+    '                    Dim obj As New ShippingEdit
+    '                    obj.TruckOutNumber = selected
+    '                    obj.Show()
+    '                    Me.Close()
+    '                End If
+
+    '            Case 3, 4
+    '                If (My.Settings.adminCheck) Then
+    '                    cmd2.CommandText = "SELECT Cargo_Weight_Check From Security where shipping_id = @shippingID and Allow_To_Post is not null"
+    '                    cmd2.Parameters.AddWithValue("@shippingID", selected)
+    '                    rd2 = cmd2.ExecuteReader
+    '                    If (rd2.HasRows()) Then
+    '                        Dim editPage As New SecurityEdit
+    '                        editPage.TruckOutNumber = selected
+    '                        editPage.Show()
+    '                        Me.Close()
+    '                    Else
+    '                        Dim obj As New WarehouseEdit
+    '                        obj.TruckOutNumber = selected
+    '                        obj.Show()
+    '                        Me.Close()
+    '                    End If
+
+    '                Else
+    '                    Dim obj As New WarehouseEdit
+    '                    obj.TruckOutNumber = selected
+    '                    obj.Show()
+    '                    Me.Close()
+    '                End If
+
+    '            Case 5
+    '                Dim obj As New SecurityEdit
+    '                obj.TruckOutNumber = selected
+    '                obj.Show()
+    '                Me.Close()
+    '        End Select
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '    End Try
+    'End Sub
 
 
 
