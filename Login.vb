@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Globalization
 
 Imports System.Threading
+Imports Microsoft.VisualBasic.ApplicationServices
 Imports Truck_Out_Order.My.Resources
 
 Public Class Login
@@ -108,6 +109,19 @@ Public Class Login
             stringUserDisabled = ResourceLogin.stringUserDisabled
             stringDoNotMatch = ResourceLogin.stringDoNotMatch
             cmbLanguage.SelectedIndex = 0
+        End If
+
+        Dim Admin As New Admin
+        Dim User As New NormalUserPage
+
+        If My.Settings.username <> "" Then
+            Select Case My.Settings.adminCheck
+                Case True
+                    Admin.Show()
+                Case False
+                    User.Show()
+            End Select
+            Me.Close()
         End If
     End Sub
 

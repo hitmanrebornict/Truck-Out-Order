@@ -33,7 +33,8 @@ Public Class Admin
         End If
     End Sub
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        GlobalFunction.backToPage(login, Me)
+        My.Settings.username = ""
+        GlobalFunction.backToPage(Login, Me)
     End Sub
 
     Private Sub Button1_Hover(sender As Object, e As EventArgs) Handles Button1.MouseHover
