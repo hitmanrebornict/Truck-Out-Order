@@ -172,44 +172,47 @@ Public Class GlobalFunction
 
         'First Section (Shipping Details)
         e.Graphics.DrawString("Compagnie", printFont, Brushes.Black, 0, 170)
-        e.Graphics.DrawString("Nom complet de l'entreprise", printFont, Brushes.Black, 0, 200)
-        e.Graphics.DrawString("Port de chargement", printFont, Brushes.Black, 0, 230)
-        e.Graphics.DrawString("Port de chargement", printFont, Brushes.Black, 0, 260)
-        e.Graphics.DrawString("Produit", printFont, Brushes.Black, 0, 290)
-        e.Graphics.DrawString("Envoyer à l'entreprise", printFont, Brushes.Black, 0, 320)
+        e.Graphics.DrawString("Facture", printFont, Brushes.Black, 0, 195)
+        e.Graphics.DrawString("Port de chargement", printFont, Brushes.Black, 0, 220)
+        e.Graphics.DrawString("Ligne maritime", printFont, Brushes.Black, 0, 245)
+        e.Graphics.DrawString("Produit", printFont, Brushes.Black, 0, 270)
+        e.Graphics.DrawString("Envoyer à l'entreprise", printFont, Brushes.Black, 0, 295)
 
         'First Section Parellel Part
-        e.Graphics.DrawString("Facture", printFont, Brushes.Black, 500, 170)
-        e.Graphics.DrawString("Date de clôture de l'expédition", printFont, Brushes.Black, 500, 200)
-        e.Graphics.DrawString("Heure de clôture de l'expédition", printFont, Brushes.Black, 500, 230)
-        e.Graphics.DrawString("Transporteur", printFont, Brushes.Black, 500, 260)
-        e.Graphics.DrawString("Taille du conteneur", printFont, Brushes.Black, 500, 290)
-        e.Graphics.DrawString("Ligne maritime", printFont, Brushes.Black, 500, 320)
+        e.Graphics.DrawString("Taille du conteneur", printFont, Brushes.Black, 500, 170)
+        e.Graphics.DrawString("Date de clôture de l'expédition", printFont, Brushes.Black, 500, 195)
+        e.Graphics.DrawString("Heure de clôture de l'expédition", printFont, Brushes.Black, 500, 220)
+        e.Graphics.DrawString("Transporteur", printFont, Brushes.Black, 500, 245)
+        e.Graphics.DrawString("Emplacement de l'entrepôt", printFont, Brushes.Black, 500, 270)
+        'e.Graphics.DrawString("Ligne maritime", printFont, Brushes.Black, 500, 320)
 
         'Line between First and Second Section
-        e.Graphics.DrawLine(Pens.Black, 0, 360, 850, 360)
+        e.Graphics.DrawLine(Pens.Black, 0, 320, 850, 320)
 
         'Second Section (Container No.)
-        e.Graphics.DrawString("Numéro de conteneur", printFont, Brushes.Black, 0, 380)
-        e.Graphics.DrawString("Numéro de sceau ES", printFont, Brushes.Black, 0, 410)
-        e.Graphics.DrawString("Numéro de joint de revêtement", printFont, Brushes.Black, 0, 440)
-        e.Graphics.DrawString("Numéro de joint interne", printFont, Brushes.Black, 0, 470)
-        e.Graphics.DrawString("Numéro de sceau temporaire", printFont, Brushes.Black, 0, 500)
+        e.Graphics.DrawString("Numéro de conteneur", printFont, Brushes.Black, 0, 330)
+        e.Graphics.DrawString("Numéro de sceau ES", printFont, Brushes.Black, 0, 355)
+        e.Graphics.DrawString("Numéro de joint de revêtement", printFont, Brushes.Black, 0, 380)
+        e.Graphics.DrawString("Numéro de joint interne", printFont, Brushes.Black, 0, 405)
+        e.Graphics.DrawString("Numéro de sceau temporaire", printFont, Brushes.Black, 0, 430)
 
         'Second Section parallel part
-        e.Graphics.DrawString("Chargement de la date de fin", printFont, Brushes.Black, 500, 380)
-        e.Graphics.DrawString("Temps de chargement terminé", printFont, Brushes.Black, 500, 410)
-        e.Graphics.DrawString("Date de sortie du camion prêt", printFont, Brushes.Black, 500, 440)
-        e.Graphics.DrawString("Heure de sortie du camion prêt", printFont, Brushes.Black, 500, 470)
+        e.Graphics.DrawString("Chargement de la date de fin", printFont, Brushes.Black, 500, 330)
+        e.Graphics.DrawString("Temps de chargement terminé", printFont, Brushes.Black, 500, 355)
+        e.Graphics.DrawString("Date de sortie du camion prêt", printFont, Brushes.Black, 500, 380)
+        e.Graphics.DrawString("Heure de sortie du camion prêt", printFont, Brushes.Black, 500, 405)
 
         'Line between Second and Third Section
-        e.Graphics.DrawLine(Pens.Black, 0, 540, 850, 540)
+        e.Graphics.DrawLine(Pens.Black, 0, 455, 850, 455)
 
         'Third Section (Post User)
-        e.Graphics.DrawString("Problème d'expédition par", printFont, Brushes.Black, 0, 560)
-        e.Graphics.DrawString("Sceau d'entrepôt", printFont, Brushes.Black, 0, 590)
-        e.Graphics.DrawString("Entrepôt vérifié par", printFont, Brushes.Black, 0, 620)
-        e.Graphics.DrawString("Sécurité vérifiée par", printFont, Brushes.Black, 0, 650)
+        e.Graphics.DrawString("Problème d'expédition par", printFont, Brushes.Black, 0, 465)
+        e.Graphics.DrawString("Sceau d'entrepôt", printFont, Brushes.Black, 0, 490)
+        e.Graphics.DrawString("Entrepôt vérifié par", printFont, Brushes.Black, 0, 515)
+        e.Graphics.DrawString("Sécurité vérifiée par", printFont, Brushes.Black, 0, 540)
+
+        'First Section (Shipping Details)
+
 
         con.Open()
         cmd.CommandText = "SELECT * from shipping where ID = @TruckOutNumber"
@@ -220,6 +223,7 @@ Public Class GlobalFunction
 
         Dim origin As String = rd.Item("origin")
         Dim loadingPort As String = rd.Item("Loading_Port")
+
 
         e.Graphics.DrawString(": " & origin, printFont, Brushes.Black, 175, 170)
         e.Graphics.DrawString(": " & rd.Item("Invoice"), printFont, Brushes.Black, 175, 195)
@@ -233,18 +237,18 @@ Public Class GlobalFunction
         Dim scd As String = Date.Parse(rd.Item("Shipment_Closing_Date").ToString()).ToString("yyyy-MM-dd")
         Dim sct As String = DateTime.Parse(rd.Item("Shipment_Closing_Time").ToString()).ToString("HH:mm:ss")
         'First Section Content Parallel
-        e.Graphics.DrawString(": " & rd.Item("Invoice"), printFont, Brushes.Black, 700, 170)
-        e.Graphics.DrawString(": " & scd, printFont, Brushes.Black, 700, 200)
-        e.Graphics.DrawString(": " & sct, printFont, Brushes.Black, 700, 230)
-        e.Graphics.DrawString(": " & rd.Item("Haulier"), printFont, Brushes.Black, 700, 260)
-        e.Graphics.DrawString(": " & rd.Item("Container_Size"), printFont, Brushes.Black, 700, 290)
-        e.Graphics.DrawString(": " & rd.Item("Shipping_Line"), printFont, Brushes.Black, 700, 320)
+        e.Graphics.DrawString(": " & rd.Item("Container_Size"), printFont, Brushes.Black, 700, 170)
+        e.Graphics.DrawString(": " & scd, printFont, Brushes.Black, 700, 195)
+        e.Graphics.DrawString(": " & sct, printFont, Brushes.Black, 700, 220)
+        e.Graphics.DrawString(": " & rd.Item("Haulier"), printFont, Brushes.Black, 700, 245)
+        'e.Graphics.DrawString(": " & rd.Item("Container_Size"), printFont, Brushes.Black, 700, 290)
+        'e.Graphics.DrawString(": " & rd.Item("Shipping_Line"), printFont, Brushes.Black, 700, 320)
 
         'Second Section Content
-        e.Graphics.DrawString(": " & rd.Item("Container_No"), printFont, Brushes.Black, 200, 360)
+        e.Graphics.DrawString(": " & rd.Item("Container_No"), printFont, Brushes.Black, 200, 330)
 
-        e.Graphics.DrawString(": " & rd.Item("Liner_SEA_NO"), printFont, Brushes.Black, 200, 420)
-        e.Graphics.DrawString(": " & rd.Item("INTERNAL_SEAL_NO"), printFont, Brushes.Black, 200, 450)
+        e.Graphics.DrawString(": " & rd.Item("Liner_SEA_NO"), printFont, Brushes.Black, 200, 380)
+        e.Graphics.DrawString(": " & rd.Item("INTERNAL_SEAL_NO"), printFont, Brushes.Black, 200, 405)
         Dim tempSealNo As String
         If checkTempSealNo = True Then
             tempSealNo = rd.Item("TEMPORARY_SEAL_NO")
@@ -252,9 +256,9 @@ Public Class GlobalFunction
             Else
                 tempSealNo = ""
             End If
-            e.Graphics.DrawString(": " & tempSealNo, printFont, Brushes.Black, 200, 480)
+            e.Graphics.DrawString(": " & tempSealNo, printFont, Brushes.Black, 200, 430)
         Else
-            e.Graphics.DrawString(": " & "", printFont, Brushes.Black, 200, 480)
+            e.Graphics.DrawString(": " & "", printFont, Brushes.Black, 200, 430)
         End If
 
 
@@ -330,8 +334,8 @@ Public Class GlobalFunction
         loadingPortFullName = rd.Item("loadingPortFullName")
         con.Close()
 
-        e.Graphics.DrawString(": " & companyFullName, printFont, Brushes.Black, 175, 195)
-        e.Graphics.DrawString(": " & loadingPortFullName, printFont, Brushes.Black, 175, 260)
+        'e.Graphics.DrawString(": " & companyFullName, printFont, Brushes.Black, 175, 195)
+        'e.Graphics.DrawString(": " & loadingPortFullName, printFont, Brushes.Black, 175, 260)
 
         'Post User Section Detail
 
@@ -424,55 +428,55 @@ Public Class GlobalFunction
         End If
         con.Close()
 
-        e.Graphics.DrawString(": " & esSealNo, printFont, Brushes.Black, 200, 390)
+        e.Graphics.DrawString(": " & esSealNo, printFont, Brushes.Black, 200, 355)
         'Second Section Content Parallel
-        e.Graphics.DrawString(": " & lcd, printFont, Brushes.Black, 700, 380)
-        e.Graphics.DrawString(": " & lct, printFont, Brushes.Black, 700, 410)
-        e.Graphics.DrawString(": " & rtd, printFont, Brushes.Black, 700, 440)
-        e.Graphics.DrawString(": " & rtt, printFont, Brushes.Black, 700, 470)
+        e.Graphics.DrawString(": " & lcd, printFont, Brushes.Black, 700, 330)
+        e.Graphics.DrawString(": " & lct, printFont, Brushes.Black, 700, 355)
+        e.Graphics.DrawString(": " & rtd, printFont, Brushes.Black, 700, 380)
+        e.Graphics.DrawString(": " & rtt, printFont, Brushes.Black, 700, 405)
 
-        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 560)
+        e.Graphics.DrawString(": " & shippingPostUser, printFont, Brushes.Black, 175, 465)
 
         If checkWarehouseCheckPoint = True Then
-            e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 590)
+            e.Graphics.DrawString(": " & warehouseCheckUser, printFont, Brushes.Black, 175, 490)
         Else
-            e.Graphics.DrawString(": " & "inachevé", printFont, Brushes.Black, 175, 590)
+            e.Graphics.DrawString(": " & "Uncompleted", printFont, Brushes.Black, 175, 490)
         End If
-        e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 620)
-        e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 650)
+        e.Graphics.DrawString(": " & warehousePostUser, printFont, Brushes.Black, 175, 515)
+        e.Graphics.DrawString(": " & securityPostUser, printFont, Brushes.Black, 175, 540)
 
 
-        'Current User Part
-        e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
-        e.Graphics.DrawLine(Pens.Black, 0, 810, 850, 810)
-        e.Graphics.DrawString("Nom complet du conducteur", printFont, Brushes.Black, 0, 830)
-        e.Graphics.DrawString("Code PM du conducteur", printFont, Brushes.Black, 0, 860)
-        e.Graphics.DrawString("Plaque d'immatriculation PM du conducteur", printFont, Brushes.Black, 0, 890)
-        e.Graphics.DrawLine(Pens.Black, 0, 930, 850, 930)
-        e.Graphics.DrawString("Utilisateur actuel", printFont, Brushes.Black, 0, 950)
+        ''Current User Part
+        'e.Graphics.DrawLine(Pens.Black, 0, 690, 850, 690)
+        'e.Graphics.DrawLine(Pens.Black, 0, 810, 850, 810)
+        'e.Graphics.DrawString("Nom complet du conducteur", printFont, Brushes.Black, 0, 830)
+        'e.Graphics.DrawString("Code PM du conducteur", printFont, Brushes.Black, 0, 860)
+        'e.Graphics.DrawString("Plaque d'immatriculation PM du conducteur", printFont, Brushes.Black, 0, 890)
+        'e.Graphics.DrawLine(Pens.Black, 0, 930, 850, 930)
+        'e.Graphics.DrawString("Utilisateur actuel", printFont, Brushes.Black, 0, 950)
 
 
-        If checkISO Then
-            e.Graphics.DrawString("Date de sortie du camion ISO", printFont, Brushes.Black, 0, 710)
-            e.Graphics.DrawString("Plage de poids du réservoir ISO (mt)", printFont, Brushes.Black, 0, 740)
-            e.Graphics.DrawString("Valeur de vérification du poids du réservoir ISO", printFont, Brushes.Black, 0, 770)
-            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
-            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
-            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
-        Else
-            e.Graphics.DrawString("Vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 710)
-            e.Graphics.DrawString("Poids net de la cargaison", printFont, Brushes.Black, 0, 740)
-            e.Graphics.DrawString("Valeur de vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 770)
-            e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 375, 710)
-            e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 375, 740)
-            e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 375, 770)
-        End If
+        'If checkISO Then
+        '    e.Graphics.DrawString("Date de sortie du camion ISO", printFont, Brushes.Black, 0, 710)
+        '    e.Graphics.DrawString("Plage de poids du réservoir ISO (mt)", printFont, Brushes.Black, 0, 740)
+        '    e.Graphics.DrawString("Valeur de vérification du poids du réservoir ISO", printFont, Brushes.Black, 0, 770)
+        '    e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
+        '    e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
+        '    e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
+        'Else
+        '    e.Graphics.DrawString("Vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 710)
+        '    e.Graphics.DrawString("Poids net de la cargaison", printFont, Brushes.Black, 0, 740)
+        '    e.Graphics.DrawString("Valeur de vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 770)
+        '    e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 375, 710)
+        '    e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 375, 740)
+        '    e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 375, 770)
+        'End If
 
-        e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
-        e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
-        e.Graphics.DrawString(": " & registrationPlate, printFont, Brushes.Black, 275, 890)
-        e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 275, 950)
-        con.Close()
+        'e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
+        'e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
+        'e.Graphics.DrawString(": " & registrationPlate, printFont, Brushes.Black, 275, 890)
+        'e.Graphics.DrawString(": " & My.Settings.username, printFont, Brushes.Black, 275, 950)
+        'con.Close()
         Return ""
     End Function
 
