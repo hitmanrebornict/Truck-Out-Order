@@ -29,7 +29,7 @@ Public Class Login
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
-        Dim sql As String = "select role_id where username = '" + tbUsername.Text + "'"
+
         Dim validationCheck As Boolean
         Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
         con.ConnectionString = My.Settings.connstr
@@ -41,7 +41,9 @@ Public Class Login
 
         Else
             'cmd.CommandText = "SELECT Role_id,Username,Password,validationCheck from Login where Username = '" + tbUsername.Text + "' and Password ='" + tbPassword.Text + "'"
-            cmd.CommandText = selectString & " where Username = '" + tbUsername.Text + "' and Password ='" + tbPassword.Text + "'"
+            cmd.CommandText = selectString & " where Username = @username and Password = @password"
+            cmd.Parameters.AddWithValue("@username", tbUsername.Text)
+            cmd.Parameters.AddWithValue("@password", tbPassword.Text)
             rd = cmd.ExecuteReader
             If rd.HasRows Then
                 rd.Read()

@@ -572,47 +572,172 @@ Public Class Edit
         Dim rd As SqlDataReader
         con.ConnectionString = My.Settings.connstr
         cmd.Connection = con
-        Try
-            con.Open()
-            cmd.CommandText = "update Shipping set Reversion='" + "R-S" + "',ORIGIN = '" + cmbCompany.Text + "',INVOICE = '" + tbInvoice.Text + "',PRODUCT='" + tbProduct.Text + "',SHIPMENT_CLOSING_DATE = '" + dtpSCD.Value.ToString("yyyy-MM-dd") + "',SHIPMENT_CLOSING_TIME= '" + dtpSCT.Value.ToString("HH:mm:ss") + "',SHIPPING_LINE='" + tbShippingLine.Text + "',Container_Size ='" + cmbContainerSize.Text + "',HAULIER ='" + tbHaulier.Text + "',LOADING_PORT='" + cmbLoadingPort.Text + "', CONTAINER_NO='" + tbContainerNo.Text + "',LINER_SEA_NO='" + tbLinerSealNo.Text + "',INTERNAL_SEAL_NO='" + tbInternalSealNo.Text + "',TEMPORARY_SEAL_NO='" + tbTempSeal.Text + "',Last_Modified_User ='" + My.Settings.username + "',Update_Time='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',DDB='" + cmbDDB.Text + "', checkTempSealNo = @checkTempSealNo, Net_Cargo_Weight = @Net_Cargo_Weight, Product_Type = @Product_Type, Check_Iso_Tank = @Check_ISO_Tank, ISO_Truck_Out_Date = @ISO_Truck_Out_Date, ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower WHERE ID = @TruckOutNumber"
-            cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
-            cmd.Parameters.AddWithValue("@checkTempSealNo", checkTempSealNo)
+        'Try
+        con.Open()
+        If cbISO.Checked Then
+            cmd.CommandText =
+                    "update Shipping set
+                        Reversion ='" + "R-S" + "',
+                        ORIGIN = @Origin,
+                        INVOICE = @Invoice,
+                        PRODUCT= @Product,
+                        SHIPMENT_CLOSING_DATE = @Shipment_Closing_Date,
+                        SHIPMENT_CLOSING_TIME= @Shipment_Closing_Time,
+                        SHIPPING_LINE= @Shipping_Line,
+                        Container_Size = @Container_Size,
+                        HAULIER = @Haulier,
+                        LOADING_PORT= @Loading_Port,
+                        CONTAINER_NO= @Container_No,
+                        DDB= @DDB,
+                        Product_Type = @Product_Type,
+                        Check_ISO_Tank = @Check_ISO_Tank, 
+                        ISO_Truck_Out_Date = @ISO_Truck_Out_Date , 
+                        ISO_Tank_Weight_Lower = @ISO_Tank_Weight_Lower,
+                        ISO_Tank_Weight_Upper = @ISO_Tank_Weight_Upper, 
+                        Shipping_Post = 1,
+                        Last_Modified_User = @Shipping_Post_User,
+                        Shipping_Post_Time= @Shipping_Post_Time, 
+                        Internal_Seal_No = @Internal_Seal_No,
+                        Company = @Company,
+                        ES_Seal_No = @ES_Seal_No
+                        WHERE ID = @TruckOutNumber"
+            cmd.Parameters.AddWithValue("@Origin", cmbCompany.Text)
+            cmd.Parameters.AddWithValue("@Shipment_Closing_Date", dtpSCD.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@Shipment_Closing_Time", dtpSCT.Value.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@Invoice", tbInvoice.Text)
+            cmd.Parameters.AddWithValue("@Product", tbProduct.Text)
+            cmd.Parameters.AddWithValue("@Shipping_Line", tbShippingLine.Text)
+            cmd.Parameters.AddWithValue("@Container_Size", cmbContainerSize.Text)
+            cmd.Parameters.AddWithValue("@Haulier", tbHaulier.Text)
+            cmd.Parameters.AddWithValue("@Loading_Port", cmbLoadingPort.Text)
+            cmd.Parameters.AddWithValue("@Container_No", GlobalFunction.TrimSpace(tbContainerNo.Text))
+            cmd.Parameters.AddWithValue("@DDB", cmbDDB.Text)
             cmd.Parameters.AddWithValue("@Product_Type", cmbProductType.Text)
-            cmd.Parameters.AddWithValue("@Net_Cargo_Weight", tbCargo.Text)
+            cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
             cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
             cmd.Parameters.AddWithValue("@ISO_Truck_Out_Date", dtpISO.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Lower", tbISOTankWeightLower.Text)
             cmd.Parameters.AddWithValue("@ISO_Tank_Weight_Upper", tbISOTankWeightUpper.Text)
-            rd = cmd.ExecuteReader
+            cmd.Parameters.AddWithValue("@Internal_Seal_No", tbInternalSealNo.Text)
+            cmd.Parameters.AddWithValue("@Shipping_Post_User", My.Settings.username)
+            cmd.Parameters.AddWithValue("@Shipping_Post_Time", Date.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@Company", tbSendToCompany.Text)
+            cmd.Parameters.AddWithValue("@ES_Seal_No", cmbEsSealNo.Text)
+        Else
+            cmd.CommandText =
+                    "update Shipping set 
+                    Reversion='" + "R-S" + "',
+                    ORIGIN = @Origin,
+                    INVOICE = @Invoice,
+                    PRODUCT= @Product,
+                    SHIPMENT_CLOSING_DATE = @Shipment_Closing_Date,
+                    SHIPMENT_CLOSING_TIME= @Shipment_Closing_Time,
+                    SHIPPING_LINE= @Shipping_Line,
+                    Container_Size = @Container_Size,
+                    HAULIER = @Haulier,
+                    Shipping_Post = 1,
+                    LOADING_PORT= @Loading_Port,
+                    CONTAINER_NO= @Container_No,
+                    Liner_Sea_No = @Liner_Seal_No,
+                    INTERNAL_SEAL_NO= @Internal_Seal_No,
+                    TEMPORARY_SEAL_NO= @Temporary_Seal_No,
+                    Last_Modified_User = @Shipping_Post_User,
+                    Update_Time= @Shipping_Post_Time,
+                    DDB= @DDB,
+                    checkTempSealNo = @checkTempSealNo,
+                    Product_Type = @Product_Type ,
+                    Net_Cargo_Weight =@Net_Cargo_Weight,
+                    Check_ISO_Tank = @Check_ISO_Tank,
+                    Company = @Company,
+                    ES_Seal_No = @ES_Seal_No
+                    WHERE ID = @TruckOutNumber"
+            cmd.Parameters.AddWithValue("@Origin", cmbCompany.Text)
+            cmd.Parameters.AddWithValue("@Shipment_Closing_Date", dtpSCD.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@Shipment_Closing_Time", dtpSCT.Value.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@Invoice", tbInvoice.Text)
+            cmd.Parameters.AddWithValue("@Product", tbProduct.Text)
+            cmd.Parameters.AddWithValue("@Shipping_Line", tbShippingLine.Text)
+            cmd.Parameters.AddWithValue("@Container_Size", cmbContainerSize.Text)
+            cmd.Parameters.AddWithValue("@Haulier", tbHaulier.Text)
+            cmd.Parameters.AddWithValue("@Loading_Port", cmbLoadingPort.Text)
+            cmd.Parameters.AddWithValue("@Container_No", GlobalFunction.TrimSpace(tbContainerNo.Text))
+            cmd.Parameters.AddWithValue("@Liner_Seal_No", GlobalFunction.TrimSpace(tbLinerSealNo.Text))
+            cmd.Parameters.AddWithValue("@Temporary_Seal_No", GlobalFunction.TrimSpace(tbTempSeal.Text))
+            cmd.Parameters.AddWithValue("@Internal_Seal_No", GlobalFunction.TrimSpace(tbInternalSealNo.Text))
+            cmd.Parameters.AddWithValue("@TruckOutNumber", Me.TruckOutNumber)
+            cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
+            cmd.Parameters.AddWithValue("@checkTempSealNo", checkTempSealNo)
+            cmd.Parameters.AddWithValue("@Shipping_Post_User", My.Settings.username)
+            cmd.Parameters.AddWithValue("@Shipping_Post_Time", Date.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@DDB", cmbDDB.Text)
+            cmd.Parameters.AddWithValue("@Product_Type", cmbProductType.Text)
+            cmd.Parameters.AddWithValue("@Net_Cargo_Weight", tbCargo.Text)
+            cmd.Parameters.AddWithValue("@Company", tbSendToCompany.Text)
+            cmd.Parameters.AddWithValue("@ES_Seal_No", cmbEsSealNo.Text)
+        End If
+        rd = cmd.ExecuteReader
             con.Close()
 
             con.Open()
-            cmd.CommandText = "update Warehouse set WAREHOUSE_LOCATION = '" + cmbWarehouseLocation.Text + "',LOADING_BAY='" + tbLoadingBay.Text + "',Update_Time ='" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', Update_User ='" + My.Settings.username + "',LOADING_COMPLETED_TIME='" + dtpLCT.Value.ToString("HH:mm:ss") + "',LOADING_COMPLETED_DATE='" + dtpLCD.Value.ToString("yyyy-MM-dd") + "',READY_TRUCK_OUT_TIME ='" + dtpRTT.Value.ToString("HH:mm:ss") + "',READY_TRUCK_OUT_DATE='" + dtpRTD.Value.ToString("yyyy-MM-dd") + "', COMPANY ='" + tbSendToCompany.Text + "' where  Shipping_ID= @TruckOutNumber1"
-            cmd.Parameters.AddWithValue("@TruckOutNumber1", Me.TruckOutNumber)
-            rd = cmd.ExecuteReader
-            con.Close()
-            con.Open()
-            cmd.CommandText = "update Shipping set COMPANY = '" + tbSendToCompany.Text + "', Reversion = 'R-W', ES_SEAL_NO = '" + cmbEsSealNo.Text + "' where ID= @TruckOutNumber2"
-            cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
+        cmd.CommandText = "update Warehouse set 
+            ES_Seal_No = @ES_Seal_No_Warehouse,
+            WAREHOUSE_LOCATION = @Warehouse_Location,
+            LOADING_BAY= @Loading_Bay,
+            Update_Time = @Update_Time1, 
+            Update_User = @Update_User1,
+            LOADING_COMPLETED_TIME= @Loading_Completed_Time,
+            LOADING_COMPLETED_DATE= @Loading_Completed_Date,
+            READY_TRUCK_OUT_TIME = @Ready_Truck_Out_Time,
+            READY_TRUCK_OUT_DATE= @Ready_Truck_Out_Date,
+            COMPANY = @SendToCompany 
+            where  Shipping_ID= @TruckOutNumber1"
+        cmd.Parameters.AddWithValue("@ES_Seal_No_Warehouse", tbEsSealNo.Text)
+        cmd.Parameters.AddWithValue("@TruckOutNumber1", Me.TruckOutNumber)
+            cmd.Parameters.AddWithValue("@Warehouse_Location", cmbWarehouseLocation.Text)
+            cmd.Parameters.AddWithValue("@Loading_Bay", tbLoadingBay.Text)
+        cmd.Parameters.AddWithValue("@Update_Time1", Date.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+        cmd.Parameters.AddWithValue("@Update_User1", My.Settings.username)
+        cmd.Parameters.AddWithValue("@Loading_Completed_Time", dtpLCT.Value.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@Loading_Completed_Date", dtpLCD.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@Ready_Truck_Out_Time", dtpRTT.Value.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@Ready_Truck_Out_Date", dtpRTD.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@SendToCompany", tbSendToCompany.Text)
             rd = cmd.ExecuteReader
             con.Close()
 
-            checkDriver = True
-            con.Open()
-            cmd.CommandText = "Update Security set Shipping_ID = @TruckOutNumber,Driver_Full_Name = '" + cmbFullName.Text + "',PM_CODE = '" + cmbPmCode.Text + "',PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "',DRIVER_CHECK = @Driver_Check ,Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',Update_User = '" + My.Settings.username + "', Cargo_Weight_Check_Value = @Cargo_Weight_Check_Value, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight, Security_Check_ISO_Truck_Out_Date = @Security_Check_ISO_Truck_Out_Date where  Shipping_ID= @TruckOutNumber5”
-            cmd.Parameters.AddWithValue("@TruckOutNumber5", Me.TruckOutNumber)
-            cmd.Parameters.AddWithValue("@Cargo_Weight_Check_Value", tbCargoChecking.Text)
+        con.Open()
+        If cbISO.Checked Then
+            cmd.CommandText = "Update Security set 
+            Driver_Full_Name = @Driver_Full_Name,
+            PM_CODE = @PM_CODE,
+            PM_REGISTRATION_PLATE = @PM_REGISTRATION_PLATE,
+            Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight,
+            Security_Check_ISO_Truck_Out_Date = @Security_Check_ISO_Truck_Out_Date 
+            where  Shipping_ID= @TruckOutNumber5”
             cmd.Parameters.AddWithValue("@Security_Check_ISO_Tank_Weight", tbSecurityCheckISOTankWeight.Text)
             cmd.Parameters.AddWithValue("@Security_Check_ISO_Truck_Out_Date", dtpISOCheck.Value.ToString("yyyy-MM-dd"))
-            cmd.Parameters.AddWithValue("@Driver_Check", checkDriver)
-            rd = cmd.ExecuteReader
+        Else
+            cmd.CommandText = "Update Security set 
+            Driver_Full_Name = @Driver_Full_Name,
+            PM_CODE = @PM_CODE,
+            PM_REGISTRATION_PLATE = @PM_REGISTRATION_PLATE,
+            Cargo_Weight_Check_Value = @Cargo_Weight_Check_Value
+            where  Shipping_ID= @TruckOutNumber5”
+            cmd.Parameters.AddWithValue("@Cargo_Weight_Check_Value", tbCargoChecking.Text)
+        End If
+
+        cmd.Parameters.AddWithValue("@TruckOutNumber5", Me.TruckOutNumber)
+            cmd.Parameters.AddWithValue("@Driver_Full_Name", cmbFullName.Text)
+            cmd.Parameters.AddWithValue("@PM_CODE", cmbPmCode.Text)
+        cmd.Parameters.AddWithValue("@PM_REGISTRATION_PLATE", cmbPmRegistrationPlate.Text)
+        rd = cmd.ExecuteReader
             con.Close()
 
             MessageBox.Show(stringUpdateComplete, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             btnCancel.PerformClick()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, stringUpdateFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.Message, stringUpdateFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
 
     End Sub
 

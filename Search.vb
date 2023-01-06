@@ -1,7 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Runtime.Remoting.Messaging
-Imports System.Security.Cryptography
-Imports Microsoft.Vbe.Interop
 Imports Truck_Out_Order.My.Resources
 
 Public Class Search
@@ -61,7 +58,7 @@ Public Class Search
                         cmd.CommandText = (selectString & " where shipping_post = 1 and warehouse_Post is null and Check_ISO_Tank = 0 order by id desc")
                     End If
                 Case 5
-                    cmd.CommandText = (selectString & " where (shipping_post = 1 and warehouse_Post  = 1 and security_post is null) or (shipping_post = 1 and Check_ISO_Tank = 1 and security_post is null) order by id desc")
+                    cmd.CommandText = (selectString & "  where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) order by id desc")
             End Select
         End If
         rd = cmd.ExecuteReader
@@ -100,51 +97,56 @@ Public Class Search
             If tbShippingId.Text <> "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
-                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where ID = @shipping_id2"
+                        cmd3.CommandText = selectString & " where ID = @shipping_id3"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = @shipping_id2 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where ID = @shipping_id3 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and ID = '" + tbShippingId.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and ID = @shipping_id2"
+                        cmd3.CommandText = selectString & " where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and ID = @shipping_id3"
                     Case 1
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = '" + tbShippingId.Text + "'"
-                        cmd3.CommandText = selectString & " where ID = '" + tbShippingId.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = @shipping_id2"
+                        cmd3.CommandText = selectString & " where ID = @shipping_id3"
                 End Select
-
+                cmd2.Parameters.AddWithValue("@shipping_id2", tbShippingId.Text)
+                cmd3.Parameters.AddWithValue("@shipping_id3", tbShippingId.Text)
                 'ElseIf tbShippingId.Text = "" And tbInvoice.Text <> "" And tbContainerNo.Text = "" Then
             ElseIf tbInvoice.Text <> "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where  INVOICE = '" + tbInvoice.Text + "'"
-                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping where  INVOICE = @invoice2"
+                        cmd3.CommandText = selectString & " where INVOICE = @invoice3"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = @invoice2 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where INVOICE = @invoice3 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and INVOICE = '" + tbInvoice.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and INVOICE = @invoice2"
+                        cmd3.CommandText = selectString & "  where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and INVOICE = @invoice3"
                     Case 1
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = '" + tbInvoice.Text + "'"
-                        cmd3.CommandText = selectString & " where INVOICE = '" + tbInvoice.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = @invoice2"
+                        cmd3.CommandText = selectString & " where INVOICE = @invoice3"
                 End Select
+                cmd2.Parameters.AddWithValue("@invoice2", tbInvoice.Text)
+                cmd3.Parameters.AddWithValue("@invoice3", tbInvoice.Text)
                 'ElseIf tbShippingId.Text = "" And tbInvoice.Text = "" And tbContainerNo.Text <> "" Then
             ElseIf tbContainerNo.Text <> "" Then
                 Select Case My.Settings.role_id
                     Case 2
-                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping WHERE CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd2.CommandText = "Select COUNT(ID) as COUNTID from Shipping WHERE CONTAINER_NO = @container_id2"
+                        cmd3.CommandText = selectString & " where CONTAINER_NO = @container_id3"
                     Case 3, 4
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
-                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = @container_id2 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
+                        cmd3.CommandText = selectString & " where CONTAINER_NO = @container_id3 and (SHIPPING_POST = 1 or WAREHOUSE_POST is NULL)"
                     Case 5
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where Shipping_Post = 1 and Warehouse_POST = 1and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                        cmd3.CommandText = selectString & " where Shipping_Post = 1 and Warehouse_POST = 1 and SECURITY_POST is NULL and CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping  where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and CONTAINER_NO = @container_id2"
+                        cmd3.CommandText = selectString & " where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and CONTAINER_NO = @container_id3"
                     Case 1
-                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = '" + tbContainerNo.Text + "'"
-                        cmd3.CommandText = selectString & " where CONTAINER_NO = '" + tbContainerNo.Text + "'"
+                        cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = @container_id2"
+                        cmd3.CommandText = selectString & " where CONTAINER_NO = @container_id3"
                 End Select
+                cmd2.Parameters.AddWithValue("@container_id2", tbContainerNo.Text)
+                cmd3.Parameters.AddWithValue("@container_id3", tbContainerNo.Text)
             End If
             Me.selected = selected
             Try
@@ -187,7 +189,7 @@ Public Class Search
                     End Select
                 End If
 
-            Catch ex As InvalidOperationException
+            Catch ex As Exception
                 MessageBox.Show(ex.Message, stringSearchError, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Try
 
@@ -508,12 +510,15 @@ Public Class Search
             MessageBox.Show(stringFillRequired, stringFilterError, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If tbInvoice.Text <> "" And tbContainerNo.Text = "" And tbShippingId.Text = "" Then
-                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where INVOICE like '" + tbInvoice.Text + "%' order by id desc")
+                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where INVOICE like @Invoice + '%' order by id desc")
+                cmd.Parameters.AddWithValue("@Invoice", tbInvoice.Text)
             ElseIf tbInvoice.Text = "" And tbContainerNo.Text <> "" And tbShippingId.Text = "" Then
-                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where CONTAINER_NO like '" + tbContainerNo.Text + "%' order by id desc")
+                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where CONTAINER_NO like @container_no + '%' order by id desc")
+                cmd.Parameters.AddWithValue("@container_no", tbContainerNo.Text)
             ElseIf tbInvoice.Text = "" And tbContainerNo.Text = "" And tbShippingId.Text <> "" Then
                 'cmd.CommandText = ("SELECT * from Shipping where INVOICE = '" + tbInvoice.Text + "' and CONTAINER_NO = '" + tbContainerNo.Text + "'")
-                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where id like '" + tbShippingId.Text + "%' order by id desc")
+                cmd.CommandText = ("SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank'  from Shipping where id like @shipping_id + '%' order by id desc")
+                cmd.Parameters.AddWithValue("@shipping_id", tbShippingId.Text)
             End If
         End If
         Try

@@ -154,7 +154,7 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Secu"& _ 
-            "rity = False ; User ID = too ; Password = admin ")>  _
+            "rity = false ; User ID = too ; Password = admin")>  _
         Public ReadOnly Property connstr() As String
             Get
                 Return CType(Me("connstr"),String)
