@@ -638,6 +638,7 @@
   <ItemGroup>
     <None Include="Resources\belgium-removebg-preview.png" />
     <None Include="Resources\belgium-removebg-preview1.png" />
+    <None Include="Resources\icons8-restart-30.png" />
     <Content Include="TOO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

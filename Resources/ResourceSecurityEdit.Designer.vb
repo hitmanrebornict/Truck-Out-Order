@@ -569,7 +569,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Are you sure you watn to exit?.
+        '''  Looks up a localized string similar to Are you sure you want to exit?.
         '''</summary>
         Public Shared ReadOnly Property stringCheckQuit() As String
             Get

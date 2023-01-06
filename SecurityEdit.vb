@@ -576,29 +576,23 @@ Public Class SecurityEdit
         'Fill in security check field
         If checkSecurityCheck = True Then
             btnSecurityPost.Enabled = True
-            btnSecurityCheck.Enabled = False
+            'btnSecurityCheck.Enabled = False
             tbSecurityCheckContainerNo.Text = tbContainerNo.Text
             tbSecurityCheckLinerSealNo.Text = tbLinerSealNo.Text
             tbSecurityCheckInternalSealNo.Text = tbInternalSealNo.Text
             tbSecurityCheckTemporarySealNo.Text = tbTempSeal.Text
             tbSecurityCheckEsSealNo.Text = tbEsSealNo.Text
-            tbCheckCargoWeight.Enabled = False
-            tbCheckCargoWeight.Enabled = False
-            tbSecurityCheckContainerNo.Enabled = False
-            tbSecurityCheckEsSealNo.Enabled = False
-            tbSecurityCheckInternalSealNo.Enabled = False
-            tbSecurityCheckLinerSealNo.Enabled = False
-            tbSecurityCheckTemporarySealNo.Enabled = False
-            tbSecurityCheckISOTankWeight.Enabled = False
+            'tbCheckCargoWeight.Enabled = False
+            'tbSecurityCheckISOTankWeight.Enabled = False
             dtpISO.Visible = True
             dtpISO.Enabled = False
-            tbISOTankWeightLower.Enabled = False
-            tbISOTankWeightUpper.Enabled = False
-            tbSecurityCheckISOTankWeight.Enabled = False
-            dtpISOCheck.Enabled = False
+            'tbISOTankWeightLower.Enabled = False
+            'tbISOTankWeightUpper.Enabled = False
+            'tbSecurityCheckISOTankWeight.Enabled = False
+            'dtpISOCheck.Enabled = False
 
 
-            If My.Settings.role_id <> 5 And My.Settings.role_id = 2 Then
+            If My.Settings.role_id <> 5 Or My.Settings.role_id = 2 Then
                 btnSecurityCheck.Enabled = True
                 btnSecurityCheck.Visible = True
                 btnSecurityPost.Enabled = False
@@ -879,6 +873,7 @@ Public Class SecurityEdit
                         checkSecurityCheck = True
                         btnSecurityCheck.Enabled = False
                         tbSecurityCheckContainerNo.Enabled = False
+                        tbSecurityCheckInternalSealNo.Enabled = False
                         dtpISO.Enabled = False
                         tbISOTankWeightLower.Enabled = False
                         tbISOTankWeightUpper.Enabled = False
@@ -903,14 +898,14 @@ Public Class SecurityEdit
                     ElseIf dtpISOCheck.Value < ISOTODValue Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) < Decimal.Parse(tbISOTankWeightLower.Text) Or Decimal.Parse(tbSecurityCheckISOTankWeight.Text) > Decimal.Parse(tbISOTankWeightUpper.Text) Then
                         checkAllowToPost = False
                         checkSecurityCheck = True
-                        btnSecurityCheck.Enabled = False
-                        tbSecurityCheckContainerNo.Enabled = False
-                        dtpISO.Enabled = False
-                        tbISOTankWeightLower.Enabled = False
-                        tbISOTankWeightUpper.Enabled = False
-                        tbSecurityCheckISOTankWeight.Enabled = False
-                        dtpISO.Enabled = False
-                        dtpISOCheck.Enabled = False
+                        'btnSecurityCheck.Enabled = False
+                        'tbSecurityCheckContainerNo.Enabled = False
+                        'dtpISO.Enabled = False
+                        'tbISOTankWeightLower.Enabled = False
+                        'tbISOTankWeightUpper.Enabled = False
+                        'tbSecurityCheckISOTankWeight.Enabled = False
+                        'dtpISO.Enabled = False
+                        'dtpISOCheck.Enabled = False
                         cmd.CommandText = "update security set Update_Time = '" + Date.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' ,Update_User = '" + My.Settings.username + "', Security_Check = @Security_Check,Allow_To_Post = @Allow_To_Post, Security_Check_ISO_Tank_Weight = @Security_Check_ISO_Tank_Weight,  Security_Check_ISO_Truck_Out_Date =  @Security_Check_ISO_Truck_Out_Date  WHERE Shipping_ID = @TruckOutNumber2"
                         cmd.Parameters.AddWithValue("@TruckOutNumber2", Me.TruckOutNumber)
                         cmd.Parameters.AddWithValue("@Allow_To_Post", checkAllowToPost)
@@ -920,8 +915,8 @@ Public Class SecurityEdit
                         rd = cmd.ExecuteReader
                         con.Close()
                         MessageBox.Show(stringInformShippingAdmin, stringISOCheckFailed, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        btnSecurityCheck.Enabled = False
-                        dtpISO.Visible = True
+                        'btnSecurityCheck.Enabled = False
+                        'dtpISO.Visible = True
                     End If
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -977,13 +972,13 @@ Public Class SecurityEdit
                         MessageBox.Show(stringStopCTNR, stringCheckFail, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                     checkSecurityCheck = True
-                    btnSecurityCheck.Enabled = False
-                    tbCheckCargoWeight.Enabled = False
-                    tbSecurityCheckContainerNo.Enabled = False
-                    tbSecurityCheckEsSealNo.Enabled = False
-                    tbSecurityCheckInternalSealNo.Enabled = False
-                    tbSecurityCheckLinerSealNo.Enabled = False
-                    tbSecurityCheckTemporarySealNo.Enabled = False
+                    'btnSecurityCheck.Enabled = False
+                    'tbCheckCargoWeight.Enabled = False
+                    'tbSecurityCheckContainerNo.Enabled = False
+                    'tbSecurityCheckEsSealNo.Enabled = False
+                    'tbSecurityCheckInternalSealNo.Enabled = False
+                    'tbSecurityCheckLinerSealNo.Enabled = False
+                    'tbSecurityCheckTemporarySealNo.Enabled = False
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try

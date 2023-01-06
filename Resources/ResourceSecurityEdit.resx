@@ -286,7 +286,7 @@
     <value>Please Check PM Registration Plate</value>
   </data>
   <data name="stringCheckQuit" xml:space="preserve">
-    <value>Are you sure you watn to exit?</value>
+    <value>Are you sure you want to exit?</value>
   </data>
   <data name="stringCheckSecurityCheck" xml:space="preserve">
     <value>Please Check Security Check</value>

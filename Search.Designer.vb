@@ -25,6 +25,7 @@ Partial Class Search
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Search))
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnReset = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblShippingID = New System.Windows.Forms.Label()
         Me.tbContainerNo = New System.Windows.Forms.TextBox()
@@ -50,6 +51,7 @@ Partial Class Search
         '
         Me.Panel3.AutoSize = True
         Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel3.Controls.Add(Me.btnReset)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel3.Controls.Add(Me.btnCancel)
         Me.Panel3.Controls.Add(Me.btnFilter)
@@ -60,6 +62,16 @@ Partial Class Search
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(940, 684)
         Me.Panel3.TabIndex = 3
+        '
+        'btnReset
+        '
+        Me.btnReset.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.icons8_restart_30
+        Me.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnReset.Location = New System.Drawing.Point(354, 221)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(26, 26)
+        Me.btnReset.TabIndex = 41
+        Me.btnReset.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
         '
@@ -138,7 +150,7 @@ Partial Class Search
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!)
-        Me.btnCancel.Location = New System.Drawing.Point(243, 221)
+        Me.btnCancel.Location = New System.Drawing.Point(237, 221)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(95, 26)
         Me.btnCancel.TabIndex = 13
@@ -148,7 +160,7 @@ Partial Class Search
         'btnFilter
         '
         Me.btnFilter.Font = New System.Drawing.Font("Helvetica", 12.0!)
-        Me.btnFilter.Location = New System.Drawing.Point(122, 221)
+        Me.btnFilter.Location = New System.Drawing.Point(120, 221)
         Me.btnFilter.Name = "btnFilter"
         Me.btnFilter.Size = New System.Drawing.Size(95, 26)
         Me.btnFilter.TabIndex = 12
@@ -275,4 +287,5 @@ Partial Class Search
     Friend WithEvents lblCompanyNameHeader As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblUserDetails As Label
+    Friend WithEvents btnReset As Button
 End Class

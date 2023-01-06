@@ -138,20 +138,9 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Secu"& _ 
-            "rity = False ; User ID = too ; Password = admin")>  _
-        Public ReadOnly Property connstr() As String
-            Get
-                Return CType(Me("connstr"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fr")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("en")>  _
         Public Property languageSetting() As String
             Get
                 Return CType(Me("languageSetting"),String)
@@ -159,6 +148,17 @@ Namespace My
             Set
                 Me("languageSetting") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source = GCBK9FS01\SQLEXPRESS ; Initial Catalog = TOOSystem; Integrated Secu"& _ 
+            "rity = False ; User ID = too ; Password = admin ")>  _
+        Public ReadOnly Property connstr() As String
+            Get
+                Return CType(Me("connstr"),String)
+            End Get
         End Property
     End Class
 End Namespace
