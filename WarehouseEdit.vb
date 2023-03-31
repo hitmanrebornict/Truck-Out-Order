@@ -764,10 +764,10 @@ Public Class WarehouseEdit
         'Else
         '    cbTemporarySealNo.Text = "NO"
         'End If
-        If tbWarehouseCheckLinerSealNo.Text <> Microsoft.VisualBasic.Right(tbLinerSealNo.Text, 4) Then
-            MessageBox.Show(stringCheckLinerSealNo + Environment.NewLine + stringFourDigit, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf tbWarehouseCheckInternalSealNo.Text <> Microsoft.VisualBasic.Right(tbInternalSealNo.Text, 4) Then
-            MessageBox.Show(stringCheckInternalSealNo + Environment.NewLine + stringFourDigit, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If tbWarehouseCheckLinerSealNo.Text <> tbLinerSealNo.Text Then
+            MessageBox.Show(stringCheckLinerSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf tbWarehouseCheckInternalSealNo.Text <> tbInternalSealNo.Text Then
+            MessageBox.Show(stringCheckInternalSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf checkWarehouseCheckpoint = False Then
             cmd.CommandText = "select shipping_id from warehouse where shipping_id = @shipping_id"
             cmd.Parameters.AddWithValue("@shipping_id", Me.TruckOutNumber)

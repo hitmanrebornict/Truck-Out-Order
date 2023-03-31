@@ -60,8 +60,6 @@ Partial Class WarehouseEdit
         Me.cmbWarehouseLocation = New System.Windows.Forms.ComboBox()
         Me.lblLoadingBay = New System.Windows.Forms.Label()
         Me.tbLoadingBay = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblCompanyNameHeader = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -136,8 +134,6 @@ Partial Class WarehouseEdit
         Panel3.Controls.Add(Me.TableLayoutPanel10)
         Panel3.Controls.Add(Me.btnCheck)
         Panel3.Controls.Add(Me.TableLayoutPanel3)
-        Panel3.Controls.Add(Me.Label8)
-        Panel3.Controls.Add(Me.Label7)
         Panel3.Controls.Add(Me.Panel1)
         Panel3.Controls.Add(Me.btnPost)
         Panel3.Controls.Add(Me.TableLayoutPanel8)
@@ -560,26 +556,6 @@ Partial Class WarehouseEdit
         Me.tbLoadingBay.Size = New System.Drawing.Size(240, 26)
         Me.tbLoadingBay.TabIndex = 12
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(765, 565)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(99, 19)
-        Me.Label8.TabIndex = 156
-        Me.Label8.Text = "(Last 4 Digit)"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(765, 529)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(99, 19)
-        Me.Label7.TabIndex = 155
-        Me.Label7.Text = "(Last 4 Digit)"
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Ivory
@@ -838,7 +814,7 @@ Partial Class WarehouseEdit
         '
         Me.TableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.[Single]
         Me.TableLayoutPanel6.ColumnCount = 1
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342.0!))
         Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel6.Controls.Add(Me.dtpRTT, 0, 7)
         Me.TableLayoutPanel6.Controls.Add(Me.dtpLCT, 0, 3)
@@ -1118,8 +1094,8 @@ Partial Class WarehouseEdit
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(245, 39)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(281, 28)
         Me.TableLayoutPanel2.TabIndex = 52
         '
@@ -1273,8 +1249,6 @@ Partial Class WarehouseEdit
     Friend WithEvents lblTooNumber As Label
     Friend WithEvents lblTruckOutNumber As Label
     Friend WithEvents lblUserDetails As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel

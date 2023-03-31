@@ -456,21 +456,21 @@ Public Class GlobalFunction
         'e.Graphics.DrawString("Utilisateur actuel", printFont, Brushes.Black, 0, 950)
 
 
-        'If checkISO Then
-        '    e.Graphics.DrawString("Date de sortie du camion ISO", printFont, Brushes.Black, 0, 710)
-        '    e.Graphics.DrawString("Plage de poids du réservoir ISO (mt)", printFont, Brushes.Black, 0, 740)
-        '    e.Graphics.DrawString("Valeur de vérification du poids du réservoir ISO", printFont, Brushes.Black, 0, 770)
-        '    e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 275, 710)
-        '    e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 275, 740)
-        '    e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 275, 770)
-        'Else
-        '    e.Graphics.DrawString("Vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 710)
-        '    e.Graphics.DrawString("Poids net de la cargaison", printFont, Brushes.Black, 0, 740)
-        '    e.Graphics.DrawString("Valeur de vérification du poids net de la cargaison", printFont, Brushes.Black, 0, 770)
-        '    e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 375, 710)
-        '    e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 375, 740)
-        '    e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 375, 770)
-        'End If
+        If checkISO Then
+            e.Graphics.DrawString("Date de sortie du camion ISO", printFont, Brushes.Black, 350, 465)
+            e.Graphics.DrawString("Plage de poids du réservoir ISO (mt)", printFont, Brushes.Black, 350, 490)
+            e.Graphics.DrawString("Valeur de vérification du poids du réservoir ISO", printFont, Brushes.Black, 350, 515)
+            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 700, 465)
+            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 700, 490)
+            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 700, 515)
+        Else
+            e.Graphics.DrawString("Vérification du poids net de la cargaison", printFont, Brushes.Black, 350, 465)
+            e.Graphics.DrawString("Poids net de la cargaison", printFont, Brushes.Black, 350, 490)
+            e.Graphics.DrawString("Valeur de vérification du poids net de la cargaison", printFont, Brushes.Black, 350, 515)
+            e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 700, 465)
+            e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 700, 490)
+            e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 700, 515)
+        End If
 
         'e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
         'e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
@@ -844,21 +844,21 @@ Public Class GlobalFunction
         'e.Graphics.DrawString("Current User", printFont, Brushes.Black, 0, 950)
 
 
-        'If checkISO Then
-        '    e.Graphics.DrawString("ISO Truck Out Date", printFont, Brushes.Black, 0, 710)
-        '    e.Graphics.DrawString("ISO Tank Weight Range (mt)", printFont, Brushes.Black, 0, 740)
-        '    e.Graphics.DrawString("ISO Tank Weight Checking Value (mt)", printFont, Brushes.Black, 0, 770)
-        '    e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 400, 710)
-        '    e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 400, 740)
-        '    e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 400, 770)
-        'Else
-        '    e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 0, 710)
-        '    e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 0, 740)
-        '    e.Graphics.DrawString("Net Cargo Weight Checking Value", printFont, Brushes.Black, 0, 770)
-        '    e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 275, 710)
-        '    e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 275, 740)
-        '    e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 275, 770)
-        'End If
+        If checkISO Then
+            e.Graphics.DrawString("ISO Truck Out Date", printFont, Brushes.Black, 450, 465)
+            e.Graphics.DrawString("ISO Tank Weight Range (mt)", printFont, Brushes.Black, 450, 490)
+            e.Graphics.DrawString("ISO Tank Weight Checking Value (mt)", printFont, Brushes.Black, 450, 515)
+            e.Graphics.DrawString(": " & ISOTruckOutDate, printFont, Brushes.Black, 700, 465)
+            e.Graphics.DrawString(": " & ISOTankWeightLower & " - " & ISOTankWeightUpper, printFont, Brushes.Black, 700, 490)
+            e.Graphics.DrawString(": " & ISOTankWeightChecking, printFont, Brushes.Black, 700, 515)
+        Else
+            e.Graphics.DrawString("Net Cargo Weight Checking", printFont, Brushes.Black, 450, 465)
+            e.Graphics.DrawString("Net Cargo Weight", printFont, Brushes.Black, 450, 490)
+            e.Graphics.DrawString("Net Cargo Weight Checking Value", printFont, Brushes.Black, 450, 515)
+            e.Graphics.DrawString(": " & netCargoWeightCheck, printFont, Brushes.Black, 700, 465)
+            e.Graphics.DrawString(": " & netCargoWeight, printFont, Brushes.Black, 700, 490)
+            e.Graphics.DrawString(": " & netCargoWeightCheckValue, printFont, Brushes.Black, 700, 515)
+        End If
 
         'e.Graphics.DrawString(": " & driverFullName, printFont, Brushes.Black, 275, 830)
         'e.Graphics.DrawString(": " & pmCode, printFont, Brushes.Black, 275, 860)
