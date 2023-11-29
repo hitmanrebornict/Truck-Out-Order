@@ -19,6 +19,7 @@ Public Class SecurityEdit
     Private netCargoWeight As Integer
     Private ISOTankWeight As Integer
     Private ISOTODValue As Date
+    Private checkDDB As Boolean
 
     Private stringCheckDriverFullName,
             stringCheckPMCode,
@@ -612,7 +613,7 @@ Public Class SecurityEdit
         Else
         End If
 
-        If My.Settings.role_id = 5 Then
+        If My.Settings.role_id = 5 And cmbDDB.Text = "No" Then
             tbContainerNo.PasswordChar = "*"
             tbEsSealNo.PasswordChar = "*"
             tbInternalSealNo.PasswordChar = "*"
@@ -623,6 +624,19 @@ Public Class SecurityEdit
             tbISOTankWeightUpper.PasswordChar = "*"
             tbISOTankWeightLower.Enabled = False
             tbISOTankWeightUpper.Enabled = False
+            checkDDB = False
+        Else
+            tbContainerNo.PasswordChar = "*"
+            tbEsSealNo.PasswordChar = "*"
+            tbTempSeal.PasswordChar = "*"
+            tbCargo1.PasswordChar = "*"
+            tbISOTankWeightLower.PasswordChar = "*"
+            tbISOTankWeightUpper.PasswordChar = "*"
+            tbISOTankWeightLower.Enabled = False
+            tbISOTankWeightUpper.Enabled = False
+            tbSecurityCheckInternalSealNo.Enabled = False
+            tbSecurityCheckLinerSealNo.Enabled = False
+            checkDDB = True
         End If
 
 
@@ -691,7 +705,7 @@ Public Class SecurityEdit
         ElseIf cmbPmRegistrationPlate.Text = "" Then
             MessageBox.Show(stringCheckPMRegistrationPlate, stringCheckFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            cmd.CommandText = "SELECT * from DRIVER_INFO where FULL_NAME = '" + cmbFullName.Text + "' and  PM_CODE = '" + cmbPmCode.Text + "' and  PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "'"
+            cmd.CommandText = "Select * from DRIVER_INFO where FULL_NAME = '" + cmbFullName.Text + "' and  PM_CODE = '" + cmbPmCode.Text + "' and  PM_REGISTRATION_PLATE = '" + cmbPmRegistrationPlate.Text + "'"
             rd = cmd.ExecuteReader
             If rd.HasRows Then
                 checkDriver = True
@@ -838,6 +852,7 @@ Public Class SecurityEdit
     End Sub
 
     Private Sub btnSecurityCheck_Click(sender As Object, e As EventArgs) Handles btnSecurityCheck.Click
+        ''security check button click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
         Dim rd As SqlDataReader
@@ -937,9 +952,9 @@ Public Class SecurityEdit
 
             ElseIf tbSecurityCheckContainerNo.Text <> tbContainerNo.Text Then
                 MessageBox.Show(stringCheckContainerNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf tbSecurityCheckLinerSealNo.Text <> tbLinerSealNo.Text Then
+            ElseIf tbSecurityCheckLinerSealNo.Text <> tbLinerSealNo.Text And checkDDB = False Then
                 MessageBox.Show(stringCheckLinerSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ElseIf tbSecurityCheckInternalSealNo.Text <> tbInternalSealNo.Text Then
+            ElseIf tbSecurityCheckInternalSealNo.Text <> tbInternalSealNo.Text And checkDDB = False Then
                 MessageBox.Show(stringCheckInternalSealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ElseIf tbSecurityCheckTemporarySealNo.Text <> tbTempSeal.Text Then
                 MessageBox.Show(stringCheckTemporarySealNo, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)

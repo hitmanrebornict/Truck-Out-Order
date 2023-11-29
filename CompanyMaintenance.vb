@@ -120,7 +120,30 @@ Public Class CompanyMaintenance
             maxTOONumber = rd.Item("maxTOONumber")
         End If
 
-        My.Settings.newTOONumber = maxTOONumber
+        con.Close()
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+        cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
+        rd = cmd.ExecuteReader
+        rd.Read()
+        If IsDBNull(rd.Item("maxID")) Then
+            age = 0
+        Else
+            age = rd.Item("maxID")
+        End If
+
+        If age = 0 Then
+            My.Settings.newTOONumber = maxTOONumber
+        Else
+            If age >= maxTOONumber Then
+                My.Settings.newTOONumber = age + 1
+            Else
+                My.Settings.newTOONumber = maxTOONumber
+            End If
+
+        End If
+
 
         'Find Current Max TOO Number
         lblCurrentMaxNum.Text = stringCurrentMaxNum & " " & My.Settings.newTOONumber & "."
