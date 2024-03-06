@@ -11,6 +11,7 @@ Public Class Search
             stringSearchError,
             stringFilterError As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         If (My.Settings.languageSetting = "fr") Then
             btnCancel.Text = ResourceSearchFrench.btnCancel
             btnFilter.Text = ResourceSearchFrench.btnFilter
@@ -33,8 +34,11 @@ Public Class Search
             stringFilterError = ResourceSearch.stringFilterError
         End If
         GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
-        dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        'dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        'dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing
+        dgv.RowHeadersVisible = False
+
         Dim selectString As String = "SELECT ID as 'Truck Out Number',ORIGIN as 'Company',INVOICE as 'Invoice',CONTAINER_NO as 'Container No',COMPANY as 'Send To Company',Container_Size as 'Container Size',LOADING_PORT as 'Loading Port',HAULIER as 'Haulier',PRODUCT as 'Product',SHIPMENT_CLOSING_DATE as 'Shipment Closing Date',SHIPMENT_CLOSING_TIME as 'Shipment Closing Time',DDB, Last_Modified_User as 'Last Modified User',Reversion as 'Reversion' ,Update_Time as 'Update Time',Shipping_POST as 'Shipping Post',SHIPPING_POST_TIME as 'Shipping Post Time' ,Shipping_POST_User as 'Shipping Post User',Warehouse_Post as 'Warehouse Post',Warehouse_Post_Time as 'Warehouse Post Time',Warehouse_Post_User as 'Warehouse Post User',Security_Post as 'Security Post',Security_Post_Time as 'Security Post Time',Security_Post_User as 'Security Post User', Check_ISO_Tank as 'ISO Tank' from Shipping"
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -66,7 +70,7 @@ Public Class Search
         sda.Fill(dt)
         dgv.DataSource = dt
         con.Close()
-
+        dgv.RowHeadersVisible = True
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click

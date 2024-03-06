@@ -63,6 +63,8 @@ Public Class ViewPage
         lblReport.Visible = False
         dgvView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         dgvView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        dgvView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing
+        dgvView.RowHeadersVisible = False
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -142,7 +144,7 @@ Public Class ViewPage
             lblReport.Text = stringThereAre & " " & numOfReport & postString & startDate & " - " & endDate & ""
         End If
 
-
+        dgvView.RowHeadersVisible = True
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnExport.Click

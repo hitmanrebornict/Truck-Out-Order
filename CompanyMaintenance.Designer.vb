@@ -74,7 +74,7 @@ Partial Class CompanyMaintenance
         Me.tbTOONumber.Controls.Add(Me.btnNew)
         Me.tbTOONumber.Controls.Add(Me.btnDel)
         Me.tbTOONumber.Controls.Add(Me.TableLayoutPanel1)
-        Me.tbTOONumber.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTOONumber.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbTOONumber.Location = New System.Drawing.Point(113, 1)
         Me.tbTOONumber.Name = "tbTOONumber"
         Me.tbTOONumber.Size = New System.Drawing.Size(1039, 680)
@@ -95,10 +95,10 @@ Partial Class CompanyMaintenance
         'lblCurrentMaxNum
         '
         Me.lblCurrentMaxNum.AutoSize = True
-        Me.lblCurrentMaxNum.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCurrentMaxNum.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCurrentMaxNum.Location = New System.Drawing.Point(3, 9)
         Me.lblCurrentMaxNum.Name = "lblCurrentMaxNum"
-        Me.lblCurrentMaxNum.Size = New System.Drawing.Size(176, 24)
+        Me.lblCurrentMaxNum.Size = New System.Drawing.Size(265, 35)
         Me.lblCurrentMaxNum.TabIndex = 18
         Me.lblCurrentMaxNum.Text = "lblCurrentMaxNum"
         '
@@ -115,22 +115,22 @@ Partial Class CompanyMaintenance
         '
         Me.tbTOO.Location = New System.Drawing.Point(408, 41)
         Me.tbTOO.Name = "tbTOO"
-        Me.tbTOO.Size = New System.Drawing.Size(176, 26)
+        Me.tbTOO.Size = New System.Drawing.Size(176, 35)
         Me.tbTOO.TabIndex = 31
         '
         'lblNewNumber
         '
         Me.lblNewNumber.AutoSize = True
-        Me.lblNewNumber.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNewNumber.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNewNumber.Location = New System.Drawing.Point(3, 41)
         Me.lblNewNumber.Name = "lblNewNumber"
-        Me.lblNewNumber.Size = New System.Drawing.Size(182, 24)
+        Me.lblNewNumber.Size = New System.Drawing.Size(268, 35)
         Me.lblNewNumber.TabIndex = 22
         Me.lblNewNumber.Text = "New TOO Number:"
         '
         'btnCancel
         '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Location = New System.Drawing.Point(924, 469)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(110, 30)
@@ -140,7 +140,7 @@ Partial Class CompanyMaintenance
         '
         'btnSave
         '
-        Me.btnSave.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Location = New System.Drawing.Point(688, 469)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(110, 30)
@@ -150,7 +150,7 @@ Partial Class CompanyMaintenance
         '
         'btnNew
         '
-        Me.btnNew.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNew.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNew.Location = New System.Drawing.Point(570, 469)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(110, 30)
@@ -160,7 +160,7 @@ Partial Class CompanyMaintenance
         '
         'btnDel
         '
-        Me.btnDel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDel.Location = New System.Drawing.Point(806, 469)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(110, 30)
@@ -213,36 +213,36 @@ Partial Class CompanyMaintenance
         'lblCompanyRegistrationNo
         '
         Me.lblCompanyRegistrationNo.AutoSize = True
-        Me.lblCompanyRegistrationNo.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyRegistrationNo.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyRegistrationNo.Location = New System.Drawing.Point(4, 316)
         Me.lblCompanyRegistrationNo.Name = "lblCompanyRegistrationNo"
-        Me.lblCompanyRegistrationNo.Size = New System.Drawing.Size(244, 24)
+        Me.lblCompanyRegistrationNo.Size = New System.Drawing.Size(318, 43)
         Me.lblCompanyRegistrationNo.TabIndex = 9
         Me.lblCompanyRegistrationNo.Text = "Company Registration No."
         '
         'cmbCompanyName
         '
-        Me.cmbCompanyName.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCompanyName.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCompanyName.FormattingEnabled = True
         Me.cmbCompanyName.Location = New System.Drawing.Point(344, 4)
         Me.cmbCompanyName.Name = "cmbCompanyName"
-        Me.cmbCompanyName.Size = New System.Drawing.Size(654, 27)
+        Me.cmbCompanyName.Size = New System.Drawing.Size(654, 35)
         Me.cmbCompanyName.TabIndex = 1
         '
         'tbRegistrationNo
         '
         Me.tbRegistrationNo.Location = New System.Drawing.Point(344, 319)
         Me.tbRegistrationNo.Name = "tbRegistrationNo"
-        Me.tbRegistrationNo.Size = New System.Drawing.Size(654, 26)
+        Me.tbRegistrationNo.Size = New System.Drawing.Size(654, 35)
         Me.tbRegistrationNo.TabIndex = 10
         '
         'lblFax
         '
         Me.lblFax.AutoSize = True
-        Me.lblFax.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFax.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFax.Location = New System.Drawing.Point(4, 281)
         Me.lblFax.Name = "lblFax"
-        Me.lblFax.Size = New System.Drawing.Size(49, 24)
+        Me.lblFax.Size = New System.Drawing.Size(71, 34)
         Me.lblFax.TabIndex = 3
         Me.lblFax.Text = "Fax:"
         '
@@ -250,16 +250,16 @@ Partial Class CompanyMaintenance
         '
         Me.tbFax.Location = New System.Drawing.Point(344, 284)
         Me.tbFax.Name = "tbFax"
-        Me.tbFax.Size = New System.Drawing.Size(654, 26)
+        Me.tbFax.Size = New System.Drawing.Size(654, 35)
         Me.tbFax.TabIndex = 9
         '
         'lblTelephone
         '
         Me.lblTelephone.AutoSize = True
-        Me.lblTelephone.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTelephone.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTelephone.Location = New System.Drawing.Point(4, 246)
         Me.lblTelephone.Name = "lblTelephone"
-        Me.lblTelephone.Size = New System.Drawing.Size(107, 24)
+        Me.lblTelephone.Size = New System.Drawing.Size(161, 34)
         Me.lblTelephone.TabIndex = 2
         Me.lblTelephone.Text = "Telephone:"
         '
@@ -267,36 +267,36 @@ Partial Class CompanyMaintenance
         '
         Me.tbTelephone.Location = New System.Drawing.Point(344, 249)
         Me.tbTelephone.Name = "tbTelephone"
-        Me.tbTelephone.Size = New System.Drawing.Size(654, 26)
+        Me.tbTelephone.Size = New System.Drawing.Size(654, 35)
         Me.tbTelephone.TabIndex = 8
         '
         'lblCompanyFullName
         '
         Me.lblCompanyFullName.AutoSize = True
-        Me.lblCompanyFullName.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyFullName.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyFullName.Location = New System.Drawing.Point(4, 1)
         Me.lblCompanyFullName.Name = "lblCompanyFullName"
-        Me.lblCompanyFullName.Size = New System.Drawing.Size(160, 24)
+        Me.lblCompanyFullName.Size = New System.Drawing.Size(238, 34)
         Me.lblCompanyFullName.TabIndex = 0
         Me.lblCompanyFullName.Text = "Company Name:"
         '
         'lblPostalCode
         '
         Me.lblPostalCode.AutoSize = True
-        Me.lblPostalCode.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPostalCode.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPostalCode.Location = New System.Drawing.Point(4, 211)
         Me.lblPostalCode.Name = "lblPostalCode"
-        Me.lblPostalCode.Size = New System.Drawing.Size(124, 24)
+        Me.lblPostalCode.Size = New System.Drawing.Size(184, 34)
         Me.lblPostalCode.TabIndex = 24
         Me.lblPostalCode.Text = "Postal Code:"
         '
         'lblCountry
         '
         Me.lblCountry.AutoSize = True
-        Me.lblCountry.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCountry.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCountry.Location = New System.Drawing.Point(4, 176)
         Me.lblCountry.Name = "lblCountry"
-        Me.lblCountry.Size = New System.Drawing.Size(86, 24)
+        Me.lblCountry.Size = New System.Drawing.Size(128, 34)
         Me.lblCountry.TabIndex = 24
         Me.lblCountry.Text = "Country:"
         '
@@ -304,86 +304,86 @@ Partial Class CompanyMaintenance
         '
         Me.tbCountry.Location = New System.Drawing.Point(344, 179)
         Me.tbCountry.Name = "tbCountry"
-        Me.tbCountry.Size = New System.Drawing.Size(654, 26)
+        Me.tbCountry.Size = New System.Drawing.Size(654, 35)
         Me.tbCountry.TabIndex = 6
         '
         'lblState
         '
         Me.lblState.AutoSize = True
-        Me.lblState.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblState.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblState.Location = New System.Drawing.Point(4, 141)
         Me.lblState.Name = "lblState"
-        Me.lblState.Size = New System.Drawing.Size(63, 24)
+        Me.lblState.Size = New System.Drawing.Size(91, 34)
         Me.lblState.TabIndex = 24
         Me.lblState.Text = "State:"
         '
         'tbState
         '
-        Me.tbState.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbState.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbState.Location = New System.Drawing.Point(344, 144)
         Me.tbState.Name = "tbState"
-        Me.tbState.Size = New System.Drawing.Size(654, 26)
+        Me.tbState.Size = New System.Drawing.Size(654, 35)
         Me.tbState.TabIndex = 5
         '
         'lblCity
         '
         Me.lblCity.AutoSize = True
-        Me.lblCity.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCity.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCity.Location = New System.Drawing.Point(4, 106)
         Me.lblCity.Name = "lblCity"
-        Me.lblCity.Size = New System.Drawing.Size(50, 24)
+        Me.lblCity.Size = New System.Drawing.Size(75, 34)
         Me.lblCity.TabIndex = 24
         Me.lblCity.Text = "City:"
         '
         'tbCity
         '
-        Me.tbCity.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCity.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCity.Location = New System.Drawing.Point(344, 109)
         Me.tbCity.Name = "tbCity"
-        Me.tbCity.Size = New System.Drawing.Size(654, 26)
+        Me.tbCity.Size = New System.Drawing.Size(654, 35)
         Me.tbCity.TabIndex = 4
         '
         'lblAddressLine2
         '
         Me.lblAddressLine2.AutoSize = True
-        Me.lblAddressLine2.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddressLine2.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAddressLine2.Location = New System.Drawing.Point(4, 71)
         Me.lblAddressLine2.Name = "lblAddressLine2"
-        Me.lblAddressLine2.Size = New System.Drawing.Size(149, 24)
+        Me.lblAddressLine2.Size = New System.Drawing.Size(222, 34)
         Me.lblAddressLine2.TabIndex = 24
         Me.lblAddressLine2.Text = "Address Line 2:"
         '
         'tbAddressLine2
         '
-        Me.tbAddressLine2.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbAddressLine2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbAddressLine2.Location = New System.Drawing.Point(344, 74)
         Me.tbAddressLine2.Name = "tbAddressLine2"
-        Me.tbAddressLine2.Size = New System.Drawing.Size(654, 26)
+        Me.tbAddressLine2.Size = New System.Drawing.Size(654, 35)
         Me.tbAddressLine2.TabIndex = 3
         '
         'lblAddressLine1
         '
         Me.lblAddressLine1.AutoSize = True
-        Me.lblAddressLine1.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddressLine1.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAddressLine1.Location = New System.Drawing.Point(4, 36)
         Me.lblAddressLine1.Name = "lblAddressLine1"
-        Me.lblAddressLine1.Size = New System.Drawing.Size(149, 24)
+        Me.lblAddressLine1.Size = New System.Drawing.Size(222, 34)
         Me.lblAddressLine1.TabIndex = 1
         Me.lblAddressLine1.Text = "Address Line 1:"
         '
         'tbAddressLine1
         '
-        Me.tbAddressLine1.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbAddressLine1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbAddressLine1.Location = New System.Drawing.Point(344, 39)
         Me.tbAddressLine1.Name = "tbAddressLine1"
-        Me.tbAddressLine1.Size = New System.Drawing.Size(654, 26)
+        Me.tbAddressLine1.Size = New System.Drawing.Size(654, 35)
         Me.tbAddressLine1.TabIndex = 2
         '
         'tbPostalCode
         '
         Me.tbPostalCode.Location = New System.Drawing.Point(344, 214)
         Me.tbPostalCode.Name = "tbPostalCode"
-        Me.tbPostalCode.Size = New System.Drawing.Size(654, 26)
+        Me.tbPostalCode.Size = New System.Drawing.Size(654, 35)
         Me.tbPostalCode.TabIndex = 7
         '
         'Panel1
@@ -402,20 +402,20 @@ Partial Class CompanyMaintenance
         '
         Me.lblCompanyNameHeader.AutoSize = True
         Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
-        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
         Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
-        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(189, 22)
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(280, 34)
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
         'lblCompanyMaintenance
         '
         Me.lblCompanyMaintenance.AutoSize = True
-        Me.lblCompanyMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyMaintenance.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyMaintenance.Location = New System.Drawing.Point(767, 51)
         Me.lblCompanyMaintenance.Name = "lblCompanyMaintenance"
-        Me.lblCompanyMaintenance.Size = New System.Drawing.Size(232, 24)
+        Me.lblCompanyMaintenance.Size = New System.Drawing.Size(340, 35)
         Me.lblCompanyMaintenance.TabIndex = 0
         Me.lblCompanyMaintenance.Text = "Company Maintenance"
         '
@@ -435,7 +435,7 @@ Partial Class CompanyMaintenance
         Me.lblUserDetails.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUserDetails.Location = New System.Drawing.Point(3, 51)
         Me.lblUserDetails.Name = "lblUserDetails"
-        Me.lblUserDetails.Size = New System.Drawing.Size(140, 24)
+        Me.lblUserDetails.Size = New System.Drawing.Size(216, 35)
         Me.lblUserDetails.TabIndex = 129
         Me.lblUserDetails.Text = "lblUserDetails"
         '
@@ -444,7 +444,7 @@ Partial Class CompanyMaintenance
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.ClientSize = New System.Drawing.Size(1258, 664)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.tbTOONumber)
         Me.DoubleBuffered = True
