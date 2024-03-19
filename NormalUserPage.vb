@@ -20,7 +20,7 @@ Public Class NormalUserPage
             lblLogout.Text = ResourceNormalUserPage.lblLogout
         End If
 
-        If My.Settings.role_id = 2 Then
+        If My.Settings.role_id = 2 And My.Settings.role_id = 6 Then
             pnlNew.Visible = True
         Else
             pnlNew.Visible = False

@@ -427,7 +427,7 @@ Public Class ShippingEdit
         End If
 
 
-        If checkWarehouseCheckpoint = True Then
+        If checkWarehouseCheckpoint = True And My.Settings.role_id <> 6 Then
             tbContainerNo.Enabled = False
             tbEsSealNo.Enabled = False
             tbInternalSealNo.Enabled = False

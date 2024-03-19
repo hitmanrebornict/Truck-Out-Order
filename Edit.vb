@@ -478,7 +478,7 @@ Public Class Edit
             tbInternalSealNo.PasswordChar = "*"
             tbLinerSealNo.PasswordChar = "*"
             tbTempSeal.PasswordChar = "*"
-        ElseIf My.Settings.role_id = 3 Or My.Settings.role_id = 30 Or My.Settings.role_id = 4 Then
+        ElseIf My.Settings.role_id = 3 Or My.Settings.role_id = 4 Then
             tbLinerSealNo.PasswordChar = "*"
             tbInternalSealNo.PasswordChar = "*"
         End If
@@ -510,6 +510,11 @@ Public Class Edit
 
         End If
 
+        If My.Settings.role_id = 6 Then
+            For Each ctrl As Control In Panel3.Controls
+                ctrl.Enabled = True
+            Next
+        End If
         'If My.Settings.role_id <> 1 And My.Settings.adminCheck = True Then
 
         'End If

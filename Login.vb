@@ -24,7 +24,6 @@ Public Class Login
     stringDoNotMatch As String
 
 
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim con As New SqlConnection
         Dim cmd As New SqlCommand
@@ -177,8 +176,6 @@ Public Class Login
             stringUserDisabled = ResourceLogin.stringUserDisabled
             stringDoNotMatch = ResourceLogin.stringDoNotMatch
         End If
-
-
     End Sub
 
 

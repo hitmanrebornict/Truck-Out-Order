@@ -59,7 +59,7 @@ Partial Class AddUserTry
         Me.Panel3.Controls.Add(Me.btnUpdate)
         Me.Panel3.Controls.Add(Me.btnAddUser)
         Me.Panel3.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(179, 12)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(907, 669)
@@ -67,7 +67,7 @@ Partial Class AddUserTry
         '
         'btnCancel
         '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Location = New System.Drawing.Point(790, 627)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(110, 30)
@@ -77,7 +77,7 @@ Partial Class AddUserTry
         '
         'btnUpdate
         '
-        Me.btnUpdate.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdate.Location = New System.Drawing.Point(671, 627)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(110, 30)
@@ -87,7 +87,7 @@ Partial Class AddUserTry
         '
         'btnAddUser
         '
-        Me.btnAddUser.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddUser.Location = New System.Drawing.Point(552, 627)
         Me.btnAddUser.Name = "btnAddUser"
         Me.btnAddUser.Size = New System.Drawing.Size(110, 30)
@@ -128,86 +128,86 @@ Partial Class AddUserTry
         'lblUserID
         '
         Me.lblUserID.AutoSize = True
-        Me.lblUserID.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserID.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUserID.Location = New System.Drawing.Point(4, 1)
         Me.lblUserID.Name = "lblUserID"
-        Me.lblUserID.Size = New System.Drawing.Size(84, 24)
+        Me.lblUserID.Size = New System.Drawing.Size(103, 28)
         Me.lblUserID.TabIndex = 1
         Me.lblUserID.Text = "User ID:"
         '
         'lblUsername
         '
         Me.lblUsername.AutoSize = True
-        Me.lblUsername.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsername.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUsername.Location = New System.Drawing.Point(4, 55)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(108, 24)
+        Me.lblUsername.Size = New System.Drawing.Size(136, 28)
         Me.lblUsername.TabIndex = 2
         Me.lblUsername.Text = "Username:"
         '
         'lblDepartment
         '
         Me.lblDepartment.AutoSize = True
-        Me.lblDepartment.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDepartment.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDepartment.Location = New System.Drawing.Point(4, 109)
         Me.lblDepartment.Name = "lblDepartment"
-        Me.lblDepartment.Size = New System.Drawing.Size(121, 24)
+        Me.lblDepartment.Size = New System.Drawing.Size(151, 28)
         Me.lblDepartment.TabIndex = 7
         Me.lblDepartment.Text = "Department:"
         '
         'cmbSelectUserID
         '
-        Me.cmbSelectUserID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSelectUserID.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSelectUserID.FormattingEnabled = True
         Me.cmbSelectUserID.Location = New System.Drawing.Point(455, 4)
         Me.cmbSelectUserID.Name = "cmbSelectUserID"
-        Me.cmbSelectUserID.Size = New System.Drawing.Size(325, 27)
+        Me.cmbSelectUserID.Size = New System.Drawing.Size(325, 31)
         Me.cmbSelectUserID.TabIndex = 1
         '
         'cmbSelectDepartmentID
         '
-        Me.cmbSelectDepartmentID.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSelectDepartmentID.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSelectDepartmentID.FormattingEnabled = True
-        Me.cmbSelectDepartmentID.Items.AddRange(New Object() {"IT", "Shipping", "Security", "Warehouse", "Warehouse Checking"})
+        Me.cmbSelectDepartmentID.Items.AddRange(New Object() {"IT", "Shipping", "Security", "Warehouse", "Warehouse Checking", "super user"})
         Me.cmbSelectDepartmentID.Location = New System.Drawing.Point(455, 112)
         Me.cmbSelectDepartmentID.Name = "cmbSelectDepartmentID"
-        Me.cmbSelectDepartmentID.Size = New System.Drawing.Size(325, 27)
+        Me.cmbSelectDepartmentID.Size = New System.Drawing.Size(325, 31)
         Me.cmbSelectDepartmentID.TabIndex = 3
         '
         'tbSelectUsername
         '
-        Me.tbSelectUsername.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbSelectUsername.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbSelectUsername.Location = New System.Drawing.Point(455, 58)
         Me.tbSelectUsername.Name = "tbSelectUsername"
-        Me.tbSelectUsername.Size = New System.Drawing.Size(325, 26)
+        Me.tbSelectUsername.Size = New System.Drawing.Size(325, 30)
         Me.tbSelectUsername.TabIndex = 2
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPassword.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPassword.Location = New System.Drawing.Point(4, 163)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(103, 24)
+        Me.lblPassword.Size = New System.Drawing.Size(131, 28)
         Me.lblPassword.TabIndex = 15
         Me.lblPassword.Text = "Password:"
         '
         'tbPassword
         '
-        Me.tbPassword.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPassword.Location = New System.Drawing.Point(455, 166)
         Me.tbPassword.Name = "tbPassword"
         Me.tbPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.tbPassword.Size = New System.Drawing.Size(325, 26)
+        Me.tbPassword.Size = New System.Drawing.Size(325, 30)
         Me.tbPassword.TabIndex = 4
         '
         'lblAdmin
         '
         Me.lblAdmin.AutoSize = True
-        Me.lblAdmin.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAdmin.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAdmin.Location = New System.Drawing.Point(4, 217)
         Me.lblAdmin.Name = "lblAdmin"
-        Me.lblAdmin.Size = New System.Drawing.Size(72, 24)
+        Me.lblAdmin.Size = New System.Drawing.Size(92, 28)
         Me.lblAdmin.TabIndex = 18
         Me.lblAdmin.Text = "Admin:"
         '
@@ -216,17 +216,17 @@ Partial Class AddUserTry
         Me.cbAdmin.AutoSize = True
         Me.cbAdmin.Location = New System.Drawing.Point(455, 220)
         Me.cbAdmin.Name = "cbAdmin"
-        Me.cbAdmin.Size = New System.Drawing.Size(15, 14)
+        Me.cbAdmin.Size = New System.Drawing.Size(18, 17)
         Me.cbAdmin.TabIndex = 5
         Me.cbAdmin.UseVisualStyleBackColor = True
         '
         'lblActive
         '
         Me.lblActive.AutoSize = True
-        Me.lblActive.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActive.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblActive.Location = New System.Drawing.Point(4, 271)
         Me.lblActive.Name = "lblActive"
-        Me.lblActive.Size = New System.Drawing.Size(70, 24)
+        Me.lblActive.Size = New System.Drawing.Size(87, 28)
         Me.lblActive.TabIndex = 21
         Me.lblActive.Text = "Active:"
         '
@@ -235,7 +235,7 @@ Partial Class AddUserTry
         Me.cbActive.AutoSize = True
         Me.cbActive.Location = New System.Drawing.Point(455, 274)
         Me.cbActive.Name = "cbActive"
-        Me.cbActive.Size = New System.Drawing.Size(15, 14)
+        Me.cbActive.Size = New System.Drawing.Size(18, 17)
         Me.cbActive.TabIndex = 6
         Me.cbActive.UseVisualStyleBackColor = True
         '
@@ -245,7 +245,7 @@ Partial Class AddUserTry
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(1132, 349)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(120, 33)
+        Me.Label1.Size = New System.Drawing.Size(151, 42)
         Me.Label1.TabIndex = 30
         Me.Label1.Text = "Role_ID"
         Me.Label1.Visible = False
@@ -256,17 +256,17 @@ Partial Class AddUserTry
         Me.cmbRoleID.FormattingEnabled = True
         Me.cmbRoleID.Location = New System.Drawing.Point(927, 508)
         Me.cmbRoleID.Name = "cmbRoleID"
-        Me.cmbRoleID.Size = New System.Drawing.Size(325, 37)
+        Me.cmbRoleID.Size = New System.Drawing.Size(325, 44)
         Me.cmbRoleID.TabIndex = 100
         Me.cmbRoleID.Visible = False
         '
         'lblUserMaintenance
         '
         Me.lblUserMaintenance.AutoSize = True
-        Me.lblUserMaintenance.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserMaintenance.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUserMaintenance.Location = New System.Drawing.Point(667, 51)
         Me.lblUserMaintenance.Name = "lblUserMaintenance"
-        Me.lblUserMaintenance.Size = New System.Drawing.Size(186, 24)
+        Me.lblUserMaintenance.Size = New System.Drawing.Size(227, 30)
         Me.lblUserMaintenance.TabIndex = 0
         Me.lblUserMaintenance.Text = "User Maintenance"
         '
@@ -286,10 +286,10 @@ Partial Class AddUserTry
         '
         Me.lblCompanyNameHeader.AutoSize = True
         Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
-        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
         Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
-        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(189, 22)
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(231, 29)
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
@@ -309,17 +309,16 @@ Partial Class AddUserTry
         Me.lblUserDetails.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUserDetails.Location = New System.Drawing.Point(3, 51)
         Me.lblUserDetails.Name = "lblUserDetails"
-        Me.lblUserDetails.Size = New System.Drawing.Size(140, 24)
+        Me.lblUserDetails.Size = New System.Drawing.Size(180, 30)
         Me.lblUserDetails.TabIndex = 129
         Me.lblUserDetails.Text = "lblUserDetails"
         '
         'AddUserTry
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.ClientSize = New System.Drawing.Size(1262, 673)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Label1)

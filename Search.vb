@@ -53,7 +53,7 @@ Public Class Search
             cmd.CommandText = (selectString & " order by id desc")
         Else
             Select Case My.Settings.role_id
-                Case 2
+                Case 2, 6
                     cmd.CommandText = (selectString & " order by id desc")
                 Case 3, 4
                     If (My.Settings.adminCheck) Then
@@ -109,7 +109,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and ID = @shipping_id2"
                         cmd3.CommandText = selectString & " where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and ID = @shipping_id3"
-                    Case 1
+                    Case 1, 6
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where ID = @shipping_id2"
                         cmd3.CommandText = selectString & " where ID = @shipping_id3"
                 End Select
@@ -127,7 +127,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and INVOICE = @invoice2"
                         cmd3.CommandText = selectString & "  where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and INVOICE = @invoice3"
-                    Case 1
+                    Case 1, 6
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where INVOICE = @invoice2"
                         cmd3.CommandText = selectString & " where INVOICE = @invoice3"
                 End Select
@@ -145,7 +145,7 @@ Public Class Search
                     Case 5
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping  where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and CONTAINER_NO = @container_id2"
                         cmd3.CommandText = selectString & " where shipping_post = 1 and security_post is null and (warehouse_Post  = 1 or Check_ISO_Tank = 1) and CONTAINER_NO = @container_id3"
-                    Case 1
+                    Case 1, 6
                         cmd2.CommandText = "SELECT COUNT(ID) as COUNTID from Shipping where CONTAINER_NO = @container_id2"
                         cmd3.CommandText = selectString & " where CONTAINER_NO = @container_id3"
                 End Select
@@ -170,7 +170,7 @@ Public Class Search
                     rd3.Read()
                     selected = rd3.Item("Truck Out Number")
                     Select Case My.Settings.role_id
-                        Case 1
+                        Case 1, 6
                             Dim obj As New Edit
                             Edit.TruckOutNumber = selected
                             Edit.Show()
@@ -400,7 +400,7 @@ Public Class Search
 
         Try
             Select Case My.Settings.role_id
-                Case 1
+                Case 1, 6
                     Dim obj As New Edit
                     Edit.TruckOutNumber = selected
                     Edit.Show()
@@ -428,7 +428,7 @@ Public Class Search
                         Me.Close()
                     End If
 
-                Case 3, 4
+                Case 3, 4, 7
                     If (My.Settings.adminCheck) Then
                         cmd2.CommandText = "SELECT Cargo_Weight_Check From Security where shipping_id = @shippingID and Allow_To_Post is not null"
                         cmd2.Parameters.AddWithValue("@shippingID", selected)
@@ -479,7 +479,7 @@ Public Class Search
             cmd.CommandText = (selectString & " order by id desc")
         Else
             Select Case My.Settings.role_id
-                Case 2
+                Case 2, 6
                     cmd.CommandText = (selectString & " order by id desc")
                 Case 3, 4
                     If (My.Settings.adminCheck) Then

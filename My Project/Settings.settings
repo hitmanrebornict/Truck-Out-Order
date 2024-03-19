@@ -29,9 +29,9 @@
     <Setting Name="connstr" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source = GCBK9FS01,1433 ; Initial Catalog = TOOSystem; Integrated Security = false ; User ID = too ; Password = admin&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source = 10.128.3.6,1433 ; Initial Catalog = TOOSystem; Integrated Security = false ; User ID = too ; Password = TooAdmin2024@&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source = GCBK9FS01,1433 ; Initial Catalog = TOOSystem; Integrated Security = false ; User ID = too ; Password = admin</Value>
+      <Value Profile="(Default)">Data Source = 10.128.3.6,1433 ; Initial Catalog = TOOSystem; Integrated Security = false ; User ID = too ; Password = TooAdmin2024@</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -17,6 +17,8 @@ Public Class AddUserTry
         stringAuthentification As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
+
         If (My.Settings.languageSetting = "fr") Then
             btnAddUser.Text = ResourceAddUserTryFrench.btnAddUser
             btnCancel.Text = ResourceAddUserTryFrench.btnCancel
@@ -161,22 +163,31 @@ Public Class AddUserTry
                     deptToRole = 4
                 Case "Security"
                     deptToRole = 5
+                Case "super user"
+                    deptToRole = 6
+
 
             End Select
 
 
             If newCheck = True Then
-                cmd.CommandText = "Update Login set username = @username, fullUsername = @fullUsername, password = @password, department = @department,validationCheck = @validationCheck, adminCheck = @adminCheck, role_id = @role_id where username = @username"
-                cmd.Parameters.AddWithValue("@username", cmbSelectUserID.Text)
-                cmd.Parameters.AddWithValue("@fullUsername", tbSelectUsername.Text)
-                cmd.Parameters.AddWithValue("@department", cmbSelectDepartmentID.Text)
-                cmd.Parameters.AddWithValue("@validationCheck", validationCheck)
-                cmd.Parameters.AddWithValue("@adminCheck", adminCheck)
-                cmd.Parameters.AddWithValue("@password", tbPassword.Text)
-                cmd.Parameters.AddWithValue("@role_id", deptToRole)
-                con.Close()
-                con.Open()
-                rd = cmd.ExecuteReader
+                If deptToRole = 6 And My.Settings.role_id <> 1 Then
+                    MessageBox.Show("Sa can only be created by IT department.", stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    cmd.CommandText = "Update Login set username = @username, fullUsername = @fullUsername, password = @password, department = @department,validationCheck = @validationCheck, adminCheck = @adminCheck, role_id = @role_id where username = @username"
+                    cmd.Parameters.AddWithValue("@username", cmbSelectUserID.Text)
+                    cmd.Parameters.AddWithValue("@fullUsername", tbSelectUsername.Text)
+                    cmd.Parameters.AddWithValue("@department", cmbSelectDepartmentID.Text)
+                    cmd.Parameters.AddWithValue("@validationCheck", validationCheck)
+                    cmd.Parameters.AddWithValue("@adminCheck", adminCheck)
+                    cmd.Parameters.AddWithValue("@password", tbPassword.Text)
+                    cmd.Parameters.AddWithValue("@role_id", deptToRole)
+                    con.Close()
+                    con.Open()
+                    rd = cmd.ExecuteReader
+                    MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+
             Else
                 cmd.CommandText = "select * from login where username = @username"
                 cmd.Parameters.AddWithValue("@username", cmbSelectUserID.Text)
@@ -184,7 +195,8 @@ Public Class AddUserTry
                 rd.Read()
                 If rd.HasRows() Then
                     MessageBox.Show(stringExist, stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+                ElseIf deptToRole = 6 And My.Settings.role_id <> 1 Then
+                    MessageBox.Show("Sa can only be created by IT department.", stringError, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     cmd.CommandText = ("Insert into Login(username,fullUsername,password,department,role_id,validationCheck,adminCheck) values(@username1,@fullUsername,@password,@department,@role_id,@validationCheck,@adminCheck)")
                     cmd.Parameters.AddWithValue("@username1", cmbSelectUserID.Text)
@@ -197,22 +209,24 @@ Public Class AddUserTry
                     con.Close()
                     con.Open()
                     rd = cmd.ExecuteReader
+                    MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End If
 
 
-            MessageBox.Show(stringComplete, stringAuthentification, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             GlobalFunction.backToPage(Admin, Me)
         End If
+
     End Sub
 
     Private Sub cbAdmin_CheckedChanged(sender As Object, e As EventArgs) Handles cbAdmin.CheckedChanged
         If cbAdmin.Checked = True Then
-            cbAdmin.Text = "Admin"
-            adminCheck = True
-        Else
             cbAdmin.Text = "Non-Admin"
             adminCheck = False
+        Else
+            cbAdmin.Text = "Admin"
+            adminCheck = True
         End If
     End Sub
 

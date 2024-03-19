@@ -57,7 +57,7 @@ Partial Class Search
         Me.Panel3.Controls.Add(Me.btnFilter)
         Me.Panel3.Controls.Add(Me.btnSearch)
         Me.Panel3.Controls.Add(Me.dgv)
-        Me.Panel3.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel3.Location = New System.Drawing.Point(162, 1)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(940, 684)
@@ -96,60 +96,60 @@ Partial Class Search
         'lblShippingID
         '
         Me.lblShippingID.AutoSize = True
-        Me.lblShippingID.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblShippingID.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShippingID.Location = New System.Drawing.Point(3, 0)
         Me.lblShippingID.Name = "lblShippingID"
-        Me.lblShippingID.Size = New System.Drawing.Size(181, 24)
+        Me.lblShippingID.Size = New System.Drawing.Size(224, 28)
         Me.lblShippingID.TabIndex = 0
         Me.lblShippingID.Text = "Truck Out Number:"
         '
         'tbContainerNo
         '
-        Me.tbContainerNo.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbContainerNo.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbContainerNo.Location = New System.Drawing.Point(250, 69)
         Me.tbContainerNo.Name = "tbContainerNo"
-        Me.tbContainerNo.Size = New System.Drawing.Size(205, 26)
+        Me.tbContainerNo.Size = New System.Drawing.Size(205, 30)
         Me.tbContainerNo.TabIndex = 3
         '
         'lblContainerNo
         '
         Me.lblContainerNo.AutoSize = True
-        Me.lblContainerNo.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContainerNo.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblContainerNo.Location = New System.Drawing.Point(3, 66)
         Me.lblContainerNo.Name = "lblContainerNo"
-        Me.lblContainerNo.Size = New System.Drawing.Size(133, 24)
+        Me.lblContainerNo.Size = New System.Drawing.Size(167, 28)
         Me.lblContainerNo.TabIndex = 13
         Me.lblContainerNo.Text = "Container No:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'tbInvoice
         '
-        Me.tbInvoice.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbInvoice.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbInvoice.Location = New System.Drawing.Point(250, 36)
         Me.tbInvoice.Name = "tbInvoice"
-        Me.tbInvoice.Size = New System.Drawing.Size(205, 26)
+        Me.tbInvoice.Size = New System.Drawing.Size(205, 30)
         Me.tbInvoice.TabIndex = 2
         '
         'tbShippingId
         '
-        Me.tbShippingId.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbShippingId.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbShippingId.Location = New System.Drawing.Point(250, 3)
         Me.tbShippingId.Name = "tbShippingId"
-        Me.tbShippingId.Size = New System.Drawing.Size(205, 26)
+        Me.tbShippingId.Size = New System.Drawing.Size(205, 30)
         Me.tbShippingId.TabIndex = 1
         '
         'lblInvoiceNumber
         '
         Me.lblInvoiceNumber.AutoSize = True
-        Me.lblInvoiceNumber.Font = New System.Drawing.Font("Helvetica", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInvoiceNumber.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInvoiceNumber.Location = New System.Drawing.Point(3, 33)
         Me.lblInvoiceNumber.Name = "lblInvoiceNumber"
-        Me.lblInvoiceNumber.Size = New System.Drawing.Size(110, 24)
+        Me.lblInvoiceNumber.Size = New System.Drawing.Size(136, 28)
         Me.lblInvoiceNumber.TabIndex = 12
         Me.lblInvoiceNumber.Text = "Invoice No:"
         '
         'btnCancel
         '
-        Me.btnCancel.Font = New System.Drawing.Font("Helvetica", 12.0!)
+        Me.btnCancel.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.btnCancel.Location = New System.Drawing.Point(237, 221)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(95, 26)
@@ -159,7 +159,7 @@ Partial Class Search
         '
         'btnFilter
         '
-        Me.btnFilter.Font = New System.Drawing.Font("Helvetica", 12.0!)
+        Me.btnFilter.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.btnFilter.Location = New System.Drawing.Point(120, 221)
         Me.btnFilter.Name = "btnFilter"
         Me.btnFilter.Size = New System.Drawing.Size(95, 26)
@@ -169,7 +169,7 @@ Partial Class Search
         '
         'btnSearch
         '
-        Me.btnSearch.Font = New System.Drawing.Font("Helvetica", 12.0!)
+        Me.btnSearch.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.btnSearch.Location = New System.Drawing.Point(3, 221)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(95, 26)
@@ -191,7 +191,7 @@ Partial Class Search
         Me.dgv.ReadOnly = True
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Helvetica", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -217,10 +217,10 @@ Partial Class Search
         '
         Me.lblCompanyNameHeader.AutoSize = True
         Me.lblCompanyNameHeader.BackColor = System.Drawing.Color.Transparent
-        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Helvetica", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCompanyNameHeader.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanyNameHeader.Location = New System.Drawing.Point(147, 13)
         Me.lblCompanyNameHeader.Name = "lblCompanyNameHeader"
-        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(189, 22)
+        Me.lblCompanyNameHeader.Size = New System.Drawing.Size(231, 29)
         Me.lblCompanyNameHeader.TabIndex = 138
         Me.lblCompanyNameHeader.Text = "lblCompanyHeader"
         '
@@ -240,17 +240,16 @@ Partial Class Search
         Me.lblUserDetails.Font = New System.Drawing.Font("Arial", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUserDetails.Location = New System.Drawing.Point(3, 51)
         Me.lblUserDetails.Name = "lblUserDetails"
-        Me.lblUserDetails.Size = New System.Drawing.Size(140, 24)
+        Me.lblUserDetails.Size = New System.Drawing.Size(180, 30)
         Me.lblUserDetails.TabIndex = 129
         Me.lblUserDetails.Text = "lblUserDetails"
         '
         'Search
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = Global.Truck_Out_Order.My.Resources.Resources.Untitled_design__2_
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.ClientSize = New System.Drawing.Size(1262, 673)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.DoubleBuffered = True
