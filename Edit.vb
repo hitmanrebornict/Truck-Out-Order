@@ -488,7 +488,7 @@ Public Class Edit
         Else
             cmbCheckTempSealNo.SelectedItem = "NO"
         End If
-
+        tbContainerNo.Enabled = True
         'Come From report page
         If My.Settings.adminCheck = False Then
             For Each ctrl As Control In Panel3.Controls
@@ -509,11 +509,21 @@ Public Class Edit
         Else
 
         End If
+        Dim notToChange() = {"tbContainerNo"}
 
         If My.Settings.role_id = 6 Then
             For Each ctrl As Control In Panel3.Controls
-                ctrl.Enabled = True
+                ctrl.Enabled = False
             Next
+            TableLayoutPanel1.Enabled = True
+            btnCancel.Visible = True
+            btnCancel.Enabled = True
+            btnAdminSave.Visible = True
+            btnAdminSave.Enabled = True
+            tbEsSealNo.Enabled = False
+            cmbEsSealNo.Enabled = False
+            tbCargoChecking.Enabled = False
+            btnPrint.Enabled = True
         End If
         'If My.Settings.role_id <> 1 And My.Settings.adminCheck = True Then
 
