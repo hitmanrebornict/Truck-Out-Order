@@ -30,6 +30,8 @@ Public Class NewPage
     stringQuitChecking,
     stringCloseApplication,
     stringSaveCompleteAs As String
+    Public maxTooNumber As Integer = getMaxTOONum()
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GlobalFunction.TopHeader(lblUserDetails, lblCompanyNameHeader, companyNameHeader)
@@ -47,6 +49,7 @@ Public Class NewPage
         '        tbCargo.Text = tbCargo.Text & lbl.Name
         '    End If
         'Next
+
 
         If (My.Settings.languageSetting = "fr") Then
             btnCancel.Text = ResourceNewPageFrench.btnCancel
@@ -182,7 +185,7 @@ Public Class NewPage
         End If
 
 
-        lblTooNumber.Text = My.Settings.newTOONumber
+        lblTooNumber.Text = maxTooNumber.ToString()
         tbTemporarySealNo.Enabled = False
         cmbCheckTempSealNo.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCheckTempSealNo.SelectedItem = "NO"
@@ -356,7 +359,7 @@ Public Class NewPage
 
                 End If
             End If
-            cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
+            cmd.Parameters.AddWithValue("@TruckOutNumber", maxTooNumber)
             cmd.Parameters.AddWithValue("@Origin", cmbCompany.Text)
             cmd.Parameters.AddWithValue("@Shipment_Closing_Date", dtpSCD.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@Shipment_Closing_Time", dtpSCT.Value.ToString("HH:mm:ss"))
@@ -376,7 +379,7 @@ Public Class NewPage
             ra = cmd.ExecuteNonQuery
             'btnCancel.PerformClick()
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
-            MessageBox.Show(stringPostCompleteAs & " " & +My.Settings.newTOONumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringPostCompleteAs & " " & +maxTooNumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             'End If
         End If
         con.Close()
@@ -547,7 +550,7 @@ Public Class NewPage
             cmd.Parameters.AddWithValue("@checkTempSealNo", checkTempSealNo)
         End If
         Try
-            cmd.Parameters.AddWithValue("@TruckOutNumber", My.Settings.newTOONumber)
+            cmd.Parameters.AddWithValue("@TruckOutNumber", maxTooNumber)
             cmd.Parameters.AddWithValue("@Origin", cmbCompany.Text)
             cmd.Parameters.AddWithValue("@Shipment_Closing_Date", dtpSCD.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@Shipment_Closing_Time", dtpSCT.Value.ToString("HH:mm:ss"))
@@ -564,7 +567,7 @@ Public Class NewPage
             cmd.Parameters.AddWithValue("@Check_ISO_Tank", cbISO.Checked)
             ra = cmd.ExecuteNonQuery
             GlobalFunction.backToPageAdminCheck(Admin, NormalUserPage, Me)
-            MessageBox.Show(stringSaveCompleteAs & " " & My.Settings.newTOONumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(stringSaveCompleteAs & " " & maxTooNumber.ToString, stringComplete, MessageBoxButtons.OK, MessageBoxIcon.Information)
             con.Close()
         Catch ex As Exception
             MessageBox.Show(stringCargoWeightEx, stringUpdateFailure, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -605,5 +608,26 @@ Public Class NewPage
         End If
     End Sub
 
+    Function getMaxTOONum() As Integer
+        Dim con As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim rd As SqlDataReader
+        con.ConnectionString = My.Settings.connstr
+        cmd.Connection = con
+        con.Open()
+
+        Dim maxTooNumber As Integer
+
+        cmd.CommandText = "select MAX(id) as maxID from shipping"
+
+        rd = cmd.ExecuteReader
+
+        While rd.Read()
+            maxTooNumber = rd.Item("maxID")
+        End While
+        con.Close()
+
+        Return maxTooNumber + 1
+    End Function
 
 End Class

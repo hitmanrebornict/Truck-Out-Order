@@ -8,16 +8,6 @@ Imports Truck_Out_Order.My.Resources
 
 Public Class Login
 
-    'Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) _
-    '    As Boolean
-    '    If (keyData = Keys.Enter) Then
-    '        SendKeys.Send("{TAB}")
-    '        'Parent.SelectNextControl(Me, True, True, True, True)
-    '        Return True
-    '    End If
-    '    Return MyBase.ProcessCmdKey(msg, keyData)
-    'End Function
-
     Dim stringRequired,
         stringAuthentificationError,
         stringUserDisabled,
@@ -126,9 +116,6 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.Close()
@@ -178,5 +165,67 @@ Public Class Login
         End If
     End Sub
 
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tbPassword.KeyPress
+        If e.KeyChar = Chr(13) Then 'Chr(13) is the Enter Key
+            Dim con As New SqlConnection
+            Dim cmd As New SqlCommand
+            Dim rd As SqlDataReader
 
+            Dim validationCheck As Boolean
+            Dim selectString = "SELECT Role_id,Username,Password,validationCheck,department,adminCheck,fullUserName from Login"
+            con.ConnectionString = My.Settings.connstr
+            cmd.Connection = con
+
+            con.Open()
+            If tbUsername.Text = "" Or tbPassword.Text = "" Then
+                MessageBox.Show(stringRequired, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Else
+                'cmd.CommandText = "SELECT Role_id,Username,Password,validationCheck from Login where Username = '" + tbUsername.Text + "' and Password ='" + tbPassword.Text + "'"
+                cmd.CommandText = selectString & " where Username = @username and Password = @password"
+                cmd.Parameters.AddWithValue("@username", tbUsername.Text)
+                cmd.Parameters.AddWithValue("@password", tbPassword.Text)
+                rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    rd.Read()
+                    My.Settings.role_id = rd.Item("Role_ID")
+                    validationCheck = rd.Item("validationCheck")
+                    My.Settings.departmentName = rd.Item("department")
+                    My.Settings.adminCheck = rd.Item("adminCheck")
+                    My.Settings.username = rd.Item("username")
+                    If IsDBNull(rd.Item("fullUserName")) Then
+                        My.Settings.fullName = ""
+                    Else
+                        My.Settings.fullName = rd.Item("fullUserName")
+                    End If
+
+
+                    Dim Admin As New Admin
+                    Dim User As New NormalUserPage
+
+                    If validationCheck = False Then
+                        MessageBox.Show(stringUserDisabled, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Else
+                        Select Case My.Settings.adminCheck
+                            Case True
+                                Admin.Show()
+                            Case False
+                                User.Show()
+                        End Select
+                    End If
+                    Me.Close()
+
+                    tbUsername.Text = ""
+                    tbPassword.Text = ""
+                    tbUsername.Focus()
+
+                Else
+                    MessageBox.Show(stringDoNotMatch, stringAuthentificationError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    tbUsername.Text = ""
+                    tbPassword.Text = ""
+                End If
+            End If
+
+        End If
+    End Sub
 End Class

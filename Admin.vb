@@ -109,47 +109,7 @@ Public Class Admin
     End Sub
 
     Private Sub pbNew_Click(sender As Object, e As EventArgs) Handles pbNew.Click
-        Dim con As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim age As Integer
-        Dim maxDetailsTOONumber As Integer
-        Dim rd As SqlDataReader
 
-        con.ConnectionString = My.Settings.connstr
-        cmd.Connection = con
-        con.Open()
-        cmd.CommandText = "SELECT max(ID) as maxID from Shipping"
-        rd = cmd.ExecuteReader
-        rd.Read()
-        If IsDBNull(rd.Item("maxID")) Then
-            age = 0
-        Else
-            age = rd.Item("maxID")
-        End If
-
-
-        con.Close()
-        con.Open()
-        cmd.CommandText = "SELECT max(TOO_Number) as maxTOONumber from details where TOO_Number is not null"
-        rd = cmd.ExecuteReader
-        rd.Read()
-        If IsDBNull(rd.Item("maxTOONumber")) Then
-            maxDetailsTOONumber = 0
-        Else
-            maxDetailsTOONumber = rd.Item("maxTOONumber")
-        End If
-
-
-        If age = 0 Then
-            My.Settings.newTOONumber = maxDetailsTOONumber
-        Else
-            If age >= maxDetailsTOONumber Then
-                My.Settings.newTOONumber = age + 1
-            Else
-                My.Settings.newTOONumber = maxDetailsTOONumber
-            End If
-
-        End If
         Dim Obj As New NewPage
         Obj.Show()
         Me.Close()
